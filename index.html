@@ -21,6 +21,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+
+        /* Language-based visibility */
+        :lang(pl) .img-pl { display: block; }
+        :lang(pl) .img-en { display: none; }
+        :lang(en) .img-pl { display: none; }
+        :lang(en) .img-en { display: block; }
         
         /* --- GŁÓWNA ANIMACJA MCAS (ZMIANA NA FIOLET + DARK MODE) --- */
         .vis-container {
@@ -718,51 +724,74 @@
 
     <!-- VAGUS NERVE SECTION -->
     <section id="vagus-nerve" class="py-16 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto px-4">
-            <!-- Text Content -->
-            <div>
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
-                    <div class="p-2 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg text-emerald-700 dark:text-emerald-300">
-                        <i data-lucide="activity"></i>
-                    </div>
-                    <span data-i18n="vagus_title">Nerw Błędny: Ofiara Napięcia</span>
-                </h2>
-                
-                <p class="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed" data-i18n="vagus_desc_1">
-                    <strong>Nerw Błędny (Vagus Nerve)</strong> to najważniejszy nerw układu przywspółczulnego ("odpoczywaj i traw"). Biegnie od pnia mózgu, przez szyję, klatkę piersiową, aż do jelit. To "autostrada informacyjna" łącząca mózg z ciałem.
-                </p>
-
-                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
-                    <h3 class="font-bold text-slate-900 dark:text-white mb-3" data-i18n="vagus_mechanism_title">Jak Zakotwiczenie go uszkadza?</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="vagus_mechanism_desc">
-                        Gdy rdzeń jest zakotwiczony na dole, napięcie przenosi się w górę do pnia mózgu. To tam wychodzą korzenie nerwu błędnego. <strong>Mechaniczne pociąganie pnia mózgu drażni lub uciska nerw błędny</strong>, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane (sygnały sterujące) przestają płynąć.
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Text Content -->
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                        <div class="p-2 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg text-emerald-700 dark:text-emerald-300">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <span data-i18n="vagus_title">Nerw Błędny: Ofiara Napięcia</span>
+                    </h2>
+                    
+                    <p class="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed" data-i18n="vagus_desc_1">
+                        <strong>Nerw Błędny (Vagus Nerve)</strong> to najważniejszy nerw układu przywspółczulnego ("odpoczywaj i traw"). Biegnie od pnia mózgu, przez szyję, klatkę piersiową, aż do jelit. To "autostrada informacyjna" łącząca mózg z ciałem.
                     </p>
+
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
+                        <h3 class="font-bold text-slate-900 dark:text-white mb-3" data-i18n="vagus_mechanism_title">Jak Zakotwiczenie go uszkadza?</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="vagus_mechanism_desc">
+                            Gdy rdzeń jest zakotwiczony na dole, napięcie przenosi się w górę do pnia mózgu. To tam wychodzą korzenie nerwu błędnego. <strong>Mechaniczne pociąganie pnia mózgu drażni lub uciska nerw błędny</strong>, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane (sygnały sterujące) przestają płynąć.
+                        </p>
+                    </div>
+
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-4" data-i18n="vagus_consequences_title">Konsekwencje uszkodzenia:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 p-1 bg-red-100 dark:bg-red-900/30 rounded text-red-600"><i data-lucide="heart-pulse" class="w-4 h-4"></i></div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_heart_title">Serce (POTS):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_heart_desc">Nerw błędny powinien zwalniać serce. Gdy nie działa, serce bije za szybko (tachykardia) przy wstawaniu.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 p-1 bg-yellow-100 dark:bg-yellow-900/30 rounded text-yellow-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_gut_title">Jelita i żołądek (Różne zaburzenia trawienia):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_gut_desc">Nerw błędny kontroluje trawienie oraz pracę żołądka. Gdy nie działa, można doświadczać biegunek, zaparć i innych problemów trawiennych.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 p-1 bg-purple-100 dark:bg-purple-900/30 rounded text-purple-600"><i data-lucide="shield-alert" class="w-4 h-4"></i></div>
+                            <div>
+                                <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_immune_title">Brak Hamulca dla MCAS:</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_immune_desc">Nerw błędny odpowiada za "Odruch Przeciwzapalny". Gdy nie działa, nikt nie mówi komórkom tucznym "STOP". Stan zapalny szaleje.</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
-                <h3 class="font-bold text-slate-900 dark:text-white mb-4" data-i18n="vagus_consequences_title">Konsekwencje uszkodzenia:</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 p-1 bg-red-100 dark:bg-red-900/30 rounded text-red-600"><i data-lucide="heart-pulse" class="w-4 h-4"></i></div>
-                        <div>
-                            <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_heart_title">Serce (POTS):</strong>
-                            <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_heart_desc">Nerw błędny powinien zwalniać serce. Gdy nie działa, serce bije za szybko (tachykardia) przy wstawaniu.</span>
+                <!-- Image Column -->
+                <div class="relative mt-8 lg:mt-0">
+                    <div class="sticky top-8 max-w-[80%] mx-auto">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                            <!-- PL Images -->
+                            <div class="img-pl">
+                                <img src="img/vagus_light_polish.webp" class="w-full h-auto block dark:hidden" alt="Nerw błędny ilustracja">
+                                <img src="img/vagus_dark_polish.webp" class="w-full h-auto hidden dark:block" alt="Nerw błędny ilustracja ciemny">
+                            </div>
+                            <!-- EN Images -->
+                            <div class="img-en">
+                                <img src="img/vagus_light_english.webp" class="w-full h-auto block dark:hidden" alt="Vagus nerve illustration">
+                                <img src="img/vagus_dark_english.webp" class="w-full h-auto hidden dark:block" alt="Vagus nerve illustration dark">
+                            </div>
                         </div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 p-1 bg-yellow-100 dark:bg-yellow-900/30 rounded text-yellow-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
-                        <div>
-                            <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_gut_title">Jelita i żołądek (Różne zaburzenia trawienia):</strong>
-                            <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_gut_desc">Nerw błędny kontroluje trawienie oraz pracę żołądka. Gdy nie działa, można doświadczać biegunek, zaparć i innych problemów trawiennych.</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <div class="mt-1 p-1 bg-purple-100 dark:bg-purple-900/30 rounded text-purple-600"><i data-lucide="shield-alert" class="w-4 h-4"></i></div>
-                        <div>
-                            <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_immune_title">Brak Hamulca dla MCAS:</strong>
-                            <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_immune_desc">Nerw błędny odpowiada za "Odruch Przeciwzapalny". Gdy nie działa, nikt nie mówi komórkom tucznym "STOP". Stan zapalny szaleje.</span>
-                        </div>
-                    </li>
-                </ul>
+                        <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-3 italic" data-i18n="vagus_img_caption">
+                            Ilustracja: Przebieg nerwu błędnego i wpływ napięcia mechanicznego.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1374,6 +1403,7 @@
                 vagus_cons_gut_desc: "Nerw błędny kontroluje trawienie oraz pracę żołądka. Gdy nie działa, można doświadczać biegunek, zaparć i innych problemów trawiennych.",
                 vagus_cons_immune_title: "Brak Hamulca dla MCAS:",
                 vagus_cons_immune_desc: "Nerw błędny odpowiada za \"Odruch Przeciwzapalny\". Gdy nie działa, nikt nie mówi komórkom tucznym \"STOP\". Stan zapalny szaleje.",
+                vagus_img_caption: "Ilustracja: Przebieg nerwu błędnego i wpływ napięcia mechanicznego.",
                 vagus_label_brainstem: "Pień Mózgu (Ucisk)",
                 vagus_label_heart: "Serce (Tachykardia)",
                 vagus_label_gut: "Jelita (Stop)",
@@ -1580,6 +1610,7 @@
                 vagus_cons_gut_desc: "The vagus nerve controls digestion and stomach function. When it fails, one can experience diarrhea, constipation, and other digestive issues.",
                 vagus_cons_immune_title: "No Brake for MCAS:",
                 vagus_cons_immune_desc: "The vagus nerve is responsible for the \"Anti-inflammatory Reflex\". When it fails, no one tells mast cells to \"STOP\". Inflammation runs wild.",
+                vagus_img_caption: "Illustration: Vagus nerve pathway and the impact of mechanical tension.",
                 vagus_label_brainstem: "Brainstem (Compression)",
                 vagus_label_heart: "Heart (Tachycardia)",
                 vagus_label_gut: "Gut (Stop)",
@@ -1737,6 +1768,7 @@
         let currentGuardMode = 'healthy'; // Przechowuje stan ochroniarza
         function toggleLang() {
             currentLang = currentLang === 'pl' ? 'en' : 'pl';
+            document.documentElement.lang = currentLang;
             document.getElementById('langBtn').innerText = currentLang.toUpperCase();
             
             // 1. Update statycznych tekstów (data-i18n)
