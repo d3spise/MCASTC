@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCAS i Tethered Cord: Przewodnik Edukacyjny</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* --- GŁÓWNA ANIMACJA MCAS (ZMIANA NA FIOLET + DARK MODE) --- */
+        .vis-container {
+            position: relative;
+            height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            background: radial-gradient(circle at center, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        /* Dark Mode dla kontenera wizualizacji */
+        .dark .vis-container {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            border-color: #334155;
+        }
+        
+        .mast-cell {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 30% 30%, #d8b4fe, #9333ea);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 10px 40px -10px rgba(147, 51, 234, 0.5);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 6px solid #581c87;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nucleus {
+            width: 80px;
+            height: 80px;
+            background: #3b0764;
+            border-radius: 50%;
+            z-index: 22;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .receptor {
+            position: absolute;
+            width: 14px;
+            height: 28px;
+            background-color: #1e40af;
+            border-radius: 8px;
+            top: 50%;
+            left: 50%;
+            margin-top: -14px;
+            margin-left: -7px;
+            z-index: 19;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .granule {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #f3e8ff;
+            border: 2px solid #a855f7;
+            border-radius: 50%;
+            z-index: 21;
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .diagram-label {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #334155;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            pointer-events: none;
+            z-index: 30;
+            white-space: nowrap;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .dark .diagram-label {
+            background: rgba(30, 41, 59, 0.95);
+            color: #e2e8f0;
+            border-color: #475569;
+        }
+        
+        .line-pointer {
+            position: absolute;
+            background: #94a3b8;
+            z-index: 29;
+            transform-origin: 0 0;
+        }
+
+        .shockwave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(147, 51, 234, 0.6);
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .anim-shake { animation: shake-hard 0.4s ease-in-out infinite; }
+        .anim-explode .shockwave { animation: ripple 0.8s ease-out forwards; }
+        .anim-explode .mast-cell {
+            transform: scale(0.85);
+            filter: brightness(1.1) saturate(1.2);
+            border-color: #7e22ce;
+            box-shadow: 0 0 60px rgba(126, 34, 206, 0.6);
+        }
+        
+        .anim-explode ~ .diagram-label, .anim-explode ~ .line-pointer {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        @keyframes shake-hard {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            25% { transform: translate(-3px, 0px) rotate(2deg); }
+            50% { transform: translate(-1px, 2px) rotate(-2deg); }
+            75% { transform: translate(3px, 1px) rotate(-2deg); }
+            100% { transform: translate(1px, -2px) rotate(-2deg); }
+        }
+
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; border-width: 20px; }
+            100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; border-width: 0px; }
+        }
+
+        .mist-particle {
+            position: absolute;
+            background: rgba(216, 180, 254, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        /* --- SYMULATOR LUDZIKA (CANVAS) --- */
+        .spine-container {
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #ffffff, #f1f5f9);
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: inset 0 0 40px rgba(226, 232, 240, 0.5);
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s;
+        }
+
+        .dark .spine-container {
+            background: radial-gradient(circle at 50% 50%, #1e293b, #0f172a);
+            border-color: #334155;
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .sim-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        canvas#simCanvas {
+            width: 100%;
+            aspect-ratio: 1 / 1; 
+            display: block;
+        }
+
+        .tension-panel {
+            position: relative;
+            width: 100%;
+            background: white;
+            padding: 16px;
+            border-top: 1px solid #e2e8f0;
+            z-index: 20;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .dark .tension-panel {
+            background: #1e293b;
+            border-top-color: #334155;
+        }
+
+        .instruction-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* Desktop Overrides */
+        @media (min-width: 768px) {
+            .spine-container {
+                display: block; 
+                height: 550px;
+            }
+
+            .sim-wrapper {
+                height: 100%;
+            }
+
+            canvas#simCanvas {
+                height: 100%; 
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .tension-panel {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 220px;
+                border: 1px solid #e2e8f0;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, 0.95);
+                box-shadow: 0 10px 30px -5px rgba(0,0,0,0.1);
+                backdrop-filter: blur(4px);
+                pointer-events: none;
+                border-top: 1px solid #e2e8f0; 
+            }
+
+            .dark .tension-panel {
+                background: rgba(30, 41, 59, 0.95);
+                border-color: #475569;
+                box-shadow: 0 10px 30px -5px rgba(0,0,0,0.3);
+            }
+        }
+
+        /* Przyciski pozycji - POPRAWIONY STYL */
+        .pose-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border-width: 2px; 
+            border-color: #cbd5e1; 
+            background-color: white;
+            color: #334155;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .dark .pose-btn {
+            background-color: #1e293b;
+            border-color: #475569;
+            color: #e2e8f0;
+        }
+        
+        .pose-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-color: #94a3b8;
+            background-color: #f8fafc;
+        }
+
+        .dark .pose-btn:hover {
+            background-color: #334155;
+            border-color: #64748b;
+        }
+
+        .symptom-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .symptom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border-left-color: #ef4444;
+        }
+
+        /* Language & Theme Toggle */
+        .nav-btn {
+            cursor: pointer;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-btn:hover {
+            background: #f1f5f9;
+        }
+        .dark .nav-btn:hover {
+            background: #334155;
+        }
+        
+
+        /* Connection Flow Styles */
+        .connection-step {
+            position: relative;
+            z-index: 1;
+        }
+        .connection-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 0;
+            color: #94a3b8;
+        }
+        @media (min-width: 768px) {
+            .connection-arrow {
+                padding: 0 1rem;
+                transform: rotate(-90deg);
+            }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Nawigacja -->
+    <nav class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">MC</div>
+                <div>
+                    <span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">MCAS Info</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Mast Cell Activation Syndrome</span>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                <div class="hidden md:flex gap-6">
+                    <a href="#mechanizm" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_mechanism">Mechanizm</a>
+                    <a href="#tethered-cord-def" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500" data-i18n="nav_tcs">Zakotwiczenie rdzenia</a>
+                    <a href="#objawy" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_symptoms">Objawy</a>
+                    <a href="#wyzwalacze" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_triggers">Wyzwalacze</a>
+                </div>
+                
+                <div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+                    <button onclick="toggleTheme()" class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtn" title="Przełącz tryb ciemny">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn">PL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white dark:bg-slate-900 pt-16 pb-20 px-4 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6 border border-red-100 dark:border-red-800">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span data-i18n="hero_tag">Systemowa choroba neuro-immunologiczna</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">
+                <span data-i18n="hero_title1">Gdy ciało walczy samo ze sobą</span><br>
+                <span class="text-red-600 dark:text-red-500" data-i18n="hero_title2">MCAS i Zakotwiczenie Rdzenia</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero_desc">
+                Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne i mechaniczne napięcie rdzenia kręgowego tworzą "błędne koło" zapalenia.
+            </p>
+        </div>
+    </header>
+
+    <section id="analogy" class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 text-xs font-bold uppercase mb-4">
+                    <i data-lucide="lightbulb" class="w-4 h-4"></i> <span data-i18n="tag_analogy">Prosta Analogia</span>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="analogy_title">
+                    Twój Ochroniarz Zwariował
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed" data-i18n="analogy_desc">
+                    Zanim wejdziemy w medyczne szczegóły, zrozum istotę problemu. Wyobraź sobie, że Twój układ odpornościowy (komórki tuczne) to <strong>Ochroniarz</strong>, który pilnuje wejścia do Twojego ciała.
+                </p>
+            </div>
+
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm relative overflow-hidden">
+                
+                <div class="flex justify-center mb-2 relative z-20">
+                    <div class="bg-white dark:bg-slate-900 p-1 rounded-xl border border-slate-200 dark:border-slate-700 inline-flex shadow-sm">
+                        <button onclick="setGuardMode('healthy')" id="btn-healthy" class="px-6 py-2 rounded-lg text-sm font-bold transition-all bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                            <span data-i18n="btn_mode_healthy">Zdrowy Człowiek</span>
+                        </button>
+                        <button onclick="setGuardMode('mcas')" id="btn-mcas" class="px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700 dark:text-slate-400">
+                            <span data-i18n="btn_mode_mcas">Ty (MCAS)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center mt-16">
+                    
+                    <div class="flex flex-col items-center justify-center relative">
+                        <div id="guard-speech" class="absolute -top-20 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-4 py-3 rounded-2xl rounded-bl-none shadow-xl text-sm font-bold transition-all duration-300 transform origin-bottom-left mb-4 z-10 text-center w-56 flex items-center justify-center min-h-[60px]">
+                            <span data-i18n="guard_speech_healthy">Zzz... Pełen spokój.</span>
+                        </div>
+
+                        <div id="guard-icon-container" class="w-32 h-32 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center border-4 border-green-200 dark:border-green-800 transition-all duration-500 relative z-0">
+                            <i data-lucide="shield-check" class="w-16 h-16 text-green-600 dark:text-green-400 transition-all duration-500" id="guard-icon"></i>
+                        </div>
+
+                        <div class="mt-4 text-center">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white transition-colors" id="guard-status-title" data-i18n="guard_title_healthy">Ochroniarz Śpi</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400" id="guard-status-desc" data-i18n="guard_desc_healthy">Reaguje tylko na prawdziwych bandytów (wirusy).</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-2" data-i18n="visitors_label">Kto puka do drzwi?</div>
+                        
+                        <div class="space-y-3">
+                            <div class="visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-tomato">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-red-100 dark:bg-red-900/30 rounded text-red-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+                                    <span class="text-sm font-medium" data-i18n="vis_tomato">Pan Pomidor</span>
+                                </div>
+                                <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
+                            </div>
+
+                            <div class="visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-perfume">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded text-purple-600"><i data-lucide="wind" class="w-4 h-4"></i></div>
+                                    <span class="text-sm font-medium" data-i18n="vis_perfume">Pani Perfumowana</span>
+                                </div>
+                                <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
+                            </div>
+
+                            <div class="visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-weather">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded text-blue-600"><i data-lucide="cloud-rain" class="w-4 h-4"></i></div>
+                                    <span class="text-sm font-medium" data-i18n="vis_weather">Listonosz Deszcz</span>
+                                </div>
+                                <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Mechanizm z Zaawansowaną Animacją -->
+    <section id="mechanizm" class="py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Opis Naukowy -->
+            <div class="order-2 lg:order-1">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                    <div class="p-2 bg-purple-100 dark:bg-purple-900/40 rounded-lg text-purple-700 dark:text-purple-300"><i data-lucide="dna"></i></div>
+                    <span data-i18n="mech_title">1. Co to jest MCAS?</span>
+                </h2>
+                <div class="space-y-6 text-slate-700 dark:text-slate-300">
+                    <p data-i18n="mech_p1">W Zespole Aktywacji Komórek Tucznych (MCAS) komórki odpornościowe (mastocyty) są "nadwrażliwe". Zamiast reagować tylko na prawdziwe zagrożenie (np. wirus), wybuchają przy kontakcie z błahymi czynnikami.</p>
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
+                        <h3 class="font-semibold text-slate-900 dark:text-white mb-3 border-b border-slate-100 dark:border-slate-800 pb-2" data-i18n="mech_mediators_title">Mediatory (Broń Chemiczna):</h3>
+<ul class="space-y-3 text-sm">
+    <li class="flex items-start gap-3">
+        <span class="w-2 h-2 mt-2 bg-purple-500 rounded-full flex-shrink-0"></span>
+        <span data-i18n="mech_histamine"><strong>Histamina:</strong> Obrzęki, świąd, mgła mózgowa, tachykardia.</span>
+    </li>
+    
+    <li class="flex items-start gap-3">
+        <span class="w-2 h-2 mt-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
+        <span data-i18n="mech_tryptase"><strong>Tryptaza:</strong> Uszkodzenia tkanek, przewlekły stan zapalny.</span>
+    </li>
+    
+    <li class="flex items-start gap-3">
+        <span class="w-2 h-2 mt-2 bg-pink-500 rounded-full flex-shrink-0"></span>
+        <span data-i18n="mech_cytokines"><strong>Cytokiny (TNF-a, IL-6):</strong> Objawy grypopodobne, zmęczenie (PEM).</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="w-2 h-2 mt-2 bg-red-500 rounded-full flex-shrink-0"></span>
+        <span data-i18n="mech_prostaglandins"><strong>Prostaglandyny (PGD2):</strong> Nagłe zaczerwienienie (flushing), bóle brzucha.</span>
+    </li>
+
+    <li class="flex items-start gap-3">
+        <span class="w-2 h-2 mt-2 bg-emerald-500 rounded-full flex-shrink-0"></span>
+        <span data-i18n="mech_leukotrienes"><strong>Leukotrieny:</strong> Skurcz oskrzeli, duszności, astma.</span>
+    </li>
+    
+    <li class="flex items-start gap-3">
+        <span class="w-2 h-2 mt-2 bg-blue-500 rounded-full flex-shrink-0"></span>
+        <span data-i18n="mech_heparin"><strong>Heparyna:</strong> Łatwe siniaczenie, problemy z krzepnięciem.</span>
+    </li>
+</ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interaktywna Wizualizacja -->
+            <div class="order-1 lg:order-2">
+                <div class="vis-container" id="scene">
+                    <div class="shockwave" id="shockwave"></div>
+                    <div class="mast-cell" id="mastCell">
+                        <div class="nucleus"></div>
+                        <div class="receptor" style="transform: rotate(-25deg) translateY(-105px);"></div>
+                        <div class="receptor" style="transform: rotate(25deg) translateY(-105px);"></div>
+                        <div class="receptor" style="transform: rotate(0deg) translateY(-105px);"></div>
+                        <div class="receptor" style="transform: rotate(50deg) translateY(-105px);"></div>
+                        <div class="receptor" style="transform: rotate(-50deg) translateY(-105px);"></div>
+                    </div>
+                    <!-- Etykiety -->
+                    <div class="line-pointer" style="width: 1px; height: 30px; top: 60px; left: 50%; transform: rotate(-30deg); background-color: #94a3b8;"></div>
+                    <div class="diagram-label" style="top: 35px; left: 50%; transform: translateX(-120%);"><span class="text-blue-700 dark:text-blue-400">●</span> <span data-i18n="label_receptors">Receptory (IgE)</span></div>
+                    <div class="diagram-label" style="top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background: transparent; border: none; box-shadow: none;" data-i18n="label_nucleus">Jądro</div>
+                    <div class="line-pointer" style="width: 30px; height: 1px; top: 65%; right: 28%;"></div>
+                    <div class="diagram-label" style="top: 63%; right: 8%;"><span class="text-purple-600 dark:text-purple-400">●</span> <span data-i18n="label_granules">Ziarnistości</span></div>
+                    <!-- ZMIANA: Etykieta Burzy Cytokinowej w fiolecie -->
+                    <div id="reactionLabel" class="absolute bottom-6 px-6 py-2 bg-purple-100/90 dark:bg-purple-900/90 backdrop-blur border border-purple-200 dark:border-purple-700 text-purple-700 dark:text-purple-200 font-bold rounded-full opacity-0 transform translate-y-4 transition-all duration-300 shadow-lg flex items-center gap-2 z-50"><i data-lucide="alert-triangle" class="w-4 h-4"></i> <span data-i18n="label_storm">BURZA MEDIATORÓW</span></div>
+                </div>
+                <div class="mt-6 flex gap-4 justify-center">
+                    <!-- ZMIANA: Przycisk fioletowy -->
+                    <button onclick="explodeCell()" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-purple-200/50 dark:shadow-purple-900/50 transition-all active:scale-95 flex items-center gap-2 group"><i data-lucide="zap"></i> <span data-i18n="btn_activate">Aktywuj Reakcję</span></button>
+                    <button onclick="resetCell()" class="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2"><i data-lucide="rotate-ccw"></i> Reset</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA DEFINICJI TETHERED CORD -->
+    <section id="tethered-cord-def" class="py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                <div class="p-2 bg-yellow-100 dark:bg-yellow-900/40 rounded-lg text-yellow-700 dark:text-yellow-300"><i data-lucide="anchor"></i></div>
+                <span data-i18n="tcs_def_main_title">2. Co to jest Zakotwiczenie Rdzenia?</span>
+            </h2>
+            
+            <div class="space-y-8">
+                <div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+                    <p class="text-lg leading-relaxed" data-i18n="tcs_def_desc">
+                        <strong>Zespół Zakotwiczenia Rdzenia Kręgowego (TCS)</strong> to mechaniczna patologia, w której rdzeń kręgowy jest "uwięziony" u dołu kręgosłupa. W zdrowym ciele rdzeń swobodnie unosi się w kanale kręgowym, przesuwając się w górę i w dół podczas ruchu. W TCS jest on przytwierdzony (zakotwiczony) przez zbyt napiętą nić końcową (<em>filum terminale</em>) lub <strong>tkankę bliznowatą</strong> (np. po operacjach, urazach).
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300">
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                            <i data-lucide="minimize-2" class="text-red-500"></i> <span data-i18n="tcs_anat_title">Anatomia Problemu</span>
+                        </h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="tcs_anat_desc">
+                            Wyobraź sobie rdzeń jako luźne sznurowadło wewnątrz rurki. W TCS to sznurowadło jest mocno naciągnięte i przybite gwoździem na dole (przez nić lub zrosty). Każdy skłon, wyprost czy ruch głową powoduje <strong>fizyczne rozciąganie tkanki nerwowej</strong>, prowadząc do jej niedokrwienia (ischemii).
+                        </p>
+                    </div>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300">
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                            <i data-lucide="zap" class="text-purple-500"></i> <span data-i18n="tcs_mcas_title">Zapalnik dla MCAS</span>
+                        </h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="tcs_mcas_desc">
+                            To nie jest tylko problem ortopedyczny. Naciągnięte nerwy uwalniają neuropeptydy (np. Substancję P), które są bezpośrednim sygnałem dla komórek tucznych do ataku. <strong>Mechaniczne drażnienie rdzenia staje się ciągłym wyzwalaczem reakcji alergicznej</strong>, nawet bez alergenów w pożywieniu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rodzaje Zakotwiczenia -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800/50">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="file-search" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                        <span data-i18n="tcs_types_title">Dwa Oblicza Choroby</span>
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm" data-i18n="tcs_type1_title">1. Klasyczne (Anatomiczne)</h4>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_type1_desc">
+                                Widoczne na standardowym rezonansie (MRI). Stożek rdzenia kończy się zbyt nisko (poniżej kręgu L2). Często towarzyszy mu tłuszczak (lipoma) lub rozszczep kręgosłupa.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm" data-i18n="tcs_type2_title">2. Ukryte (Occult TCS)</h4>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_type2_desc">
+                                <strong>Najczęstsze przy EDS/MCAS.</strong> Stożek rdzenia jest na prawidłowej wysokości, ale nić końcowa (filum) jest zwłókniała i nieelastyczna. Często opisywane jako "norma" w MRI, mimo silnych objawów klinicznych.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ciągnięcie Pnia Mózgu -->
+                <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-800/50">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="arrow-up-circle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+                        <span data-i18n="tcs_brainstem_title">Efekt Domina: Ciągnięcie Pnia Mózgu</span>
+                    </h3>
+                    <p class="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed" data-i18n="tcs_brainstem_desc">
+                        Rdzeń kręgowy to jednolita struktura. Pociąganie go na dole (w odcinku lędźwiowym) przenosi napięcie aż do samej góry – do pnia mózgu. To tam znajdują się ośrodki sterujące sercem, oddechem i trawieniem (nerw błędny).
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="activity" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_pots">POTS / Tachykardia</span>
+    </div>
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="wind" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_swallow">Problemy z połykaniem</span>
+    </div>
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="eye" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_vision">Zaburzenia wzroku</span>
+    </div>
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="rotate-cw" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_dizzy">Zawroty głowy</span>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA TETHERED CORD (REALISTYCZNY SYMULATOR Z POZYCJAMI) -->
+<section id="tethered-cord" class="py-16 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200 text-xs font-bold uppercase mb-4">
+                    <span data-i18n="tag_biomechanics">Mechanika Codzienności</span>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+                    <span data-i18n="tcs_title1">3. Symulacja zakotwiczenia rdzenia:</span> <br><span data-i18n="tcs_title2">Rola Krzywizn Kręgosłupa</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed" data-i18n="tcs_desc">
+                    Zdrowy kręgosłup ma naturalne wygięcia: <strong>kifozę</strong> (wygięcie w tył w odcinku piersiowym) i <strong>lordozę</strong> (wygięcie w przód w lędźwiach). Działają one jak sprężyna, skracając drogę dla rdzenia.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+            
+                <div>
+                    <div class="spine-container" id="simContainer">
+                        <div class="sim-wrapper">
+                            <canvas id="simCanvas" width="550" height="550"></canvas>
+                            <div class="instruction-overlay text-slate-500 text-sm font-medium">
+                            </div>
+                        </div>
+                        
+                        <div class="tension-panel">
+                            <div class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wide" data-i18n="sim_status_title">Status Rdzenia</div>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <span class="font-semibold text-slate-700 dark:text-slate-200 text-sm" data-i18n="sim_tension">Napięcie (Traction)</span>
+                                <span id="tensionValue" class="font-mono font-bold text-slate-900 dark:text-white">0%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-3 overflow-hidden border border-slate-200 dark:border-slate-600">
+                                <div id="tensionBar" class="h-full bg-green-500" style="width: 0%"></div>
+                            </div>
+                            <div id="painStatus" class="mt-3 text-xs font-bold text-green-600 dark:text-green-400 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-lg border border-transparent">
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div> <span data-i18n="status_baseline">BAZA (Objawy stabilne)</span>
+                            </div>
+                            <div id="poseDesc" class="mt-3 text-xs text-slate-500 dark:text-slate-400 italic border-t pt-2 border-slate-100 dark:border-slate-700">
+                                Wybierz pozycję poniżej, aby zobaczyć efekt.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                         <button onclick="setPose('tiptoes')" class="pose-btn" id="btn-tiptoes">
+                            <i data-lucide="footprints" class="w-5 h-5"></i> <span data-i18n="btn_tiptoes">Na palcach</span>
+                        </button>
+
+                        <button onclick="setPose('standing')" class="pose-btn" id="btn-standing">
+                            <i data-lucide="user" class="w-5 h-5"></i> <span data-i18n="btn_standing">Stojąca</span>
+                        </button>
+                        
+                        <button onclick="setPose('chair')" class="pose-btn" id="btn-chair">
+                            <i data-lucide="armchair" class="w-5 h-5"></i> <span data-i18n="btn_chair">Na krześle</span>
+                        </button>
+
+                        <button onclick="setPose('straight')" class="pose-btn" id="btn-straight">
+                            <i data-lucide="move-vertical" class="w-5 h-5"></i> <span data-i18n="btn_straight">Test Wyprostu</span>
+                        </button>
+                        
+                        <button onclick="setPose('long_sit')" class="pose-btn" id="btn-long_sit">
+                            <i data-lucide="arrow-right-from-line" class="w-5 h-5"></i> <span data-i18n="btn_long_sit">Siad prosty</span>
+                        </button>
+                        
+                        <button onclick="setPose('lying_flat')" class="pose-btn" id="btn-lying_flat">
+                            <i data-lucide="align-justify" class="w-5 h-5 rotate-90"></i> <span data-i18n="btn_lying_flat">Leżenie płasko</span>
+                        </button>
+                        
+                        <button onclick="setPose('lying_bent')" class="pose-btn sm:col-span-1" id="btn-lying_bent">
+                            <i data-lucide="smile" class="w-5 h-5"></i> <span data-i18n="btn_lying_bent">Leżenie ugięte</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-indigo-50 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900">
+                        <h4 class="font-bold text-indigo-800 dark:text-indigo-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="git-commit" class="w-4 h-4"></i> <span data-i18n="nerve_title">Efekt Liny Holowniczej (Nerw Kulszowy)</span>
+                        </h4>
+                        <p class="text-sm text-indigo-700 dark:text-indigo-200" data-i18n="nerve_desc">
+                            Nerw kulszowy biegnie przez całą nogę. Gdy prostujesz nogi (zwłaszcza w siadzie), nerw ten napina się (patrz: przerywana linia na symulacji). W zdrowym ciele ma luz, ale w TCS działa jak lina, która pociąga rdzeń w dół, drażniąc go mechanicznie.
+                        </p>
+                    </div>
+
+                    <div class="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-xl border border-orange-100 dark:border-orange-900">
+                        <h4 class="font-bold text-orange-800 dark:text-orange-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i> <span data-i18n="trap_title">Pułapka Wyprostu</span>
+                        </h4>
+                        <p class="text-sm text-orange-700 dark:text-orange-200" data-i18n="trap_desc">
+                            Próba "wyprostowania się na baczność" spłaszcza naturalne krzywizny (S-kształt). To fizycznie wydłuża kanał kręgowy ("robi się wyższy"), co natychmiast naciąga zakotwiczony na dole rdzeń.
+                        </p>
+                    </div>
+
+                    <div class="bg-teal-50 dark:bg-teal-950/30 p-4 rounded-xl border border-teal-100 dark:border-teal-900">
+                        <h4 class="font-bold text-teal-800 dark:text-teal-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="align-vertical-distribute-center" class="w-4 h-4"></i> <span data-i18n="paradox_title">Paradoks: Stanie vs Leżenie</span>
+                        </h4>
+                        <p class="text-sm text-teal-700 dark:text-teal-200" data-i18n="paradox_desc">
+                            Dlaczego stanie jest lepsze niż leżenie płasko? <strong>Gdy stoisz</strong>, zachowujesz naturalne wygięcie kręgosłupa (lordozę), co daje rdzeniowi luz. <strong>Gdy leżysz płasko</strong>, ciężar nóg "prasuje" plecy do podłogi, prostując kręgosłup jak linijkę. To fizycznie wydłuża drogę, którą musi pokonać napięty rdzeń.
+                        </p>
+                    </div>
+
+                    <div class="bg-emerald-50 dark:bg-emerald-950/30 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900">
+                        <h4 class="font-bold text-emerald-800 dark:text-emerald-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="move-up" class="w-4 h-4"></i> <span data-i18n="tiptoes_title">Test Palców vs Pięt</span>
+                        </h4>
+                        <p class="text-sm text-emerald-700 dark:text-emerald-200" data-i18n="tiptoes_desc">
+                            Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-xl border border-blue-100 dark:border-blue-900">
+                        <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4"></i> <span data-i18n="relief_title">Pozycja Ulgowa (Baza)</span>
+                        </h4>
+                        <p class="text-sm text-blue-700 dark:text-blue-200" data-i18n="relief_desc">
+                            <strong>Leżenie z ugiętymi nogami</strong> (podparte poduszką) to jedyna pozycja, która maksymalnie luzuje nerwy. Pamiętaj jednak: "Luz" nie oznacza całkowitego braku objawów, lecz powrót do stabilnego poziomu bazowego (ok. 30% napięcia).
+                        </p>
+                    </div>
+
+                    <div class="mt-6 bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="tcs_hint">
+                            <strong>Wskazówka:</strong> Obserwuj czerwoną linię rdzenia przy przycisku "Test Wyprostu". To wyjaśnia, dlaczego długie stanie w "poprawnej" pozycji może boleć bardziej niż lekkie zgarbienie.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NOWA SEKCJA: Błędne Koło (Connecting the dots) -->
+    <section id="connection" class="py-20 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 relative">
+            <!-- Dekoracyjne tło -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-gradient-to-r from-blue-100/20 via-purple-100/20 to-pink-100/20 blur-3xl pointer-events-none"></div>
+
+            <div class="text-center mb-16 relative z-10">
+                <span class="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-3" data-i18n="conn_tag">Triada Chorobowa</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6" data-i18n="conn_title">Błędne Koło: Oś Neuro-Immunologiczna</h2>
+                <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="conn_desc">
+                    To nie są trzy oddzielne choroby. To jeden proces mechaniczno-chemiczny, w którym fizyczne naciąganie rdzenia (TC) wywołuje reakcję zapalną (MCAS), prowadzącą do wyczerpania energetycznego organizmu (ME/CFS).
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 items-stretch justify-center relative z-10">
+                
+                <!-- Step 1: TC -->
+                <div class="group flex-1 bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                    <!-- Tło gradientowe -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-white to-red-50 dark:from-slate-800 dark:to-red-900/20 opacity-50"></div>
+                    <!-- Ikona tła -->
+                    <div class="absolute -right-6 -bottom-6 text-red-100 dark:text-red-900/40 group-hover:text-red-200 dark:group-hover:text-red-800/40 transition-colors duration-500">
+                        <i data-lucide="anchor" class="w-32 h-32 opacity-50 transform rotate-12"></i>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm ring-4 ring-red-50 dark:ring-red-900/30 group-hover:scale-110 transition-transform duration-300">1</div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step1_title">Uraz Mechaniczny (TC)</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step1_desc">Zakotwiczony rdzeń jest naciągany przy każdym ruchu. Powstają mikrourazy i niedotlenienie tkanki nerwowej.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow 1 -->
+                <div class="flex items-center justify-center text-red-300/50 dark:text-red-700/50 md:-mx-3 z-20">
+                    <i data-lucide="chevron-right" class="hidden md:block w-10 h-10 animate-pulse"></i>
+                    <i data-lucide="chevron-down" class="block md:hidden w-8 h-8 animate-pulse"></i>
+                </div>
+
+                <!-- Step 2: Pain -->
+                <div class="group flex-1 bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white to-orange-50 dark:from-slate-800 dark:to-orange-900/20 opacity-50"></div>
+                    <div class="absolute -right-6 -bottom-6 text-orange-100 dark:text-orange-900/40 group-hover:text-orange-200 dark:group-hover:text-orange-800/40 transition-colors duration-500">
+                        <i data-lucide="zap" class="w-32 h-32 opacity-50 transform -rotate-12"></i>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm ring-4 ring-orange-50 dark:ring-orange-900/30 group-hover:scale-110 transition-transform duration-300">2</div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step2_title">Sygnał Bólowy</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step2_desc">Podrażnione nerwy uwalniają neuropeptydy (np. Substancja P), które działają jak "sygnał alarmowy" dla okolicznych tkanek.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow 2 -->
+                <div class="flex items-center justify-center text-orange-300/50 dark:text-orange-700/50 md:-mx-3 z-20">
+                    <i data-lucide="chevron-right" class="hidden md:block w-10 h-10 animate-pulse"></i>
+                    <i data-lucide="chevron-down" class="block md:hidden w-8 h-8 animate-pulse"></i>
+                </div>
+
+                <!-- Step 3: MCAS -->
+                <div class="group flex-1 bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white to-pink-50 dark:from-slate-800 dark:to-pink-900/20 opacity-50"></div>
+                    <div class="absolute -right-6 -bottom-6 text-pink-100 dark:text-pink-900/40 group-hover:text-pink-200 dark:group-hover:text-pink-800/40 transition-colors duration-500">
+                        <i data-lucide="flame" class="w-32 h-32 opacity-50 transform rotate-6"></i>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-pink-100 dark:bg-pink-900/50 text-pink-600 dark:text-pink-400 rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm ring-4 ring-pink-50 dark:ring-pink-900/30 group-hover:scale-110 transition-transform duration-300">3</div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step3_title">Zapłon MCAS</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step3_desc">Mastocyty zlokalizowane przy nerwach odbierają ten sygnał i "wybuchają" (degranulacja), uwalniając histaminę i cytokiny.</p>
+                    </div>
+                </div>
+
+                <!-- Arrow 3 -->
+                <div class="flex items-center justify-center text-pink-300/50 dark:text-pink-700/50 md:-mx-3 z-20">
+                    <i data-lucide="chevron-right" class="hidden md:block w-10 h-10 animate-pulse"></i>
+                    <i data-lucide="chevron-down" class="block md:hidden w-8 h-8 animate-pulse"></i>
+                </div>
+
+                <!-- Step 4: ME/CFS -->
+                <div class="group flex-1 bg-white dark:bg-slate-800 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white to-purple-50 dark:from-slate-800 dark:to-purple-900/20 opacity-50"></div>
+                    <div class="absolute -right-6 -bottom-6 text-purple-100 dark:text-purple-900/40 group-hover:text-purple-200 dark:group-hover:text-purple-800/40 transition-colors duration-500">
+                        <i data-lucide="battery-warning" class="w-32 h-32 opacity-50 transform -rotate-6"></i>
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm ring-4 ring-purple-50 dark:ring-purple-900/30 group-hover:scale-110 transition-transform duration-300">4</div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step4_title">ME/CFS (Wyczerpanie)</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step4_desc">Przewlekły stan zapalny (cytokiny) dociera do mózgu (neurozapalenie) i blokuje produkcję energii w mitochondriach -> PEM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa Objawów -->
+    <section id="objawy" class="py-16 bg-slate-50 dark:bg-slate-900 scroll-mt-20 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="symptoms_title">4. Objawy: Kiedy wszystko się łączy</h2>
+                <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto" data-i18n="symptoms_desc">
+                    Kombinacja MCAS i Zakotwiczenie Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako "tylko stres" lub psychosomatyka.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Karty objawów -->
+                <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="brain"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_neuro_title">Neurologiczne</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_neuro_list">
+                        <li><strong>Mgła mózgowa:</strong> Trudności poznawcze.</li>
+                        <li>Bóle głowy (ciągnące od karku).</li>
+                        <li>Nadwrażliwość na światło/dźwięk.</li>
+                        <li>Zawroty głowy / Zaburzenia równowagi.</li>
+                    </ul>
+                </div>
+                <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="activity"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_pots_title">ME/CFS & Dysautonomia</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_pots_list">
+                         <li><strong>PEM (Pogorszenie objawów powysiłkowo)</strong>.</li>
+                        <li>Tachykardia po wstaniu (POTS).</li>
+                        <li>Przewlekłe zmęczenie.</li>
+                    </ul>
+                </div>
+                <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="zap"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_pain_title">Ból i Kręgosłup (TCS)</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_pain_list">
+                        <li>Ból pleców.</li>
+                        <li>Ból nóg ("rosnący", rwący).</li>
+                        <li>Problemy z pęcherzem.</li>
+                    </ul>
+                </div>
+                <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="utensils"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_gi_title">Układ Pokarmowy</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_gi_list">
+                        <li>Bóle brzucha i wzdęcia.</li>
+                        <li>Reakcje na histaminę.</li>
+                        <li>Zespół Jelita Drażliwego (IBS).</li>
+                    </ul>
+                </div>
+                 <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="wind"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_resp_title">Oddechowe</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_resp_list">
+                        <li>Uczucie duszności.</li>
+                        <li>Zatkany nos.</li>
+                        <li>Nadwrażliwość chemiczna.</li>
+                    </ul>
+                </div>
+                 <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="user"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_skin_title">Skórne</h3>
+                    <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_skin_list">
+                        <li>Zaczerwienienie skóry.</li>
+                        <li>Świąd skóry.</li>
+                        <li>Dermografizm.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wyzwalacze -->
+    <section id="wyzwalacze" class="py-16 bg-slate-900 dark:bg-slate-950 text-white scroll-mt-20 border-t border-slate-800 dark:border-slate-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="bomb" class="text-red-500"></i> <span data-i18n="triggers_title">5. Kluczowe Wyzwalacze</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Substancje Pomocnicze -->
+                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_excipients_title">Substancje Pomocnicze w Lekach (Twoje Zagrożenia)</h3>
+                    <p class="text-slate-400 text-sm mb-4" data-i18n="trig_excipients_desc">Ukryci wrogowie w tabletkach. Zawsze sprawdzaj skład pod kątem:</p>
+                    <ul class="space-y-3 text-sm bg-slate-900/50 dark:bg-slate-950/50 p-4 rounded-lg text-red-200">
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_e171"><strong>Dwutlenek tytanu (E171)</strong> – Barwnik</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_corn"><strong>Skrobia kukurydziana</strong> – Wypełniacz</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_cros"><strong>Krospowidon</strong> – Substancja rozsadzająca</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_pg"><strong>Glikol propylenowy</strong> – Rozpuszczalnik</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_iron"><strong>Tlenki żelaza</strong> – Barwniki</span></li>
+                    </ul>
+                </div>
+
+                <!-- Codzienność (Rozbudowana) -->
+                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_daily_title">Codzienność & Środowisko</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="utensils-crossed" class="text-orange-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_diet_title">Dieta Wysokohistaminowa:</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_diet_desc">Sery dojrzewające, alkohol, pomidory, kiszonki, wędzone ryby, <strong>odgrzewane resztki</strong> (histamina rośnie z czasem).</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="wind" class="text-blue-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_chem_title">Zapachy i Chemia (MCS):</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_chem_desc">Perfumy, odświeżacze powietrza, dym papierosowy, opary farb, chlor na basenie.</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="thermometer" class="text-yellow-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_phys_title">Fizyczne i Pogodowe:</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_phys_desc">Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń).</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="brain-circuit" class="text-purple-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_stress_title">Stres i Mechanika:</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_stress_desc">Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MCAS Diet Assistant -->
+    <section id="diet-assistant" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-3">
+                    <i data-lucide="chef-hat" class="text-green-600"></i> 
+                    <span data-i18n="diet_title">Asystent Diety MCAS</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto" data-i18n="diet_desc">
+                    Pacjenci z MCAS często muszą stosować restrykcyjną dietę niskohistaminową. Wpisz nazwę potrawy lub składnika, aby sprawdzić bezpieczeństwo przy użyciu AI.
+                </p>
+            </div>
+
+            <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-lg max-w-2xl mx-auto">
+                <!-- API Key Input -->
+                
+
+                <div class="mb-6">
+                    <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase mb-2" data-i18n="diet_food_label">Co chcesz zjeść?</label>
+                   
+                    <div class="flex flex-col sm:flex-row gap-4">
+
+                        <input type="text" id="food-input" class="w-full flex-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500 outline-none transition-all text-lg" placeholder="np. Rosół z kury" data-i18n-placeholder="diet_placeholder">
+
+                        <button onclick="checkDiet()" class="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all active:scale-95 flex items-center justify-center gap-2">
+                            <i data-lucide="search"></i> <span data-i18n="diet_check_btn">Sprawdź</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="score-display" class="mb-6 hidden"></div>
+
+<div id="diet-result" class="min-h-[100px] text-slate-700 dark:text-slate-300"></div>
+                <!-- Result Area -->
+                <div id="diet-result" class="min-h-[100px] text-slate-700 dark:text-slate-300"></div>
+            </div>
+                
+                <div id="dietLoading" class="hidden text-center py-8">
+    <i data-lucide="loader-2" class="w-8 h-8 animate-spin text-purple-600 mx-auto mb-2"></i>
+    <span class="text-slate-500 text-sm" data-i18n="diet_loading">Analizuję składniki...</span>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-8 border-t border-slate-900">
+        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+            <p class="mb-2" data-i18n="footer_text">Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.</p>
+            <p>Generated for Personal Health Visualization</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // --- THEME LOGIC ---
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeBtn = document.getElementById('themeBtn');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                themeBtn.innerHTML = '<i data-lucide="moon" class="w-4 h-4"></i>';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                themeBtn.innerHTML = '<i data-lucide="sun" class="w-4 h-4"></i>';
+            }
+            lucide.createIcons();
+            
+            // Force stickman redraw to update colors immediately
+            if(window.drawStickman) window.drawStickman();
+        }
+
+        // Initialize theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('themeBtn').innerHTML = '<i data-lucide="sun" class="w-4 h-4"></i>';
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.getElementById('themeBtn').innerHTML = '<i data-lucide="moon" class="w-4 h-4"></i>';
+        }
+        lucide.createIcons();
+
+
+        // --- TRANSLATION LOGIC ---
+        const translations = {
+            pl: {
+                btn_tiptoes: "Na palcach", // Nazwa przycisku
+                tiptoes_title: "Test Palców vs Pięt",
+                tiptoes_desc: "Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.",
+                paradox_title: "Paradoks: Stanie vs Leżenie",
+                paradox_desc: "Dlaczego stanie jest lepsze niż leżenie płasko? <strong>Gdy stoisz</strong>, zachowujesz naturalne wygięcie kręgosłupa (lordozę), co daje rdzeniowi luz. <strong>Gdy leżysz płasko</strong>, ciężar nóg 'prasuje' plecy do podłogi, prostując kręgosłup jak linijkę. To fizycznie wydłuża drogę, którą musi pokonać napięty rdzeń.",
+                nav_mechanism: "Mechanizm",
+                nav_tcs: "Zakotwiczenie Rdzenia",
+                nav_symptoms: "Objawy",
+                nav_triggers: "Wyzwalacze",
+                hero_tag: "Systemowa choroba neuro-immunologiczna",
+                hero_title1: "Gdy ciało walczy samo ze sobą",
+                hero_title2: "MCAS i Zakotwiczenie Rdzenia",
+                hero_desc: "Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne i mechaniczne napięcie rdzenia kręgowego tworzą \"błędne koło\" zapalenia.",
+                mech_title: "1. Co to jest MCAS?",
+                mech_p1: "W Zespole Aktywacji Komórek Tucznych (MCAS) komórki odpornościowe (mastocyty) są \"nadwrażliwe\". Zamiast reagować tylko na prawdziwe zagrożenie (np. wirus), wybuchają przy kontakcie z błahymi czynnikami.",
+                mech_mediators_title: "Mediatory (Broń Chemiczna):",
+                mech_histamine: "<strong>Histamina:</strong> Obrzęki, świąd, mgła mózgowa.",
+                mech_tryptase: "<strong>Tryptaza:</strong> Ból i uszkodzenia tkanek.",
+                mech_cytokines: "<strong>Cytokiny:</strong> Objawy grypopodobne, PEM.",
+                label_receptors: "Receptory (IgE)",
+                label_nucleus: "Jądro",
+                label_granules: "Ziarnistości",
+                label_storm: "BURZA MEDIATORÓW",
+                btn_activate: "Aktywuj Reakcję",
+                tcs_def_main_title: "2. Co to jest Zakotwiczenie Rdzenia?",
+                tcs_def_desc: "<strong>Zespół Zakotwiczenia Rdzenia Kręgowego (TCS)</strong> to mechaniczna patologia, w której rdzeń kręgowy jest \"uwięziony\" u dołu kręgosłupa. W zdrowym ciele rdzeń swobodnie unosi się w kanale kręgowym, przesuwając się w górę i w dół podczas ruchu. W TCS jest on przytwierdzony (zakotwiczony) przez zbyt napiętą nić końcową (<em>filum terminale</em>) lub <strong>tkankę bliznowatą</strong> (np. po operacjach, urazach).",
+                tcs_anat_title: "Anatomia Problemu",
+                tcs_anat_desc: "Wyobraź sobie rdzeń jako luźne sznurowadło wewnątrz rurki. W TCS to sznurowadło jest mocno naciągnięte i przybite gwoździem na dole (przez nić lub zrosty). Każdy skłon, wyprost czy ruch głową powoduje <strong>fizyczne rozciąganie tkanki nerwowej</strong>, prowadząc do jej niedokrwienia (ischemii).",
+                tcs_mcas_title: "Zapalnik dla MCAS",
+                tcs_mcas_desc: "To nie jest tylko problem ortopedyczny. Naciągnięte nerwy uwalniają neuropeptydy (np. Substancję P), które są bezpośrednim sygnałem dla komórek tucznych do ataku. <strong>Mechaniczne drażnienie rdzenia staje się ciągłym wyzwalaczem reakcji alergicznej</strong>, nawet bez alergenów w pożywieniu.",
+                tcs_types_title: "Dwa Oblicza Choroby",
+                tcs_type1_title: "1. Klasyczne (Anatomiczne)",
+                tcs_type1_desc: "Widoczne na standardowym rezonansie (MRI). Stożek rdzenia kończy się zbyt nisko (poniżej kręgu L2). Często towarzyszy mu tłuszczak (lipoma) lub rozszczep kręgosłupa.",
+                tcs_type2_title: "2. Ukryte (Occult TCS)",
+                tcs_type2_desc: "<strong>Najczęstsze przy EDS/MCAS.</strong> Stożek rdzenia jest na prawidłowej wysokości, ale nić końcowa (filum) jest zwłókniała i nieelastyczna. Często opisywane jako \"norma\" w MRI, mimo silnych objawów klinicznych.",
+                tcs_brainstem_title: "Efekt Domina: Ciągnięcie Pnia Mózgu",
+                tcs_brainstem_desc: "Rdzeń kręgowy to jednolita struktura. Pociąganie go na dole (w odcinku lędźwiowym) przenosi napięcie aż do samej góry – do pnia mózgu. To tam znajdują się ośrodki sterujące sercem, oddechem i trawieniem (nerw błędny).",
+                tcs_bs_pots: "POTS / Tachykardia",
+                tcs_bs_swallow: "Problemy z połykaniem",
+                tcs_bs_vision: "Zaburzenia wzroku",
+                tcs_bs_dizzy: "Zawroty głowy",
+                sim_status_title: "Status Rdzenia",
+                sim_tension: "Napięcie (Traction)",
+                status_baseline: "BAZA (Objawy stabilne)",
+                status_moderate: "Napięcie umiarkowane",
+                status_danger: "STAN ZAPALNY",
+                tcs_hint_drag: "Złap głowę i pociągnij!",
+                btn_standing: "Stojąca",
+                btn_chair: "Na krześle",
+                btn_straight: "Test Wyprostu",
+                btn_long_sit: "Siad prosty",
+                btn_lying_flat: "Leżenie płasko",
+                btn_lying_bent: "Leżenie ugięte",
+                tag_biomechanics: "Mechanika Codzienności",
+                tcs_title1: "3. Symulacja zakotwiczenia rdzenia:",
+                tcs_title2: "Rola Krzywizn Kręgosłupa",
+                tcs_desc: "Zdrowy kręgosłup ma naturalne wygięcia: <strong>kifozę</strong> (wygięcie w tył w odcinku piersiowym) i <strong>lordozę</strong> (wygięcie w przód w lędźwiach). Działają one jak sprężyna, skracając drogę dla rdzenia.",
+                trap_title: "Pułapka Wyprostu",
+                trap_desc: "Próba \"wyprostowania się na baczność\" spłaszcza naturalne krzywizny (S-kształt). To fizycznie wydłuża kanał kręgowy (\"robi się wyższy\"), co natychmiast naciąga zakotwiczony na dole rdzeń.",
+                nerve_title: "Efekt Liny Holowniczej (Nerw Kulszowy)",
+                nerve_desc: "Nerw kulszowy biegnie przez całą nogę. Gdy prostujesz nogi (zwłaszcza w siadzie), nerw ten napina się (patrz: przerywana linia na symulacji). W zdrowym ciele ma luz, ale w TCS działa jak lina, która pociąga rdzeń w dół, drażniąc go mechanicznie.",
+                relief_title: "Pozycja Ulgowa (Baza)",
+                relief_desc: "<strong>Leżenie z ugiętymi nogami</strong> (podparte poduszką) to jedyna pozycja, która maksymalnie luzuje nerwy. Pamiętaj jednak: \"Luz\" nie oznacza całkowitego braku objawów, lecz powrót do stabilnego poziomu bazowego (ok. 30% napięcia).",
+                tcs_hint: "<strong>Wskazówka:</strong> Obserwuj czerwoną linię rdzenia przy przycisku \"Test Wyprostu\". To wyjaśnia, dlaczego długie stanie w \"poprawnej\" pozycji może boleć bardziej niż lekkie zgarbienie.",
+                conn_title: "Błędne Koło: Oś Neuro-Immunologiczna",
+                conn_desc: "To nie są trzy oddzielne choroby. To jeden proces mechaniczno-chemiczny, w którym fizyczne naciąganie rdzenia (TC) wywołuje reakcję zapalną (MCAS), prowadzącą do wyczerpania energetycznego organizmu (ME/CFS).",
+                conn_tag: "Triada Chorobowa",
+                conn_step1_title: "Uraz Mechaniczny (TC)",
+                conn_step1_desc: "Zakotwiczony rdzeń jest naciągany przy każdym ruchu. Powstają mikrourazy i niedotlenienie tkanki nerwowej.",
+                conn_step2_title: "Sygnał Bólowy",
+                conn_step2_desc: "Podrażnione nerwy uwalniają neuropeptydy (np. Substancja P), które działają jak \"sygnał alarmowy\" dla okolicznych tkanek.",
+                conn_step3_title: "Zapłon MCAS",
+                conn_step3_desc: "Mastocyty zlokalizowane przy nerwach odbierają ten sygnał i \"wybuchają\" (degranulacja), uwalniając histaminę i cytokiny.",
+                conn_step4_title: "ME/CFS (Wyczerpanie)",
+                conn_step4_desc: "Przewlekły stan zapalny (cytokiny) dociera do mózgu (neurozapalenie) i blokuje produkcję energii w mitochondriach -> PEM.",
+                symptoms_title: "3. Objawy: Kiedy wszystko się łączy",
+                symptoms_desc: "Kombinacja MCAS i Zakotwiczenia Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako \"tylko stres\" lub psychosomatyka.",
+                sym_neuro_title: "Neurologiczne",
+                sym_neuro_list: "<li><strong>Mgła mózgowa:</strong> Trudności poznawcze.</li><li>Bóle głowy (ciągnące od karku).</li><li>Nadwrażliwość na światło/dźwięk.</li><li>Zawroty głowy / Zaburzenia równowagi.</li>",
+                sym_pots_title: "ME/CFS & Dysautonomia",
+                sym_pots_list: "<li><strong>PEM (Pogorszenie objawów powysiłkowo)</strong>.</li><li>Tachykardia po wstaniu (POTS).</li><li>Przewlekłe zmęczenie.</li>",
+                sym_pain_title: "Ból i Kręgosłup (TCS)",
+                sym_pain_list: "<li>Ból pleców.</li><li>Ból nóg (\"rosnący\", rwący).</li><li>Problemy z pęcherzem.</li>",
+                sym_gi_title: "Układ Pokarmowy",
+                sym_gi_list: "<li>Bóle brzucha i wzdęcia.</li><li>Reakcje na histaminę.</li><li>Zespół Jelita Drażliwego (IBS).</li>",
+                sym_resp_title: "Oddechowe",
+                sym_resp_list: "<li>Uczucie duszności.</li><li>Zatkany nos.</li><li>Nadwrażliwość chemiczna.</li>",
+                sym_skin_title: "Skórne",
+                sym_skin_list: "<li>Zaczerwienienie skóry.</li><li>Świąd skóry.</li><li>Dermografizm.</li>",
+                triggers_title: "4. Kluczowe Wyzwalacze",
+                trig_excipients_title: "Substancje Pomocnicze w Lekach (Twoje Zagrożenia)",
+                trig_excipients_desc: "Ukryci wrogowie w tabletkach. Zawsze sprawdzaj skład pod kątem:",
+                trig_e171: "<strong>Dwutlenek tytanu (E171)</strong> – Barwnik",
+                trig_corn: "<strong>Skrobia kukurydziana</strong> – Wypełniacz",
+                trig_cros: "<strong>Krospowidon</strong> – Substancja rozsadzająca",
+                trig_pg: "<strong>Glikol propylenowy</strong> – Rozpuszczalnik",
+                trig_iron: "<strong>Tlenki żelaza</strong> – Barwniki",
+                trig_daily_title: "Codzienność & Środowisko",
+                trig_diet_title: "Dieta Wysokohistaminowa:",
+                trig_diet_desc: "Sery dojrzewające, alkohol, pomidory, kiszonki, wędzone ryby, <strong>odgrzewane resztki</strong> (histamina rośnie z czasem).",
+                trig_chem_title: "Zapachy i Chemia (MCS):",
+                trig_chem_desc: "Perfumy, odświeżacze powietrza, dym papierosowy, opary farb, chlor na basenie.",
+                trig_phys_title: "Fizyczne i Pogodowe:",
+                trig_phys_desc: "Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń).",
+                trig_stress_title: "Stres i Mechanika:",
+                trig_stress_desc: "Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).",
+                diet_title: "Asystent Diety MCAS",
+                diet_desc: "Pacjenci z MCAS często muszą stosować restrykcyjną dietę niskohistaminową. Wpisz nazwę potrawy lub składnika, aby sprawdzić bezpieczeństwo przy użyciu AI.",
+                diet_api_label: "Twój klucz API Gemini:",
+                diet_food_label: "Co chcesz zjeść?",
+                diet_check_btn: "Sprawdź",
+                diet_placeholder: "np. Rosół z kury",
+                diet_loading: "Analizuję składniki...",
+                footer_text: "Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.",
+                mech_prostaglandins: "<strong>Prostaglandyny (PGD2):</strong> Nagłe zaczerwienienie (flushing), bóle brzucha.",
+            mech_leukotrienes: "<strong>Leukotrieny:</strong> Skurcz oskrzeli, duszności, astma.",
+            mech_heparin: "<strong>Heparyna:</strong> Łatwe siniaczenie, problemy z krzepnięciem.",
+            // Sekcja Analogia
+            tag_analogy: "Prosta Analogia",
+            analogy_title: "Twój Ochroniarz Zwariował",
+            analogy_desc: "Zanim wejdziemy w medyczne szczegóły, zrozum istotę problemu. Wyobraź sobie, że Twój układ odpornościowy (komórki tuczne) to <strong>Ochroniarz</strong>, który pilnuje wejścia do Twojego ciała.",
+            btn_mode_healthy: "Zdrowy Człowiek",
+            btn_mode_mcas: "Osoba z MCAS",
+            
+            guard_speech_healthy: "Zzz... Pełen spokój.",
+            guard_title_healthy: "Ochroniarz Śpi",
+            guard_desc_healthy: "Reaguje tylko na prawdziwych bandytów (wirusy).",
+            
+            guard_speech_mcas: "ALARM! ON MA POMIDORA! STRZELAĆ!",
+            guard_title_mcas: "Ochroniarz Panikuje",
+            guard_desc_mcas: "Jest przemęczony i uzbrojony. Atakuje niewinnych gości.",
+            
+            visitors_label: "Kto puka do drzwi?",
+            status_pass: "WCHODZI",
+            status_attack: "ATAKOWANY!",
+            // ...
+            visitors_label: "Kto puka do drzwi?",
+            status_pass: "WCHODZI",
+            status_attack: "ATAKOWANY!",
+            vis_tomato: "Pan Pomidor",
+            vis_perfume: "Pani Perfumowana",
+            vis_weather: "Listonosz Deszcz",
+            },
+            en: {
+                btn_tiptoes: "Tiptoes (Relief)",
+                tiptoes_title: "Tiptoes vs. Heels Test",
+                tiptoes_desc: "Walking on tiptoes is a common, unconscious defense mechanism (especially in children). Lifting the heel <strong>shortens the path of the sciatic nerve</strong>, providing instant slack. Standing on heels (dorsiflexion) acts like a lever that brutally stretches the entire nervous system.",
+                paradox_title: "Paradox: Standing vs Lying Flat",
+                paradox_desc: "Why is standing often better than lying flat? <strong>When standing</strong>, you maintain the natural spinal curve (lordosis), creating slack for the cord. <strong>When lying flat</strong>, the weight of your legs 'irons out' your back against the floor, straightening the spine. This physically lengthens the spinal canal, stretching the tethered cord.",
+                nav_mechanism: "Mechanism",
+                nav_tcs: "Tethered Cord",
+                nav_symptoms: "Symptoms",
+                nav_triggers: "Triggers",
+                hero_tag: "Systemic Neuro-Immune Disease",
+                hero_title1: "When the body fights itself",
+                hero_title2: "MCAS & Tethered Cord",
+                hero_desc: "An educational guide explaining how hyperreactive mast cells and mechanical spinal cord tension create a \"vicious cycle\" of inflammation.",
+                mech_title: "1. What is MCAS?",
+                mech_p1: "In Mast Cell Activation Syndrome (MCAS), immune cells (mast cells) are \"hyperreactive\". Instead of reacting only to real threats (e.g., viruses), they explode upon contact with trivial factors.",
+                mech_mediators_title: "Mediators (Chemical Weapons):",
+                mech_histamine: "<strong>Histamine:</strong> Swelling, itching, brain fog.",
+                mech_tryptase: "<strong>Tryptase:</strong> Pain and tissue damage.",
+                mech_cytokines: "<strong>Cytokines:</strong> Flu-like symptoms, PEM.",
+                label_receptors: "Receptors (IgE)",
+                label_nucleus: "Nucleus",
+                label_granules: "Granules",
+                label_storm: "MEDIATOR STORM",
+                btn_activate: "Activate Reaction",
+                tcs_def_main_title: "2. What is Tethered Cord?",
+                tcs_def_desc: "<strong>Tethered Cord Syndrome (TCS)</strong> is a mechanical pathology where the spinal cord is \"trapped\" at the bottom of the spine. In a healthy body, the cord floats freely in the spinal canal, moving up and down during movement. In TCS, it is attached (tethered) by an overly tight filum terminale or <strong>scar tissue</strong> (e.g., after surgery, trauma).",
+                tcs_anat_title: "Anatomy of the Problem",
+                tcs_anat_desc: "Imagine the spinal cord as a loose shoelace inside a tube. In TCS, this shoelace is pulled tight and nailed down at the bottom (by the filum or adhesions). Every bend, extension, or head movement causes <strong>physical stretching of the nerve tissue</strong>, leading to ischemia.",
+                tcs_mcas_title: "Trigger for MCAS",
+                tcs_mcas_desc: "This is not just an orthopedic issue. Stretched nerves release neuropeptides (e.g., Substance P), which are a direct signal for mast cells to attack. <strong>Mechanical irritation of the cord becomes a constant trigger for allergic reactions</strong>, even without allergens in food.",
+                tcs_types_title: "Two Faces of the Disease",
+                tcs_type1_title: "1. Classic (Anatomic)",
+                tcs_type1_desc: "Visible on standard MRI. The conus medullaris ends too low (below L2). Often accompanied by a lipoma or spina bifida.",
+                tcs_type2_title: "2. Occult (Occult TCS)",
+                tcs_type2_desc: "<strong>Most common in EDS/MCAS.</strong> The conus is at the correct height, but the filum terminale is fibrotic and inelastic. Often described as \"normal\" in MRI despite severe clinical symptoms.",
+                tcs_brainstem_title: "Domino Effect: Brainstem Traction",
+                tcs_brainstem_desc: "The spinal cord is a single structure. Pulling it at the bottom (lumbar) transfers tension all the way to the top – to the brainstem. This is where centers controlling the heart, breathing, and digestion (vagus nerve) are located.",
+                tcs_bs_pots: "POTS / Tachycardia",
+                tcs_bs_swallow: "Swallowing issues",
+                tcs_bs_vision: "Vision disturbances",
+                tcs_bs_dizzy: "Dizziness / Vertigo",
+                sim_status_title: "Cord Status",
+                sim_tension: "Tension (Traction)",
+                status_baseline: "BASELINE (Symptoms stable)",
+                status_moderate: "Moderate Tension",
+                status_danger: "INFLAMMATION",
+                tcs_hint_drag: "Grab the head and pull!",
+                btn_standing: "Standing",
+                btn_chair: "Sitting",
+                btn_straight: "Extension Test",
+                btn_long_sit: "Long Sitting",
+                btn_lying_flat: "Lying Flat",
+                btn_lying_bent: "Lying Bent",
+                tag_biomechanics: "Daily Mechanics",
+                tcs_title1: "3. Tethered Cord simulation:",
+                tcs_title2: "Role of Spinal Curves",
+                tcs_desc: "A healthy spine has natural curves: <strong>kyphosis</strong> (thoracic backward curve) and <strong>lordosis</strong> (lumbar forward curve). They act like a spring, shortening the path for the spinal cord.",
+                trap_title: "The Extension Trap",
+                trap_desc: "Trying to \"stand up straight\" flattens natural curves (S-shape). This physically elongates the spinal canal (\"makes it taller\"), instantly stretching the tethered cord at the bottom.",
+                nerve_title: "The Tow Rope Effect (Sciatic Nerve)",
+                nerve_desc: "The sciatic nerve runs down the entire leg. When you straighten your legs (especially while sitting), this nerve tightens (see the dashed line in the simulation). Normally it has slack, but in TCS, it acts like a rope pulling the spinal cord down, causing mechanical irritation.",
+                relief_title: "Relief Position (Base)",
+                relief_desc: "<strong>Lying with bent knees</strong> (supported by a pillow) is the only position that maximally relaxes the nerves. Remember: \"Relief\" doesn't mean zero symptoms, but a return to a stable baseline level (approx. 30% tension).",
+                tcs_hint: "<strong>Tip:</strong> Watch the red spinal cord line when clicking \"Extension Test\". This explains why standing in a \"correct\" posture might hurt more than slouching slightly.",
+                conn_title: "The Vicious Cycle: Neuro-Immune Axis",
+                conn_desc: "These are not three separate diseases. It is a single mechanical-chemical process where physical spinal cord tension (TC) triggers inflammation (MCAS), leading to metabolic exhaustion (ME/CFS).",
+                conn_tag: "The Disease Triad",
+                conn_step1_title: "Mechanical Injury (TC)",
+                conn_step1_desc: "The tethered cord is stretched with every movement. Micro-injuries and tissue hypoxia occur.",
+                conn_step2_title: "Pain Signal",
+                conn_step2_desc: "Irritated nerves release neuropeptides (e.g., Substance P), acting as an \"alarm signal\" for surrounding tissues.",
+                conn_step3_title: "MCAS Ignition",
+                conn_step3_desc: "Mast cells located near nerves pick up this signal and \"explode\" (degranulation), releasing histamine and cytokines.",
+                conn_step4_title: "ME/CFS (Exhaustion)",
+                conn_step4_desc: "Chronic inflammation (cytokines) reaches the brain (neuroinflammation) and blocks mitochondrial energy production -> PEM.",
+                symptoms_title: "3. Symptoms: When Everything Connects",
+                symptoms_desc: "The combination of MCAS and Tethered Cord creates a specific symptom profile, often misdiagnosed as \"just stress\" or psychosomatic.",
+                sym_neuro_title: "Neurological",
+                sym_neuro_list: "<li><strong>Brain Fog:</strong> Cognitive difficulties.</li><li>Headaches (pulling from neck).</li><li>Light/Sound sensitivity.</li><li>Dizziness / Vertigo.</li>",
+                sym_pots_title: "ME/CFS & Dysautonomia",
+                sym_pots_list: "<li><strong>PEM (Post-Exertional Malaise)</strong>.</li><li>Tachycardia upon standing (POTS).</li><li>Chronic Fatigue.</li>",
+                sym_pain_title: "Pain & Spine (TCS)",
+                sym_pain_list: "<li>Back pain.</li><li>Leg pain (\"growing\", tearing).</li><li>Bladder issues.</li>",
+                sym_gi_title: "Gastrointestinal",
+                sym_gi_list: "<li>Abdominal pain and bloating.</li><li>Histamine reactions.</li><li>Irritable Bowel Syndrome (IBS).</li>",
+                sym_resp_title: "Respiratory",
+                sym_resp_list: "<li>Shortness of breath.</li><li>Stuffy nose.</li><li>Chemical sensitivity.</li>",
+                sym_skin_title: "Skin",
+                sym_skin_list: "<li>Flushing.</li><li>Itching.</li><li>Dermatographism.</li>",
+                triggers_title: "4. Key Triggers",
+                trig_excipients_title: "Excipients in Meds (Your Threats)",
+                trig_excipients_desc: "Hidden enemies in pills. Always check ingredients for:",
+                trig_e171: "<strong>Titanium Dioxide (E171)</strong> – Dye",
+                trig_corn: "<strong>Corn Starch</strong> – Filler",
+                trig_cros: "<strong>Crospovidone</strong> – Disintegrant",
+                trig_pg: "<strong>Propylene Glycol</strong> – Solvent",
+                trig_iron: "<strong>Iron Oxides</strong> – Dyes",
+                trig_daily_title: "Daily Life & Environment",
+                trig_diet_title: "High Histamine Diet:",
+                trig_diet_desc: "Aged cheeses, alcohol, tomatoes, fermented foods, smoked fish, <strong>leftovers</strong> (histamine grows over time).",
+                trig_chem_title: "Scents & Chemicals (MCS):",
+                trig_chem_desc: "Perfumes, air fresheners, cigarette smoke, paint fumes, pool chlorine.",
+                trig_phys_title: "Physical & Weather:",
+                trig_phys_desc: "Heat or severe cold, rapid pressure changes, <strong>vibrations</strong> (car rides irritating the cord).",
+                trig_stress_title: "Stress & Mechanics:",
+                trig_stress_desc: "Strong emotions, lack of sleep, lifting heavy objects, sudden bending (Tethered Cord).",
+                diet_title: "Diet Assistant (Gemini AI)",
+                diet_desc: "MCAS patients often need to follow a strict low-histamine diet. Enter a dish or ingredient name to check its safety using AI.",
+                diet_api_label: "Your Gemini API Key:",
+                diet_food_label: "What do you want to eat?",
+                diet_check_btn: "Check Food",
+                diet_placeholder: "e.g. Chicken soup",
+                diet_loading: "Analyzing ingredients...",
+                footer_text: "Educational page created to raise awareness about MCAS and comorbid conditions.",
+                mech_prostaglandins: "<strong>Prostaglandins (PGD2):</strong> Sudden flushing, abdominal pain.",
+            mech_leukotrienes: "<strong>Leukotrienes:</strong> Bronchospasm, shortness of breath, asthma.",
+            mech_heparin: "<strong>Heparin:</strong> Easy bruising, clotting issues.",
+            // Analogy Section
+            tag_analogy: "Simple Analogy",
+            analogy_title: "Your Bodyguard Went Crazy",
+            analogy_desc: "Before diving into medical details, understand the core issue. Imagine your immune system (mast cells) acts as a <strong>Security Guard</strong> watching the entrance to your body.",
+            btn_mode_healthy: "Healthy Person",
+            btn_mode_mcas: "Person with MCAS",
+            
+            guard_speech_healthy: "Zzz... All quiet.",
+            guard_title_healthy: "Guard is Sleeping",
+            guard_desc_healthy: "Only reacts to real bad guys (viruses).",
+            
+            guard_speech_mcas: "ALARM! HE HAS A TOMATO! FIRE!",
+            guard_title_mcas: "Guard is Panicking",
+            guard_desc_mcas: "He is exhausted and armed. He attacks innocent guests.",
+            
+            visitors_label: "Who's knocking?",
+            status_pass: "ALLOWED",
+            status_attack: "ATTACKED!",
+            // ...
+            visitors_label: "Who's knocking?",
+            status_pass: "ALLOWED",
+            status_attack: "ATTACKED!",
+            vis_tomato: "Mr. Tomato",
+            vis_perfume: "Mrs. Perfume",
+            vis_weather: "Mailman Rain",
+            }
+        };
+
+        let currentLang = 'pl';
+        let currentGuardMode = 'healthy'; // Przechowuje stan ochroniarza
+        function toggleLang() {
+            currentLang = currentLang === 'pl' ? 'en' : 'pl';
+            document.getElementById('langBtn').innerText = currentLang.toUpperCase();
+            
+            // 1. Update statycznych tekstów (data-i18n)
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            // 2. Update placeholderów
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+
+            // 3. Update opisów w symulacji kręgosłupa
+            updatePoseDescriptions();
+            
+            // 4. Update pasków w monitorze
+            updateUI(currentTension >= 60);
+
+            // 5. NAPRAWA: Wymuś odświeżenie tekstów w sekcji Ochroniarza
+            setGuardMode(currentGuardMode); 
+        }
+
+        // --- ANIMACJA MCAS (GÓRA) ---
+        const mastCell = document.getElementById('mastCell');
+        const shockwave = document.getElementById('shockwave');
+        const reactionLabel = document.getElementById('reactionLabel');
+        const scene = document.getElementById('scene');
+        let isExploded = false;
+
+        function initGranules() {
+            mastCell.querySelectorAll('.granule').forEach(el => el.remove());
+            scene.querySelectorAll('.mist-particle').forEach(el => el.remove());
+            for (let i = 0; i < 40; i++) {
+                const g = document.createElement('div');
+                g.classList.add('granule');
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 45 + Math.random() * 40; 
+                g.style.left = `calc(50% + ${Math.cos(angle)*dist}px)`;
+                g.style.top = `calc(50% + ${Math.sin(angle)*dist}px)`;
+                g.style.transform = `translate(-50%, -50%) scale(1)`;
+                mastCell.appendChild(g);
+            }
+        }
+        function explodeCell() {
+            if(isExploded) return;
+            isExploded = true;
+            scene.classList.add('anim-shake');
+            setTimeout(() => {
+                scene.classList.remove('anim-shake');
+                scene.classList.add('anim-explode');
+                reactionLabel.style.opacity = '1';
+                reactionLabel.style.transform = 'translateY(0)';
+                mastCell.querySelectorAll('.granule').forEach(g => {
+                    const angle = Math.random() * Math.PI * 2;
+                    const force = 160 + Math.random() * 200;
+                    g.style.transition = `all ${0.5+Math.random()*0.5}s cubic-bezier(0.12, 0.96, 0.58, 1.05)`;
+                    g.style.left = `calc(50% + ${Math.cos(angle)*force}px)`;
+                    g.style.top = `calc(50% + ${Math.sin(angle)*force}px)`;
+                    g.style.opacity = '0';
+                    g.style.transform = 'translate(-50%, -50%) scale(2.5)';
+                });
+                setTimeout(() => {
+                    // ZMIANA: Tło po wybuchu (jasny fiolet)
+                    scene.style.background = 'radial-gradient(circle at center, #faf5ff 0%, #f3e8ff 100%)';
+                    // W dark mode background jest nadpisywany przez klasę .dark, ale inline style ma pierwszeństwo
+                    // Musimy to obsłużyć, aby nie psuło dark mode. 
+                    // Rozwiązanie: zamiast nadpisywać background inline, dodajmy klasę 'exploded' i sterujmy CSSem
+                    if (document.documentElement.classList.contains('dark')) {
+                         scene.style.background = 'radial-gradient(circle at center, #2e1065 0%, #0f172a 100%)';
+                    }
+                }, 100);
+            }, 600);
+        }
+        function resetCell() {
+            isExploded = false;
+            scene.classList.remove('anim-explode');
+            scene.style.background = ''; // Clear inline style so CSS takes over
+            reactionLabel.style.opacity = '0';
+            reactionLabel.style.transform = 'translateY(16px)';
+            mastCell.style.transform = ''; mastCell.style.filter = ''; mastCell.style.borderColor = ''; mastCell.style.boxShadow = '';
+            initGranules();
+        }
+
+        // --- STICKMAN SYMULATOR (LINIOWY) ---
+        const simCanvas = document.getElementById('simCanvas');
+        const ctx = simCanvas.getContext('2d');
+        const tensionBar = document.getElementById('tensionBar');
+        const tensionValue = document.getElementById('tensionValue');
+        const painStatus = document.getElementById('painStatus');
+        const poseDesc = document.getElementById('poseDesc');
+
+        let mediatorParticles = [];
+
+        // Definicje pozycji (Sticky Model)
+        // Punkty: head, neck, thoracic (kifoza), lumbar (lordoza), hip, knee, foot
+        
+        const stickPoses = {
+            tiptoes: {
+                head: {x: 275, y: 80},  // Głowa wyżej bo stoimy na palcach
+                neck: {x: 275, y: 110},
+                thoracic: {x: 260, y: 170},
+                lumbar: {x: 280, y: 230},
+                hip: {x: 275, y: 280},
+                knee: {x: 295, y: 380}, // Kolano lekko do przodu/zgięte (naturalna kompensacja)
+                foot: {x: 275, y: 480}, // Stopa
+                // Kluczowe: Napięcie bardzo niskie (20%), niższe niż stanie (40%)
+                tension: 20,
+                desc: {
+                    pl: "Na palcach: Uniesienie pięty skraca drogę nerwu kulszowego od dołu. Rdzeń zyskuje luz, mimo pozycji pionowej.",
+                    en: "On Tiptoes: Lifting the heel shortens the sciatic nerve path from below. The cord gains slack despite the upright position."
+                }
+            },
+            standing: {
+                head: {x: 275, y: 100},
+                neck: {x: 275, y: 130},
+                thoracic: {x: 260, y: 190}, // Lekkie wygięcie w tył (Kifoza)
+                lumbar: {x: 280, y: 250},   // Lekkie wygięcie w przód (Lordoza)
+                hip: {x: 275, y: 300},
+                knee: {x: 285, y: 400},
+                foot: {x: 275, y: 500},
+                tension: 40,
+                desc: {
+                    pl: "Stojąca: Zachowane krzywizny (S-kształt) dają pewną amortyzację, ale grawitacja działa.",
+                    en: "Standing: Preserved curves (S-shape) provide some cushioning, but gravity acts."
+                }
+            },
+            straight: {
+                // Wyprost w siadzie (Sitting Extension)
+                head: {x: 275, y: 100},  
+                neck: {x: 275, y: 130},
+                thoracic: {x: 275, y: 200}, // Plecy idealnie proste (pion)
+                lumbar: {x: 275, y: 260},   // Zniesiona lordoza
+                hip: {x: 275, y: 330},      // Siedzi
+                knee: {x: 375, y: 330},     // Nogi jak na krześle
+                foot: {x: 375, y: 430},
+                tension: 75,
+                desc: {
+                    pl: "Test Wyprostu (Siedząc): 'Wyciągnięcie' kręgosłupa w górę na krześle znosi krzywizny i maksymalnie wydłuża kanał kręgowy.",
+                    en: "Extension Test (Sitting): 'Pulling' the spine up while sitting removes curves and maximally elongates the spinal canal."
+                }
+            },
+            chair: {
+                head: {x: 275, y: 130},
+                neck: {x: 275, y: 160},
+                thoracic: {x: 260, y: 220},
+                lumbar: {x: 270, y: 280},
+                hip: {x: 275, y: 330},
+                knee: {x: 375, y: 330},
+                foot: {x: 375, y: 430},
+                tension: 55,
+                desc: {
+                    pl: "Krzesło: Napięcie rośnie. Ważne, by nie garbić się nadmiernie.",
+                    en: "Chair: Tension increases. Important not to slouch excessively."
+                }
+            },
+            long_sit: {
+                head: {x: 200, y: 150}, 
+                neck: {x: 200, y: 180},
+                thoracic: {x: 185, y: 240},
+                lumbar: {x: 195, y: 300},
+                hip: {x: 200, y: 350},
+                knee: {x: 300, y: 350}, 
+                foot: {x: 400, y: 350},
+                tension: 90,
+                desc: {
+                    pl: "Siad prosty: Tułów pionowo, nogi proste. Nerwy kulszowe pociągają rdzeń w dół. Wysokie napięcie!",
+                    en: "Long Sitting: Torso upright, legs straight. Sciatic nerves pull the spinal cord down. High tension!"
+                }
+            },
+            lying_flat: {
+                head: {x: 100, y: 400},
+                neck: {x: 130, y: 400},
+                thoracic: {x: 190, y: 400}, // Płasko
+                lumbar: {x: 250, y: 400},   // Płasko (zniesiona lordoza)
+                hip: {x: 300, y: 400},
+                knee: {x: 400, y: 400},
+                foot: {x: 500, y: 400},
+                tension: 85, 
+                desc: {
+                    pl: "Leżenie płasko: Wyprostowane nogi napinają rdzeń (efekt naciągania od dołu). Ból i napięcie.",
+                    en: "Lying Flat: Straight legs stretch the cord (pulling effect from below). Pain and tension."
+                }
+            },
+            lying_bent: {
+                head: {x: 100, y: 400},
+                neck: {x: 130, y: 400},
+                thoracic: {x: 190, y: 400},
+                lumbar: {x: 250, y: 395}, // Lekki łuk (podparcie)
+                hip: {x: 300, y: 400},
+                knee: {x: 350, y: 280}, // Knees Up
+                foot: {x: 400, y: 400}, 
+                tension: 20, 
+                desc: {
+                    pl: "Leżenie z ugiętymi nogami: Pozycja ulgowa. Napięcie spada do poziomu bazowego (30%), ale objawy nie znikają całkowicie.",
+                    en: "Lying Bent: Relief position. Tension drops to baseline (30%), but symptoms do not disappear completely."
+                }
+            }
+        };
+
+        let currentPoseKey = 'chair'; // Default to chair
+        let currentPose = JSON.parse(JSON.stringify(stickPoses.chair));
+        let targetPose = JSON.parse(JSON.stringify(stickPoses.chair));
+        let currentTension = 55;
+        let targetTension = 55;
+
+        function updatePoseDescriptions() {
+            if (stickPoses[currentPoseKey]) {
+                poseDesc.innerText = stickPoses[currentPoseKey].desc[currentLang];
+            }
+        }
+
+        window.setPose = function(poseName) {
+            currentPoseKey = poseName;
+            const p = stickPoses[poseName];
+            targetPose = JSON.parse(JSON.stringify(p));
+            targetTension = p.tension;
+            poseDesc.innerText = p.desc[currentLang];
+            
+            document.querySelectorAll('.pose-btn').forEach(btn => {
+                // Clear old color classes
+                btn.className = 'pose-btn'; 
+                
+                if(btn.id === `btn-${poseName}`) {
+                    let colorClass = '';
+                    let bgClass = '';
+                    if (p.tension <= 35) {
+                        colorClass = 'border-blue-500 text-blue-700 dark:border-blue-400 dark:text-blue-300';
+                        bgClass = 'bg-blue-50 dark:bg-blue-900/30';
+                    } else if (p.tension >= 70) {
+                        colorClass = 'border-red-500 text-red-700 dark:border-red-400 dark:text-red-300';
+                        bgClass = 'bg-red-50 dark:bg-red-900/30';
+                    } else if (p.tension >= 60) {
+                        colorClass = 'border-orange-500 text-orange-700 dark:border-orange-400 dark:text-orange-300';
+                        bgClass = 'bg-orange-50 dark:bg-orange-900/30';
+                    } else {
+                        colorClass = 'border-indigo-500 text-indigo-700 dark:border-indigo-400 dark:text-indigo-300';
+                        bgClass = 'bg-indigo-50 dark:bg-indigo-900/30';
+                    }
+                    btn.classList.add( ...colorClass.split(' '), ...bgClass.split(' ') );
+                }
+            });
+        }
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+async function checkDiet() {
+            const apiKey = 'AIzaSyAEfx-Keo-HPx7kcO3-BNGVjpENqxbfspA'; // Twój klucz (zostawiłem ten z przykładu)
+            const foodItem = document.getElementById('food-input').value;
+            const resultDiv = document.getElementById('diet-result');
+            const scoreDiv = document.getElementById('score-display'); // Pobieramy nowy kontener
+            const loadingDiv = document.getElementById('dietLoading');
+            
+            if (!apiKey) {
+                resultDiv.innerHTML = `<p class="text-red-500">${currentLang === 'pl' ? 'Proszę podać klucz API.' : 'Please enter an API key.'}</p>`;
+                return;
+            }
+            
+            if (!foodItem) {
+                resultDiv.innerHTML = `<p class="text-red-500">${currentLang === 'pl' ? 'Proszę wpisać nazwę potrawy.' : 'Please enter a food item.'}</p>`;
+                return;
+            }
+
+            // UI Reset
+            resultDiv.innerHTML = '';
+            scoreDiv.classList.add('hidden');
+            scoreDiv.innerHTML = '';
+            loadingDiv.classList.remove('hidden'); // Pokaż kręciołek
+
+            // Wybór promptu (Twój oryginalny kod)
+            const prompt = currentLang === 'pl' 
+                ? `Jesteś analitycznym dietetykiem klinicznym spec. od MCAS i histaminy. Twoim zadaniem jest ocena potrawy: "${foodItem}".
+
+ZASADY OCENY (Algorytm Decyzyjny):
+1. BAZA WIEDZY: Lista SIGHI jest priorytetem.
+2. INTERPRETACJA DANIA (Kluczowe!):
+   - PRZYPADEK A: MAKARONY I PIZZA (np. "Spaghetti", "Penne"). MUSISZ ZAŁOŻYĆ klasyczną wersję z sosem pomidorowym (SIGHI 2-3), chyba że podano bezpieczny sos. NIE oceniaj samego makaronu.
+   - PRZYPADEK B: DANIA MĄCZNE/NADZIEWANE (np. "Pierogi", "Naleśniki"). Oceniaj Bazę (Ciasto + Farsz). IGNORUJ posypki (skwarki, boczek), chyba że są w środku.
+   - OGÓLNIE: Zakładaj wersję domową.
+3. KALIBRACJA OCENY:
+   - Składniki SIGHI 0 (bezpieczne) = 10 pkt.
+   - SIGHI 1 (pszenica, gotowana cebula) = Mały minus (ok. 8/10).
+   - SIGHI 2/3 (Pomidory, Ocet, Sery twarde) = Duży minus (< 4/10).
+
+FORMAT ODPOWIEDZI:
+1. Czy jest bezpieczna? (Tak/Nie/Zależy - jedno zdanie).
+2. Analiza Składników (Kluczowe): Wymień główne składniki, które wziąłeś pod uwagę w tym wariancie, i przypisz każdemu kategorię SIGHI (np. "Makaron pszenny: 1", "Sos pomidorowy: 3").
+3. Główne wyzwalacze (Tylko te z wysokim SIGHI).
+4. Ocena bezpieczeństwa (1-10).
+5. Sugestia poprawy (krótko).
+
+Bądź konkretny.`
+                : `You are an analytical clinical dietitian specializing in MCAS and histamine. Your task is to evaluate the dish: "${foodItem}".
+
+ASSESSMENT RULES (Decision Algorithm):
+1. KNOWLEDGE BASE: The SIGHI list is the priority.
+2. DISH INTERPRETATION (Crucial!):
+   - CASE A: PASTA & PIZZA (e.g., "Spaghetti", "Penne"). YOU MUST ASSUME the classic version with tomato sauce (SIGHI 2-3), unless a safe sauce is explicitly stated. DO NOT evaluate the pasta alone.
+   - CASE B: FLOUR/STUFFED DISHES (e.g., "Pierogi", "Dumplings", "Pancakes"). Evaluate the Base (Dough + Filling). IGNORE toppings (cracklings, bacon), unless they are inside.
+   - GENERAL: Assume a homemade version.
+3. SCORING CALIBRATION:
+   - SIGHI 0 ingredients (safe) = 10 pts.
+   - SIGHI 1 (wheat, cooked onion) = Minor deduction (approx. 8/10).
+   - SIGHI 2/3 (Tomatoes, Vinegar, Hard cheeses) = Major deduction (< 4/10).
+
+RESPONSE FORMAT:
+1. Is it safe? (Yes/No/Depends - one sentence).
+2. Ingredient Analysis (Crucial): List the main ingredients considered in this variant and assign a SIGHI category to each (e.g., "Wheat pasta: 1", "Tomato sauce: 3").
+3. Main triggers (Only those with high SIGHI).
+4. Safety rating (1-10).
+5. Improvement suggestion (briefly).
+
+Be specific.`;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                const data = await response.json();
+                loadingDiv.classList.add('hidden'); // Ukryj kręciołek
+
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+
+                const text = data.candidates[0].content.parts[0].text;
+
+// --- POPRAWKA: PANCERNA LOGIKA EKSTRAKCJI OCENY ---
+                
+                // 1. Strategia Priorytetowa: Szukamy formatu "X/10" (np. 1/10, 8.5/10)
+                // To ignoruje "4." (numer listy) i "(1-10)" (skalę), bo one nie mają ukośnika "/10"
+                // Dodatkowo szukamy tego PO słowach "Ocena" lub "Safety", żeby nie złapać daty itp.
+                let scoreMatch = text.match(/(?:Ocena|Safety|Rating)[\s\S]*?(\d+(?:[\.,]\d+)?)\s*\/\s*10/i);
+
+                // 2. Strategia Zapasowa (Fallback):
+                // Jeśli AI napisało samą cyfrę (np. "Ocena: 8"), szukamy cyfry, ALE...
+                // ...najpierw usuwamy z tekstu zmyłkę "(1-10)", żeby skrypt jej nie złapał.
+                if (!scoreMatch) {
+                    const cleanText = text.replace(/\(1-10\)|1-10/g, ''); // Usuń "1-10"
+                    scoreMatch = cleanText.match(/(?:Ocena|Safety|Rating)[^0-9]*?(\d+(?:[\.,]\d+)?)/i);
+                }
+                
+                if (scoreMatch && scoreMatch[1]) {
+                    const score = parseInt(scoreMatch[1]);
+                    let colorClass = '';
+                    let icon = '';
+                    let label = '';
+
+                    // Logika kolorów dla MCAS (Wysoka ocena = Bezpiecznie)
+                    if (score >= 8) {
+                        colorClass = 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-200 dark:border-green-800';
+                        icon = 'check-circle';
+                        label = currentLang === 'pl' ? 'BEZPIECZNE' : 'SAFE';
+                    } else if (score >= 5) {
+                        colorClass = 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-800';
+                        icon = 'alert-triangle';
+                        label = currentLang === 'pl' ? 'UMIARKOWANE' : 'MODERATE';
+                    } else {
+                        colorClass = 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800';
+                        icon = 'x-octagon';
+                        label = currentLang === 'pl' ? 'RYZYKOWNE' : 'RISKY';
+                    }
+
+                    // Generowanie HTML dla oceny
+                    scoreDiv.innerHTML = `
+                        <div class="flex flex-col items-center justify-center p-6 rounded-xl border-2 ${colorClass} w-full shadow-sm transition-all animate-in fade-in zoom-in duration-300">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i data-lucide="${icon}" class="w-8 h-8"></i>
+                                <span class="text-3xl font-black tracking-tighter">${score}/10</span>
+                            </div>
+                            <span class="font-bold tracking-widest text-sm uppercase opacity-90">${label}</span>
+                        </div>
+                    `;
+                    scoreDiv.classList.remove('hidden');
+                    lucide.createIcons(); // Odśwież ikony w nowym HTML
+                }
+
+                // Formatowanie tekstu na HTML (markdown bold i newlines)
+                const formattedText = text
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\n/g, '<br>');
+                
+                resultDiv.innerHTML = `<div class="p-5 bg-white dark:bg-slate-700/30 rounded-xl border border-slate-200 dark:border-slate-600 leading-relaxed shadow-sm">${formattedText}</div>`;
+                
+            } catch (error) {
+                loadingDiv.classList.add('hidden');
+                console.error('Gemini Error:', error);
+                resultDiv.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+            }
+        }
+
+        function animateStick() {
+            const speed = 0.1;
+            
+            // Interpolate points
+            ['head', 'neck', 'thoracic', 'lumbar', 'hip', 'knee', 'foot'].forEach(key => {
+                // Init missing points if switching from old pose structure (safety check)
+                if (!currentPose[key]) currentPose[key] = {...targetPose[key]};
+                
+                currentPose[key].x = lerp(currentPose[key].x, targetPose[key].x, speed);
+                currentPose[key].y = lerp(currentPose[key].y, targetPose[key].y, speed);
+            });
+            
+            currentTension = lerp(currentTension, targetTension, speed);
+            drawStickman();
+            requestAnimationFrame(animateStick);
+        }
+
+        // Global so it can be called from toggleTheme
+        window.drawStickman = function() {
+            if(!ctx) return;
+            ctx.clearRect(0, 0, simCanvas.width, simCanvas.height);
+            
+            const isDark = document.documentElement.classList.contains('dark');
+
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 14;
+            // Zmiana koloru ludzika w zależności od trybu
+            ctx.strokeStyle = isDark ? '#cbd5e1' : '#475569'; 
+
+            const p = currentPose;
+
+            // Rysowanie ciała (Kości z uwzględnieniem kręgosłupa)
+            ctx.beginPath();
+            // Głowa -> Szyja
+            ctx.moveTo(p.neck.x, p.neck.y);
+            // Kręgosłup (Szyja -> Piersiowy -> Lędźwiowy -> Biodro)
+            ctx.lineTo(p.thoracic.x, p.thoracic.y);
+            ctx.lineTo(p.lumbar.x, p.lumbar.y);
+            ctx.lineTo(p.hip.x, p.hip.y);
+            // Noga
+            ctx.lineTo(p.knee.x, p.knee.y);
+            ctx.lineTo(p.foot.x, p.foot.y);
+            ctx.stroke();
+
+            // Głowa
+            ctx.beginPath();
+            ctx.fillStyle = isDark ? '#cbd5e1' : '#475569';
+            ctx.arc(p.head.x, p.head.y, 35, 0, Math.PI*2);
+            ctx.fill();
+
+            // --- RDZEŃ KRĘGOWY (PULSUJĄCA LINIA) ---
+            let r, g, b;
+            if (currentTension < 50) {
+                // Niebieski -> Żółty
+                r = Math.floor(lerp(59, 234, currentTension/50));
+                g = Math.floor(lerp(130, 179, currentTension/50));
+                b = Math.floor(lerp(246, 8, currentTension/50));
+            } else {
+                // Żółty -> Czerwony
+                r = Math.floor(lerp(234, 220, (currentTension-50)/50));
+                g = Math.floor(lerp(179, 38, (currentTension-50)/50));
+                b = Math.floor(lerp(8, 38, (currentTension-50)/50));
+            }
+
+            // Pulsowanie (cała linia)
+            let pulseIntensity = 0;
+            if (currentTension > 30) {
+                const speed = currentTension / 5; 
+                pulseIntensity = (Math.sin(Date.now() / (10000/speed)) + 1) / 2; // 0 to 1
+            }
+
+            ctx.strokeStyle = `rgb(${r},${g},${b})`;
+            
+            // Grubość i Glow zależne od pulsowania
+            ctx.lineWidth = 6 + (currentTension > 50 ? pulseIntensity * 3 : 0);
+            
+            if (currentTension > 60) {
+                ctx.shadowBlur = 15 + pulseIntensity * 10;
+                ctx.shadowColor = `rgba(220, 38, 38, ${0.5 + pulseIntensity * 0.5})`;
+            } else {
+                ctx.shadowBlur = 0;
+            }
+
+            // Offset dla linii rdzenia
+            const dx = p.hip.x - p.neck.x;
+            const dy = p.hip.y - p.neck.y;
+            const len = Math.sqrt(dx*dx + dy*dy);
+            const nx = -dy / (len || 1);
+            const ny = dx / (len || 1);
+            const offsetDist = 12;
+            const offX = nx * offsetDist;
+            const offY = ny * offsetDist;
+
+            ctx.beginPath();
+            ctx.moveTo(p.head.x + offX, p.head.y + offY);
+            ctx.lineTo(p.thoracic.x + offX, p.thoracic.y + offY);
+            ctx.lineTo(p.lumbar.x + offX, p.lumbar.y + offY);
+            ctx.lineTo(p.hip.x + offX, p.hip.y + offY);
+            ctx.stroke();
+            ctx.shadowBlur = 0; 
+
+             // --- NERW KULSZOWY (DODANE) ---
+
+            ctx.save(); // Zapisz stan kontekstu, aby zmiany stylu (przerywana linia) nie wpłynęły na resztę
+
+            
+
+            ctx.beginPath();
+
+            ctx.setLineDash([6, 8]); // Przerywana linia
+
+            ctx.lineWidth = 4; 
+
+            ctx.shadowBlur = 0;
+
+
+
+            // Kolor i styl nerwu
+
+            if (currentTension > 50) {
+
+                 // Czerwony, napięty
+
+                 ctx.strokeStyle = `rgba(239, 68, 68, 0.8)`; 
+
+                 if (currentTension > 60) {
+
+                    // Dodatkowy glow przy silnym napięciu
+
+                    ctx.shadowBlur = 10;
+
+                    ctx.shadowColor = `rgba(239, 68, 68, ${pulseIntensity})`;
+
+                 }
+
+                 
+
+                 // Prosta linia (napięta)
+
+                 ctx.moveTo(p.hip.x + offX, p.hip.y + offY);
+
+                 ctx.lineTo(p.knee.x + (offX * 0.5), p.knee.y + (offY * 0.5)); // Lekki offset w kolanie
+
+                 ctx.lineTo(p.foot.x, p.foot.y);
+
+            } else {
+
+                 // Zielony/Niebieski, luźny
+
+                 ctx.strokeStyle = `rgba(59, 130, 246, 0.6)`;
+
+                 
+
+                 // Krzywa Beziera (luźna linka)
+
+                 ctx.moveTo(p.hip.x + offX, p.hip.y + offY);
+
+                 
+
+                 // Oblicz punkt kontrolny dla krzywej (lekko na zewnątrz od kości)
+
+                 // Prosta symulacja "zwisu"
+
+                 const midX = (p.hip.x + p.knee.x) / 2;
+
+                 const midY = (p.hip.y + p.knee.y) / 2;
+
+                 const slackAmount = 30; // Siła zwisu
+
+                 
+
+                 // Rysuj luźną linię do kolana
+
+                 ctx.quadraticCurveTo(midX - 15, midY + 15, p.knee.x + (offX * 0.5), p.knee.y + (offY * 0.5));
+
+                 
+
+                 // Rysuj luźną linię do stopy
+
+                 const midX2 = (p.knee.x + p.foot.x) / 2;
+
+                 const midY2 = (p.knee.y + p.foot.y) / 2;
+
+                 ctx.quadraticCurveTo(midX2 - 10, midY2 + 10, p.foot.x, p.foot.y);
+
+            }
+
+            
+
+            ctx.stroke();
+
+            ctx.restore(); // Przywróć normalne rysowanie (ciągłe linie)
+
+            // Zakotwiczenie
+            ctx.fillStyle = isDark ? '#f8fafc' : '#0f172a'; // White or Dark anchor
+            ctx.beginPath();
+            ctx.arc(p.hip.x + offX, p.hip.y + offY, 6, 0, Math.PI*2);
+            ctx.fill();
+
+            // Stawy
+            ctx.fillStyle = isDark ? '#64748b' : '#cbd5e1';
+            [p.neck, p.thoracic, p.lumbar, p.hip, p.knee].forEach(j => {
+                ctx.beginPath();
+                ctx.arc(j.x, j.y, 5, 0, Math.PI*2);
+                ctx.fill();
+            });
+
+            // Emit particles (Mediatory)
+            if (currentTension > 40 && Math.random() < (currentTension - 40) / 400) {
+                // Losowy punkt na krzywej rdzenia
+                const t = Math.random();
+                // Prosta interpolacja między odcinkami (uproszczona dla stickmana)
+                const segments = [
+                    {p1: p.neck, p2: p.thoracic},
+                    {p1: p.thoracic, p2: p.lumbar},
+                    {p1: p.lumbar, p2: p.hip}
+                ];
+                const seg = segments[Math.floor(Math.random() * segments.length)];
+                
+                const px = lerp(seg.p1.x, seg.p2.x, t) + offX;
+                const py = lerp(seg.p1.y, seg.p2.y, t) + offY;
+
+                mediatorParticles.push({
+                    x: px,
+                    y: py,
+                    vx: (Math.random() - 0.5) * 3,
+                    vy: (Math.random() - 0.5) * 3,
+                    life: 1.0
+                });
+            }
+            
+            updateAndDrawMediators();
+            updateUI(currentTension >= 60);
+        }
+
+        function updateAndDrawMediators() {
+            for (let i = mediatorParticles.length - 1; i >= 0; i--) {
+                let p = mediatorParticles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= 0.03;
+                
+                if (p.life <= 0) {
+                    mediatorParticles.splice(i, 1);
+                    continue;
+                }
+                
+                ctx.globalAlpha = p.life;
+                ctx.fillStyle = '#fbbf24'; 
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 3, 0, Math.PI*2);
+                ctx.fill();
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        function updateUI(isDanger) {
+            // Aktualizacja paska postępu i tekstu
+            tensionBar.style.width = `${currentTension}%`;
+            tensionValue.innerText = `${Math.round(currentTension)}%`;
+            
+            const trans = translations[currentLang];
+
+            // --- POPRAWKA TUTAJ ---
+            // Najpierw usuwamy WSZYSTKIE możliwe kolory, żeby mieć czystą kartę.
+            // Dzięki temu przejście z Niebieskiego na Żółty usunie ten Niebieski.
+            tensionBar.classList.remove('bg-blue-500', 'bg-yellow-500', 'bg-red-600', 'bg-green-500');
+
+            if(isDanger) {
+                // Stan: ZAGROŻENIE (Czerwony) -> Powyżej 60%
+                tensionBar.classList.add('bg-red-600');
+                painStatus.innerHTML = `<div class="w-2 h-2 rounded-full bg-red-600 animate-ping"></div><span class="text-red-700 dark:text-red-400 font-bold">${trans.status_danger}</span>`;
+            } else {
+                if (currentTension <= 35) {
+                     // Stan: LUZ (Niebieski) -> Np. Tiptoes, Lying Bent
+                     tensionBar.classList.add('bg-blue-500'); 
+                     painStatus.innerHTML = `<div class="w-2 h-2 rounded-full bg-blue-500"></div><span class="text-blue-700 dark:text-blue-400 font-bold">${trans.status_baseline}</span>`;
+                } else {
+                    // Stan: UMIARKOWANY (Żółty/Pomarańczowy) -> Np. Chair, Standing
+                    tensionBar.classList.add('bg-yellow-500');
+                    painStatus.innerHTML = `<div class="w-2 h-2 rounded-full bg-yellow-500"></div><span class="text-yellow-700 dark:text-yellow-400 font-bold">${trans.status_moderate}</span>`;
+                }
+            }
+        }
+
+        /* --- LOGIKA OCHRONIARZA (ANALOGIA) --- */
+        function setGuardMode(mode) {
+            currentGuardMode = mode;
+            const btnHealthy = document.getElementById('btn-healthy');
+            const btnMcas = document.getElementById('btn-mcas');
+            
+            const guardContainer = document.getElementById('guard-icon-container');
+            const guardIcon = document.getElementById('guard-icon');
+            const guardSpeech = document.getElementById('guard-speech');
+            const guardTitle = document.getElementById('guard-status-title');
+            const guardDesc = document.getElementById('guard-status-desc');
+            
+            const rows = document.querySelectorAll('.visitor-row');
+            const trans = translations[currentLang];
+
+            // Reset stylów przycisków
+            if (mode === 'healthy') {
+                btnHealthy.className = "px-6 py-2 rounded-lg text-sm font-bold transition-all bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 shadow-sm";
+                btnMcas.className = "px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700 dark:text-slate-400";
+                
+                // Wygląd Ochroniarza: Zielony/Spokojny
+                guardContainer.className = "w-32 h-32 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center border-4 border-green-200 dark:border-green-800 transition-all duration-500 relative z-0";
+                guardIcon.innerHTML = '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path>'; // Shield Check (ręcznie, bo lucide może nie odświeżyć wewnątrz innerHTML)
+                guardIcon.className = "w-16 h-16 text-green-600 dark:text-green-400 transition-all duration-500";
+                
+                // Teksty
+                guardSpeech.innerText = trans.guard_speech_healthy;
+                guardTitle.innerText = trans.guard_title_healthy;
+                guardTitle.className = "font-bold text-lg text-green-700 dark:text-green-400 transition-colors";
+                guardDesc.innerText = trans.guard_desc_healthy;
+
+                // Goście (Wchodzą spokojnie)
+                rows.forEach(row => {
+                    row.className = "visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300";
+                    const badge = row.querySelector('.status-badge');
+                    badge.className = "status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
+                    badge.innerText = trans.status_pass;
+                });
+
+            } else {
+                // MCAS MODE
+                btnMcas.className = "px-6 py-2 rounded-lg text-sm font-bold transition-all bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 shadow-sm";
+                btnHealthy.className = "px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700 dark:text-slate-400";
+                
+                // Wygląd Ochroniarza: Czerwony/Wściekły
+                guardContainer.className = "w-32 h-32 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center border-4 border-red-500 dark:border-red-600 transition-all duration-500 relative z-0 shadow-lg shadow-red-500/20";
+                // Ikonka Sirena/Alarm
+                guardIcon.innerHTML = '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path>'; // Shield Alert
+                guardIcon.className = "w-16 h-16 text-red-600 dark:text-red-500 transition-all duration-500 animate-pulse";
+                
+                // Teksty
+                guardSpeech.innerText = trans.guard_speech_mcas;
+                guardTitle.innerText = trans.guard_title_mcas;
+                guardTitle.className = "font-bold text-lg text-red-600 dark:text-red-500 transition-colors";
+                guardDesc.innerText = trans.guard_desc_mcas;
+
+                // Goście (Są atakowani)
+                rows.forEach((row, index) => {
+                    setTimeout(() => {
+                        row.className = "visitor-row flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-300 dark:border-red-700 transition-all duration-300 transform scale-105";
+                        const badge = row.querySelector('.status-badge');
+                        badge.className = "status-badge text-xs font-bold px-2 py-1 rounded bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300";
+                        badge.innerText = trans.status_attack;
+                    }, index * 100); // Kaskadowy efekt
+                });
+            }
+            lucide.createIcons();
+        }
+
+        animateStick();
+        initGranules();
+        setPose('chair');
+    </script>
+</body>
+</html>
