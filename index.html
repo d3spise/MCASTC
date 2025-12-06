@@ -568,6 +568,60 @@
                 </div>
             </div>
         </div>
+
+        <!-- Wyzwalacze (Przeniesione) -->
+        <div class="mt-16 bg-slate-900 dark:bg-slate-950 text-white p-8 rounded-2xl shadow-xl border border-slate-800">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="bomb" class="text-red-500"></i> <span data-i18n="triggers_title">Kluczowe Wyzwalacze</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Substancje Pomocnicze -->
+                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_excipients_title">Substancje Pomocnicze w Lekach</h3>
+                    <p class="text-slate-400 text-sm mb-4" data-i18n="trig_excipients_desc">Ukryci wrogowie w tabletkach. Przykłady wypełniaczy na które mogą reagować pacjenci z MCAS (dla każdego jest to indywidualne):</p>
+                    <ul class="space-y-3 text-sm bg-slate-900/50 dark:bg-slate-950/50 p-4 rounded-lg text-red-200">
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_e171"><strong>Dwutlenek tytanu (E171)</strong> – Barwnik</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_corn"><strong>Skrobia kukurydziana</strong> – Wypełniacz</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_cros"><strong>Krospowidon</strong> – Substancja rozsadzająca</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_pg"><strong>Glikol propylenowy</strong> – Rozpuszczalnik</span></li>
+                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_iron"><strong>Tlenki żelaza</strong> – Barwniki</span></li>
+                    </ul>
+                </div>
+
+                <!-- Codzienność (Rozbudowana) -->
+                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_daily_title">Codzienność & Środowisko</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="utensils-crossed" class="text-orange-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_diet_title">Dieta Wysokohistaminowa:</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_diet_desc">Sery dojrzewające, alkohol, pomidory, kiszonki, wędzone ryby, <strong>odgrzewane resztki</strong> (histamina rośnie z czasem).</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="wind" class="text-blue-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_chem_title">Zapachy i Chemia (MCS):</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_chem_desc">Perfumy, odświeżacze powietrza, dym papierosowy, opary farb, chlor na basenie.</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="thermometer" class="text-yellow-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_phys_title">Fizyczne i Pogodowe:</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_phys_desc">Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń).</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="mt-1"><i data-lucide="brain-circuit" class="text-purple-400 w-5 h-5 shrink-0"></i></div>
+                            <div>
+                                <strong class="text-slate-200 block text-sm" data-i18n="trig_stress_title">Stres i Mechanika:</strong>
+                                <span class="text-slate-400 text-sm" data-i18n="trig_stress_desc">Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     </section>
 
@@ -1175,61 +1229,7 @@
         </div>
     </section>
 
-    <!-- Wyzwalacze -->
-    <section id="wyzwalacze" class="py-16 bg-slate-900 dark:bg-slate-950 text-white scroll-mt-20 border-t border-slate-800 dark:border-slate-900">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="bomb" class="text-red-500"></i> <span data-i18n="triggers_title">6. Kluczowe Wyzwalacze</span></h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Substancje Pomocnicze -->
-                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_excipients_title">Substancje Pomocnicze w Lekach (Twoje Zagrożenia)</h3>
-                    <p class="text-slate-400 text-sm mb-4" data-i18n="trig_excipients_desc">Ukryci wrogowie w tabletkach. Zawsze sprawdzaj skład pod kątem:</p>
-                    <ul class="space-y-3 text-sm bg-slate-900/50 dark:bg-slate-950/50 p-4 rounded-lg text-red-200">
-                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_e171"><strong>Dwutlenek tytanu (E171)</strong> – Barwnik</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_corn"><strong>Skrobia kukurydziana</strong> – Wypełniacz</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_cros"><strong>Krospowidon</strong> – Substancja rozsadzająca</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_pg"><strong>Glikol propylenowy</strong> – Rozpuszczalnik</span></li>
-                        <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_iron"><strong>Tlenki żelaza</strong> – Barwniki</span></li>
-                    </ul>
-                </div>
 
-                <!-- Codzienność (Rozbudowana) -->
-                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_daily_title">Codzienność & Środowisko</h3>
-                    <ul class="space-y-4">
-                        <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="utensils-crossed" class="text-orange-400 w-5 h-5 shrink-0"></i></div>
-                            <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_diet_title">Dieta Wysokohistaminowa:</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_diet_desc">Sery dojrzewające, alkohol, pomidory, kiszonki, wędzone ryby, <strong>odgrzewane resztki</strong> (histamina rośnie z czasem).</span>
-                            </div>
-                        </li>
-                        <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="wind" class="text-blue-400 w-5 h-5 shrink-0"></i></div>
-                            <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_chem_title">Zapachy i Chemia (MCS):</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_chem_desc">Perfumy, odświeżacze powietrza, dym papierosowy, opary farb, chlor na basenie.</span>
-                            </div>
-                        </li>
-                        <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="thermometer" class="text-yellow-400 w-5 h-5 shrink-0"></i></div>
-                            <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_phys_title">Fizyczne i Pogodowe:</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_phys_desc">Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń).</span>
-                            </div>
-                        </li>
-                        <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="brain-circuit" class="text-purple-400 w-5 h-5 shrink-0"></i></div>
-                            <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_stress_title">Stres i Mechanika:</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_stress_desc">Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- MCAS Diet Assistant -->
     <section id="diet-assistant" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
@@ -1426,9 +1426,9 @@
                 sym_resp_list: "<li>Uczucie duszności.</li><li>Zatkany nos.</li><li>Nadwrażliwość chemiczna.</li>",
                 sym_skin_title: "Skórne",
                 sym_skin_list: "<li>Zaczerwienienie skóry.</li><li>Świąd skóry.</li><li>Dermografizm.</li>",
-                triggers_title: "6. Kluczowe Wyzwalacze",
-                trig_excipients_title: "Substancje Pomocnicze w Lekach (Twoje Zagrożenia)",
-                trig_excipients_desc: "Ukryci wrogowie w tabletkach. Zawsze sprawdzaj skład pod kątem:",
+                triggers_title: "Kluczowe Wyzwalacze",
+                trig_excipients_title: "Substancje Pomocnicze w Lekach",
+                trig_excipients_desc: "Ukryci wrogowie w tabletkach. Przykłady wypełniaczy na które mogą reagować pacjenci z MCAS (dla każdego jest to indywidualne):",
                 trig_e171: "<strong>Dwutlenek tytanu (E171)</strong> – Barwnik",
                 trig_corn: "<strong>Skrobia kukurydziana</strong> – Wypełniacz",
                 trig_cros: "<strong>Krospowidon</strong> – Substancja rozsadzająca",
@@ -1632,9 +1632,9 @@
                 sym_resp_list: "<li>Shortness of breath.</li><li>Stuffy nose.</li><li>Chemical sensitivity.</li>",
                 sym_skin_title: "Skin",
                 sym_skin_list: "<li>Flushing.</li><li>Itching.</li><li>Dermatographism.</li>",
-                triggers_title: "6. Key Triggers",
-                trig_excipients_title: "Excipients in Meds (Your Threats)",
-                trig_excipients_desc: "Hidden enemies in pills. Always check ingredients for:",
+                triggers_title: "Key Triggers",
+                trig_excipients_title: "Excipients in Meds",
+                trig_excipients_desc: "Hidden enemies in pills. Examples of fillers that MCAS patients may react to (individual for each):",
                 trig_e171: "<strong>Titanium Dioxide (E171)</strong> – Dye",
                 trig_corn: "<strong>Corn Starch</strong> – Filler",
                 trig_cros: "<strong>Crospovidone</strong> – Disintegrant",
