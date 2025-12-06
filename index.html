@@ -163,6 +163,13 @@
             100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; border-width: 0px; }
         }
 
+        @keyframes dash {
+            to { stroke-dashoffset: -24; }
+        }
+        .animate-dash {
+            animation: dash 1s linear infinite;
+        }
+
         .mist-particle {
             position: absolute;
             background: rgba(216, 180, 254, 0.4);
@@ -394,98 +401,99 @@
             </div>
             <h1 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">
                 <span data-i18n="hero_title1">Gdy ciało walczy samo ze sobą</span><br>
-                <span class="text-red-600 dark:text-red-500" data-i18n="hero_title2">MCAS i Zakotwiczenie Rdzenia</span>
+                <span class="text-red-600 dark:text-red-500" data-i18n="hero_title2">MCAS, TCS i ME/CFS</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero_desc">
-                Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne i mechaniczne napięcie rdzenia kręgowego tworzą "błędne koło" zapalenia.
+                Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne, mechaniczne napięcie rdzenia kręgowego i przewlekłe zmęczenie tworzą "błędne koło" choroby.
             </p>
         </div>
     </header>
 
-    <section id="analogy" class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto px-4">
-            
-            <div class="text-center mb-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 text-xs font-bold uppercase mb-4">
-                    <i data-lucide="lightbulb" class="w-4 h-4"></i> <span data-i18n="tag_analogy">Prosta Analogia</span>
-                </div>
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="analogy_title">
-                    Twój Ochroniarz Zwariował
-                </h2>
-                <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed" data-i18n="analogy_desc">
-                    Zanim wejdziemy w medyczne szczegóły, zrozum istotę problemu. Wyobraź sobie, że Twój układ odpornościowy (komórki tuczne) to <strong>Ochroniarz</strong>, który pilnuje wejścia do Twojego ciała.
-                </p>
-            </div>
 
-            <div class="bg-slate-50 dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm relative overflow-hidden">
-                
-                <div class="flex justify-center mb-2 relative z-20">
-                    <div class="bg-white dark:bg-slate-900 p-1 rounded-xl border border-slate-200 dark:border-slate-700 inline-flex shadow-sm">
-                        <button onclick="setGuardMode('healthy')" id="btn-healthy" class="px-6 py-2 rounded-lg text-sm font-bold transition-all bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                            <span data-i18n="btn_mode_healthy">Zdrowy Człowiek</span>
-                        </button>
-                        <button onclick="setGuardMode('mcas')" id="btn-mcas" class="px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700 dark:text-slate-400">
-                            <span data-i18n="btn_mode_mcas">Ty (MCAS)</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-12 items-center mt-16">
-                    
-                    <div class="flex flex-col items-center justify-center relative">
-                        <div id="guard-speech" class="absolute -top-20 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 px-4 py-3 rounded-2xl rounded-bl-none shadow-xl text-sm font-bold transition-all duration-300 transform origin-bottom-left mb-4 z-10 text-center w-56 flex items-center justify-center min-h-[60px]">
-                            <span data-i18n="guard_speech_healthy">Zzz... Pełen spokój.</span>
-                        </div>
-
-                        <div id="guard-icon-container" class="w-32 h-32 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center border-4 border-green-200 dark:border-green-800 transition-all duration-500 relative z-0">
-                            <i data-lucide="shield-check" class="w-16 h-16 text-green-600 dark:text-green-400 transition-all duration-500" id="guard-icon"></i>
-                        </div>
-
-                        <div class="mt-4 text-center">
-                            <h3 class="font-bold text-lg text-slate-900 dark:text-white transition-colors" id="guard-status-title" data-i18n="guard_title_healthy">Ochroniarz Śpi</h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400" id="guard-status-desc" data-i18n="guard_desc_healthy">Reaguje tylko na prawdziwych bandytów (wirusy).</p>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-2" data-i18n="visitors_label">Kto puka do drzwi?</div>
-                        
-                        <div class="space-y-3">
-                            <div class="visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-tomato">
-                                <div class="flex items-center gap-3">
-                                    <div class="p-2 bg-red-100 dark:bg-red-900/30 rounded text-red-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
-                                    <span class="text-sm font-medium" data-i18n="vis_tomato">Pan Pomidor</span>
-                                </div>
-                                <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
-                            </div>
-
-                            <div class="visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-perfume">
-                                <div class="flex items-center gap-3">
-                                    <div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded text-purple-600"><i data-lucide="wind" class="w-4 h-4"></i></div>
-                                    <span class="text-sm font-medium" data-i18n="vis_perfume">Pani Perfumowana</span>
-                                </div>
-                                <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
-                            </div>
-
-                            <div class="visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-weather">
-                                <div class="flex items-center gap-3">
-                                    <div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded text-blue-600"><i data-lucide="cloud-rain" class="w-4 h-4"></i></div>
-                                    <span class="text-sm font-medium" data-i18n="vis_weather">Listonosz Deszcz</span>
-                                </div>
-                                <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
 
     <!-- Mechanizm z Zaawansowaną Animacją -->
     <section id="mechanizm" class="py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <!-- Analogy Content -->
+            <div class="mb-20 border-b border-slate-200 dark:border-slate-800 pb-16">
+                <div class="text-center mb-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200 text-xs font-bold uppercase mb-4">
+                        <i data-lucide="lightbulb" class="w-4 h-4"></i> <span data-i18n="tag_analogy">Prosta Analogia</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="analogy_title">
+                        Twój Ochroniarz Zwariował
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-3xl mx-auto" data-i18n="analogy_desc">
+                        Zanim wejdziemy w medyczne szczegóły, zrozum istotę problemu. Wyobraź sobie, że Twój układ odpornościowy (komórki tuczne) to <strong>Ochroniarz</strong>, który pilnuje wejścia do Twojego ciała.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm relative overflow-hidden max-w-4xl mx-auto">
+                    
+                    <div class="flex justify-center mb-2 relative z-20">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 inline-flex shadow-sm">
+                            <button onclick="setGuardMode('healthy')" id="btn-healthy" class="px-6 py-2 rounded-lg text-sm font-bold transition-all bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                <span data-i18n="btn_mode_healthy">Zdrowy Człowiek</span>
+                            </button>
+                            <button onclick="setGuardMode('mcas')" id="btn-mcas" class="px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700 dark:text-slate-400">
+                                <span data-i18n="btn_mode_mcas">Ty (MCAS)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-12 items-center mt-16">
+                        
+                        <div class="flex flex-col items-center justify-center relative">
+                            <div id="guard-speech" class="absolute -top-20 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 px-4 py-3 rounded-2xl rounded-bl-none shadow-xl text-sm font-bold transition-all duration-300 transform origin-bottom-left mb-4 z-10 text-center w-56 flex items-center justify-center min-h-[60px]">
+                                <span data-i18n="guard_speech_healthy">Zzz... Pełen spokój.</span>
+                            </div>
+
+                            <div id="guard-icon-container" class="w-32 h-32 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center border-4 border-green-200 dark:border-green-800 transition-all duration-500 relative z-0">
+                                <i data-lucide="shield-check" class="w-16 h-16 text-green-600 dark:text-green-400 transition-all duration-500" id="guard-icon"></i>
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white transition-colors" id="guard-status-title" data-i18n="guard_title_healthy">Ochroniarz Śpi</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400" id="guard-status-desc" data-i18n="guard_desc_healthy">Reaguje tylko na prawdziwych bandytów (wirusy).</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-2" data-i18n="visitors_label">Kto puka do drzwi?</div>
+                            
+                            <div class="space-y-3">
+                                <div class="visitor-row flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-tomato">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2 bg-red-100 dark:bg-red-900/30 rounded text-red-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+                                        <span class="text-sm font-medium" data-i18n="vis_tomato">Pan Pomidor</span>
+                                    </div>
+                                    <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
+                                </div>
+
+                                <div class="visitor-row flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-perfume">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2 bg-purple-100 dark:bg-purple-900/30 rounded text-purple-600"><i data-lucide="wind" class="w-4 h-4"></i></div>
+                                        <span class="text-sm font-medium" data-i18n="vis_perfume">Pani Perfumowana</span>
+                                    </div>
+                                    <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
+                                </div>
+
+                                <div class="visitor-row flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300" id="row-weather">
+                                    <div class="flex items-center gap-3">
+                                        <div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded text-blue-600"><i data-lucide="cloud-rain" class="w-4 h-4"></i></div>
+                                        <span class="text-sm font-medium" data-i18n="vis_weather">Listonosz Deszcz</span>
+                                    </div>
+                                    <span class="status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" data-i18n="status_pass">WCHODZI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
             
             <!-- Opis Naukowy -->
             <div class="order-2 lg:order-1">
@@ -560,6 +568,281 @@
                 </div>
             </div>
         </div>
+    </div>
+    </section>
+
+
+    <!-- SEKCJA DEFINICJI TETHERED CORD -->
+    <section id="tethered-cord-def" class="py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                <div class="p-2 bg-yellow-100 dark:bg-yellow-900/40 rounded-lg text-yellow-700 dark:text-yellow-300"><i data-lucide="anchor"></i></div>
+                <span data-i18n="tcs_def_main_title">2. Co to jest Zakotwiczenie Rdzenia?</span>
+            </h2>
+            
+            <div class="space-y-8">
+                <div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+                    <p class="text-lg leading-relaxed" data-i18n="tcs_def_desc">
+                        <strong>Zespół Zakotwiczenia Rdzenia Kręgowego (TCS)</strong> to mechaniczna patologia, w której rdzeń kręgowy jest "uwięziony" u dołu kręgosłupa. W zdrowym ciele rdzeń swobodnie unosi się w kanale kręgowym, przesuwając się w górę i w dół podczas ruchu. W TCS jest on przytwierdzony (zakotwiczony) przez zbyt napiętą nić końcową (<em>filum terminale</em>) lub <strong>tkankę bliznowatą</strong> (np. po operacjach, urazach).
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300">
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                            <i data-lucide="minimize-2" class="text-red-500"></i> <span data-i18n="tcs_anat_title">Anatomia Problemu</span>
+                        </h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="tcs_anat_desc">
+                            Wyobraź sobie rdzeń jako luźne sznurowadło wewnątrz rurki. W TCS to sznurowadło jest mocno naciągnięte i przybite gwoździem na dole (przez nić lub zrosty). Każdy skłon, wyprost czy ruch głową powoduje <strong>fizyczne rozciąganie tkanki nerwowej</strong>, prowadząc do jej niedokrwienia (ischemii).
+                        </p>
+                    </div>
+                    
+                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300">
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                            <i data-lucide="zap" class="text-purple-500"></i> <span data-i18n="tcs_mcas_title">Zapalnik dla MCAS</span>
+                        </h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="tcs_mcas_desc">
+                            To nie jest tylko problem ortopedyczny. Naciągnięte nerwy uwalniają neuropeptydy (np. Substancję P), które są bezpośrednim sygnałem dla komórek tucznych do ataku. <strong>Mechaniczne drażnienie rdzenia staje się ciągłym wyzwalaczem reakcji alergicznej</strong>, nawet bez alergenów w pożywieniu.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Rodzaje Zakotwiczenia -->
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800/50">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="file-search" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                        <span data-i18n="tcs_types_title">Dwa Oblicza Choroby</span>
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm" data-i18n="tcs_type1_title">1. Klasyczne (Anatomiczne)</h4>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_type1_desc">
+                                Widoczne na standardowym rezonansie (MRI). Stożek rdzenia kończy się zbyt nisko (poniżej kręgu L2). Często towarzyszy mu tłuszczak (lipoma) lub rozszczep kręgosłupa.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm" data-i18n="tcs_type2_title">2. Ukryte (Occult TCS)</h4>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_type2_desc">
+                                <strong>Najczęstsze przy EDS/MCAS.</strong> Stożek rdzenia jest na prawidłowej wysokości, ale nić końcowa (filum) jest zwłókniała i nieelastyczna. Często opisywane jako "norma" w MRI, mimo silnych objawów klinicznych.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ciągnięcie Pnia Mózgu -->
+                <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-800/50">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="arrow-up-circle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+                        <span data-i18n="tcs_brainstem_title">Efekt Domina: Ciągnięcie Pnia Mózgu</span>
+                    </h3>
+                    <p class="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed" data-i18n="tcs_brainstem_desc">
+                        Rdzeń kręgowy to jednolita struktura. Pociąganie go na dole (w odcinku lędźwiowym) przenosi napięcie aż do samej góry – do pnia mózgu. To tam znajdują się ośrodki sterujące sercem, oddechem i trawieniem (nerw błędny).
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="activity" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_pots">POTS / Tachykardia</span>
+    </div>
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="wind" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_swallow">Problemy z połykaniem</span>
+    </div>
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="eye" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_vision">Zaburzenia wzroku</span>
+    </div>
+    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+        <i data-lucide="rotate-cw" class="w-4 h-4 text-red-500"></i>
+        <span data-i18n="tcs_bs_dizzy">Zawroty głowy</span>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VAGUS NERVE SECTION -->
+    <section id="vagus-nerve" class="py-16 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Text Content -->
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                    <div class="p-2 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg text-emerald-700 dark:text-emerald-300">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <span data-i18n="vagus_title">Nerw Błędny: Ofiara Napięcia</span>
+                </h2>
+                
+                <p class="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed" data-i18n="vagus_desc_1">
+                    <strong>Nerw Błędny (Vagus Nerve)</strong> to najważniejszy nerw układu przywspółczulnego ("odpoczywaj i traw"). Biegnie od pnia mózgu, przez szyję, klatkę piersiową, aż do jelit. To "autostrada informacyjna" łącząca mózg z ciałem.
+                </p>
+
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-3" data-i18n="vagus_mechanism_title">Jak Zakotwiczenie go uszkadza?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="vagus_mechanism_desc">
+                        Gdy rdzeń jest zakotwiczony na dole, napięcie przenosi się w górę do pnia mózgu. To tam wychodzą korzenie nerwu błędnego. <strong>Mechaniczne pociąganie pnia mózgu drażni lub uciska nerw błędny</strong>, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane (sygnały sterujące) przestają płynąć.
+                    </p>
+                </div>
+
+                <h3 class="font-bold text-slate-900 dark:text-white mb-4" data-i18n="vagus_consequences_title">Konsekwencje uszkodzenia:</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <div class="mt-1 p-1 bg-red-100 dark:bg-red-900/30 rounded text-red-600"><i data-lucide="heart-pulse" class="w-4 h-4"></i></div>
+                        <div>
+                            <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_heart_title">Serce (POTS):</strong>
+                            <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_heart_desc">Nerw błędny powinien zwalniać serce. Gdy nie działa, serce bije za szybko (tachykardia) przy wstawaniu.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="mt-1 p-1 bg-yellow-100 dark:bg-yellow-900/30 rounded text-yellow-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+                        <div>
+                            <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_gut_title">Jelita i żołądek (Różne zaburzenia trawienia):</strong>
+                            <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_gut_desc">Nerw błędny kontroluje trawienie oraz pracę żołądka. Gdy nie działa, można doświadczać biegunek, zaparć i innych problemów trawiennych.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="mt-1 p-1 bg-purple-100 dark:bg-purple-900/30 rounded text-purple-600"><i data-lucide="shield-alert" class="w-4 h-4"></i></div>
+                        <div>
+                            <strong class="text-slate-900 dark:text-white" data-i18n="vagus_cons_immune_title">Brak Hamulca dla MCAS:</strong>
+                            <span class="text-slate-600 dark:text-slate-400 text-sm block" data-i18n="vagus_cons_immune_desc">Nerw błędny odpowiada za "Odruch Przeciwzapalny". Gdy nie działa, nikt nie mówi komórkom tucznym "STOP". Stan zapalny szaleje.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKCJA TETHERED CORD (REALISTYCZNY SYMULATOR Z POZYCJAMI) -->
+<section id="tethered-cord" class="py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200 text-xs font-bold uppercase mb-4">
+                    <span data-i18n="tag_biomechanics">Mechanika Codzienności</span>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+                    <span data-i18n="tcs_title1">3. Symulacja zakotwiczenia rdzenia:</span> <br><span data-i18n="tcs_title2">Rola Krzywizn Kręgosłupa</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed" data-i18n="tcs_desc">
+                    Zdrowy kręgosłup ma naturalne wygięcia: <strong>kifozę</strong> (wygięcie w tył w odcinku piersiowym) i <strong>lordozę</strong> (wygięcie w przód w lędźwiach). Działają one jak sprężyna, skracając drogę dla rdzenia.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+            
+                <div>
+                    <div class="spine-container" id="simContainer">
+                        <div class="sim-wrapper">
+                            <canvas id="simCanvas" width="550" height="550"></canvas>
+                            <div class="instruction-overlay text-slate-500 text-sm font-medium">
+                            </div>
+                        </div>
+                        
+                        <div class="tension-panel">
+                            <div class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wide" data-i18n="sim_status_title">Status Rdzenia</div>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <span class="font-semibold text-slate-700 dark:text-slate-200 text-sm" data-i18n="sim_tension">Napięcie (Traction)</span>
+                                <span id="tensionValue" class="font-mono font-bold text-slate-900 dark:text-white">0%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-3 overflow-hidden border border-slate-200 dark:border-slate-600">
+                                <div id="tensionBar" class="h-full bg-green-500" style="width: 0%"></div>
+                            </div>
+                            <div id="painStatus" class="mt-3 text-xs font-bold text-green-600 dark:text-green-400 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-lg border border-transparent">
+                                <div class="w-2 h-2 rounded-full bg-green-500"></div> <span data-i18n="status_baseline">BAZA (Objawy stabilne)</span>
+                            </div>
+                            <div id="poseDesc" class="mt-3 text-xs text-slate-500 dark:text-slate-400 italic border-t pt-2 border-slate-100 dark:border-slate-700">
+                                Wybierz pozycję poniżej, aby zobaczyć efekt.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+                         <button onclick="setPose('tiptoes')" class="pose-btn" id="btn-tiptoes">
+                            <i data-lucide="footprints" class="w-5 h-5"></i> <span data-i18n="btn_tiptoes">Na palcach</span>
+                        </button>
+
+                        <button onclick="setPose('standing')" class="pose-btn" id="btn-standing">
+                            <i data-lucide="user" class="w-5 h-5"></i> <span data-i18n="btn_standing">Stojąca</span>
+                        </button>
+                        
+                        <button onclick="setPose('chair')" class="pose-btn" id="btn-chair">
+                            <i data-lucide="armchair" class="w-5 h-5"></i> <span data-i18n="btn_chair">Na krześle</span>
+                        </button>
+
+                        <button onclick="setPose('straight')" class="pose-btn" id="btn-straight">
+                            <i data-lucide="move-vertical" class="w-5 h-5"></i> <span data-i18n="btn_straight">Test Wyprostu</span>
+                        </button>
+                        
+                        <button onclick="setPose('long_sit')" class="pose-btn" id="btn-long_sit">
+                            <i data-lucide="arrow-right-from-line" class="w-5 h-5"></i> <span data-i18n="btn_long_sit">Siad prosty</span>
+                        </button>
+                        
+                        <button onclick="setPose('lying_flat')" class="pose-btn" id="btn-lying_flat">
+                            <i data-lucide="align-justify" class="w-5 h-5 rotate-90"></i> <span data-i18n="btn_lying_flat">Leżenie płasko</span>
+                        </button>
+                        
+                        <button onclick="setPose('lying_bent')" class="pose-btn sm:col-span-1" id="btn-lying_bent">
+                            <i data-lucide="smile" class="w-5 h-5"></i> <span data-i18n="btn_lying_bent">Leżenie ugięte</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-indigo-50 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900">
+                        <h4 class="font-bold text-indigo-800 dark:text-indigo-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="git-commit" class="w-4 h-4"></i> <span data-i18n="nerve_title">Efekt Liny Holowniczej (Nerw Kulszowy)</span>
+                        </h4>
+                        <p class="text-sm text-indigo-700 dark:text-indigo-200" data-i18n="nerve_desc">
+                            Nerw kulszowy biegnie przez całą nogę. Gdy prostujesz nogi (zwłaszcza w siadzie), nerw ten napina się (patrz: przerywana linia na symulacji). W zdrowym ciele ma luz, ale w TCS działa jak lina, która pociąga rdzeń w dół, drażniąc go mechanicznie.
+                        </p>
+                    </div>
+
+                    <div class="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-xl border border-orange-100 dark:border-orange-900">
+                        <h4 class="font-bold text-orange-800 dark:text-orange-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="maximize-2" class="w-4 h-4"></i> <span data-i18n="trap_title">Pułapka Wyprostu</span>
+                        </h4>
+                        <p class="text-sm text-orange-700 dark:text-orange-200" data-i18n="trap_desc">
+                            Próba "wyprostowania się na baczność" spłaszcza naturalne krzywizny (S-kształt). To fizycznie wydłuża kanał kręgowy ("robi się wyższy"), co natychmiast naciąga zakotwiczony na dole rdzeń.
+                        </p>
+                    </div>
+
+                    <div class="bg-teal-50 dark:bg-teal-950/30 p-4 rounded-xl border border-teal-100 dark:border-teal-900">
+                        <h4 class="font-bold text-teal-800 dark:text-teal-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="align-vertical-distribute-center" class="w-4 h-4"></i> <span data-i18n="paradox_title">Paradoks: Stanie vs Leżenie</span>
+                        </h4>
+                        <p class="text-sm text-teal-700 dark:text-teal-200" data-i18n="paradox_desc">
+                            Dlaczego stanie jest lepsze niż leżenie płasko? <strong>Gdy stoisz</strong>, zachowujesz naturalne wygięcie kręgosłupa (lordozę), co daje rdzeniowi luz. <strong>Gdy leżysz płasko</strong>, ciężar nóg "prasuje" plecy do podłogi, prostując kręgosłup jak linijkę. To fizycznie wydłuża drogę, którą musi pokonać napięty rdzeń.
+                        </p>
+                    </div>
+
+                    <div class="bg-emerald-50 dark:bg-emerald-950/30 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900">
+                        <h4 class="font-bold text-emerald-800 dark:text-emerald-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="move-up" class="w-4 h-4"></i> <span data-i18n="tiptoes_title">Test Palców vs Pięt</span>
+                        </h4>
+                        <p class="text-sm text-emerald-700 dark:text-emerald-200" data-i18n="tiptoes_desc">
+                            Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-xl border border-blue-100 dark:border-blue-900">
+                        <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm flex items-center gap-2">
+                            <i data-lucide="check" class="w-4 h-4"></i> <span data-i18n="relief_title">Pozycja Ulgowa (Baza)</span>
+                        </h4>
+                        <p class="text-sm text-blue-700 dark:text-blue-200" data-i18n="relief_desc">
+                            <strong>Leżenie z ugiętymi nogami</strong> (podparte poduszką) to jedyna pozycja, która maksymalnie luzuje nerwy. Pamiętaj jednak: "Luz" nie oznacza całkowitego braku objawów, lecz powrót do stabilnego poziomu bazowego (ok. 30% napięcia).
+                        </p>
+                    </div>
+
+                    <div class="mt-6 bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="tcs_hint">
+                            <strong>Wskazówka:</strong> Obserwuj czerwoną linię rdzenia przy przycisku "Test Wyprostu". To wyjaśnia, dlaczego długie stanie w "poprawnej" pozycji może boleć bardziej niż lekkie zgarbienie.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </section>
 
     <section id="mecfs-def" class="py-16 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
@@ -576,7 +859,7 @@
                             <div class="p-2 bg-purple-100 dark:bg-purple-900/40 rounded-lg text-purple-700 dark:text-purple-300">
                                 <i data-lucide="battery-warning" class="w-6 h-6"></i>
                             </div>
-                            <span data-i18n="mecfs_title">Co to jest ME/CFS?</span>
+                            <span data-i18n="mecfs_title">4. Co to jest ME/CFS?</span>
                         </h2>
                         <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="mecfs_desc_1">
                             To nie jest "zwykłe zmęczenie". To choroba metaboliczna, w której Twoje komórki nie potrafią produkować energii. To tak, jakbyś próbował używać smartfona z zepsutą baterią, która ładuje się tylko do 30% i pada po jednej rozmowie.
@@ -726,228 +1009,6 @@
         </div>
     </section>
 
-    <!-- SEKCJA DEFINICJI TETHERED CORD -->
-    <section id="tethered-cord-def" class="py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                <div class="p-2 bg-yellow-100 dark:bg-yellow-900/40 rounded-lg text-yellow-700 dark:text-yellow-300"><i data-lucide="anchor"></i></div>
-                <span data-i18n="tcs_def_main_title">2. Co to jest Zakotwiczenie Rdzenia?</span>
-            </h2>
-            
-            <div class="space-y-8">
-                <div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
-                    <p class="text-lg leading-relaxed" data-i18n="tcs_def_desc">
-                        <strong>Zespół Zakotwiczenia Rdzenia Kręgowego (TCS)</strong> to mechaniczna patologia, w której rdzeń kręgowy jest "uwięziony" u dołu kręgosłupa. W zdrowym ciele rdzeń swobodnie unosi się w kanale kręgowym, przesuwając się w górę i w dół podczas ruchu. W TCS jest on przytwierdzony (zakotwiczony) przez zbyt napiętą nić końcową (<em>filum terminale</em>) lub <strong>tkankę bliznowatą</strong> (np. po operacjach, urazach).
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300">
-                        <h4 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
-                            <i data-lucide="minimize-2" class="text-red-500"></i> <span data-i18n="tcs_anat_title">Anatomia Problemu</span>
-                        </h4>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="tcs_anat_desc">
-                            Wyobraź sobie rdzeń jako luźne sznurowadło wewnątrz rurki. W TCS to sznurowadło jest mocno naciągnięte i przybite gwoździem na dole (przez nić lub zrosty). Każdy skłon, wyprost czy ruch głową powoduje <strong>fizyczne rozciąganie tkanki nerwowej</strong>, prowadząc do jej niedokrwienia (ischemii).
-                        </p>
-                    </div>
-                    
-                    <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-colors duration-300">
-                        <h4 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
-                            <i data-lucide="zap" class="text-purple-500"></i> <span data-i18n="tcs_mcas_title">Zapalnik dla MCAS</span>
-                        </h4>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="tcs_mcas_desc">
-                            To nie jest tylko problem ortopedyczny. Naciągnięte nerwy uwalniają neuropeptydy (np. Substancję P), które są bezpośrednim sygnałem dla komórek tucznych do ataku. <strong>Mechaniczne drażnienie rdzenia staje się ciągłym wyzwalaczem reakcji alergicznej</strong>, nawet bez alergenów w pożywieniu.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Rodzaje Zakotwiczenia -->
-                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-100 dark:border-blue-800/50">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                        <i data-lucide="file-search" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
-                        <span data-i18n="tcs_types_title">Dwa Oblicza Choroby</span>
-                    </h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm" data-i18n="tcs_type1_title">1. Klasyczne (Anatomiczne)</h4>
-                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_type1_desc">
-                                Widoczne na standardowym rezonansie (MRI). Stożek rdzenia kończy się zbyt nisko (poniżej kręgu L2). Często towarzyszy mu tłuszczak (lipoma) lub rozszczep kręgosłupa.
-                            </p>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm" data-i18n="tcs_type2_title">2. Ukryte (Occult TCS)</h4>
-                            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_type2_desc">
-                                <strong>Najczęstsze przy EDS/MCAS.</strong> Stożek rdzenia jest na prawidłowej wysokości, ale nić końcowa (filum) jest zwłókniała i nieelastyczna. Często opisywane jako "norma" w MRI, mimo silnych objawów klinicznych.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ciągnięcie Pnia Mózgu -->
-                <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-800/50">
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                        <i data-lucide="arrow-up-circle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
-                        <span data-i18n="tcs_brainstem_title">Efekt Domina: Ciągnięcie Pnia Mózgu</span>
-                    </h3>
-                    <p class="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed" data-i18n="tcs_brainstem_desc">
-                        Rdzeń kręgowy to jednolita struktura. Pociąganie go na dole (w odcinku lędźwiowym) przenosi napięcie aż do samej góry – do pnia mózgu. To tam znajdują się ośrodki sterujące sercem, oddechem i trawieniem (nerw błędny).
-                    </p>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-        <i data-lucide="activity" class="w-4 h-4 text-red-500"></i>
-        <span data-i18n="tcs_bs_pots">POTS / Tachykardia</span>
-    </div>
-    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-        <i data-lucide="wind" class="w-4 h-4 text-red-500"></i>
-        <span data-i18n="tcs_bs_swallow">Problemy z połykaniem</span>
-    </div>
-    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-        <i data-lucide="eye" class="w-4 h-4 text-red-500"></i>
-        <span data-i18n="tcs_bs_vision">Zaburzenia wzroku</span>
-    </div>
-    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-        <i data-lucide="rotate-cw" class="w-4 h-4 text-red-500"></i>
-        <span data-i18n="tcs_bs_dizzy">Zawroty głowy</span>
-    </div>
-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEKCJA TETHERED CORD (REALISTYCZNY SYMULATOR Z POZYCJAMI) -->
-<section id="tethered-cord" class="py-16 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4">
-            
-            <div class="text-center mb-12">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200 text-xs font-bold uppercase mb-4">
-                    <span data-i18n="tag_biomechanics">Mechanika Codzienności</span>
-                </div>
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-                    <span data-i18n="tcs_title1">3. Symulacja zakotwiczenia rdzenia:</span> <br><span data-i18n="tcs_title2">Rola Krzywizn Kręgosłupa</span>
-                </h2>
-                <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed" data-i18n="tcs_desc">
-                    Zdrowy kręgosłup ma naturalne wygięcia: <strong>kifozę</strong> (wygięcie w tył w odcinku piersiowym) i <strong>lordozę</strong> (wygięcie w przód w lędźwiach). Działają one jak sprężyna, skracając drogę dla rdzenia.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-start">
-            
-                <div>
-                    <div class="spine-container" id="simContainer">
-                        <div class="sim-wrapper">
-                            <canvas id="simCanvas" width="550" height="550"></canvas>
-                            <div class="instruction-overlay text-slate-500 text-sm font-medium">
-                            </div>
-                        </div>
-                        
-                        <div class="tension-panel">
-                            <div class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wide" data-i18n="sim_status_title">Status Rdzenia</div>
-                            <div class="flex justify-between items-baseline mb-2">
-                                <span class="font-semibold text-slate-700 dark:text-slate-200 text-sm" data-i18n="sim_tension">Napięcie (Traction)</span>
-                                <span id="tensionValue" class="font-mono font-bold text-slate-900 dark:text-white">0%</span>
-                            </div>
-                            <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-3 overflow-hidden border border-slate-200 dark:border-slate-600">
-                                <div id="tensionBar" class="h-full bg-green-500" style="width: 0%"></div>
-                            </div>
-                            <div id="painStatus" class="mt-3 text-xs font-bold text-green-600 dark:text-green-400 flex items-center gap-2 bg-white/50 dark:bg-slate-800/50 p-2 rounded-lg border border-transparent">
-                                <div class="w-2 h-2 rounded-full bg-green-500"></div> <span data-i18n="status_baseline">BAZA (Objawy stabilne)</span>
-                            </div>
-                            <div id="poseDesc" class="mt-3 text-xs text-slate-500 dark:text-slate-400 italic border-t pt-2 border-slate-100 dark:border-slate-700">
-                                Wybierz pozycję poniżej, aby zobaczyć efekt.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                         <button onclick="setPose('tiptoes')" class="pose-btn" id="btn-tiptoes">
-                            <i data-lucide="footprints" class="w-5 h-5"></i> <span data-i18n="btn_tiptoes">Na palcach</span>
-                        </button>
-
-                        <button onclick="setPose('standing')" class="pose-btn" id="btn-standing">
-                            <i data-lucide="user" class="w-5 h-5"></i> <span data-i18n="btn_standing">Stojąca</span>
-                        </button>
-                        
-                        <button onclick="setPose('chair')" class="pose-btn" id="btn-chair">
-                            <i data-lucide="armchair" class="w-5 h-5"></i> <span data-i18n="btn_chair">Na krześle</span>
-                        </button>
-
-                        <button onclick="setPose('straight')" class="pose-btn" id="btn-straight">
-                            <i data-lucide="move-vertical" class="w-5 h-5"></i> <span data-i18n="btn_straight">Test Wyprostu</span>
-                        </button>
-                        
-                        <button onclick="setPose('long_sit')" class="pose-btn" id="btn-long_sit">
-                            <i data-lucide="arrow-right-from-line" class="w-5 h-5"></i> <span data-i18n="btn_long_sit">Siad prosty</span>
-                        </button>
-                        
-                        <button onclick="setPose('lying_flat')" class="pose-btn" id="btn-lying_flat">
-                            <i data-lucide="align-justify" class="w-5 h-5 rotate-90"></i> <span data-i18n="btn_lying_flat">Leżenie płasko</span>
-                        </button>
-                        
-                        <button onclick="setPose('lying_bent')" class="pose-btn sm:col-span-1" id="btn-lying_bent">
-                            <i data-lucide="smile" class="w-5 h-5"></i> <span data-i18n="btn_lying_bent">Leżenie ugięte</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-indigo-50 dark:bg-indigo-950/30 p-4 rounded-xl border border-indigo-100 dark:border-indigo-900">
-                        <h4 class="font-bold text-indigo-800 dark:text-indigo-300 mb-2 text-sm flex items-center gap-2">
-                            <i data-lucide="git-commit" class="w-4 h-4"></i> <span data-i18n="nerve_title">Efekt Liny Holowniczej (Nerw Kulszowy)</span>
-                        </h4>
-                        <p class="text-sm text-indigo-700 dark:text-indigo-200" data-i18n="nerve_desc">
-                            Nerw kulszowy biegnie przez całą nogę. Gdy prostujesz nogi (zwłaszcza w siadzie), nerw ten napina się (patrz: przerywana linia na symulacji). W zdrowym ciele ma luz, ale w TCS działa jak lina, która pociąga rdzeń w dół, drażniąc go mechanicznie.
-                        </p>
-                    </div>
-
-                    <div class="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-xl border border-orange-100 dark:border-orange-900">
-                        <h4 class="font-bold text-orange-800 dark:text-orange-300 mb-2 text-sm flex items-center gap-2">
-                            <i data-lucide="maximize-2" class="w-4 h-4"></i> <span data-i18n="trap_title">Pułapka Wyprostu</span>
-                        </h4>
-                        <p class="text-sm text-orange-700 dark:text-orange-200" data-i18n="trap_desc">
-                            Próba "wyprostowania się na baczność" spłaszcza naturalne krzywizny (S-kształt). To fizycznie wydłuża kanał kręgowy ("robi się wyższy"), co natychmiast naciąga zakotwiczony na dole rdzeń.
-                        </p>
-                    </div>
-
-                    <div class="bg-teal-50 dark:bg-teal-950/30 p-4 rounded-xl border border-teal-100 dark:border-teal-900">
-                        <h4 class="font-bold text-teal-800 dark:text-teal-300 mb-2 text-sm flex items-center gap-2">
-                            <i data-lucide="align-vertical-distribute-center" class="w-4 h-4"></i> <span data-i18n="paradox_title">Paradoks: Stanie vs Leżenie</span>
-                        </h4>
-                        <p class="text-sm text-teal-700 dark:text-teal-200" data-i18n="paradox_desc">
-                            Dlaczego stanie jest lepsze niż leżenie płasko? <strong>Gdy stoisz</strong>, zachowujesz naturalne wygięcie kręgosłupa (lordozę), co daje rdzeniowi luz. <strong>Gdy leżysz płasko</strong>, ciężar nóg "prasuje" plecy do podłogi, prostując kręgosłup jak linijkę. To fizycznie wydłuża drogę, którą musi pokonać napięty rdzeń.
-                        </p>
-                    </div>
-
-                    <div class="bg-emerald-50 dark:bg-emerald-950/30 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900">
-                        <h4 class="font-bold text-emerald-800 dark:text-emerald-300 mb-2 text-sm flex items-center gap-2">
-                            <i data-lucide="move-up" class="w-4 h-4"></i> <span data-i18n="tiptoes_title">Test Palców vs Pięt</span>
-                        </h4>
-                        <p class="text-sm text-emerald-700 dark:text-emerald-200" data-i18n="tiptoes_desc">
-                            Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.
-                        </p>
-                    </div>
-
-                    <div class="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-xl border border-blue-100 dark:border-blue-900">
-                        <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2 text-sm flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4"></i> <span data-i18n="relief_title">Pozycja Ulgowa (Baza)</span>
-                        </h4>
-                        <p class="text-sm text-blue-700 dark:text-blue-200" data-i18n="relief_desc">
-                            <strong>Leżenie z ugiętymi nogami</strong> (podparte poduszką) to jedyna pozycja, która maksymalnie luzuje nerwy. Pamiętaj jednak: "Luz" nie oznacza całkowitego braku objawów, lecz powrót do stabilnego poziomu bazowego (ok. 30% napięcia).
-                        </p>
-                    </div>
-
-                    <div class="mt-6 bg-slate-50 dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
-                        <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="tcs_hint">
-                            <strong>Wskazówka:</strong> Obserwuj czerwoną linię rdzenia przy przycisku "Test Wyprostu". To wyjaśnia, dlaczego długie stanie w "poprawnej" pozycji może boleć bardziej niż lekkie zgarbienie.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- NOWA SEKCJA: Błędne Koło (Connecting the dots) -->
     <section id="connection" class="py-20 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 relative">
@@ -1047,7 +1108,7 @@
     <section id="objawy" class="py-16 bg-slate-50 dark:bg-slate-900 scroll-mt-20 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="symptoms_title">4. Objawy: Kiedy wszystko się łączy</h2>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="symptoms_title">5. Objawy: Kiedy wszystko się łączy</h2>
                 <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto" data-i18n="symptoms_desc">
                     Kombinacja MCAS i Zakotwiczenie Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako "tylko stres" lub psychosomatyka.
                 </p>
@@ -1117,7 +1178,7 @@
     <!-- Wyzwalacze -->
     <section id="wyzwalacze" class="py-16 bg-slate-900 dark:bg-slate-950 text-white scroll-mt-20 border-t border-slate-800 dark:border-slate-900">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="bomb" class="text-red-500"></i> <span data-i18n="triggers_title">5. Kluczowe Wyzwalacze</span></h2>
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="bomb" class="text-red-500"></i> <span data-i18n="triggers_title">6. Kluczowe Wyzwalacze</span></h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Substancje Pomocnicze -->
                 <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
@@ -1271,8 +1332,8 @@
                 nav_triggers: "Wyzwalacze",
                 hero_tag: "Systemowa choroba neuro-immunologiczna",
                 hero_title1: "Gdy ciało walczy samo ze sobą",
-                hero_title2: "MCAS i Zakotwiczenie Rdzenia",
-                hero_desc: "Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne i mechaniczne napięcie rdzenia kręgowego tworzą \"błędne koło\" zapalenia.",
+                hero_title2: "MCAS, TCS i ME/CFS",
+                hero_desc: "Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne, mechaniczne napięcie rdzenia kręgowego i przewlekłe zmęczenie tworzą \"błędne koło\" choroby.",
                 mech_title: "1. Co to jest MCAS?",
                 mech_p1: "W Zespole Aktywacji Komórek Tucznych (MCAS) komórki odpornościowe (mastocyty) są \"nadwrażliwe\". Zamiast reagować tylko na prawdziwe zagrożenie (np. wirus), wybuchają przy kontakcie z błahymi czynnikami.",
                 mech_mediators_title: "Mediatory (Broń Chemiczna):",
@@ -1301,6 +1362,22 @@
                 tcs_bs_swallow: "Problemy z połykaniem",
                 tcs_bs_vision: "Zaburzenia wzroku",
                 tcs_bs_dizzy: "Zawroty głowy",
+                // Vagus Nerve Section
+                vagus_title: "Nerw Błędny: Ofiara Napięcia",
+                vagus_desc_1: "<strong>Nerw Błędny (Vagus Nerve)</strong> to najważniejszy nerw układu przywspółczulnego (\"odpoczywaj i traw\"). Biegnie od pnia mózgu, przez szyję, klatkę piersiową, aż do jelit. To \"autostrada informacyjna\" łącząca mózg z ciałem.",
+                vagus_mechanism_title: "Jak Zakotwiczenie go uszkadza?",
+                vagus_mechanism_desc: "Gdy rdzeń jest zakotwiczony na dole, napięcie przenosi się w górę do pnia mózgu. To tam wychodzą korzenie nerwu błędnego. <strong>Mechaniczne pociąganie pnia mózgu drażni lub uciska nerw błędny</strong>, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane (sygnały sterujące) przestają płynąć.",
+                vagus_consequences_title: "Konsekwencje uszkodzenia:",
+                vagus_cons_heart_title: "Serce (POTS):",
+                vagus_cons_heart_desc: "Nerw błędny powinien zwalniać serce. Gdy nie działa, serce bije za szybko (tachykardia) przy wstawaniu.",
+                vagus_cons_gut_title: "Jelita i żołądek (Różne zaburzenia trawienia):",
+                vagus_cons_gut_desc: "Nerw błędny kontroluje trawienie oraz pracę żołądka. Gdy nie działa, można doświadczać biegunek, zaparć i innych problemów trawiennych.",
+                vagus_cons_immune_title: "Brak Hamulca dla MCAS:",
+                vagus_cons_immune_desc: "Nerw błędny odpowiada za \"Odruch Przeciwzapalny\". Gdy nie działa, nikt nie mówi komórkom tucznym \"STOP\". Stan zapalny szaleje.",
+                vagus_label_brainstem: "Pień Mózgu (Ucisk)",
+                vagus_label_heart: "Serce (Tachykardia)",
+                vagus_label_gut: "Jelita (Stop)",
+                vagus_label_inflammation: "Stan Zapalny (Brak hamulca)",
                 sim_status_title: "Status Rdzenia",
                 sim_tension: "Napięcie (Traction)",
                 status_baseline: "BAZA (Objawy stabilne)",
@@ -1335,7 +1412,7 @@
                 conn_step3_desc: "Mastocyty zlokalizowane przy nerwach odbierają ten sygnał i \"wybuchają\" (degranulacja), uwalniając histaminę i cytokiny.",
                 conn_step4_title: "ME/CFS (Wyczerpanie)",
                 conn_step4_desc: "Przewlekły stan zapalny (cytokiny) dociera do mózgu (neurozapalenie) i blokuje produkcję energii w mitochondriach -> PEM.",
-                symptoms_title: "3. Objawy: Kiedy wszystko się łączy",
+                symptoms_title: "5. Objawy: Kiedy wszystko się łączy",
                 symptoms_desc: "Kombinacja MCAS i Zakotwiczenia Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako \"tylko stres\" lub psychosomatyka.",
                 sym_neuro_title: "Neurologiczne",
                 sym_neuro_list: "<li><strong>Mgła mózgowa:</strong> Trudności poznawcze.</li><li>Bóle głowy (ciągnące od karku).</li><li>Nadwrażliwość na światło/dźwięk.</li><li>Zawroty głowy / Zaburzenia równowagi.</li>",
@@ -1349,7 +1426,7 @@
                 sym_resp_list: "<li>Uczucie duszności.</li><li>Zatkany nos.</li><li>Nadwrażliwość chemiczna.</li>",
                 sym_skin_title: "Skórne",
                 sym_skin_list: "<li>Zaczerwienienie skóry.</li><li>Świąd skóry.</li><li>Dermografizm.</li>",
-                triggers_title: "4. Kluczowe Wyzwalacze",
+                triggers_title: "6. Kluczowe Wyzwalacze",
                 trig_excipients_title: "Substancje Pomocnicze w Lekach (Twoje Zagrożenia)",
                 trig_excipients_desc: "Ukryci wrogowie w tabletkach. Zawsze sprawdzaj skład pod kątem:",
                 trig_e171: "<strong>Dwutlenek tytanu (E171)</strong> – Barwnik",
@@ -1403,7 +1480,7 @@
             vis_perfume: "Pani Perfumowana",
             vis_weather: "Listonosz Deszcz",
             // Sekcja ME/CFS
-            mecfs_title: "Co to jest ME/CFS?",
+            mecfs_title: "4. Co to jest ME/CFS?",
             mecfs_desc_1: "To nie jest \"zwykłe zmęczenie\". To choroba metaboliczna, w której Twoje komórki nie potrafią produkować energii. To tak, jakbyś próbował używać smartfona z zepsutą baterią, która ładuje się tylko do 30% i pada po jednej rozmowie.",
             pem_title: "Kluczowy objaw: PEM",
             pem_desc: "<strong>Post-Exertional Malaise (Zapaść Powysiłkowa).</strong> Opóźniona reakcja organizmu na wysiłek. Spacer zrobiony dzisiaj może \"odciąć Ci prąd\" dopiero jutro lub pojutrze, przykuwając Cię do łóżka na wiele dni.",
@@ -1461,8 +1538,8 @@
                 nav_triggers: "Triggers",
                 hero_tag: "Systemic Neuro-Immune Disease",
                 hero_title1: "When the body fights itself",
-                hero_title2: "MCAS & Tethered Cord",
-                hero_desc: "An educational guide explaining how hyperreactive mast cells and mechanical spinal cord tension create a \"vicious cycle\" of inflammation.",
+                hero_title2: "MCAS, TCS & ME/CFS",
+                hero_desc: "An educational guide explaining how hyperreactive mast cells, mechanical spinal cord tension, and chronic fatigue create a \"vicious cycle\" of disease.",
                 mech_title: "1. What is MCAS?",
                 mech_p1: "In Mast Cell Activation Syndrome (MCAS), immune cells (mast cells) are \"hyperreactive\". Instead of reacting only to real threats (e.g., viruses), they explode upon contact with trivial factors.",
                 mech_mediators_title: "Mediators (Chemical Weapons):",
@@ -1491,6 +1568,22 @@
                 tcs_bs_swallow: "Swallowing issues",
                 tcs_bs_vision: "Vision disturbances",
                 tcs_bs_dizzy: "Dizziness / Vertigo",
+                // Vagus Nerve Section
+                vagus_title: "Vagus Nerve: Victim of Tension",
+                vagus_desc_1: "The <strong>Vagus Nerve</strong> is the most important nerve of the parasympathetic system (\"rest and digest\"). It runs from the brainstem, through the neck and chest, down to the intestines. It is the \"information superhighway\" connecting the brain to the body.",
+                vagus_mechanism_title: "How does Tethered Cord damage it?",
+                vagus_mechanism_desc: "When the spinal cord is tethered at the bottom, tension is transferred up to the brainstem. This is where the vagus nerve roots exit. <strong>Mechanical traction on the brainstem irritates or compresses the vagus nerve</strong>, disrupting its signal. It's like stepping on an internet cable – control signals stop flowing.",
+                vagus_consequences_title: "Consequences of damage:",
+                vagus_cons_heart_title: "Heart (POTS):",
+                vagus_cons_heart_desc: "The vagus nerve should slow the heart down. When it fails, the heart beats too fast (tachycardia) upon standing.",
+                vagus_cons_gut_title: "Gut and Stomach (Various digestive disorders):",
+                vagus_cons_gut_desc: "The vagus nerve controls digestion and stomach function. When it fails, one can experience diarrhea, constipation, and other digestive issues.",
+                vagus_cons_immune_title: "No Brake for MCAS:",
+                vagus_cons_immune_desc: "The vagus nerve is responsible for the \"Anti-inflammatory Reflex\". When it fails, no one tells mast cells to \"STOP\". Inflammation runs wild.",
+                vagus_label_brainstem: "Brainstem (Compression)",
+                vagus_label_heart: "Heart (Tachycardia)",
+                vagus_label_gut: "Gut (Stop)",
+                vagus_label_inflammation: "Inflammation (No brake)",
                 sim_status_title: "Cord Status",
                 sim_tension: "Tension (Traction)",
                 status_baseline: "BASELINE (Symptoms stable)",
@@ -1525,7 +1618,7 @@
                 conn_step3_desc: "Mast cells located near nerves pick up this signal and \"explode\" (degranulation), releasing histamine and cytokines.",
                 conn_step4_title: "ME/CFS (Exhaustion)",
                 conn_step4_desc: "Chronic inflammation (cytokines) reaches the brain (neuroinflammation) and blocks mitochondrial energy production -> PEM.",
-                symptoms_title: "3. Symptoms: When Everything Connects",
+                symptoms_title: "5. Symptoms: When Everything Connects",
                 symptoms_desc: "The combination of MCAS and Tethered Cord creates a specific symptom profile, often misdiagnosed as \"just stress\" or psychosomatic.",
                 sym_neuro_title: "Neurological",
                 sym_neuro_list: "<li><strong>Brain Fog:</strong> Cognitive difficulties.</li><li>Headaches (pulling from neck).</li><li>Light/Sound sensitivity.</li><li>Dizziness / Vertigo.</li>",
@@ -1539,7 +1632,7 @@
                 sym_resp_list: "<li>Shortness of breath.</li><li>Stuffy nose.</li><li>Chemical sensitivity.</li>",
                 sym_skin_title: "Skin",
                 sym_skin_list: "<li>Flushing.</li><li>Itching.</li><li>Dermatographism.</li>",
-                triggers_title: "4. Key Triggers",
+                triggers_title: "6. Key Triggers",
                 trig_excipients_title: "Excipients in Meds (Your Threats)",
                 trig_excipients_desc: "Hidden enemies in pills. Always check ingredients for:",
                 trig_e171: "<strong>Titanium Dioxide (E171)</strong> – Dye",
@@ -1593,7 +1686,7 @@
             vis_perfume: "Mrs. Perfume",
             vis_weather: "Mailman Rain",
             // ME/CFS Section
-            mecfs_title: "What is ME/CFS?",
+            mecfs_title: "4. What is ME/CFS?",
             mecfs_desc_1: "It's not just \"being tired\". It's a metabolic disease where your cells cannot produce energy. It's like trying to use a smartphone with a broken battery that only charges to 30% and dies after one call.",
             pem_title: "Key Symptom: PEM",
             pem_desc: "<strong>Post-Exertional Malaise.</strong> A delayed body reaction to exertion. A walk taken today might \"cut your power\" tomorrow or the day after, leaving you bedbound for days.",
@@ -2366,7 +2459,7 @@ Be specific.`;
 
                 // Goście (Wchodzą spokojnie)
                 rows.forEach(row => {
-                    row.className = "visitor-row flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300";
+                    row.className = "visitor-row flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 transition-all duration-300";
                     const badge = row.querySelector('.status-badge');
                     badge.className = "status-badge text-xs font-bold px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
                     badge.innerText = trans.status_pass;
