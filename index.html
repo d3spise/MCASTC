@@ -382,10 +382,10 @@
             </div>
             <div class="flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
                 <div class="hidden md:flex gap-6">
-                    <a href="#mechanizm" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_mechanism">Mechanizm</a>
+                    <a href="#mechanizm" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_mechanism">MCAS</a>
                     <a href="#tethered-cord-def" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500" data-i18n="nav_tcs">Zakotwiczenie rdzenia</a>
+                    <a href="#mecfs-def" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_mecfs">ME/CFS</a>
                     <a href="#objawy" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_symptoms">Objawy</a>
-                    <a href="#wyzwalacze" class="hover:text-red-600 dark:hover:text-red-400 transition-colors" data-i18n="nav_triggers">Wyzwalacze</a>
                 </div>
                 
                 <div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
@@ -1092,6 +1092,74 @@
         </div>
     </section>
 
+    <!-- NOWA SEKCJA: Patomechanizm TCS i ME/CFS -->
+    <section class="py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+                <div class="p-2 bg-indigo-100 dark:bg-indigo-900/40 rounded-lg text-indigo-700 dark:text-indigo-300"><i data-lucide="network"></i></div>
+                <span data-i18n="mech_pat_title">5. Sekcja Patomechanizmu: Połączenie TCS i ME/CFS</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <!-- Hipoteza trakcji pnia mózgu -->
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="brain-circuit" class="text-red-500"></i>
+                            <span data-i18n="mech_brainstem_title">Hipoteza Trakcji Pnia Mózgu</span>
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="mech_brainstem_desc">
+                            Napięcie filum terminale nie kończy się w lędźwiach. Przenosi się w górę przez cały rdzeń kręgowy aż do pnia mózgu (brainstem). To tutaj znajdują się centra kontroli autonomicznej (dysautonomia). Fizyczne pociąganie tych struktur zaburza ich pracę, prowadząc do objawów POTS i zaburzeń wielonarządowych.
+                        </p>
+                    </div>
+
+                    <!-- Rola aktywacji mikrogleju -->
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="flame" class="text-orange-500"></i>
+                            <span data-i18n="mech_microglia_title">Rola Aktywacji Mikrogleju</span>
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="mech_microglia_desc">
+                            Chroniczne drażnienie mechaniczne tkanki nerwowej jest odbierane przez komórki odpornościowe mózgu – mikroglej. Przechodzą one w stan ciągłej aktywacji (neuroinflammation), produkując cytokiny prozapalne. Klinicznie ten stan jest nieodróżnialny od ME/CFS (zespołu przewlekłego zmęczenia), dając objawy "grypy, która nigdy nie mija".
+                        </p>
+                    </div>
+
+                    <!-- Zaburzenie Mechaniki Mięśniowej i CCI -->
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="activity" class="text-blue-500"></i>
+                            <span data-i18n="mech_cci_title">Zaburzenie Mechaniki Mięśniowej i CCI</span>
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="mech_cci_desc">
+                            Trakcja rdzenia zaburza pracę mięśni przykręgosłupowych, które przestają stabilizować kręgosłup. Powoduje to nieprawidłową pracę połączenia czaszkowo-szyjnego i ucisk struktur nerwowych. Dlatego TCS często prowadzi do Niestabilności Czaszkowo-Szyjnej (CCI) – osłabione mięśnie nie chronią więzadeł, które z czasem się rozciągają. Co ważne: <strong>TCS może dawać objawy imitujące CCI</strong> (bóle głowy, zawroty) zanim jeszcze dojdzie do fizycznego uszkodzenia więzadeł.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                <div class="relative mt-8 lg:mt-0">
+                    <div class="sticky top-8 max-w-[80%] mx-auto">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                            <!-- PL Images -->
+                            <div class="img-pl">
+                                <img src="img/tethered_light_polish.webp" class="w-full h-auto block dark:hidden" alt="Patomechanizm TCS ilustracja">
+                                <img src="img/tethered_dark_polish.webp" class="w-full h-auto hidden dark:block" alt="Patomechanizm TCS ilustracja ciemny">
+                            </div>
+                            <!-- EN Images -->
+                            <div class="img-en">
+                                <img src="img/tethered_light_english.webp" class="w-full h-auto block dark:hidden" alt="TCS Pathomechanism illustration">
+                                <img src="img/tethered_dark_english.webp" class="w-full h-auto hidden dark:block" alt="TCS Pathomechanism illustration dark">
+                            </div>
+                        </div>
+                        <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-3 italic" data-i18n="mech_img_caption">
+                            Ilustracja: Patomechanizm Zakotwiczenia Rdzenia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- NOWA SEKCJA: Błędne Koło (Connecting the dots) -->
     <section id="connection" class="py-20 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 relative">
@@ -1139,8 +1207,8 @@
 
                     <div class="relative z-10">
                         <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm ring-4 ring-orange-50 dark:ring-orange-900/30 group-hover:scale-110 transition-transform duration-300">2</div>
-                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step2_title">Sygnał Bólowy</h3>
-                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step2_desc">Podrażnione nerwy uwalniają neuropeptydy (np. Substancja P), które działają jak "sygnał alarmowy" dla okolicznych tkanek.</p>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step2_title">Trakcja Pnia Mózgu</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step2_desc">Napięcie przenosi się na pień mózgu, drażniąc układ autonomiczny. Uwalniane są neuropeptydy (Substancja P), alarmujące układ odpornościowy.</p>
                     </div>
                 </div>
 
@@ -1179,8 +1247,8 @@
 
                     <div class="relative z-10">
                         <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center font-bold text-2xl mb-6 shadow-sm ring-4 ring-purple-50 dark:ring-purple-900/30 group-hover:scale-110 transition-transform duration-300">4</div>
-                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step4_title">ME/CFS (Wyczerpanie)</h3>
-                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step4_desc">Przewlekły stan zapalny (cytokiny) dociera do mózgu (neurozapalenie) i blokuje produkcję energii w mitochondriach -> PEM.</p>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-xl mb-3" data-i18n="conn_step4_title">ME/CFS & Mikroglej</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="conn_step4_desc">Aktywowany mikroglej podtrzymuje stan zapalny w mózgu (neuroinflammation). Blokuje to produkcję energii i wywołuje objawy grypopodobne (PEM).</p>
                     </div>
                 </div>
             </div>
@@ -1191,7 +1259,7 @@
     <section id="objawy" class="py-16 bg-slate-50 dark:bg-slate-900 scroll-mt-20 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="symptoms_title">5. Objawy: Kiedy wszystko się łączy</h2>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="symptoms_title">6. Objawy: Kiedy wszystko się łączy</h2>
                 <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto" data-i18n="symptoms_desc">
                     Kombinacja MCAS i Zakotwiczenie Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako "tylko stres" lub psychosomatyka.
                 </p>
@@ -1355,10 +1423,10 @@
                 tiptoes_desc: "Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.",
                 paradox_title: "Paradoks: Stanie vs Leżenie",
                 paradox_desc: "Dlaczego stanie jest lepsze niż leżenie płasko? <strong>Gdy stoisz</strong>, zachowujesz naturalne wygięcie kręgosłupa (lordozę), co daje rdzeniowi luz. <strong>Gdy leżysz płasko</strong>, ciężar nóg 'prasuje' plecy do podłogi, prostując kręgosłup jak linijkę. To fizycznie wydłuża drogę, którą musi pokonać napięty rdzeń.",
-                nav_mechanism: "Mechanizm",
+                nav_mechanism: "MCAS",
                 nav_tcs: "Zakotwiczenie Rdzenia",
+                nav_mecfs: "ME/CFS",
                 nav_symptoms: "Objawy",
-                nav_triggers: "Wyzwalacze",
                 hero_tag: "Systemowa choroba neuro-immunologiczna",
                 hero_title1: "Gdy ciało walczy samo ze sobą",
                 hero_title2: "MCAS, TCS i ME/CFS",
@@ -1369,6 +1437,16 @@
                 mech_histamine: "<strong>Histamina:</strong> Obrzęki, świąd, mgła mózgowa.",
                 mech_tryptase: "<strong>Tryptaza:</strong> Ból i uszkodzenia tkanek.",
                 mech_cytokines: "<strong>Cytokiny:</strong> Objawy grypopodobne, PEM.",
+                mech_pat_title: "5. Sekcja Patomechanizmu: Połączenie TCS i ME/CFS",
+                mech_brainstem_title: "Hipoteza Trakcji Pnia Mózgu",
+                mech_brainstem_desc: "Napięcie filum terminale nie kończy się w lędźwiach. Przenosi się w górę przez cały rdzeń kręgowy aż do pnia mózgu (brainstem). To tutaj znajdują się centra kontroli autonomicznej (dysautonomia). Fizyczne pociąganie tych struktur zaburza ich pracę, prowadząc do objawów POTS i zaburzeń wielonarządowych.",
+                mech_microglia_title: "Rola Aktywacji Mikrogleju",
+                mech_microglia_desc: "Chroniczne drażnienie mechaniczne tkanki nerwowej jest odbierane przez komórki odpornościowe mózgu – mikroglej. Przechodzą one w stan ciągłej aktywacji (neuroinflammation), produkując cytokiny prozapalne. Klinicznie ten stan jest nieodróżnialny od ME/CFS (zespołu przewlekłego zmęczenia), dając objawy \"grypy, która nigdy nie mija\".",
+                mech_cci_title: "Zaburzenie Mechaniki Mięśniowej i CCI",
+                mech_cci_desc: "Trakcja rdzenia zaburza pracę mięśni przykręgosłupowych, które przestają stabilizować kręgosłup. Powoduje to nieprawidłową pracę połączenia czaszkowo-szyjnego i ucisk struktur nerwowych. Dlatego TCS często prowadzi do Niestabilności Czaszkowo-Szyjnej (CCI) – osłabione mięśnie nie chronią więzadeł, które z czasem się rozciągają. Co ważne: <strong>TCS może dawać objawy imitujące CCI</strong> (bóle głowy, zawroty) zanim jeszcze dojdzie do fizycznego uszkodzenia więzadeł.",
+                mech_img_caption: "Ilustracja: Patomechanizm Zakotwiczenia Rdzenia.",
+                mech_vis_title: "Ukryte Zakotwiczenie (Occult TCS)",
+                mech_vis_desc: "Standardowe MRI w leżeniu nie pokazuje napięcia, które pojawia się w pionie. To prowadzi do wielu błędnych diagnoz.",
                 label_receptors: "Receptory (IgE)",
                 label_nucleus: "Jądro",
                 label_granules: "Ziarnistości",
@@ -1436,13 +1514,13 @@
                 conn_tag: "Triada Chorobowa",
                 conn_step1_title: "Uraz Mechaniczny (TC)",
                 conn_step1_desc: "Zakotwiczony rdzeń jest naciągany przy każdym ruchu. Powstają mikrourazy i niedotlenienie tkanki nerwowej.",
-                conn_step2_title: "Sygnał Bólowy",
-                conn_step2_desc: "Podrażnione nerwy uwalniają neuropeptydy (np. Substancja P), które działają jak \"sygnał alarmowy\" dla okolicznych tkanek.",
+                conn_step2_title: "Trakcja Pnia Mózgu",
+                conn_step2_desc: "Napięcie przenosi się na pień mózgu, drażniąc układ autonomiczny. Uwalniane są neuropeptydy (Substancja P), alarmujące układ odpornościowy.",
                 conn_step3_title: "Zapłon MCAS",
                 conn_step3_desc: "Mastocyty zlokalizowane przy nerwach odbierają ten sygnał i \"wybuchają\" (degranulacja), uwalniając histaminę i cytokiny.",
-                conn_step4_title: "ME/CFS (Wyczerpanie)",
-                conn_step4_desc: "Przewlekły stan zapalny (cytokiny) dociera do mózgu (neurozapalenie) i blokuje produkcję energii w mitochondriach -> PEM.",
-                symptoms_title: "5. Objawy: Kiedy wszystko się łączy",
+                conn_step4_title: "ME/CFS & Mikroglej",
+                conn_step4_desc: "Aktywowany mikroglej podtrzymuje stan zapalny w mózgu (neuroinflammation). Blokuje to produkcję energii i wywołuje objawy grypopodobne (PEM).",
+                symptoms_title: "6. Objawy: Kiedy wszystko się łączy",
                 symptoms_desc: "Kombinacja MCAS i Zakotwiczenia Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako \"tylko stres\" lub psychosomatyka.",
                 sym_neuro_title: "Neurologiczne",
                 sym_neuro_list: "<li><strong>Mgła mózgowa:</strong> Trudności poznawcze.</li><li>Bóle głowy (ciągnące od karku).</li><li>Nadwrażliwość na światło/dźwięk.</li><li>Zawroty głowy / Zaburzenia równowagi.</li>",
@@ -1562,10 +1640,10 @@
                 tiptoes_desc: "Walking on tiptoes is a common, unconscious defense mechanism (especially in children). Lifting the heel <strong>shortens the path of the sciatic nerve</strong>, providing instant slack. Standing on heels (dorsiflexion) acts like a lever that brutally stretches the entire nervous system.",
                 paradox_title: "Paradox: Standing vs Lying Flat",
                 paradox_desc: "Why is standing often better than lying flat? <strong>When standing</strong>, you maintain the natural spinal curve (lordosis), creating slack for the cord. <strong>When lying flat</strong>, the weight of your legs 'irons out' your back against the floor, straightening the spine. This physically lengthens the spinal canal, stretching the tethered cord.",
-                nav_mechanism: "Mechanism",
+                nav_mechanism: "MCAS",
                 nav_tcs: "Tethered Cord",
+                nav_mecfs: "ME/CFS",
                 nav_symptoms: "Symptoms",
-                nav_triggers: "Triggers",
                 hero_tag: "Systemic Neuro-Immune Disease",
                 hero_title1: "When the body fights itself",
                 hero_title2: "MCAS, TCS & ME/CFS",
@@ -1576,6 +1654,16 @@
                 mech_histamine: "<strong>Histamine:</strong> Swelling, itching, brain fog.",
                 mech_tryptase: "<strong>Tryptase:</strong> Pain and tissue damage.",
                 mech_cytokines: "<strong>Cytokines:</strong> Flu-like symptoms, PEM.",
+                mech_pat_title: "5. Pathomechanism Section: The TCS & ME/CFS Connection",
+                mech_brainstem_title: "Brainstem Traction Hypothesis",
+                mech_brainstem_desc: "Tension in the filum terminale doesn't end in the lumbar spine. It transmits upwards through the entire spinal cord to the brainstem. This is where autonomic control centers are located (dysautonomia). Physical pulling of these structures disrupts their function, leading to POTS and multi-system symptoms.",
+                mech_microglia_title: "Role of Microglial Activation",
+                mech_microglia_desc: "Chronic mechanical irritation of neural tissue is detected by the brain's immune cells – microglia. They enter a state of continuous activation (neuroinflammation), producing pro-inflammatory cytokines. Clinically, this state is indistinguishable from ME/CFS (Chronic Fatigue Syndrome), causing symptoms of \"flu that never goes away\".",
+                mech_cci_title: "Muscle Dysfunction & CCI Connection",
+                mech_cci_desc: "Cord traction disrupts the function of paraspinal muscles, causing them to fail in stabilizing the spine. This leads to improper function of the craniocervical junction and compression of neural structures. This is why TCS often co-occurs with Craniocervical Instability (CCI) – weakened muscles fail to protect ligaments, which stretch over time. Importantly: <strong>TCS can mimic CCI symptoms</strong> (headaches, dizziness) even before actual ligament damage occurs.",
+                mech_img_caption: "Illustration: Pathomechanism of Tethered Cord Syndrome.",
+                mech_vis_title: "Occult Tethered Cord (Occult TCS)",
+                mech_vis_desc: "Standard supine MRI does not show the tension that appears when upright. This leads to many misdiagnoses.",
                 label_receptors: "Receptors (IgE)",
                 label_nucleus: "Nucleus",
                 label_granules: "Granules",
@@ -1643,13 +1731,13 @@
                 conn_tag: "The Disease Triad",
                 conn_step1_title: "Mechanical Injury (TC)",
                 conn_step1_desc: "The tethered cord is stretched with every movement. Micro-injuries and tissue hypoxia occur.",
-                conn_step2_title: "Pain Signal",
-                conn_step2_desc: "Irritated nerves release neuropeptides (e.g., Substance P), acting as an \"alarm signal\" for surrounding tissues.",
+                conn_step2_title: "Brainstem Traction",
+                conn_step2_desc: "Tension transmits to the brainstem, irritating the autonomic system. Neuropeptides (Substance P) are released, alarming the immune system.",
                 conn_step3_title: "MCAS Ignition",
                 conn_step3_desc: "Mast cells located near nerves pick up this signal and \"explode\" (degranulation), releasing histamine and cytokines.",
-                conn_step4_title: "ME/CFS (Exhaustion)",
-                conn_step4_desc: "Chronic inflammation (cytokines) reaches the brain (neuroinflammation) and blocks mitochondrial energy production -> PEM.",
-                symptoms_title: "5. Symptoms: When Everything Connects",
+                conn_step4_title: "ME/CFS & Microglia",
+                conn_step4_desc: "Activated microglia maintain brain inflammation (neuroinflammation). This blocks energy production and causes flu-like symptoms (PEM).",
+                symptoms_title: "6. Symptoms: When Everything Connects",
                 symptoms_desc: "The combination of MCAS and Tethered Cord creates a specific symptom profile, often misdiagnosed as \"just stress\" or psychosomatic.",
                 sym_neuro_title: "Neurological",
                 sym_neuro_list: "<li><strong>Brain Fog:</strong> Cognitive difficulties.</li><li>Headaches (pulling from neck).</li><li>Light/Sound sensitivity.</li><li>Dizziness / Vertigo.</li>",
