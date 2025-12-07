@@ -576,14 +576,14 @@
         </div>
 
         <!-- Wyzwalacze (Przeniesione) -->
-        <div class="mt-16 bg-slate-900 dark:bg-slate-950 text-white p-8 rounded-2xl shadow-xl border border-slate-800">
+        <div class="mt-16 bg-white dark:bg-slate-950 text-slate-900 dark:text-white p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 transition-colors duration-300">
             <h2 class="text-3xl font-bold mb-8 flex items-center gap-3"><i data-lucide="bomb" class="text-red-500"></i> <span data-i18n="triggers_title">Kluczowe Wyzwalacze</span></h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Substancje Pomocnicze -->
-                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_excipients_title">Substancje Pomocnicze w Lekach</h3>
-                    <p class="text-slate-400 text-sm mb-4" data-i18n="trig_excipients_desc">Ukryci wrogowie w tabletkach. Przykłady wypełniaczy na które mogą reagować pacjenci z MCAS (dla każdego jest to indywidualne):</p>
-                    <ul class="space-y-3 text-sm bg-slate-900/50 dark:bg-slate-950/50 p-4 rounded-lg text-red-200">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-700 pb-2" data-i18n="trig_excipients_title">Substancje Pomocnicze w Lekach</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4" data-i18n="trig_excipients_desc">Ukryci wrogowie w tabletkach. Przykłady wypełniaczy na które mogą reagować pacjenci z MCAS (dla każdego jest to indywidualne):</p>
+                    <ul class="space-y-3 text-sm bg-white dark:bg-slate-950/50 p-4 rounded-lg text-red-700 dark:text-red-200 border border-slate-100 dark:border-slate-800">
                         <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_e171"><strong>Dwutlenek tytanu (E171)</strong> – Barwnik</span></li>
                         <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_corn"><strong>Skrobia kukurydziana</strong> – Wypełniacz</span></li>
                         <li class="flex items-center gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 shrink-0"></i> <span data-i18n="trig_cros"><strong>Krospowidon</strong> – Substancja rozsadzająca</span></li>
@@ -593,35 +593,35 @@
                 </div>
 
                 <!-- Codzienność (Rozbudowana) -->
-                <div class="bg-slate-800 dark:bg-slate-900 p-6 rounded-xl border border-slate-700 dark:border-slate-800">
-                    <h3 class="text-xl font-semibold text-white mb-4 border-b border-slate-600 dark:border-slate-700 pb-2" data-i18n="trig_daily_title">Codzienność & Środowisko</h3>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 transition-colors duration-300">
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-700 pb-2" data-i18n="trig_daily_title">Codzienność & Środowisko</h3>
                     <ul class="space-y-4">
                         <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="utensils-crossed" class="text-orange-400 w-5 h-5 shrink-0"></i></div>
+                            <div class="mt-1"><i data-lucide="utensils-crossed" class="text-orange-500 dark:text-orange-400 w-5 h-5 shrink-0"></i></div>
                             <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_diet_title">Dieta Wysokohistaminowa:</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_diet_desc">Sery dojrzewające, alkohol, pomidory, kiszonki, wędzone ryby, <strong>odgrzewane resztki</strong> (histamina rośnie z czasem).</span>
+                                <strong class="text-slate-800 dark:text-slate-200 block text-sm" data-i18n="trig_diet_title">Dieta Wysokohistaminowa:</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="trig_diet_desc">Sery dojrzewające, alkohol, pomidory, kiszonki, wędzone ryby, <strong>odgrzewane resztki</strong> (histamina rośnie z czasem).</span>
                             </div>
                         </li>
                         <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="wind" class="text-blue-400 w-5 h-5 shrink-0"></i></div>
+                            <div class="mt-1"><i data-lucide="wind" class="text-blue-500 dark:text-blue-400 w-5 h-5 shrink-0"></i></div>
                             <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_chem_title">Zapachy i Chemia (MCS):</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_chem_desc">Perfumy, odświeżacze powietrza, dym papierosowy, opary farb, chlor na basenie.</span>
+                                <strong class="text-slate-800 dark:text-slate-200 block text-sm" data-i18n="trig_chem_title">Zapachy i Chemia (MCS):</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="trig_chem_desc">Perfumy, odświeżacze powietrza, dym papierosowy, opary farb, chlor na basenie.</span>
                             </div>
                         </li>
                         <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="thermometer" class="text-yellow-400 w-5 h-5 shrink-0"></i></div>
+                            <div class="mt-1"><i data-lucide="thermometer" class="text-yellow-500 dark:text-yellow-400 w-5 h-5 shrink-0"></i></div>
                             <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_phys_title">Fizyczne i Pogodowe:</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_phys_desc">Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń).</span>
+                                <strong class="text-slate-800 dark:text-slate-200 block text-sm" data-i18n="trig_phys_title">Fizyczne i Pogodowe:</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="trig_phys_desc">Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń).</span>
                             </div>
                         </li>
                         <li class="flex gap-3">
-                            <div class="mt-1"><i data-lucide="brain-circuit" class="text-purple-400 w-5 h-5 shrink-0"></i></div>
+                            <div class="mt-1"><i data-lucide="brain-circuit" class="text-purple-500 dark:text-purple-400 w-5 h-5 shrink-0"></i></div>
                             <div>
-                                <strong class="text-slate-200 block text-sm" data-i18n="trig_stress_title">Stres i Mechanika:</strong>
-                                <span class="text-slate-400 text-sm" data-i18n="trig_stress_desc">Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).</span>
+                                <strong class="text-slate-800 dark:text-slate-200 block text-sm" data-i18n="trig_stress_title">Stres i Mechanika:</strong>
+                                <span class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="trig_stress_desc">Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).</span>
                             </div>
                         </li>
                     </ul>
@@ -722,6 +722,82 @@
         </div>
     </section>
 
+    <!-- TIPPING POINT SECTION -->
+    <section id="tipping-point" class="py-16 bg-amber-50 dark:bg-slate-900/50 border-t border-amber-100 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-[76rem] mx-auto px-4">
+            
+            <!-- Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white inline-flex items-center gap-3 justify-center">
+                    <div class="p-2 bg-amber-100 dark:bg-amber-900/40 rounded-lg text-amber-700 dark:text-amber-300">
+                        <i data-lucide="hourglass"></i>
+                    </div>
+                    <span data-i18n="tcs_adult_title">Dlaczego czasami objawy pojawiają się dopiero w dorosłości?</span>
+                </h2>
+            </div>
+
+            <!-- Text Content Grid (2 Columns) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-stretch">
+                <!-- Embriologia -->
+                <div class="h-full flex flex-col bg-white/60 dark:bg-slate-800/60 rounded-2xl p-8 border border-amber-100 dark:border-slate-700/50 shadow-sm">
+                    <h4 class="font-bold text-amber-800 dark:text-amber-300 mb-4 text-sm uppercase tracking-wide flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-200 dark:bg-amber-800 flex items-center justify-center text-xs">1</span>
+                        <span data-i18n="tcs_adult_embryo_title">Embriologia i Wyścig Wzrostu</span>
+                    </h4>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-4" data-i18n="tcs_adult_embryo_desc">
+                        To zjawisko nazywamy <strong>Ascensus Medullae</strong>. W życiu płodowym kręgosłup (kości) rośnie znacznie szybciej niż rdzeń kręgowy (nerwy). U zdrowego człowieka rdzeń "podciąga się" w górę kanału kręgowego.
+                    </p>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="tcs_adult_embryo_desc2">
+                        W TCS rdzeń jest "przywiązany" na dole. Zamiast swobodnie wędrować w górę, jest <strong>mechanicznie rozciągany</strong> (poddawany trakcji) w miarę jak dziecko rośnie. To jak naciąganie gumki recepturki – im wyższy wzrost, tym większe napięcie.
+                    </p>
+                </div>
+
+                <!-- Tipping Point -->
+                <div class="h-full flex flex-col bg-white/60 dark:bg-slate-800/60 rounded-2xl p-8 border border-amber-100 dark:border-slate-700/50 shadow-sm">
+                    <h4 class="font-bold text-amber-800 dark:text-amber-300 mb-4 text-sm uppercase tracking-wide flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-amber-200 dark:bg-amber-800 flex items-center justify-center text-xs">2</span>
+                        <span data-i18n="tcs_adult_tipping_title">Teoria "Punktu Krytycznego" (Tipping Point)</span>
+                    </h4>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-4 italic border-l-4 border-amber-300 dark:border-amber-700 pl-4" data-i18n="tcs_adult_question">
+                        "Dlaczego nie miałem objawów jako dziecko?"
+                    </p>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-3" data-i18n="tcs_adult_tipping_desc">
+                        Organizm ma niesamowite zdolności adaptacyjne, ale do czasu. Z wiekiem dzieją się trzy rzeczy, które zabierają "zapas luzu":
+                    </p>
+                    <ul class="space-y-2 text-slate-700 dark:text-slate-300 list-disc list-inside ml-2 mb-4">
+                        <li data-i18n="tcs_adult_list_1"><strong>Utrata elastyczności (Fibrosis):</strong> Tkanki, w tym nerwy i nić końcowa, sztywnieją i tracą zdolność do rozciągania.</li>
+                        <li data-i18n="tcs_adult_list_2"><strong>Kumulacja mikrourazów:</strong> Tysiące skłonów, upadków i ruchów przez lata sumują się, osłabiając tolerancję rdzenia.</li>
+                        <li data-i18n="tcs_adult_list_3"><strong>Zmiany w kręgosłupie:</strong> Dyskopatie czy zwyrodnienia dodatkowo uciskają lub naciągają już napięty rdzeń.</li>
+                    </ul>
+                    <div class="mt-auto p-4 bg-white dark:bg-slate-800 rounded-lg border border-amber-200 dark:border-slate-700 shadow-sm">
+                        <p class="text-slate-800 dark:text-slate-200 font-medium text-center" data-i18n="tcs_adult_summary">
+                            W pewnym momencie (często między 20. a 40. rokiem życia) suma tych czynników przekracza "Punkt Krytyczny". System nerwowy mówi "dość" i pojawia się kaskada objawów.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Section (Centered) -->
+            <div class="max-w-3xl mx-auto">
+                <div class="rounded-2xl overflow-hidden shadow-xl border border-amber-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+                    <!-- PL Images -->
+                    <div class="img-pl">
+                        <img src="img/growth_light_polish.webp" class="w-full h-auto block dark:hidden" alt="Wzrost kręgosłupa a rdzeń kręgowy">
+                        <img src="img/growth_dark_polish.webp" class="w-full h-auto hidden dark:block" alt="Wzrost kręgosłupa a rdzeń kręgowy ciemny">
+                    </div>
+                    <!-- EN Images -->
+                    <div class="img-en">
+                        <img src="img/growth_light_english.webp" class="w-full h-auto block dark:hidden" alt="Spine growth vs spinal cord">
+                        <img src="img/growth_dark_english.webp" class="w-full h-auto hidden dark:block" alt="Spine growth vs spinal cord dark">
+                    </div>
+                </div>
+                <p class="text-center text-xs text-slate-500 dark:text-slate-400 mt-3 italic" data-i18n="tcs_adult_img_desc">
+                    Wizualizacja Ascensus Medullae / Tipping Point
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- VAGUS NERVE SECTION -->
     <section id="vagus-nerve" class="py-16 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
@@ -742,7 +818,7 @@
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm mb-6">
                         <h3 class="font-bold text-slate-900 dark:text-white mb-3" data-i18n="vagus_mechanism_title">Jak Zakotwiczenie go uszkadza?</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="vagus_mechanism_desc">
-                            Gdy rdzeń jest zakotwiczony na dole, napięcie przenosi się w górę do pnia mózgu. To tam wychodzą korzenie nerwu błędnego. <strong>Mechaniczne pociąganie pnia mózgu drażni lub uciska nerw błędny</strong>, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane (sygnały sterujące) przestają płynąć.
+                            Gdy rdzeń jest zakotwiczony, napięcie przenosi się w górę, osłabiając mięśnie szyi i powodując niestabilność (CCI). Przemieszczające się kręgi uciskają lub drażnią nerw błędny, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane przestają płynąć.
                         </p>
                     </div>
 
@@ -1131,7 +1207,7 @@
                             <span data-i18n="mech_cci_title">Zaburzenie Mechaniki Mięśniowej i CCI</span>
                         </h3>
                         <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="mech_cci_desc">
-                            Trakcja rdzenia zaburza pracę mięśni przykręgosłupowych, które przestają stabilizować kręgosłup. Powoduje to nieprawidłową pracę połączenia czaszkowo-szyjnego i ucisk struktur nerwowych. Dlatego TCS często prowadzi do Niestabilności Czaszkowo-Szyjnej (CCI) – osłabione mięśnie nie chronią więzadeł, które z czasem się rozciągają. Co ważne: <strong>TCS może dawać objawy imitujące CCI</strong> (bóle głowy, zawroty) zanim jeszcze dojdzie do fizycznego uszkodzenia więzadeł.
+                            Trakcja rdzenia prowadzi do osłabienia mięśni przykręgosłupowych, co skutkuje wtórną Niestabilnością Czaszkowo-Szyjną (CCI). To właśnie niestabilność kręgów szyjnych bezpośrednio drażni nerw błędny. TCS działa tu jak 'kotwica', która uniemożliwia adaptację góry kręgosłupa do zachodzących zmian.
                         </p>
                     </div>
                 </div>
@@ -1443,7 +1519,7 @@
                 mech_microglia_title: "Rola Aktywacji Mikrogleju",
                 mech_microglia_desc: "Chroniczne drażnienie mechaniczne tkanki nerwowej jest odbierane przez komórki odpornościowe mózgu – mikroglej. Przechodzą one w stan ciągłej aktywacji (neuroinflammation), produkując cytokiny prozapalne. Klinicznie ten stan jest nieodróżnialny od ME/CFS (zespołu przewlekłego zmęczenia), dając objawy \"grypy, która nigdy nie mija\".",
                 mech_cci_title: "Zaburzenie Mechaniki Mięśniowej i CCI",
-                mech_cci_desc: "Trakcja rdzenia zaburza pracę mięśni przykręgosłupowych, które przestają stabilizować kręgosłup. Powoduje to nieprawidłową pracę połączenia czaszkowo-szyjnego i ucisk struktur nerwowych. Dlatego TCS często prowadzi do Niestabilności Czaszkowo-Szyjnej (CCI) – osłabione mięśnie nie chronią więzadeł, które z czasem się rozciągają. Co ważne: <strong>TCS może dawać objawy imitujące CCI</strong> (bóle głowy, zawroty) zanim jeszcze dojdzie do fizycznego uszkodzenia więzadeł.",
+                mech_cci_desc: "Trakcja rdzenia prowadzi do osłabienia mięśni przykręgosłupowych, co skutkuje wtórną Niestabilnością Czaszkowo-Szyjną (CCI). To właśnie niestabilność kręgów szyjnych bezpośrednio drażni nerw błędny. TCS działa tu jak 'kotwica', która uniemożliwia adaptację góry kręgosłupa do zachodzących zmian.",
                 mech_img_caption: "Ilustracja: Patomechanizm Zakotwiczenia Rdzenia.",
                 mech_vis_title: "Ukryte Zakotwiczenie (Occult TCS)",
                 mech_vis_desc: "Standardowe MRI w leżeniu nie pokazuje napięcia, które pojawia się w pionie. To prowadzi do wielu błędnych diagnoz.",
@@ -1469,11 +1545,25 @@
                 tcs_bs_swallow: "Problemy z połykaniem",
                 tcs_bs_vision: "Zaburzenia wzroku",
                 tcs_bs_dizzy: "Zawroty głowy",
+                // Tipping Point Section
+                tcs_adult_title: "Dlaczego czasami objawy pojawiają się dopiero w dorosłości?",
+                tcs_adult_embryo_title: "1. Embriologia i Wyścig Wzrostu",
+                tcs_adult_embryo_desc: "To zjawisko nazywamy <strong>Ascensus Medullae</strong>. W życiu płodowym kręgosłup (kości) rośnie znacznie szybciej niż rdzeń kręgowy (nerwy). U zdrowego człowieka rdzeń \"podciąga się\" w górę kanału kręgowego.",
+                tcs_adult_embryo_desc2: "W TCS rdzeń jest \"przywiązany\" na dole. Zamiast swobodnie wędrować w górę, jest <strong>mechanicznie rozciągany</strong> (poddawany trakcji) w miarę jak dziecko rośnie. To jak naciąganie gumki recepturki – im wyższy wzrost, tym większe napięcie.",
+                tcs_adult_tipping_title: "2. Teoria \"Punktu Krytycznego\" (Tipping Point)",
+                tcs_adult_question: "\"Dlaczego nie miałem objawów jako dziecko?\"",
+                tcs_adult_tipping_desc: "Organizm ma niesamowite zdolności adaptacyjne, ale do czasu. Z wiekiem dzieją się trzy rzeczy, które zabierają \"zapas luzu\":",
+                tcs_adult_list_1: "<strong>Utrata elastyczności (Fibrosis):</strong> Tkanki, w tym nerwy i nić końcowa, sztywnieją i tracą zdolność do rozciągania.",
+                tcs_adult_list_2: "<strong>Kumulacja mikrourazów:</strong> Tysiące skłonów, upadków i ruchów przez lata sumują się, osłabiając tolerancję rdzenia.",
+                tcs_adult_list_3: "<strong>Zmiany w kręgosłupie:</strong> Dyskopatie czy zwyrodnienia dodatkowo uciskają lub naciągają już napięty rdzeń.",
+                tcs_adult_summary: "W pewnym momencie (często między 20. a 40. rokiem życia) suma tych czynników przekracza \"Punkt Krytyczny\". System nerwowy mówi \"dość\" i pojawia się kaskada objawów.",
+                tcs_adult_img_placeholder: "Miejsce na grafikę",
+                tcs_adult_img_desc: "Wizualizacja Ascensus Medullae / Tipping Point",
                 // Vagus Nerve Section
                 vagus_title: "Nerw Błędny: Ofiara Napięcia",
                 vagus_desc_1: "<strong>Nerw Błędny (Vagus Nerve)</strong> to najważniejszy nerw układu przywspółczulnego (\"odpoczywaj i traw\"). Biegnie od pnia mózgu, przez szyję, klatkę piersiową, aż do jelit. To \"autostrada informacyjna\" łącząca mózg z ciałem.",
                 vagus_mechanism_title: "Jak Zakotwiczenie go uszkadza?",
-                vagus_mechanism_desc: "Gdy rdzeń jest zakotwiczony na dole, napięcie przenosi się w górę do pnia mózgu. To tam wychodzą korzenie nerwu błędnego. <strong>Mechaniczne pociąganie pnia mózgu drażni lub uciska nerw błędny</strong>, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane (sygnały sterujące) przestają płynąć.",
+                vagus_mechanism_desc: "Gdy rdzeń jest zakotwiczony, napięcie przenosi się w górę, osłabiając mięśnie szyi i powodując niestabilność (CCI). Przemieszczające się kręgi uciskają lub drażnią nerw błędny, zakłócając jego sygnał. To jak deptanie po kablu od internetu – dane przestają płynąć.",
                 vagus_consequences_title: "Konsekwencje uszkodzenia:",
                 vagus_cons_heart_title: "Serce (POTS):",
                 vagus_cons_heart_desc: "Nerw błędny powinien zwalniać serce. Gdy nie działa, serce bije za szybko (tachykardia) przy wstawaniu.",
@@ -1660,7 +1750,7 @@
                 mech_microglia_title: "Role of Microglial Activation",
                 mech_microglia_desc: "Chronic mechanical irritation of neural tissue is detected by the brain's immune cells – microglia. They enter a state of continuous activation (neuroinflammation), producing pro-inflammatory cytokines. Clinically, this state is indistinguishable from ME/CFS (Chronic Fatigue Syndrome), causing symptoms of \"flu that never goes away\".",
                 mech_cci_title: "Muscle Dysfunction & CCI Connection",
-                mech_cci_desc: "Cord traction disrupts the function of paraspinal muscles, causing them to fail in stabilizing the spine. This leads to improper function of the craniocervical junction and compression of neural structures. This is why TCS often co-occurs with Craniocervical Instability (CCI) – weakened muscles fail to protect ligaments, which stretch over time. Importantly: <strong>TCS can mimic CCI symptoms</strong> (headaches, dizziness) even before actual ligament damage occurs.",
+                mech_cci_desc: "Cord traction weakens paraspinal muscles, leading to secondary Craniocervical Instability (CCI). It is this cervical instability that directly irritates the vagus nerve. TCS acts as an 'anchor' here, preventing the upper spine from adapting to these changes.",
                 mech_img_caption: "Illustration: Pathomechanism of Tethered Cord Syndrome.",
                 mech_vis_title: "Occult Tethered Cord (Occult TCS)",
                 mech_vis_desc: "Standard supine MRI does not show the tension that appears when upright. This leads to many misdiagnoses.",
@@ -1686,11 +1776,25 @@
                 tcs_bs_swallow: "Swallowing issues",
                 tcs_bs_vision: "Vision disturbances",
                 tcs_bs_dizzy: "Dizziness / Vertigo",
+                // Tipping Point Section
+                tcs_adult_title: "Why do symptoms sometimes appear only in adulthood?",
+                tcs_adult_embryo_title: "1. Embryology and the Growth Race",
+                tcs_adult_embryo_desc: "This phenomenon is called <strong>Ascensus Medullae</strong>. In fetal life, the spine (bones) grows much faster than the spinal cord (nerves). In a healthy person, the cord \"pulls up\" the spinal canal.",
+                tcs_adult_embryo_desc2: "In TCS, the cord is \"tied\" at the bottom. Instead of migrating freely upwards, it is <strong>mechanically stretched</strong> (subjected to traction) as the child grows. It's like stretching a rubber band – the taller you grow, the greater the tension.",
+                tcs_adult_tipping_title: "2. The \"Tipping Point\" Theory",
+                tcs_adult_question: "\"Why didn't I have symptoms as a child?\"",
+                tcs_adult_tipping_desc: "The body has amazing adaptive capabilities, but only up to a point. With age, three things happen that take away the \"slack reserve\":",
+                tcs_adult_list_1: "<strong>Loss of Elasticity (Fibrosis):</strong> Tissues, including nerves and the filum terminale, stiffen and lose their ability to stretch.",
+                tcs_adult_list_2: "<strong>Accumulation of Microtrauma:</strong> Thousands of bends, falls, and movements over the years add up, weakening the cord's tolerance.",
+                tcs_adult_list_3: "<strong>Spinal Changes:</strong> Disc herniations or degeneration further compress or stretch the already tensioned cord.",
+                tcs_adult_summary: "At some point (often between ages 20 and 40), the sum of these factors crosses the \"Tipping Point\". The nervous system says \"enough\" and a cascade of symptoms appears.",
+                tcs_adult_img_placeholder: "Image Placeholder",
+                tcs_adult_img_desc: "Visualization of Ascensus Medullae / Tipping Point",
                 // Vagus Nerve Section
                 vagus_title: "Vagus Nerve: Victim of Tension",
                 vagus_desc_1: "The <strong>Vagus Nerve</strong> is the most important nerve of the parasympathetic system (\"rest and digest\"). It runs from the brainstem, through the neck and chest, down to the intestines. It is the \"information superhighway\" connecting the brain to the body.",
                 vagus_mechanism_title: "How does Tethered Cord damage it?",
-                vagus_mechanism_desc: "When the spinal cord is tethered at the bottom, tension is transferred up to the brainstem. This is where the vagus nerve roots exit. <strong>Mechanical traction on the brainstem irritates or compresses the vagus nerve</strong>, disrupting its signal. It's like stepping on an internet cable – control signals stop flowing.",
+                vagus_mechanism_desc: "When the cord is tethered, tension transmits upwards, weakening neck muscles and causing instability (CCI). The shifting vertebrae compress or irritate the vagus nerve, disrupting its signal. It's like stepping on an internet cable – data stops flowing.",
                 vagus_consequences_title: "Consequences of damage:",
                 vagus_cons_heart_title: "Heart (POTS):",
                 vagus_cons_heart_desc: "The vagus nerve should slow the heart down. When it fails, the heart beats too fast (tachycardia) upon standing.",
