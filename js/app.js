@@ -1058,3 +1058,28 @@ if (navContainer) {
 // Initial call
 updateActiveNav();
 
+// --- FADE IN ON SCROLL ---
+// Add class to body to indicate JS is ready for animations
+document.body.classList.add('js-loaded');
+
+const observerOptions = {
+  root: null,
+  rootMargin: '0px 0px -100px 0px', // Element musi wejść 100px w głąb ekranu
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target); // Stop observing once visible
+    }
+  });
+}, observerOptions);
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+    });
+});
+
