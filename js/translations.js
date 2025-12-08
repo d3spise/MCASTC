@@ -1,5 +1,10 @@
 const translations = {
     pl: {
+        a11y_title: "Dostępność",
+        a11y_contrast: "Wysoki Kontrast",
+        a11y_font: "Powiększ Tekst",
+        a11y_dyslexia: "Czcionka dla Dyslektyków",
+        a11y_reset: "Resetuj ustawienia",
         btn_tiptoes: "Na palcach",
         tiptoes_title: "Test Palców vs Pięt",
         tiptoes_desc: "Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.",
@@ -243,6 +248,11 @@ const translations = {
         btn_tiptoes: "Tiptoes (Relief)",
         tiptoes_title: "Tiptoes vs. Heels Test",
         tiptoes_desc: "Walking on tiptoes is a common, unconscious defense mechanism (especially in children). Lifting the heel <strong>shortens the path of the sciatic nerve</strong>, providing instant slack. Standing on heels (dorsiflexion) acts like a lever that brutally stretches the entire nervous system.",
+        a11y_title: "Accessibility",
+        a11y_contrast: "High Contrast",
+        a11y_font: "Increase Text Size",
+        a11y_dyslexia: "Dyslexia Friendly Font",
+        a11y_reset: "Reset Settings",
         paradox_title: "Paradox: Standing vs Lying Flat",
         paradox_desc: "Why is standing often better than lying flat? <strong>When standing</strong>, you maintain the natural spinal curve (lordosis), creating slack for the cord. <strong>When lying flat</strong>, the weight of your legs 'irons out' your back against the floor, straightening the spine. This physically lengthens the spinal canal, stretching the tethered cord.",
         nav_mechanism: "MCAS",

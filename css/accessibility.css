@@ -1,0 +1,141 @@
+/* Accessibility Styles */
+
+/* High Contrast Mode */
+.high-contrast {
+    --bg-primary: #000000;
+    --text-primary: #ffffff;
+    --accent-color: #ffff00;
+    --border-color: #ffffff;
+}
+
+.high-contrast body,
+.high-contrast section,
+.high-contrast header,
+.high-contrast nav,
+.high-contrast footer,
+.high-contrast div {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.high-contrast a {
+    color: var(--accent-color) !important;
+    text-decoration: underline !important;
+}
+
+.high-contrast button {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffffff !important;
+}
+
+.high-contrast .bg-white,
+.high-contrast .bg-slate-50,
+.high-contrast .bg-slate-900,
+.high-contrast .bg-slate-950 {
+    background-color: #000000 !important;
+}
+
+/* Large Font Mode */
+html.large-font {
+    font-size: 125% !important;
+}
+
+/* Fix for High Contrast Battery */
+.high-contrast #bat-healthy {
+    background-color: #22c55e !important; /* Green-500 */
+    border: 1px solid #ffffff !important;
+}
+
+.high-contrast #bat-mecfs {
+    background-color: #ef4444 !important; /* Red-500 */
+    border: 1px solid #ffffff !important;
+}
+
+/* Fix for Battery Overlay in High Contrast */
+.high-contrast .battery-overlay {
+    background-color: transparent !important;
+}
+
+/* Dyslexia Friendly Font */
+.dyslexia-font {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', sans-serif !important;
+    line-height: 1.8 !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* Accessibility Panel */
+#accessibility-panel {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+    display: none;
+}
+
+.dark #accessibility-panel {
+    background: #0f172a;
+    border-color: #334155;
+    color: white;
+}
+
+#accessibility-panel.is-open {
+    display: block;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.a11y-btn {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #334155;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+}
+
+.dark .a11y-btn {
+    background: #1e293b;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.a11y-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.dark .a11y-btn:hover {
+    background: #334155;
+    border-color: #475569;
+}
+
+.a11y-btn.active {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+.dark .a11y-btn.active {
+    background: #1e3a8a;
+    border-color: #3b82f6;
+    color: #93c5fd;
+}
