@@ -2030,15 +2030,25 @@
                 scene.classList.add('anim-explode');
                 reactionLabel.style.opacity = '1';
                 reactionLabel.style.transform = 'translateY(0)';
-                mastCell.querySelectorAll('.granule').forEach(g => {
+                
+                // ZMIANA: Stopniowa degranulacja (Gradual Degranulation)
+                mastCell.querySelectorAll('.granule').forEach((g, i) => {
                     const angle = Math.random() * Math.PI * 2;
                     const force = 160 + Math.random() * 200;
-                    g.style.transition = `all ${0.5+Math.random()*0.5}s cubic-bezier(0.12, 0.96, 0.58, 1.05)`;
-                    g.style.left = `calc(50% + ${Math.cos(angle)*force}px)`;
-                    g.style.top = `calc(50% + ${Math.sin(angle)*force}px)`;
-                    g.style.opacity = '0';
-                    g.style.transform = 'translate(-50%, -50%) scale(2.5)';
+                    
+                    // Każda granulka "wystrzeliwuje" w innym momencie (od 0 do 2500ms)
+                    // Symuluje to kaskadowe uwalnianie mediatorów, a nie jednorazowy wybuch.
+                    const delay = Math.random() * 2500; 
+
+                    setTimeout(() => {
+                        g.style.transition = `all ${0.8+Math.random()*0.6}s cubic-bezier(0.12, 0.96, 0.58, 1.05)`;
+                        g.style.left = `calc(50% + ${Math.cos(angle)*force}px)`;
+                        g.style.top = `calc(50% + ${Math.sin(angle)*force}px)`;
+                        g.style.opacity = '0';
+                        g.style.transform = 'translate(-50%, -50%) scale(2.0)'; // Nieco mniejsza skala końcowa
+                    }, delay);
                 });
+
                 setTimeout(() => {
                     // ZMIANA: Tło po wybuchu (jasny fiolet)
                     scene.style.background = 'radial-gradient(circle at center, #faf5ff 0%, #f3e8ff 100%)';
