@@ -254,6 +254,7 @@ const translations = {
         bib_ref8_desc: "Łączy neuropatyczny ból (pieczenie skóry, rwący ból kończyn) z dysautonomią. Sugeruje, że mediatory zapalne niszczą drobne włókna nerwowe, co jest częste przy współwystępowaniu MCAS.",
         bib_ref9_desc: "Przełomowe badanie (2024) wykazujące współwystępowanie TCS i CCI.",
         bib_ref9_fig: "Zobacz Ryc. 2: Diagram Nakładania się Objawów (TCS/CCI)",
+        footer_disclaimer: "Uwaga: Treści zawarte na tej stronie mają charakter wyłącznie edukacyjny i informacyjny. Nie stanowią porady medycznej, diagnozy ani planu leczenia. W przypadku problemów zdrowotnych należy skonsultować się z lekarzem.",
     },
     en: {
         btn_tiptoes: "Tiptoes (Relief)",
@@ -509,5 +510,6 @@ const translations = {
         bib_ref8_desc: "Links neuropathic pain (burning skin, tearing limb pain) with dysautonomia. Suggests that inflammatory mediators destroy small nerve fibers, which is common in MCAS comorbidity.",
         bib_ref9_desc: "Groundbreaking study (2024) demonstrating the co-occurrence of TCS and CCI.",
         bib_ref9_fig: "See Fig. 2: Symptom Overlap Diagram (TCS/CCI)",
+        footer_disclaimer: "Disclaimer: The content on this website is for educational and informational purposes only. It does not constitute medical advice, diagnosis, or treatment plan. Always consult with a qualified healthcare provider for any medical concerns.",
     }
 };
