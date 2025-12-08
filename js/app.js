@@ -458,12 +458,10 @@ Be specific.`;
       lucide.createIcons(); // Odśwież ikony w nowym HTML
     }
 
-    // Formatowanie tekstu na HTML (markdown bold i newlines)
-    const formattedText = text
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/\n/g, "<br>");
+    // Formatowanie tekstu na HTML (używając biblioteki marked)
+    const formattedText = marked.parse(text);
 
-    resultDiv.innerHTML = `<div class="p-5 bg-white dark:bg-slate-700/30 rounded-xl border border-slate-200 dark:border-slate-600 leading-relaxed shadow-sm">${formattedText}</div>`;
+    resultDiv.innerHTML = `<div class="p-5 bg-white dark:bg-slate-700/30 rounded-xl border border-slate-200 dark:border-slate-600 leading-relaxed shadow-sm prose dark:prose-invert max-w-none prose-sm">${formattedText}</div>`;
   } catch (error) {
     loadingDiv.classList.add("hidden");
     console.error("Gemini Error:", error);
