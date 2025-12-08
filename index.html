@@ -437,7 +437,7 @@
 
                 <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 p-8 shadow-sm relative overflow-hidden max-w-4xl mx-auto">
                     
-                    <div class="flex justify-center mb-2 relative z-20">
+                    <div class="flex justify-center pb-6 relative z-20">
                         <div class="bg-slate-50 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 inline-flex shadow-sm">
                             <button onclick="setGuardMode('healthy')" id="btn-healthy" class="px-6 py-2 rounded-lg text-sm font-bold transition-all bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
                                 <span data-i18n="btn_mode_healthy">Zdrowy Człowiek</span>
@@ -1187,6 +1187,13 @@
                         <p class="text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="mech_muscle_desc">
                             Ciało próbuje walczyć z napięciem rdzenia, spinając mięśnie pleców i karku ('Gorset Obronny'). Po latach walki mięśnie te ulegają wyczerpaniu i atrofii. Tracą funkcję stabilizacyjną, co jest kluczowym momentem dla rozwoju patologii.
                         </p>
+                        
+                        <!-- Ostrzeżenie o fizjoterapii -->
+                        <div class="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-lg">
+                            <p class="text-sm text-red-800 dark:text-red-200 leading-relaxed" data-i18n="mech_muscle_warning">
+                                <strong>Dlaczego fizjoterapia wzmacniająca często szkodzi?</strong><br>W przypadku Tethered Cord, mięśnie są napięte nie z powodu słabości, ale jako mechanizm obronny chroniący rdzeń przed naciągnięciem. Tradycyjne ćwiczenia wzmacniające (siłowe) zwiększają napięcie w systemie, co pociąga rdzeń jeszcze mocniej. To prowadzi do pogorszenia objawów neurologicznych i bólowych, zamiast poprawy. Fizjoterapia powinna skupiać się na rozluźnianiu i delikatnej mobilizacji, a nie na siłowym wzmacnianiu 'gorsetu', który już jest przeciążony walką z trakcją rdzenia.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Kafel 2: Wtórne CCI -->
@@ -1244,7 +1251,7 @@
 
             <div class="text-center mb-16 relative z-10">
                 <span class="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-3" data-i18n="conn_tag">Triada Chorobowa</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6" data-i18n="conn_title">Błędne Koło: Oś Neuro-Immunologiczna</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6" data-i18n="conn_title">Ciąg Przyczynowo-Skutkowy: TCS → CCI → ME/CFS</h2>
                 <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="conn_desc">
                     To nie są trzy oddzielne choroby. To jeden ciąg przyczynowo-skutkowy, w którym napięcie rdzenia (TC) prowadzi do niewydolności mięśni i niestabilności szyjnej (CCI), co poprzez ucisk pnia mózgu wywołuje stan hibernacji (ME/CFS).
                 </p>
@@ -1516,6 +1523,7 @@
                 mech_pat_title: "5. Sekcja Patomechanizmu: Połączenie TCS i ME/CFS",
                 mech_muscle_title: "Dysfunkcja Mięśniowa (Muscle Splinting)",
                 mech_muscle_desc: "Ciało próbuje walczyć z napięciem rdzenia, spinając mięśnie pleców i karku ('Gorset Obronny'). Po latach walki mięśnie te ulegają wyczerpaniu i atrofii. Tracą funkcję stabilizacyjną, co jest kluczowym momentem dla rozwoju patologii.",
+                mech_muscle_warning: "<strong>Dlaczego fizjoterapia wzmacniająca często szkodzi?</strong><br>W przypadku Tethered Cord, mięśnie są napięte nie z powodu słabości, ale jako mechanizm obronny chroniący rdzeń przed naciągnięciem. Tradycyjne ćwiczenia wzmacniające (siłowe) zwiększają napięcie w systemie, co pociąga rdzeń jeszcze mocniej. To prowadzi do pogorszenia objawów neurologicznych i bólowych, zamiast poprawy. Fizjoterapia powinna skupiać się na rozluźnianiu i delikatnej mobilizacji, a nie na siłowym wzmacnianiu 'gorsetu', który już jest przeciążony walką z trakcją rdzenia.",
                 mech_cci_title: "Wtórne CCI (Niestabilność Czaszkowo-Szyjna)",
                 mech_cci_desc: "Gdy mięśnie karku puszczają, kręgi szyjne zaczynają się przesuwać ('ślizgać') względem siebie. Zakotwiczenie rdzenia od dołu uniemożliwia adaptację, sztywno trzymając układ nerwowy, podczas gdy kości ruszają się zbyt mocno.",
                 mech_brainstem_title: "Kompresja Pnia Mózgu i ME/CFS",
@@ -1599,7 +1607,7 @@
                 relief_title: "Pozycja Ulgowa (Baza)",
                 relief_desc: "<strong>Leżenie z ugiętymi nogami</strong> (podparte poduszką) to jedyna pozycja, która maksymalnie luzuje nerwy. Pamiętaj jednak: \"Luz\" nie oznacza całkowitego braku objawów, lecz powrót do stabilnego poziomu bazowego (ok. 30% napięcia).",
                 tcs_hint: "<strong>Wskazówka:</strong> Obserwuj czerwoną linię rdzenia przy przycisku \"Test Wyprostu\". To wyjaśnia, dlaczego długie stanie w \"poprawnej\" pozycji może boleć bardziej niż lekkie zgarbienie.",
-                conn_title: "Błędne Koło: Oś Neuro-Immunologiczna",
+                conn_title: "Ciąg Przyczynowo-Skutkowy: TCS → CCI → ME/CFS",
                 conn_desc: "To nie są trzy oddzielne choroby. To jeden ciąg przyczynowo-skutkowy, w którym napięcie rdzenia (TC) prowadzi do niewydolności mięśni i niestabilności szyjnej (CCI), co poprzez ucisk pnia mózgu wywołuje stan hibernacji (ME/CFS).",
                 conn_tag: "Triada Chorobowa",
                 conn_step1_title: "Uraz Mechaniczny (TC)",
@@ -1747,6 +1755,7 @@
                 mech_pat_title: "5. Pathomechanism Section: The TCS & ME/CFS Connection",
                 mech_muscle_title: "Muscle Dysfunction (Muscle Splinting)",
                 mech_muscle_desc: "The body tries to fight cord tension by tensing back and neck muscles ('Protective Corset'). After years of fighting, these muscles become exhausted and atrophy. They lose their stabilizing function, which is a key moment for pathology development.",
+                mech_muscle_warning: "<strong>Why does strengthening physiotherapy often cause harm?</strong><br>In Tethered Cord, muscles are tight not due to weakness, but as a protective mechanism guarding the cord against stretching. Traditional strengthening exercises increase tension in the system, pulling the cord even tighter. This leads to worsening neurological symptoms and pain instead of improvement. Physiotherapy should focus on relaxation and gentle mobilization, not on forcefully strengthening a 'corset' that is already overburdened fighting cord traction.",
                 mech_cci_title: "Secondary CCI (Craniocervical Instability)",
                 mech_cci_desc: "When neck muscles give way, cervical vertebrae begin to shift ('slide') relative to each other. Tethering of the cord from below prevents adaptation, rigidly holding the nervous system while bones move too much.",
                 mech_brainstem_title: "Brainstem Compression & ME/CFS",
@@ -1830,7 +1839,7 @@
                 relief_title: "Relief Position (Base)",
                 relief_desc: "<strong>Lying with bent knees</strong> (supported by a pillow) is the only position that maximally relaxes the nerves. Remember: \"Relief\" doesn't mean zero symptoms, but a return to a stable baseline level (approx. 30% tension).",
                 tcs_hint: "<strong>Tip:</strong> Watch the red spinal cord line when clicking \"Extension Test\". This explains why standing in a \"correct\" posture might hurt more than slouching slightly.",
-                conn_title: "The Vicious Cycle: Neuro-Immune Axis",
+                conn_title: "Causal Chain: TCS → CCI → ME/CFS",
                 conn_desc: "These are not three separate diseases. It is a single causal chain where spinal cord tension (TC) leads to muscle failure and cervical instability (CCI), which compresses the brainstem and triggers metabolic hibernation (ME/CFS).",
                 conn_tag: "The Disease Triad",
                 conn_step1_title: "Mechanical Injury (TC)",
