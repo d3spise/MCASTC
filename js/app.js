@@ -958,3 +958,87 @@ setSeverity("moderate");
 animateStick();
 initGranules();
 setPose("chair");
+
+// Back to Top Button Logic
+const btnBackToTop = document.getElementById("btn-back-to-top");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    btnBackToTop.classList.remove("opacity-0", "translate-y-10", "pointer-events-none");
+  } else {
+    btnBackToTop.classList.add("opacity-0", "translate-y-10", "pointer-events-none");
+  }
+});
+
+btnBackToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+// Bottom Navigation Logic (Scroll Spy & Progress)
+const navItems = document.querySelectorAll(".nav-item");
+const sections = [
+  "mechanizm",
+  "tethered-cord-def",
+  "tethered-cord",
+  "mecfs-def",
+  "connection",
+  "objawy",
+  "diet-assistant",
+  "bibliografia",
+];
+const progressBar = document.getElementById("scroll-progress-bar");
+
+function updateActiveNav() {
+  let currentSection = "";
+
+  // 1. Determine current section
+  sections.forEach((sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      // If section top is within the upper half of the viewport
+      if (rect.top <= window.innerHeight / 2) {
+        currentSection = sectionId;
+      }
+    }
+  });
+
+  // 2. Update Nav Items & Find Active Item
+  let activeItem = null;
+  navItems.forEach((item) => {
+    item.classList.remove("text-indigo-600", "dark:text-indigo-400");
+    item.classList.add("text-slate-500");
+    
+    if (item.getAttribute("data-target") === currentSection) {
+      item.classList.remove("text-slate-500");
+      item.classList.add("text-indigo-600", "dark:text-indigo-400");
+      activeItem = item;
+    }
+  });
+
+  // 3. Update Progress Bar (Snap to Active Section)
+  if (progressBar) {
+    if (activeItem) {
+      const navRect = document.getElementById("bottom-nav").getBoundingClientRect();
+      const itemRect = activeItem.getBoundingClientRect();
+      // Calculate width to reach the center of the active item
+      const width = (itemRect.left - navRect.left) + (itemRect.width / 2);
+      progressBar.style.width = `${width}px`;
+    } else {
+      progressBar.style.width = "0px";
+    }
+  }
+}
+
+window.addEventListener("scroll", updateActiveNav);
+// Update on horizontal scroll of the nav container as well
+const navContainer = document.querySelector("#bottom-nav .overflow-x-auto");
+if (navContainer) {
+  navContainer.addEventListener("scroll", updateActiveNav);
+}
+// Initial call
+updateActiveNav();
+

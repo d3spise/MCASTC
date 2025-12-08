@@ -78,6 +78,52 @@
 
 
     <!-- Mechanizm z Zaawansowaną Animacją -->
+    <!-- Spis Treści -->
+    <section id="toc" class="py-8 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <i data-lucide="list" class="w-5 h-5 text-slate-500"></i>
+                    <span data-i18n="toc_title">Spis Treści</span>
+                </h2>
+                <nav class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+                    <a href="#mechanizm" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="dna" class="w-4 h-4 text-purple-500"></i>
+                        <span data-i18n="toc_mcas">1. MCAS</span>
+                    </a>
+                    <a href="#tethered-cord-def" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="anchor" class="w-4 h-4 text-yellow-500"></i>
+                        <span data-i18n="toc_tcs_def">2. Zakotwiczenie Rdzenia (Definicja)</span>
+                    </a>
+                    <a href="#tethered-cord" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="activity" class="w-4 h-4 text-orange-500"></i>
+                        <span data-i18n="toc_tcs_sim">3. Symulacja TCS</span>
+                    </a>
+                    <a href="#mecfs-def" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="battery-warning" class="w-4 h-4 text-red-500"></i>
+                        <span data-i18n="toc_mecfs">4. ME/CFS</span>
+                    </a>
+                    <a href="#connection" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="refresh-cw" class="w-4 h-4 text-blue-500"></i>
+                        <span data-i18n="toc_connection">5. Ciąg Przyczynowo-Skutkowy</span>
+                    </a>
+                    <a href="#objawy" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="thermometer" class="w-4 h-4 text-pink-500"></i>
+                        <span data-i18n="toc_symptoms">6. Objawy</span>
+                    </a>
+                    <a href="#diet-assistant" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="chef-hat" class="w-4 h-4 text-green-500"></i>
+                        <span data-i18n="toc_diet">Asystent Diety</span>
+                    </a>
+                    <a href="#bibliografia" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors">
+                        <i data-lucide="book-open" class="w-4 h-4 text-slate-500"></i>
+                        <span data-i18n="toc_bib">Bibliografia</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
     <section id="mechanizm" class="py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
             
@@ -628,7 +674,7 @@
         </div>
     </section>
 
-    <section id="mecfs-def" class="py-16 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <section id="mecfs-def" class="py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
             
             <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -870,7 +916,7 @@
     </section>
 
     <!-- NOWA SEKCJA: Błędne Koło (Connecting the dots) -->
-    <section id="connection" class="py-20 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300">
+    <section id="connection" class="py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 relative">
             <!-- Dekoracyjne tło -->
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-gradient-to-r from-blue-100/20 via-purple-100/20 to-pink-100/20 blur-3xl pointer-events-none"></div>
@@ -1182,7 +1228,7 @@
 
 
     <!-- MCAS Diet Assistant -->
-    <section id="diet-assistant" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <section id="diet-assistant" class="py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-10">
                 <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-3">
@@ -1226,7 +1272,7 @@
         </div>
     </section>
 
-    <section id="bibliografia" class="py-12 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <section id="bibliografia" class="py-12 bg-slate-100 dark:bg-slate-950 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4">
             <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
                 <i data-lucide="book-open" class="w-5 h-5 text-slate-500"></i>
@@ -1396,6 +1442,54 @@
             <span data-i18n="a11y_reset">Resetuj ustawienia</span>
         </button>
     </div>
+
+    <!-- Fixed Bottom Navigation -->
+    <nav id="bottom-nav" class="fixed bottom-0 left-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur border-t border-slate-200 dark:border-slate-800 z-50 transition-transform duration-300 transform translate-y-0">
+        <!-- Progress Line -->
+        <div class="absolute top-0 left-0 h-1 bg-indigo-500 transition-all duration-300" id="scroll-progress-bar" style="width: 0%"></div>
+        
+        <div class="max-w-7xl mx-auto px-2 overflow-x-auto no-scrollbar">
+            <div class="flex items-center justify-between md:justify-center gap-1 md:gap-8 h-16 min-w-max">
+                <a href="#mechanizm" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="mechanizm">
+                    <i data-lucide="dna" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_mcas">MCAS</span>
+                </a>
+                <a href="#tethered-cord-def" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="tethered-cord-def">
+                    <i data-lucide="anchor" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_tcs">TCS</span>
+                </a>
+                <a href="#tethered-cord" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="tethered-cord">
+                    <i data-lucide="activity" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_sim">Symulacja</span>
+                </a>
+                <a href="#mecfs-def" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="mecfs-def">
+                    <i data-lucide="battery-warning" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_mecfs">ME/CFS</span>
+                </a>
+                <a href="#connection" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="connection">
+                    <i data-lucide="refresh-cw" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_conn">Triada</span>
+                </a>
+                <a href="#objawy" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="objawy">
+                    <i data-lucide="thermometer" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_sym">Objawy</span>
+                </a>
+                <a href="#diet-assistant" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="diet-assistant">
+                    <i data-lucide="chef-hat" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_diet">Dieta</span>
+                </a>
+                <a href="#bibliografia" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="bibliografia">
+                    <i data-lucide="book-open" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_bib">Biblio</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button id="btn-back-to-top" class="fixed bottom-20 right-6 z-40 p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 translate-y-10 pointer-events-none" aria-label="Back to top">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/translations.js"></script>
