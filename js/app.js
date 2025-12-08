@@ -389,6 +389,9 @@ Be specific.`;
     });
 
     if (!response.ok) {
+      if (response.status === 429) {
+        throw new Error("RATE_LIMIT");
+      }
       throw new Error(`Server error: ${response.status}`);
     }
 
@@ -465,7 +468,20 @@ Be specific.`;
   } catch (error) {
     loadingDiv.classList.add("hidden");
     console.error("Gemini Error:", error);
-    resultDiv.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+
+    let userMessage = `Error: ${error.message}`;
+    if (
+      error.message === "RATE_LIMIT" ||
+      error.message.includes("429") ||
+      error.message.toLowerCase().includes("quota")
+    ) {
+      userMessage =
+        currentLang === "pl"
+          ? "⚠️ Wyczerpano dzienny limit zapytań do AI. Spróbuj jutro."
+          : "⚠️ Daily AI request limit reached. Please try again tomorrow.";
+    }
+
+    resultDiv.innerHTML = `<p class="text-red-500 font-bold">${userMessage}</p>`;
   }
 }
 
