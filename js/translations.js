@@ -1,6 +1,6 @@
 const translations = {
     pl: {
-        btn_tiptoes: "Na palcach", // Nazwa przycisku
+        btn_tiptoes: "Na palcach",
         tiptoes_title: "Test Palców vs Pięt",
         tiptoes_desc: "Chodzenie na palcach to częsty, nieświadomy mechanizm obronny (zwłaszcza u dzieci). Uniesienie pięty <strong>skraca drogę nerwu kulszowego</strong>, dając natychmiastową ulgę. Z kolei stanie na piętach (zadzieranie palców) działa jak dźwignia, która brutalnie naciąga cały układ nerwowy.",
         paradox_title: "Paradoks: Stanie vs Leżenie",
@@ -52,7 +52,6 @@ const translations = {
         tcs_bs_swallow: "Problemy z połykaniem",
         tcs_bs_vision: "Zaburzenia wzroku",
         tcs_bs_dizzy: "Zawroty głowy",
-        // Tipping Point Section
         tcs_adult_title: "Dlaczego czasami objawy pojawiają się dopiero w dorosłości?",
         tcs_adult_embryo_title: "1. Embriologia i Wyścig Wzrostu",
         tcs_adult_embryo_desc: "To zjawisko nazywamy <strong>Ascensus Medullae</strong>. W życiu płodowym kręgosłup (kości) rośnie znacznie szybciej niż rdzeń kręgowy (nerwy). U zdrowego człowieka rdzeń \"podciąga się\" w górę kanału kręgowego.",
@@ -66,7 +65,6 @@ const translations = {
         tcs_adult_summary: "W pewnym momencie (często między 20. a 40. rokiem życia) suma tych czynników przekracza \"Punkt Krytyczny\". System nerwowy mówi \"dość\" i pojawia się kaskada objawów.",
         tcs_adult_img_placeholder: "Miejsce na grafikę",
         tcs_adult_img_desc: "Wizualizacja Ascensus Medullae / Tipping Point",
-        // Vagus Nerve Section
         vagus_title: "Nerw Błędny: Ofiara Napięcia",
         vagus_desc_1: "<strong>Nerw Błędny (Vagus Nerve)</strong> to najważniejszy nerw układu przywspółczulnego (\"odpoczywaj i traw\"). Biegnie od pnia mózgu, przez szyję, klatkę piersiową, aż do jelit. To \"autostrada informacyjna\" łącząca mózg z ciałem.",
         vagus_mechanism_title: "Jak Zakotwiczenie go uszkadza?",
@@ -159,25 +157,20 @@ const translations = {
         mech_prostaglandins: "<strong>Prostaglandyny (PGD2):</strong> Nagłe zaczerwienienie (flushing), bóle brzucha.",
         mech_leukotrienes: "<strong>Leukotrieny:</strong> Skurcz oskrzeli, duszności, astma.",
         mech_heparin: "<strong>Heparyna:</strong> Łatwe siniaczenie, problemy z krzepnięciem.",
-        // Sekcja Analogia
         tag_analogy: "Prosta Analogia",
         analogy_title: "Twój Ochroniarz Zwariował",
         analogy_desc: "Zanim wejdziemy w medyczne szczegóły, zrozum istotę problemu. Wyobraź sobie, że Twój układ odpornościowy (komórki tuczne) to <strong>Ochroniarz</strong>, który pilnuje wejścia do Twojego ciała.",
         btn_mode_healthy: "Zdrowy Człowiek",
         btn_mode_mcas: "Osoba z MCAS",
-        
         guard_speech_healthy: "Zzz... Pełen spokój.",
         guard_title_healthy: "Ochroniarz Śpi",
         guard_desc_healthy: "Reaguje tylko na prawdziwych bandytów (wirusy).",
-        
         guard_speech_mcas: "ALARM! ON MA POMIDORA! STRZELAĆ!",
         guard_title_mcas: "Ochroniarz Panikuje",
         guard_desc_mcas: "Jest przemęczony i uzbrojony. Atakuje niewinnych gości.",
-        
         visitors_label: "Kto puka do drzwi?",
         status_pass: "WCHODZI",
         status_attack: "ATAKOWANY!",
-        // ...
         visitors_label: "Kto puka do drzwi?",
         status_pass: "WCHODZI",
         status_attack: "ATAKOWANY!",
@@ -199,23 +192,18 @@ const translations = {
         lbl_select_act: "Wybierz aktywność...",
         msg_ok: "Dla zdrowego to pestka. Bateria pełna.",
         msg_crash: "PEM! System odcięty. Wymagana regeneracja.",
-        // ...
         lbl_recovery: "Regeneracja",
         time_healthy: "~8h (Noc)",
-        // ...
         sev_mild: "Łagodny (~25%)",
         sev_moderate: "Umiarkowany (~50%)",
         sev_severe: "Ciężki (~25%)",
         cost_variable: "Koszt: Zmienny",
         cost_variable_2: "Koszt: Zmienny",
-        // ...
         time_healthy: "~8h (Noc)",
-        // ...
         sev_title: "Spektrum Choroby (Stopnie)",
         sev_desc_mild: "<strong>Łagodny:</strong> Możliwa praca (często z trudem), ale kosztem życia prywatnego. W weekendy \"padnięta bateria\".",
         sev_desc_mod: "<strong>Umiarkowany:</strong> Uziemienie w domu. Wyjście do sklepu to wyprawa wymagająca odchorowania. Konieczne drzemki.",
         sev_desc_sev: "<strong>Ciężki:</strong> Uziemienie w łóżku. Zależność od opieki przy myciu/jedzeniu. Nadwrażliwość na światło i dźwięk.",
-        // ...
         sev_title: "Spektrum Choroby",
         sev_lbl_mild: "Łagodny (Mild)",
         sev_lbl_mod: "Umiarkowany (Moderate)",
@@ -225,11 +213,6 @@ const translations = {
         sev_desc_mild: "Możliwa praca (często z trudem), ale kosztem życia prywatnego. W weekendy \"padnięta bateria\".",
         sev_desc_mod: "Uziemienie w domu. Wyjście do sklepu to wyprawa wymagająca odchorowania. Konieczne drzemki.",
         sev_desc_sev: "Uziemienie w łóżku. Zależność od opieki przy myciu/jedzeniu. Nadwrażliwość na światło i dźwięk.",
-        // ...
-        // ...
-        // Usuń stary "time_mecfs", bo teraz będzie generowany dynamicznie
-        // ...
-        
     },
     en: {
         btn_tiptoes: "Tiptoes (Relief)",
@@ -284,7 +267,6 @@ const translations = {
         tcs_bs_swallow: "Swallowing issues",
         tcs_bs_vision: "Vision disturbances",
         tcs_bs_dizzy: "Dizziness / Vertigo",
-        // Tipping Point Section
         tcs_adult_title: "Why do symptoms sometimes appear only in adulthood?",
         tcs_adult_embryo_title: "1. Embryology and the Growth Race",
         tcs_adult_embryo_desc: "This phenomenon is called <strong>Ascensus Medullae</strong>. In fetal life, the spine (bones) grows much faster than the spinal cord (nerves). In a healthy person, the cord \"pulls up\" the spinal canal.",
@@ -298,7 +280,6 @@ const translations = {
         tcs_adult_summary: "At some point (often between ages 20 and 40), the sum of these factors crosses the \"Tipping Point\". The nervous system says \"enough\" and a cascade of symptoms appears.",
         tcs_adult_img_placeholder: "Image Placeholder",
         tcs_adult_img_desc: "Visualization of Ascensus Medullae / Tipping Point",
-        // Vagus Nerve Section
         vagus_title: "Vagus Nerve: Victim of Tension",
         vagus_desc_1: "The <strong>Vagus Nerve</strong> is the most important nerve of the parasympathetic system (\"rest and digest\"). It runs from the brainstem, through the neck and chest, down to the intestines. It is the \"information superhighway\" connecting the brain to the body.",
         vagus_mechanism_title: "How does Tethered Cord damage it?",
@@ -391,32 +372,26 @@ const translations = {
         mech_prostaglandins: "<strong>Prostaglandins (PGD2):</strong> Sudden flushing, abdominal pain.",
         mech_leukotrienes: "<strong>Leukotrienes:</strong> Bronchospasm, shortness of breath, asthma.",
         mech_heparin: "<strong>Heparin:</strong> Easy bruising, clotting issues.",
-        // Analogy Section
         tag_analogy: "Simple Analogy",
         analogy_title: "Your Bodyguard Went Crazy",
         analogy_desc: "Before diving into medical details, understand the core issue. Imagine your immune system (mast cells) acts as a <strong>Security Guard</strong> watching the entrance to your body.",
         btn_mode_healthy: "Healthy Person",
         btn_mode_mcas: "Person with MCAS",
-        
         guard_speech_healthy: "Zzz... All quiet.",
         guard_title_healthy: "Guard is Sleeping",
         guard_desc_healthy: "Only reacts to real bad guys (viruses).",
-        
         guard_speech_mcas: "ALARM! HE HAS A TOMATO! FIRE!",
         guard_title_mcas: "Guard is Panicking",
         guard_desc_mcas: "He is exhausted and armed. He attacks innocent guests.",
-        
         visitors_label: "Who's knocking?",
         status_pass: "ALLOWED",
         status_attack: "ATTACKED!",
-        // ...
         visitors_label: "Who's knocking?",
         status_pass: "ALLOWED",
         status_attack: "ATTACKED!",
         vis_tomato: "Mr. Tomato",
         vis_perfume: "Mrs. Perfume",
         vis_weather: "Mailman Rain",
-        // ME/CFS Section
         mecfs_title: "4. What is ME/CFS?",
         mecfs_desc_1: "It's not just \"being tired\". It's a metabolic disease where your cells cannot produce energy. It's like trying to use a smartphone with a broken battery that only charges to 30% and dies after one call.",
         pem_title: "Key Symptom: PEM",
@@ -429,26 +404,20 @@ const translations = {
         act_shop: "Shopping / Walk",
         cost_high: "Cost: Medium vs PEM",
         lbl_select_act: "Select activity...",
-
         msg_ok: "Easy for a healthy person. Battery full.",
         msg_crash: "PEM! System crash. Recovery needed.",
-        // ...
         lbl_recovery: "Recovery Time",
         time_healthy: "~8h (Overnight)",
-        // ...
         sev_mild: "Mild (~25%)",
         sev_moderate: "Moderate (~50%)",
         sev_severe: "Severe (~25%)",
         cost_variable: "Cost: Variable",
         cost_variable_2: "Cost: Variable",
-        // ...
         time_healthy: "~8h (Sleep)",
-        // ...
         sev_title: "Disease Spectrum (Severity)",
         sev_desc_mild: "<strong>Mild:</strong> Can work (often with difficulty), but at the cost of social life. Battery dead on weekends.",
         sev_desc_mod: "<strong>Moderate:</strong> Housebound. Shopping requires days of recovery. Frequent naps needed.",
         sev_desc_sev: "<strong>Severe:</strong> Bedbound. Dependent on care for washing/eating. Extreme sensitivity to light and sound.",
-        // ...
         sev_title: "Disease Spectrum",
         sev_lbl_mild: "Mild",
         sev_lbl_mod: "Moderate",
@@ -458,8 +427,5 @@ const translations = {
         sev_desc_mild: "Can work (often with difficulty), but at the cost of social life. Battery dead on weekends.",
         sev_desc_mod: "Housebound. Shopping requires days of recovery. Frequent naps needed.",
         sev_desc_sev: "Bedbound. Dependent on care for washing/eating. Extreme sensitivity to light and sound.",
-        // ...
-        // ...
-        // ...
     }
 };
