@@ -29,17 +29,26 @@ function toggleTheme() {
   lucide.createIcons();
 }
 
-let currentLang = "pl";
+let currentLang = localStorage.getItem("lang") || "pl";
 let currentGuardMode = "healthy"; // Przechowuje stan ochroniarza
-function toggleLang() {
-  currentLang = currentLang === "pl" ? "en" : "pl";
-  document.documentElement.lang = currentLang;
-  document.getElementById("langBtn").innerText = currentLang.toUpperCase();
 
+// Apply initial language settings immediately
+document.documentElement.lang = currentLang;
+const langBtn = document.getElementById("langBtn");
+if (langBtn) {
+    langBtn.innerText = currentLang.toUpperCase();
+}
+
+// Apply translations when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    updateLanguageUI();
+});
+
+function updateLanguageUI() {
   // 1. Update statycznych tekstów (data-i18n)
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
-    if (translations[currentLang][key]) {
+    if (translations[currentLang] && translations[currentLang][key]) {
       el.innerHTML = translations[currentLang][key];
     }
   });
@@ -47,21 +56,39 @@ function toggleLang() {
   // 2. Update placeholderów
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     const key = el.getAttribute("data-i18n-placeholder");
-    if (translations[currentLang][key]) {
+    if (translations[currentLang] && translations[currentLang][key]) {
       el.placeholder = translations[currentLang][key];
     }
   });
 
   // 3. Update opisów w symulacji kręgosłupa
-  updatePoseDescriptions();
+  if (typeof updatePoseDescriptions === 'function' && document.getElementById("poseDesc")) {
+      updatePoseDescriptions();
+  }
 
   // 4. Update pasków w monitorze
-  updateUI(currentTension >= 60);
+  if (typeof updateUI === 'function' && typeof currentTension !== 'undefined' && document.getElementById("tensionBar")) {
+      updateUI(currentTension >= 60);
+  }
 
   // 5. NAPRAWA: Wymuś odświeżenie tekstów w sekcji Ochroniarza
-  setGuardMode(currentGuardMode);
+  if (typeof setGuardMode === 'function' && document.getElementById("guard-icon-container")) {
+      setGuardMode(currentGuardMode);
+  }
 
-  setSeverity(currentSeverity);
+  if (typeof setSeverity === 'function' && typeof currentSeverity !== 'undefined' && document.getElementById("bat-mecfs")) {
+      setSeverity(currentSeverity);
+  }
+}
+
+function toggleLang() {
+  currentLang = currentLang === "pl" ? "en" : "pl";
+  localStorage.setItem("lang", currentLang);
+  document.documentElement.lang = currentLang;
+  const langBtn = document.getElementById("langBtn");
+  if (langBtn) langBtn.innerText = currentLang.toUpperCase();
+  
+  updateLanguageUI();
 }
 
 // --- ANIMACJA MCAS (GÓRA) ---
