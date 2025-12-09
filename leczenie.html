@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategie Leczenia: ME/CFS, POTS, MCAS, TCS</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // Dark mode init - prevents flash of unstyled content
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Nawigacja -->
+    <nav class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">Neuro-Immuno</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">MCAS • TCS • ME/CFS</span>
+                </div>
+            </a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="index.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_home">Strona Główna</a>
+                <a href="diagnostics.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_diagnostics">Diagnostyka</a>
+                <a href="leczenie.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500" data-i18n="nav_treatment">Leczenie</a>
+                <a href="contact.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_contact">Kontakt</a>
+                
+                <div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+                    <button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtn" title="Opcje dostępności" aria-label="Opcje dostępności">
+                        <i data-lucide="accessibility" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtn" title="Przełącz tryb ciemny">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn">PL</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-backdrop" class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden"></div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col">
+            <div class="px-4 py-4 space-y-4">
+                <a href="index.html" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_home">Strona Główna</a>
+                <a href="diagnostics.html" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_diagnostics">Diagnostyka</a>
+                <a href="leczenie.html" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 font-bold text-red-700 dark:text-red-500" data-i18n="nav_treatment">Leczenie</a>
+                <a href="contact.html" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_contact">Kontakt</a>
+                
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtnMobile" title="Opcje dostępności">
+                        <i data-lucide="accessibility" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtnMobile" title="Przełącz tryb ciemny">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtnMobile">PL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Disclaimer -->
+    <header class="bg-white dark:bg-slate-900 pt-16 pb-12 px-4 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-8 leading-tight tracking-tight" data-i18n="treat_page_title">
+                Strategie Leczenia i Zarządzania
+            </h1>
+            
+            <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-6 text-left shadow-sm">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="alert-triangle" class="w-6 h-6 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-red-800 dark:text-red-300 mb-1" data-i18n="treat_disclaimer_title">Uwaga</h3>
+                        <p class="text-sm text-red-700 dark:text-red-200 leading-relaxed" data-i18n="treat_disclaimer_desc">
+                            Poniższe informacje to przegląd dostępnych terapii, a nie porada medyczna. Leczenie tych chorób jest wysoce zindywidualizowane i eksperymentalne. Nigdy nie zmieniaj leków bez konsultacji z lekarzem.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ME/CFS Section -->
+    <section class="py-16 bg-purple-50/50 dark:bg-slate-950 border-y border-purple-100 dark:border-purple-900/30">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-3 bg-purple-100 dark:bg-purple-900/40 rounded-xl text-purple-600 dark:text-purple-300">
+                    <i data-lucide="battery-warning" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">ME/CFS</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-purple-100 dark:border-purple-800/50 shadow-sm">
+                    <h3 class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4" data-i18n="treat_mecfs_pacing_title">Pacing (Zarządzanie Energią)</h3>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6" data-i18n="treat_mecfs_pacing_desc">
+                        Nie ma leku na ME/CFS. Kluczem jest nieprzekraczanie "koperty energetycznej". Każdy wysiłek ponad siły to dług zaciągnięty na przyszłość.
+                    </p>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-lucide="activity" class="w-5 h-5 text-purple-500"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm mb-1" data-i18n="treat_mecfs_hrm_title">Monitoring Tętna (HRM)</strong>
+                                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="treat_mecfs_hrm_desc">
+                                    Używanie pulsometru, aby unikać przekraczania progu beztlenowego. Pomaga obiektywnie zarządzać energią i unikać PEM.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-lucide="moon" class="w-5 h-5 text-purple-500"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm mb-1" data-i18n="treat_mecfs_rest_title">Agresywny Odpoczynek</strong>
+                                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="treat_mecfs_rest_desc">
+                                    Odpoczywanie ZANIM poczujesz zmęczenie. Leżenie w ciszy i ciemności, bez bodźców (telefonu, muzyki), aby zregenerować układ nerwowy.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-lg">
+                        <strong class="block text-red-800 dark:text-red-300 mb-1" data-i18n="treat_mecfs_warning_title">Unikaj GET!</strong>
+                        <p class="text-xs text-red-700 dark:text-red-200" data-i18n="treat_mecfs_warning_desc">
+                            Graded Exercise Therapy (stopniowanie wysiłku) w ME/CFS prowadzi do trwałego pogorszenia (PEM).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-purple-100 dark:border-purple-800/50 shadow-sm">
+                    <h3 class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4" data-i18n="treat_mecfs_meds_title">Leczenie Objawowe i Eksperymentalne</h3>
+                    
+                    <div class="mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700">
+                        <strong class="block text-slate-700 dark:text-slate-300 mb-1" data-i18n="treat_mecfs_no_cure">Brak Leku Przyczynowego</strong>
+                        <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="treat_mecfs_no_cure_desc">
+                            Obecnie nie istnieje żaden zatwierdzony lek leczący przyczyny ME/CFS. Wszystkie stosowane terapie są eksperymentalne lub objawowe.
+                        </p>
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="pill" class="w-5 h-5 text-purple-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mecfs_ldn">LDN (Low Dose Naltrexone)</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_mecfs_ldn_desc">Lek "off-label" modulujący układ odpornościowy i zmniejszający stan zapalny w mózgu (mikroglej).</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="pill" class="w-5 h-5 text-purple-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mecfs_lda">LDA (Low Dose Abilify)</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_mecfs_lda_desc">Niskie dawki arypiprazolu mogą działać przeciwzapalnie na mózg i modulować dopaminę.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="pill" class="w-5 h-5 text-purple-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mecfs_mestinon">Mestinon (Pirydostygmina)</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_mecfs_mestinon_desc">Wspomaga układ przywspółczulny (nerw błędny), może poprawiać wydolność mięśni.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-purple-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mecfs_antivirals">Leki Przeciwwirusowe</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_mecfs_antivirals_desc">Stosowane u pacjentów z aktywnymi infekcjami (np. EBV, HHV-6). Np. Walgancyklowir.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="zap" class="w-5 h-5 text-purple-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mecfs_supplements">Wsparcie Mitochondrialne</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_mecfs_supplements_desc">Suplementy takie jak Koenzym Q10, NADH czy D-ryboza mogą wspomagać produkcję energii ATP.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POTS Section -->
+    <section class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-3 bg-red-100 dark:bg-red-900/40 rounded-xl text-red-600 dark:text-red-300">
+                    <i data-lucide="activity" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">POTS (Dysautonomia)</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl border border-red-100 dark:border-red-900/30 shadow-sm">
+                    <h3 class="text-xl font-bold text-red-700 dark:text-red-400 mb-4" data-i18n="treat_pots_nonpharm_title">Strategia Niefarmakologiczna</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i data-lucide="droplet" class="w-4 h-4 text-blue-500"></i> <span data-i18n="treat_pots_salt">Zwiększenie podaży soli i płynów (objętość krwi).</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4 text-orange-500"></i> <span data-i18n="treat_pots_compression">Odzież uciskowa (pończochy/brzuch).</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="bed" class="w-4 h-4 text-indigo-500"></i> <span data-i18n="treat_pots_sleep">Spanie z uniesionym wezgłowiem.</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl border border-red-100 dark:border-red-900/30 shadow-sm">
+                    <h3 class="text-xl font-bold text-red-700 dark:text-red-400 mb-4" data-i18n="treat_pots_pharm_title">Farmakologia</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_pots_bb">Beta-blokery</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_pots_bb_desc">Zwalnianie tętna (np. Propranolol).</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_pots_ivabradine">Iwabradyna</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_pots_ivabradine_desc">Zwalnia tętno bez obniżania ciśnienia.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"></span>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_pots_midodrine">Midodryna</strong>
+                                <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="treat_pots_midodrine_desc">Zwęża naczynia krwionośne, podnosi ciśnienie.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MCAS Section -->
+    <section class="py-16 bg-pink-50/50 dark:bg-slate-950 border-b border-pink-100 dark:border-pink-900/30">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-3 bg-pink-100 dark:bg-pink-900/40 rounded-xl text-pink-600 dark:text-pink-300">
+                    <i data-lucide="shield-alert" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">MCAS (Wyciszanie Reakcji)</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-pink-100 dark:border-pink-800/50 shadow-sm">
+                    <div class="w-10 h-10 bg-pink-100 dark:bg-pink-900/40 rounded-full flex items-center justify-center text-pink-600 mb-4 font-bold">1</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2" data-i18n="treat_mcas_step1">Fundament</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300" data-i18n="treat_mcas_step1_desc">Unikanie wyzwalaczy (Dieta niskohistaminowa, chemia domowa, stres).</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-pink-100 dark:border-pink-800/50 shadow-sm">
+                    <div class="w-10 h-10 bg-pink-100 dark:bg-pink-900/40 rounded-full flex items-center justify-center text-pink-600 mb-4 font-bold">2</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2" data-i18n="treat_mcas_step2">Blokada</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300" data-i18n="treat_mcas_step2_desc">Blokery H1 (np. cetyryzyna, feksofenadyna) i H2 (np. famotydyna).</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-pink-100 dark:border-pink-800/50 shadow-sm">
+                    <div class="w-10 h-10 bg-pink-100 dark:bg-pink-900/40 rounded-full flex items-center justify-center text-pink-600 mb-4 font-bold">3</div>
+                    <h3 class="font-bold text-slate-900 dark:text-white mb-2" data-i18n="treat_mcas_step3">Stabilizacja</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300" data-i18n="treat_mcas_step3_desc">Stabilizatory komórek tucznych (np. Ketotifen, Kromoglikan sodu, Kwercetyna).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TCS/CCI Section -->
+    <section class="py-16 bg-orange-50/50 dark:bg-slate-900 border-b border-orange-100 dark:border-orange-900/30">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-3 bg-orange-100 dark:bg-orange-900/40 rounded-xl text-orange-600 dark:text-orange-300">
+                    <i data-lucide="anchor" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">TCS i CCI (Mechanika)</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-orange-100 dark:border-orange-800/50 shadow-sm">
+                    <h3 class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-4" data-i18n="treat_mech_cons_title">Podejście Zachowawcze (Fizjoterapia i Styl Życia)</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_pt_title">Specjalistyczna Fizjoterapia</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_pt_desc">Skupienie na rozluźnianiu powięziowym i ćwiczeniach izometrycznych. Unikanie tradycyjnej trakcji i agresywnego rozciągania.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_lifestyle_title">Modyfikacje Stylu Życia</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_lifestyle_desc">Unikanie zginania szyi (patrzenie w telefon), dźwigania oraz pozycji naciągających rdzeń.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_ortho_title">Zaopatrzenie Ortopedyczne</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_ortho_desc">Kołnierze ortopedyczne mogą być używane diagnostycznie lub doraźnie.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-orange-100 dark:border-orange-800/50 shadow-sm">
+                    <h3 class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-4" data-i18n="treat_mech_surg_title">Interwencje Chirurgiczne</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="scalpel" class="w-5 h-5 text-orange-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_sft_title">TCS: Przecięcie Nici Końcowej (SFT)</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_sft_desc">Małoinwazyjny zabieg polegający na przecięciu napiętego więzadła (filum terminale).</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="scissors" class="w-5 h-5 text-orange-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_sso_title">TCS: Skracanie Kręgosłupa (Spinal Shortening Osteotomy)</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_sso_desc">Metoda eksperymentalna (dostępna w USA), stosowana w opornych przypadkach TCS.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="bone" class="w-5 h-5 text-orange-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_fusion_title">CCI: Fuzja Czaszkowo-Szyjna (CCF)</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_fusion_desc">Poważna operacja polegająca na zespoleniu czaszki z górnymi kręgami szyjnymi (C0-C2).</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="syringe" class="w-5 h-5 text-orange-500 mt-0.5"></i>
+                            <div>
+                                <strong class="block text-slate-900 dark:text-white text-sm" data-i18n="treat_mech_picl_title">CCI: Procedura PICL</strong>
+                                <span class="text-xs text-slate-600 dark:text-slate-400" data-i18n="treat_mech_picl_desc">Wstrzyknięcie komórek macierzystych w więzadła skrzydłowate przez tylną ścianę gardła.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-8 border-t border-slate-900">
+        <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+            <p class="mb-2" data-i18n="footer_text">Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.</p>
+            <p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto" data-i18n="footer_disclaimer">
+                Treści mają charakter wyłącznie edukacyjny i prezentują jeden z modeli teoretycznych (hipotezę neuro-mechaniczną). ME/CFS, MCAS i POTS są rozpoznawane jako niezależne jednostki kliniczne. Strona nie zastępuje porady lekarskiej.
+            </p>
+            <p>Generated for Personal Health Visualization</p>
+        </div>
+    </footer>
+
+    <!-- Accessibility Panel -->
+    <div id="accessibility-panel" aria-hidden="true">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <i data-lucide="accessibility" class="w-5 h-5"></i>
+            <span data-i18n="a11y_title">Dostępność</span>
+        </h3>
+        
+        <button id="btn-contrast" class="a11y-btn">
+            <i data-lucide="contrast" class="w-4 h-4"></i>
+            <span data-i18n="a11y_contrast">Wysoki Kontrast</span>
+        </button>
+        
+        <button id="btn-font" class="a11y-btn">
+            <i data-lucide="type" class="w-4 h-4"></i>
+            <span data-i18n="a11y_font">Powiększ Tekst</span>
+        </button>
+        
+        <button id="btn-dyslexia" class="a11y-btn">
+            <i data-lucide="align-left" class="w-4 h-4"></i>
+            <span data-i18n="a11y_dyslexia">Czcionka dla Dyslektyków</span>
+        </button>
+
+        <div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
+
+        <button id="btn-reset-a11y" class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+            <span data-i18n="a11y_reset">Resetuj ustawienia</span>
+        </button>
+    </div>
+
+    <script src="js/translations.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/accessibility.js"></script>
+</body>
+</html>
