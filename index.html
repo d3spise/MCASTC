@@ -680,99 +680,156 @@
     <section id="mecfs-def" class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
             
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-
-                
-                
-                <div class="lg:order-1 flex flex-col gap-6">
-                    
-                    <div>
-                        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
-                            <div class="p-2 bg-purple-100 dark:bg-purple-900/40 rounded-lg text-purple-700 dark:text-purple-300">
-                                <i data-lucide="battery-warning" class="w-6 h-6"></i>
-                            </div>
-                            <span data-i18n="mecfs_title">4. Co to jest ME/CFS?</span>
-                        </h2>
-                        <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="mecfs_desc_1">
-                            ME/CFS to złożona, wielosystemowa choroba neurologiczna. Obejmuje nie tylko zaburzenia metabolizmu energii, ale także dysfunkcje układu odpornościowego, autonomicznego i hormonalnego. To nie jest tylko 'zmęczenie', ale systemowa nietolerancja wysiłku.
-                        </p>
+            <!-- Top Section: Definition & Domains (Full Width) -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                    <div class="p-2 bg-purple-100 dark:bg-purple-900/40 rounded-lg text-purple-700 dark:text-purple-300">
+                        <i data-lucide="battery-warning" class="w-6 h-6"></i>
                     </div>
+                    <span data-i18n="mecfs_title">4. Co to jest ME/CFS?</span>
+                </h2>
+                <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-4xl" data-i18n="mecfs_desc_1">
+                    ME/CFS (Myalgic Encephalomyelitis) to ciężka, przewlekła choroba wieloukładowa. To nie jest zwykłe zmęczenie. To stan, w którym system produkcji energii w komórkach (mitochondria) ulega awarii, a układ nerwowy i odpornościowy tracą równowagę. Główną cechą jest PEM – drastyczne pogorszenie objawów po nawet niewielkim wysiłku.
+                </p>
 
+                <!-- Domains Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <!-- Metabolic -->
+                    <div class="bg-red-50 dark:bg-red-900/10 p-4 rounded-lg border border-red-100 dark:border-red-800/30">
+                        <h5 class="font-bold text-red-700 dark:text-red-400 text-sm mb-2 flex items-center gap-2">
+                            <i data-lucide="battery-warning" class="w-4 h-4"></i> <span data-i18n="domain_metabolic_title">Metaboliczne (PEM)</span>
+                        </h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400" data-i18n="domain_metabolic_desc">Zaburzona produkcja energii. Organizm nie nadąża z produkcją ATP.</p>
+                    </div>
+                    <!-- Dysautonomia -->
+                    <div class="bg-blue-50 dark:bg-blue-900/10 p-4 rounded-lg border border-blue-100 dark:border-blue-800/30">
+                        <h5 class="font-bold text-blue-700 dark:text-blue-400 text-sm mb-2 flex items-center gap-2">
+                            <i data-lucide="activity" class="w-4 h-4"></i> <span data-i18n="domain_dysautonomia_title">Dysautonomia (POTS)</span>
+                        </h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400" data-i18n="domain_dysautonomia_desc">Układ autonomiczny nie radzi sobie z grawitacją.</p>
+                    </div>
+                    <!-- Immune -->
+                    <div class="bg-orange-50 dark:bg-orange-900/10 p-4 rounded-lg border border-orange-100 dark:border-orange-800/30">
+                        <h5 class="font-bold text-orange-700 dark:text-orange-400 text-sm mb-2 flex items-center gap-2">
+                            <i data-lucide="shield-alert" class="w-4 h-4"></i> <span data-i18n="domain_immune_title">Immunologiczne</span>
+                        </h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400" data-i18n="domain_immune_desc">Przewlekły stan zapalny i nadreaktywność komórek tucznych.</p>
+                    </div>
+                    <!-- Neuro -->
+                    <div class="bg-purple-50 dark:bg-purple-900/10 p-4 rounded-lg border border-purple-100 dark:border-purple-800/30">
+                        <h5 class="font-bold text-purple-700 dark:text-purple-400 text-sm mb-2 flex items-center gap-2">
+                            <i data-lucide="brain" class="w-4 h-4"></i> <span data-i18n="domain_neuro_title">Neurologiczne</span>
+                        </h5>
+                        <p class="text-xs text-slate-600 dark:text-slate-400" data-i18n="domain_neuro_desc">Mgła mózgowa, nadwrażliwość na bodźce i ból.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-red-50 dark:bg-red-900/20 p-5 rounded-xl border border-red-100 dark:border-red-800 border-l-4 border-l-red-500">
                         <h4 class="font-bold text-red-700 dark:text-red-400 mb-2 flex items-center gap-2">
                             <i data-lucide="alert-octagon" class="w-4 h-4"></i> <span data-i18n="pem_title">Kluczowy objaw: PEM</span>
                         </h4>
                         <p class="text-sm text-red-800 dark:text-red-200 leading-relaxed" data-i18n="pem_desc">
-                            <strong>Post-Exertional Malaise (Zapaść Powysiłkowa).</strong> Opóźniona reakcja organizmu na wysiłek. Spacer zrobiony dzisiaj może "odciąć Ci prąd" dopiero jutro lub pojutrze, przykuwając Cię do łóżka na wiele dni.
+                            <strong>Post-Exertional Malaise (Zapaść Powysiłkowa).</strong> Opóźniona reakcja organizmu na wysiłek. Spacer zrobiony dzisiaj może "odciąć Ci prąd" dopiero jutro lub pojutrze, przykuwając Cię do łóżka na wiele dni. Czasami pacjent już nie wychodzi z PEM i zachodzi permanentne pogorszenie.
                         </p>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
-                        <div class="bg-slate-50 dark:bg-slate-700/50 px-5 py-3 border-b border-slate-100 dark:border-slate-700">
-                            <h4 class="font-bold text-slate-700 dark:text-slate-200 text-sm uppercase tracking-wide flex items-center gap-2">
-                                <i data-lucide="bar-chart-3" class="w-4 h-4 text-blue-500"></i>
-                                <span data-i18n="sev_title">Spektrum Choroby</span>
-                            </h4>
+                    <!-- New Diagnostic Section -->
+                    <div class="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <h4 class="font-bold text-slate-700 dark:text-slate-200 mb-3 flex items-center gap-2">
+                            <i data-lucide="microscope" class="w-4 h-4 text-indigo-500"></i>
+                            <span data-i18n="diag_title">Dlaczego wyniki są "w normie"?</span>
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4" data-i18n="diag_desc">
+                            Standardowe badania krwi często wychodzą idealnie, co prowadzi do błędnych diagnoz (np. "to tylko stres"). ME/CFS to choroba funkcjonalna – organy wyglądają zdrowo, ale nie pracują prawidłowo na poziomie komórkowym.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+                                <i data-lucide="x-circle" class="w-4 h-4 text-red-400 shrink-0 mt-0.5"></i>
+                                <span data-i18n="diag_item_1"><strong>Standardowe MRI:</strong> Nie pokazuje mikrozapalenia mózgu ani niestabilności szyjnej.</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                <span data-i18n="diag_item_2"><strong>Test CPET (2-dniowy):</strong> Złoty standard. Wykazuje drastyczny spadek wydolności w drugim dniu (dowód na PEM).</span>
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                <span data-i18n="diag_item_3"><strong>Tilt Table Test:</strong> Potwierdza dysautonomię (POTS) u większości pacjentów.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section: Spectrum & Battery (2 Columns) -->
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- Left: Spectrum -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden h-full">
+                    <div class="bg-slate-50 dark:bg-slate-700/50 px-5 py-3 border-b border-slate-100 dark:border-slate-700">
+                        <h4 class="font-bold text-slate-700 dark:text-slate-200 text-sm uppercase tracking-wide flex items-center gap-2">
+                            <i data-lucide="bar-chart-3" class="w-4 h-4 text-blue-500"></i>
+                            <span data-i18n="sev_title">Spektrum Choroby</span>
+                        </h4>
+                    </div>
+                    
+                    <div class="divide-y divide-slate-100 dark:divide-slate-700">
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+                            <div class="flex items-baseline justify-between mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                                    <span class="text-md font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_mild">Łagodny (Mild)</span>
+                                </div>
+                                <span class="text-xs font-mono text-slate-400" data-i18n="stat_25">~25% Pacjentów</span>
+                            </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_mild">
+                                Możliwa praca (często z trudem), ale kosztem życia prywatnego. W weekendy "padnięta bateria".
+                            </p>
                         </div>
-                        
-                        <div class="divide-y divide-slate-100 dark:divide-slate-700">
-                            <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-                                <div class="flex items-baseline justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                                        <span class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_mild">Łagodny (Mild)</span>
-                                    </div>
-                                    <span class="text-xs font-mono text-slate-400" data-i18n="stat_25">~25% Pacjentów</span>
-                                </div>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_mild">
-                                    Możliwa praca (często z trudem), ale kosztem życia prywatnego. W weekendy "padnięta bateria".
-                                </p>
-                            </div>
 
-                            <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors bg-purple-50/30 dark:bg-purple-900/10">
-                                <div class="flex items-baseline justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
-                                        <span class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_mod">Umiarkowany (Moderate)</span>
-                                    </div>
-                                    <span class="text-xs font-mono text-slate-400" data-i18n="stat_50">~50% Pacjentów</span>
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors bg-purple-50/30 dark:bg-purple-900/10">
+                            <div class="flex items-baseline justify-between mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                                    <span class="text-md font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_mod">Umiarkowany (Moderate)</span>
                                 </div>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_mod">
-                                    Uziemienie w domu. Wyjście do sklepu to wyprawa wymagająca odchorowania. Konieczne drzemki.
-                                </p>
+                                <span class="text-xs font-mono text-slate-400" data-i18n="stat_50">~50% Pacjentów</span>
                             </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_mod">
+                                Uziemienie w domu. Wyjście do sklepu to wyprawa wymagająca odchorowania. Konieczne drzemki.
+                            </p>
+                        </div>
 
-                            <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-                                <div class="flex items-baseline justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                                        <span class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_sev">Ciężki (Severe)</span>
-                                    </div>
-                                    <span class="text-xs font-mono text-slate-400" data-i18n="stat_severe">~20% Pacjentów</span>
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+                            <div class="flex items-baseline justify-between mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                                    <span class="text-md font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_sev">Ciężki (Severe)</span>
                                 </div>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_sev">
-                                    Uziemienie w łóżku. Zależność od opieki przy myciu/jedzeniu. Nadwrażliwość na światło i dźwięk.
-                                </p>
+                                <span class="text-xs font-mono text-slate-400" data-i18n="stat_severe">~20% Pacjentów</span>
                             </div>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_sev">
+                                Uziemienie w łóżku. Zależność od opieki przy myciu/jedzeniu. Nadwrażliwość na światło i dźwięk.
+                            </p>
+                        </div>
 
-                            <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors bg-red-50/30 dark:bg-red-900/10">
-                                <div class="flex items-baseline justify-between mb-1">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-red-800 dark:bg-red-400"></span>
-                                        <span class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_very_sev">Bardzo Ciężki (Very Severe)</span>
+                        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors bg-red-50/30 dark:bg-red-900/10">
+                            <div class="flex items-baseline justify-between mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-800 dark:bg-red-400"></span>
+                                    <span class="text-md font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_very_sev">Bardzo Ciężki (Very Severe)</span>
                                     </div>
                                     <span class="text-xs font-mono text-slate-400" data-i18n="stat_very_sev">~5% Pacjentów</span>
                                 </div>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_very_sev">
+                                <p class="text-sm text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_very_sev">
                                     Całkowite uziemienie w łóżku. Częsta konieczność karmienia dojelitowego. Ekstremalna nadwrażliwość na bodźce (konieczność przebywania w ciemności i ciszy). Każdy ruch to ogromny koszt.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                </div>
-
-                <div class="lg:order-2 bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <!-- Right: Battery Simulator -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm h-full">
                     
                     <div class="text-center mb-4">
                         <span class="text-xs font-bold uppercase tracking-widest text-slate-500" data-i18n="battery_sim_title">Porównanie Wydatku Energetycznego</span>
@@ -1199,9 +1256,9 @@
                     <div class="w-12 h-12 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="activity"></i></div>
                     <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_pots_title">ME/CFS & Dysautonomia</h3>
                     <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_pots_list">
-                         <li><strong>PEM (Pogorszenie objawów powysiłkowo)</strong>.</li>
-                        <li>Tachykardia po wstaniu (POTS).</li>
-                        <li>Przewlekłe zmęczenie.</li>
+                        <li><strong>Nietolerancja ortostatyczna:</strong> Zawroty głowy i słabość przy staniu.</li>
+                        <li><strong>Kołatania serca:</strong> Tachykardia bez wysiłku.</li>
+                        <li><strong>Zaburzenia termoregulacji:</strong> Zimne dłonie/stopy, poty nocne.</li>
                     </ul>
                 </div>
                 <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
