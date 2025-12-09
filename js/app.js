@@ -894,6 +894,12 @@ const severityConfig = {
     drainShop: 100, // Zakupy niemożliwe
     recoveryTime: { pl: "Tygodnie / Miesiące", en: "Weeks / Months" },
   },
+  very_severe: {
+    startLevel: 5,
+    drainShower: 100,
+    drainShop: 100,
+    recoveryTime: { pl: "Miesiące / Lata", en: "Months / Years" },
+  },
 };
 
 let currentSeverity = "moderate"; // Domyślny
@@ -920,8 +926,8 @@ function setSeverity(level) {
   recTimeEl.innerText = config.recoveryTime[currentLang];
 
   // Aktualizuj style przycisków (aktywny/nieaktywny)
-  ["mild", "moderate", "severe"].forEach((sev) => {
-    const btn = document.getElementById(`btn-sev-${sev}`);
+  ["mild", "moderate", "severe", "very_severe"].forEach((sev) => {
+    const btn = document.getElementById(`btn-sev-${sev.replace('_', '-')}`);
     if (sev === level) {
       btn.className =
         "flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 shadow-sm ring-1 ring-purple-200 dark:ring-purple-700";

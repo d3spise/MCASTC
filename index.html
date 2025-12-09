@@ -66,14 +66,14 @@
         <div class="max-w-4xl mx-auto text-center">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6 border border-red-100 dark:border-red-800">
                 <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                <span data-i18n="hero_tag">Systemowa choroba neuro-immunologiczna</span>
+                <span data-i18n="hero_tag">Model teoretyczny / Hipoteza</span>
             </div>
             <h1 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">
                 <span data-i18n="hero_title1">Gdy ciało walczy samo ze sobą</span><br>
                 <span class="text-red-600 dark:text-red-500" data-i18n="hero_title2">MCAS, TCS i ME/CFS</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero_desc">
-                Przewodnik edukacyjny wyjaśniający, jak nadreaktywne komórki tuczne, mechaniczne napięcie rdzenia kręgowego i przewlekłe zmęczenie tworzą "błędne koło" choroby.
+                Przewodnik edukacyjny omawiający hipotezę, w której nadreaktywne komórki tuczne, mechaniczne napięcie rdzenia i ME/CFS mogą tworzyć współzależny mechanizm chorobowy.
             </p>
         </div>
     </header>
@@ -694,7 +694,7 @@
                             <span data-i18n="mecfs_title">4. Co to jest ME/CFS?</span>
                         </h2>
                         <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed" data-i18n="mecfs_desc_1">
-                            To nie jest "zwykłe zmęczenie". To choroba metaboliczna, w której Twoje komórki nie potrafią produkować energii. To tak, jakbyś próbował używać smartfona z zepsutą baterią, która ładuje się tylko do 30% i pada po jednej rozmowie.
+                            ME/CFS to złożona, wielosystemowa choroba neurologiczna. Obejmuje nie tylko zaburzenia metabolizmu energii, ale także dysfunkcje układu odpornościowego, autonomicznego i hormonalnego. To nie jest tylko 'zmęczenie', ale systemowa nietolerancja wysiłku.
                         </p>
                     </div>
 
@@ -748,10 +748,23 @@
                                         <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
                                         <span class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_sev">Ciężki (Severe)</span>
                                     </div>
-                                    <span class="text-xs font-mono text-slate-400" data-i18n="stat_25">~25% Pacjentów</span>
+                                    <span class="text-xs font-mono text-slate-400" data-i18n="stat_severe">~20% Pacjentów</span>
                                 </div>
                                 <p class="text-xs text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_sev">
                                     Uziemienie w łóżku. Zależność od opieki przy myciu/jedzeniu. Nadwrażliwość na światło i dźwięk.
+                                </p>
+                            </div>
+
+                            <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors bg-red-50/30 dark:bg-red-900/10">
+                                <div class="flex items-baseline justify-between mb-1">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-red-800 dark:bg-red-400"></span>
+                                        <span class="text-sm font-bold text-slate-900 dark:text-white" data-i18n="sev_lbl_very_sev">Bardzo Ciężki (Very Severe)</span>
+                                    </div>
+                                    <span class="text-xs font-mono text-slate-400" data-i18n="stat_very_sev">~5% Pacjentów</span>
+                                </div>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 pl-4.5" data-i18n="sev_desc_very_sev">
+                                    Całkowite uziemienie w łóżku. Częsta konieczność karmienia dojelitowego. Ekstremalna nadwrażliwość na bodźce (konieczność przebywania w ciemności i ciszy). Każdy ruch to ogromny koszt.
                                 </p>
                             </div>
                         </div>
@@ -773,7 +786,10 @@
                             <span data-i18n="sev_moderate">Umiarkowany (~50%)</span>
                         </button>
                         <button onclick="setSeverity('severe')" id="btn-sev-severe" class="flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
-                            <span data-i18n="sev_severe">Ciężki (~25%)</span>
+                            <span data-i18n="sev_severe">Ciężki (~20%)</span>
+                        </button>
+                        <button onclick="setSeverity('very_severe')" id="btn-sev-very-severe" class="flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <span data-i18n="sev_very_severe">Bardzo Ciężki (~5%)</span>
                         </button>
                     </div>
 
@@ -926,9 +942,9 @@
 
             <div class="text-center mb-16 relative z-10">
                 <span class="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs font-bold uppercase tracking-wider mb-3" data-i18n="conn_tag">Triada Chorobowa</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6" data-i18n="conn_title">Ciąg Przyczynowo-Skutkowy: TCS → CCI → ME/CFS</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6" data-i18n="conn_title">Hipotetyczny model współwystępowania: TCS → CCI → ME/CFS</h2>
                 <p class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed" data-i18n="conn_desc">
-                    To nie są trzy oddzielne choroby.<sup class="text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer"><a href="#bibliografia">[5]</a></sup> To jeden ciąg przyczynowo-skutkowy, w którym napięcie rdzenia (TC) prowadzi do niewydolności mięśni i niestabilności szyjnej (CCI), co poprzez ucisk pnia mózgu wywołuje stan hibernacji (ME/CFS).
+                    ME/CFS, POTS i MCAS to odrębne jednostki chorobowe, które jednak bardzo często ze sobą współwystępują. Prezentowany tutaj model sugeruje, że u części pacjentów (szczególnie z wiotkością tkanki łącznej) wspólnym mianownikiem napędzającym objawy może być czynnik mechaniczny (TCS/CCI).
                 </p>
             </div>
 
@@ -1276,6 +1292,11 @@
 
     <section id="bibliografia" class="fade-in-section py-12 bg-slate-100 dark:bg-slate-950 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-4 rounded-lg mb-8">
+                <p class="text-sm text-yellow-800 dark:text-yellow-200">
+                    <strong data-i18n="bib_warning_title">Uwaga do źródeł</strong>: <span data-i18n="bib_warning_desc">Poniższa bibliografia zawiera artykuły naukowe, które badają poszczególne elementy tego modelu. Należy pamiętać, że bezpośredni związek przyczynowo-skutkowy między tymi trzema chorobami jest wciąż przedmiotem badań i dyskusji naukowych.</span>
+                </p>
+            </div>
             <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
                 <i data-lucide="book-open" class="w-5 h-5 text-slate-500"></i>
                 <span data-i18n="bib_title">Bibliografia Naukowa</span>
@@ -1399,7 +1420,7 @@
         <div class="max-w-6xl mx-auto px-4 text-center text-sm">
             <p class="mb-2" data-i18n="footer_text">Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.</p>
             <p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto" data-i18n="footer_disclaimer">
-                Uwaga: Treści zawarte na tej stronie mają charakter wyłącznie edukacyjny i informacyjny. Nie stanowią porady medycznej, diagnozy ani planu leczenia. W przypadku problemów zdrowotnych należy skonsultować się z lekarzem.
+                Treści mają charakter wyłącznie edukacyjny i prezentują jeden z modeli teoretycznych (hipotezę neuro-mechaniczną). ME/CFS, MCAS i POTS są rozpoznawane jako niezależne jednostki kliniczne. Strona nie zastępuje porady lekarskiej.
             </p>
             <p>Generated for Personal Health Visualization</p>
         </div>
