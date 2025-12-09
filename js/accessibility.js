@@ -2,6 +2,7 @@ class AccessibilityManager {
     constructor() {
         this.panel = document.getElementById('accessibility-panel');
         this.toggleBtn = document.getElementById('a11yBtn');
+        this.toggleBtnMobile = document.getElementById('a11yBtnMobile');
         this.root = document.documentElement;
         
         this.state = {
@@ -15,16 +16,26 @@ class AccessibilityManager {
 
     init() {
         // Toggle Panel
-        this.toggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.togglePanel();
-        });
+        if (this.toggleBtn) {
+            this.toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.togglePanel();
+            });
+        }
+        
+        if (this.toggleBtnMobile) {
+            this.toggleBtnMobile.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.togglePanel();
+            });
+        }
 
         // Close panel when clicking outside
         document.addEventListener('click', (e) => {
             if (this.panel.classList.contains('is-open') && 
                 !this.panel.contains(e.target) && 
-                e.target !== this.toggleBtn) {
+                e.target !== this.toggleBtn &&
+                e.target !== this.toggleBtnMobile) {
                 this.closePanel();
             }
         });

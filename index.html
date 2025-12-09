@@ -45,7 +45,10 @@
                     <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">MCAS • TCS • ME/CFS</span>
                 </div>
             </div>
-            <div class="flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="diagnostics.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_diagnostics">Diagnostyka</a>
                 <a href="contact.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_contact">Kontakt</a>
                 
                 <div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
@@ -56,6 +59,31 @@
                         <i data-lucide="moon" class="w-4 h-4"></i>
                     </button>
                     <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn">PL</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-backdrop" class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden"></div>
+        
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col">
+            <div class="px-4 py-4 space-y-4">
+                <a href="diagnostics.html" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_diagnostics">Diagnostyka</a>
+                <a href="contact.html" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_contact">Kontakt</a>
+                
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtnMobile" title="Opcje dostępności">
+                        <i data-lucide="accessibility" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtnMobile" title="Przełącz tryb ciemny">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtnMobile">PL</button>
                 </div>
             </div>
         </div>
@@ -1256,9 +1284,7 @@
                     <div class="w-12 h-12 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-300 rounded-lg flex items-center justify-center mb-4"><i data-lucide="activity"></i></div>
                     <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3" data-i18n="sym_pots_title">ME/CFS & Dysautonomia</h3>
                     <ul class="text-slate-600 dark:text-slate-300 space-y-2 text-sm list-disc list-inside" data-i18n="sym_pots_list">
-                        <li><strong>Nietolerancja ortostatyczna:</strong> Zawroty głowy i słabość przy staniu.</li>
-                        <li><strong>Kołatania serca:</strong> Tachykardia bez wysiłku.</li>
-                        <li><strong>Zaburzenia termoregulacji:</strong> Zimne dłonie/stopy, poty nocne.</li>
+                        <li><strong>PEM (Post-Exertional Malaise):</strong> Pogorszenie objawów po wysiłku (fizycznym/umysłowym).</li><li><strong>Objawy grypopodobne:</strong> Bóle mięśni, gardła, powiększone węzły chłonne.</li><li><strong>Nietolerancja ortostatyczna:</strong> Zawroty głowy i słabość przy staniu.</li><li><strong>Kołatania serca:</strong> Tachykardia bez wysiłku.</li><li><strong>Zaburzenia termoregulacji:</strong> Zimne dłonie/stopy, poty nocne.</li>
                     </ul>
                 </div>
                 <div class="symptom-card bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700">

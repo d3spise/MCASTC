@@ -1,31 +1,42 @@
 // Initialize theme
-if (
-  localStorage.theme === "dark" ||
-  (!("theme" in localStorage) &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches)
-) {
-  document.documentElement.classList.add("dark");
-  document.getElementById("themeBtn").innerHTML =
-    '<i data-lucide="sun" class="w-4 h-4"></i>';
-} else {
-  document.documentElement.classList.remove("dark");
-  document.getElementById("themeBtn").innerHTML =
-    '<i data-lucide="moon" class="w-4 h-4"></i>';
+function initTheme() {
+    const isDark = localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const icon = isDark ? '<i data-lucide="sun" class="w-4 h-4"></i>' : '<i data-lucide="moon" class="w-4 h-4"></i>';
+    
+    if (isDark) {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+    
+    const btn = document.getElementById("themeBtn");
+    if (btn) btn.innerHTML = icon;
+    
+    const btnMobile = document.getElementById("themeBtnMobile");
+    if (btnMobile) btnMobile.innerHTML = icon;
 }
+initTheme();
 lucide.createIcons();
 
 function toggleTheme() {
-  if (document.documentElement.classList.contains("dark")) {
+  const isDark = document.documentElement.classList.contains("dark");
+  const newTheme = isDark ? "light" : "dark";
+  
+  if (isDark) {
     document.documentElement.classList.remove("dark");
-    localStorage.theme = "light";
-    document.getElementById("themeBtn").innerHTML =
-      '<i data-lucide="moon" class="w-4 h-4"></i>';
   } else {
     document.documentElement.classList.add("dark");
-    localStorage.theme = "dark";
-    document.getElementById("themeBtn").innerHTML =
-      '<i data-lucide="sun" class="w-4 h-4"></i>';
   }
+  localStorage.theme = newTheme;
+  
+  const icon = newTheme === "dark" ? '<i data-lucide="sun" class="w-4 h-4"></i>' : '<i data-lucide="moon" class="w-4 h-4"></i>';
+  
+  const btn = document.getElementById("themeBtn");
+  if (btn) btn.innerHTML = icon;
+  
+  const btnMobile = document.getElementById("themeBtnMobile");
+  if (btnMobile) btnMobile.innerHTML = icon;
+  
   lucide.createIcons();
 }
 
@@ -38,10 +49,35 @@ const langBtn = document.getElementById("langBtn");
 if (langBtn) {
     langBtn.innerText = currentLang.toUpperCase();
 }
+const langBtnMobile = document.getElementById("langBtnMobile");
+if (langBtnMobile) {
+    langBtnMobile.innerText = currentLang.toUpperCase();
+}
 
 // Apply translations when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
     updateLanguageUI();
+    
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileBackdrop = document.getElementById('mobile-backdrop');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileBackdrop) {
+                mobileBackdrop.classList.toggle('hidden');
+            }
+        });
+    }
+
+    if (mobileBackdrop) {
+        mobileBackdrop.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileBackdrop.classList.add('hidden');
+        });
+    }
 });
 
 function updateLanguageUI() {
@@ -85,8 +121,12 @@ function toggleLang() {
   currentLang = currentLang === "pl" ? "en" : "pl";
   localStorage.setItem("lang", currentLang);
   document.documentElement.lang = currentLang;
+  
   const langBtn = document.getElementById("langBtn");
   if (langBtn) langBtn.innerText = currentLang.toUpperCase();
+  
+  const langBtnMobile = document.getElementById("langBtnMobile");
+  if (langBtnMobile) langBtnMobile.innerText = currentLang.toUpperCase();
   
   updateLanguageUI();
 }
@@ -99,6 +139,7 @@ const scene = document.getElementById("scene");
 let isExploded = false;
 
 function initGranules() {
+  if (!mastCell || !scene) return;
   mastCell.querySelectorAll(".granule").forEach((el) => el.remove());
   scene.querySelectorAll(".mist-particle").forEach((el) => el.remove());
   for (let i = 0; i < 40; i++) {
@@ -113,7 +154,7 @@ function initGranules() {
   }
 }
 function explodeCell() {
-  if (isExploded) return;
+  if (isExploded || !scene || !reactionLabel || !mastCell) return;
   isExploded = true;
   scene.classList.add("anim-shake");
   setTimeout(() => {
@@ -171,7 +212,7 @@ function resetCell() {
 
 // --- STICKMAN SYMULATOR (LINIOWY) ---
 const simCanvas = document.getElementById("simCanvas");
-const ctx = simCanvas.getContext("2d");
+const ctx = simCanvas ? simCanvas.getContext("2d") : null;
 const tensionBar = document.getElementById("tensionBar");
 const tensionValue = document.getElementById("tensionValue");
 const painStatus = document.getElementById("painStatus");
@@ -292,12 +333,14 @@ let currentTension = 55;
 let targetTension = 55;
 
 function updatePoseDescriptions() {
-  if (stickPoses[currentPoseKey]) {
+  if (stickPoses[currentPoseKey] && poseDesc) {
     poseDesc.innerText = stickPoses[currentPoseKey].desc[currentLang];
   }
 }
 
 window.setPose = function (poseName) {
+  if (!poseDesc) return;
+  
   currentPoseKey = poseName;
   const p = stickPoses[poseName];
   targetPose = JSON.parse(JSON.stringify(p));
@@ -513,6 +556,7 @@ Be specific.`;
 }
 
 function animateStick() {
+  if (!ctx) return;
   const speed = 0.1;
 
   // Interpolate points
@@ -755,6 +799,8 @@ function updateAndDrawMediators() {
 }
 
 function updateUI(isDanger) {
+  if (!tensionBar || !tensionValue || !painStatus) return;
+
   // Aktualizacja paska postępu i tekstu
   tensionBar.style.width = `${currentTension}%`;
   tensionValue.innerText = `${Math.round(currentTension)}%`;
@@ -799,6 +845,8 @@ function setGuardMode(mode) {
   const guardSpeech = document.getElementById("guard-speech");
   const guardTitle = document.getElementById("guard-status-title");
   const guardDesc = document.getElementById("guard-status-desc");
+
+  if (!btnHealthy || !btnMcas || !guardContainer || !guardIcon || !guardSpeech || !guardTitle || !guardDesc) return;
 
   const rows = document.querySelectorAll(".visitor-row");
   const trans = translations[currentLang];
@@ -911,6 +959,9 @@ let isCrashed = false;
 function setSeverity(level) {
   if (isCrashed) return; // Nie zmieniaj jak jest crash
 
+  const elMecfs = document.getElementById("bat-mecfs");
+  if (!elMecfs) return;
+
   currentSeverity = level;
   const config = severityConfig[level];
 
@@ -918,28 +969,29 @@ function setSeverity(level) {
   batLevelMecfs = config.startLevel;
 
   // Aktualizuj UI Baterii
-  const elMecfs = document.getElementById("bat-mecfs");
   elMecfs.style.height = `${batLevelMecfs}%`;
 
   // Aktualizuj tekst czasu regeneracji
   const recTimeEl = document.getElementById("mecfs-recovery-time");
-  recTimeEl.innerText = config.recoveryTime[currentLang];
+  if (recTimeEl) recTimeEl.innerText = config.recoveryTime[currentLang];
 
   // Aktualizuj style przycisków (aktywny/nieaktywny)
   ["mild", "moderate", "severe", "very_severe"].forEach((sev) => {
     const btn = document.getElementById(`btn-sev-${sev.replace('_', '-')}`);
-    if (sev === level) {
-      btn.className =
-        "flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 shadow-sm ring-1 ring-purple-200 dark:ring-purple-700";
-    } else {
-      btn.className =
-        "flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800";
+    if (btn) {
+      if (sev === level) {
+        btn.className =
+          "flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300 shadow-sm ring-1 ring-purple-200 dark:ring-purple-700";
+      } else {
+        btn.className =
+          "flex-1 py-2 px-1 rounded text-[10px] sm:text-xs font-bold transition-all text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800";
+      }
     }
   });
 
   // Reset komunikatu
-  document.getElementById("battery-msg").innerHTML =
-    translations[currentLang].lbl_select_act;
+  const msg = document.getElementById("battery-msg");
+  if (msg) msg.innerHTML = translations[currentLang].lbl_select_act;
 }
 
 function drainBattery(actionType) {
@@ -948,6 +1000,9 @@ function drainBattery(actionType) {
   const elHealthy = document.getElementById("bat-healthy");
   const elMecfs = document.getElementById("bat-mecfs");
   const msg = document.getElementById("battery-msg");
+  
+  if (!elHealthy || !elMecfs || !msg) return;
+
   const trans = translations[currentLang];
   const config = severityConfig[currentSeverity];
 
@@ -1002,29 +1057,33 @@ function drainBattery(actionType) {
 }
 
 // Inicjalizacja przy starcie
-setSeverity("moderate");
+if (document.getElementById("bat-mecfs")) {
+  setSeverity("moderate");
+}
 
-animateStick();
-initGranules();
-setPose("chair");
+if (typeof animateStick === 'function') animateStick();
+if (typeof initGranules === 'function') initGranules();
+if (typeof setPose === 'function') setPose("chair");
 
 // Back to Top Button Logic
 const btnBackToTop = document.getElementById("btn-back-to-top");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    btnBackToTop.classList.remove("opacity-0", "translate-y-10", "pointer-events-none");
-  } else {
-    btnBackToTop.classList.add("opacity-0", "translate-y-10", "pointer-events-none");
-  }
-});
-
-btnBackToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+if (btnBackToTop) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btnBackToTop.classList.remove("opacity-0", "translate-y-10", "pointer-events-none");
+    } else {
+      btnBackToTop.classList.add("opacity-0", "translate-y-10", "pointer-events-none");
+    }
   });
-});
+
+  btnBackToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
 
 // Bottom Navigation Logic (Scroll Spy & Progress)
 const navItems = document.querySelectorAll(".nav-item");
@@ -1071,11 +1130,14 @@ function updateActiveNav() {
   // 3. Update Progress Bar (Snap to Active Section)
   if (progressBar) {
     if (activeItem) {
-      const navRect = document.getElementById("bottom-nav").getBoundingClientRect();
-      const itemRect = activeItem.getBoundingClientRect();
-      // Calculate width to reach the center of the active item
-      const width = (itemRect.left - navRect.left) + (itemRect.width / 2);
-      progressBar.style.width = `${width}px`;
+      const navEl = document.getElementById("bottom-nav");
+      if (navEl) {
+        const navRect = navEl.getBoundingClientRect();
+        const itemRect = activeItem.getBoundingClientRect();
+        // Calculate width to reach the center of the active item
+        const width = (itemRect.left - navRect.left) + (itemRect.width / 2);
+        progressBar.style.width = `${width}px`;
+      }
     } else {
       progressBar.style.width = "0px";
     }
@@ -1098,7 +1160,7 @@ document.body.classList.add('js-loaded');
 const observerOptions = {
   root: null,
   rootMargin: '0px 0px -100px 0px', // Element musi wejść 100px w głąb ekranu
-  threshold: 0.1
+  threshold: 0.05
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
