@@ -1219,3 +1219,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Simulation Modal Logic
+window.openSimModal = function() {
+    const modal = document.getElementById('sim-modal');
+    const backdrop = document.getElementById('sim-modal-backdrop');
+    const panel = document.getElementById('sim-modal-panel');
+    
+    if (!modal) return;
+    
+    modal.classList.remove('hidden');
+    
+    // Small delay to allow display:block to apply before transition
+    setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+    }, 10);
+    
+    // Ensure canvas is sized correctly
+    if (window.drawStickman) {
+        window.drawStickman();
+    }
+};
+
+window.closeSimModal = function() {
+    const modal = document.getElementById('sim-modal');
+    const backdrop = document.getElementById('sim-modal-backdrop');
+    const panel = document.getElementById('sim-modal-panel');
+    
+    if (!modal) return;
+    
+    backdrop.classList.add('opacity-0');
+    panel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+    
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300); // Match transition duration
+};
+
+// Close modal on backdrop click
+document.getElementById('sim-modal-backdrop')?.addEventListener('click', window.closeSimModal);
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('sim-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+            window.closeSimModal();
+        }
+    }
+});
+
