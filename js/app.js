@@ -75,6 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (mobileBackdrop) {
                 mobileBackdrop.classList.toggle('hidden');
             }
+            // Dismiss settings hint when mobile menu is opened
+            if (window.dismissSettingsHint) {
+                window.dismissSettingsHint();
+            }
         });
     }
 
@@ -84,7 +88,38 @@ document.addEventListener("DOMContentLoaded", () => {
             mobileBackdrop.classList.add('hidden');
         });
     }
+
+    // Check for settings hint
+    checkSettingsHint();
 });
+
+function checkSettingsHint() {
+    const hint = document.getElementById('settings-hint');
+    if (!hint) return;
+
+    const hasSeenHint = localStorage.getItem('settings_hint_seen');
+    if (!hasSeenHint) {
+        // Show hint after a short delay
+        setTimeout(() => {
+            hint.classList.remove('hidden');
+            // Trigger reflow
+            void hint.offsetWidth;
+            hint.classList.remove('opacity-0', 'translate-y-2');
+            lucide.createIcons();
+        }, 1500);
+    }
+}
+
+window.dismissSettingsHint = function() {
+    const hint = document.getElementById('settings-hint');
+    if (hint) {
+        hint.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => {
+            hint.classList.add('hidden');
+        }, 500);
+    }
+    localStorage.setItem('settings_hint_seen', 'true');
+};
 
 function updateLanguageUI() {
   // 1. Update statycznych tekstów (data-i18n)
