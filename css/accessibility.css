@@ -1,5 +1,21 @@
 /* Accessibility Styles */
 
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/fonts/OpenDyslexic-Regular.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/fonts/OpenDyslexic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/fonts/OpenDyslexic-Bold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/npm/opendyslexic@1.0.3/fonts/OpenDyslexic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
 /* High Contrast Mode */
 .high-contrast {
     --bg-primary: #000000;
@@ -59,7 +75,8 @@ html.large-font {
 }
 
 /* Dyslexia Friendly Font */
-.dyslexia-font {
+.dyslexia-font,
+.dyslexia-font * {
     font-family: 'OpenDyslexic', 'Comic Sans MS', 'Verdana', sans-serif !important;
     line-height: 1.8 !important;
     letter-spacing: 0.05em !important;
