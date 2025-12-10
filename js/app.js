@@ -138,6 +138,14 @@ function updateLanguageUI() {
     }
   });
 
+  // 2a. Update aria-label
+  document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-aria-label");
+    if (translations[currentLang] && translations[currentLang][key]) {
+      el.setAttribute("aria-label", translations[currentLang][key]);
+    }
+  });
+
   // 3. Update opisów w symulacji kręgosłupa
   if (typeof updatePoseDescriptions === 'function' && document.getElementById("poseDesc")) {
       updatePoseDescriptions();
