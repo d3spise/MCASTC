@@ -40,7 +40,13 @@ function toggleTheme() {
   lucide.createIcons();
 }
 
-let currentLang = localStorage.getItem("lang") || "pl";
+let currentLang = localStorage.getItem("lang");
+
+if (!currentLang) {
+    const userLang = navigator.language || navigator.userLanguage;
+    currentLang = userLang.startsWith('pl') ? 'pl' : 'en';
+}
+
 let currentGuardMode = "healthy"; // Przechowuje stan ochroniarza
 
 // Apply initial language settings immediately
