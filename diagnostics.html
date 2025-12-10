@@ -371,6 +371,126 @@
         </div>
     </section>
 
+    <!-- Beighton Score Section -->
+    <section id="beighton-score" class="fade-in-section py-16 bg-indigo-50/50 dark:bg-slate-950 scroll-mt-20 border-t border-indigo-100 dark:border-indigo-900/30 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-3 bg-indigo-100 dark:bg-indigo-900/40 rounded-xl text-indigo-600 dark:text-indigo-300">
+                    <i data-lucide="activity" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white" data-i18n="beighton_title">Skala Beightona (Hipermobilność)</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl" data-i18n="beighton_desc">
+                        Proste narzędzie przesiewowe do oceny uogólnionej hipermobilności stawów (cecha charakterystyczna dla EDS). Maksymalny wynik to 9 punktów.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-indigo-100 dark:border-indigo-800/50 shadow-sm max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4" data-i18n="beighton_criteria_title">Kryteria Oceny</h3>
+                
+                <div class="space-y-6">
+                    <!-- 1. Little Fingers -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_pinky">Małe palce > 90°</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_pinky_desc">Bierne odgięcie małego palca dłoni powyżej 90 stopni.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Lewa</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Prawa</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Thumbs -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_thumb">Kciuk do przedramienia</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_thumb_desc">Bierne przyciągnięcie kciuka do wewnętrznej strony przedramienia.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Lewa</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Prawa</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Elbows -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_elbow">Łokcie > 10°</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_elbow_desc">Przeprost w stawie łokciowym powyżej 10 stopni.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Lewa</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Prawa</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Knees -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_knee">Kolana > 10°</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_knee_desc">Przeprost w stawie kolanowym powyżej 10 stopni.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Lewa</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Prawa</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 5. Spine -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_spine">Skłon do podłogi</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_spine_desc">Położenie całych dłoni płasko na podłodze przy wyprostowanych kolanach.</p>
+                        </div>
+                        <div class="flex gap-4 justify-center min-w-[150px]">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" value="1">
+                                <span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_yes">Tak</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 text-center">
+                    <div class="inline-block bg-slate-100 dark:bg-slate-800 rounded-full px-6 py-3 mb-4">
+                        <span class="text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="beighton-score-display">0 / 9</span>
+                    </div>
+                    <p id="beighton-result-text" class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2">-</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 italic" data-i18n="beighton_result_note">
+                        Pamiętaj: To tylko test przesiewowy. Diagnozę stawia lekarz (genetyk/reumatolog) na podstawie pełnych kryteriów hEDS.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-slate-950 text-slate-500 py-8 border-t border-slate-900">
         <div class="max-w-6xl mx-auto px-4 text-center text-sm">

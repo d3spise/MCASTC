@@ -1277,3 +1277,37 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// --- Beighton Score Logic ---
+function initBeightonScore() {
+    const checkboxes = document.querySelectorAll('.beighton-check');
+    const scoreDisplay = document.getElementById('beighton-score-display');
+    const resultText = document.getElementById('beighton-result-text');
+
+    if (!checkboxes.length || !scoreDisplay) return;
+
+    function updateScore() {
+        let score = 0;
+        checkboxes.forEach(cb => {
+            if (cb.checked) score += parseInt(cb.value);
+        });
+
+        scoreDisplay.textContent = `${score} / 9`;
+
+        // Interpretation
+        if (score >= 5) {
+            resultText.textContent = translations[currentLang]?.beighton_result_high || "Wynik wysoki (Sugeruje hipermobilność / hEDS)";
+            resultText.className = "text-lg font-bold text-red-600 dark:text-red-400 mb-2";
+        } else {
+            resultText.textContent = translations[currentLang]?.beighton_result_low || "Wynik niski (Prawdopodobnie brak uogólnionej hipermobilności)";
+            resultText.className = "text-lg font-medium text-slate-700 dark:text-slate-300 mb-2";
+        }
+    }
+
+    checkboxes.forEach(cb => {
+        cb.addEventListener('change', updateScore);
+    });
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', initBeightonScore);
+
