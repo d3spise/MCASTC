@@ -1270,7 +1270,7 @@ const navItems = document.querySelectorAll(".nav-item");
 const sections = [
   "mechanizm",
   "tethered-cord-def",
-  "tethered-cord",
+  "cci-def",
   "mecfs-def",
   "connection",
   "objawy",
