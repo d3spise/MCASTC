@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Narzędzia medyczne dla pacjentów z MCAS, TCS i ME/CFS. Generator karty ratunkowej i protokołu szpitalnego.">
+    <meta name="keywords" content="MCAS, TCS, ME/CFS, Karta Ratunkowa, Protokół Szpitalny, Anestezjologia, Bezpieczeństwo Pacjenta">
+    <meta name="author" content="NeuroImmune Hub">
+    <meta name="robots" content="index, follow">
+
+    <title>Narzędzia / Tools - NeuroImmune Hub</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // Dark mode init
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+    <script data-goatcounter="https://despise.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <style>
+        @media print {
+            /* Reset Page Background */
+            html, body {
+                background-color: white !important;
+                color: black !important;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: visible !important;
+            }
+
+            /* Hide everything by default except the portal */
+            body > *:not(#print-portal) {
+                display: none !important;
+            }
+
+            /* Show the portal */
+            #print-portal {
+                display: block !important;
+            }
+
+            /* Ensure backgrounds print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* Card specific styles */
+        .medical-card {
+            width: 85.6mm;
+            height: 53.98mm;
+            font-size: 10px;
+            line-height: 1.2;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Nawigacja -->
+    <nav class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300 no-print">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+                    <i data-lucide="activity" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">NeuroImmune Hub</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">MCAS • TCS • ME/CFS</span>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="index.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_home">Strona Główna</a>
+                <a href="diagnostics.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_diagnostics">Diagnostyka</a>
+                <a href="treatment.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_treatment">Leczenie</a>
+                <a href="tools.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500" data-i18n="nav_tools">Narzędzia</a>
+                <a href="contact.html" class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_contact">Kontakt</a>
+                
+                <div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+                    <button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtn" title="Opcje dostępności" aria-label="Opcje dostępności">
+                        <i data-lucide="accessibility" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtn" title="Przełącz tryb ciemny">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn">PL</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 absolute w-full left-0 top-full shadow-lg">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="index.html" class="text-slate-600 dark:text-slate-300 font-medium" data-i18n="nav_home">Strona Główna</a>
+                <a href="diagnostics.html" class="text-slate-600 dark:text-slate-300 font-medium" data-i18n="nav_diagnostics">Diagnostyka</a>
+                <a href="treatment.html" class="text-slate-600 dark:text-slate-300 font-medium" data-i18n="nav_treatment">Leczenie</a>
+                <a href="tools.html" class="text-red-600 dark:text-red-400 font-bold" data-i18n="nav_tools">Narzędzia</a>
+                <a href="contact.html" class="text-slate-600 dark:text-slate-300 font-medium" data-i18n="nav_contact">Kontakt</a>
+                
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtnMobile" title="Opcje dostępności">
+                        <i data-lucide="accessibility" class="w-5 h-5"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtnMobile" title="Przełącz tryb ciemny">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleLang()" class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtnMobile">PL</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 py-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-red-100 dark:bg-red-900/30 rounded-full mb-4 text-red-600 dark:text-red-400">
+                <i data-lucide="shield-alert" class="w-8 h-8"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="tools_header_title">Centrum Bezpieczeństwa Pacjenta</h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto" data-i18n="tools_header_desc">Narzędzia medyczne do zarządzania MCAS, TCS i ME/CFS.</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
+
+        <!-- Tool 2: Hospital Protocol -->
+        <section id="hospital-protocol">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg text-emerald-600 dark:text-emerald-400">
+                    <i data-lucide="file-text" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="tool_protocol_title">Generator Protokołu Szpitalnego</h2>
+                    <p class="text-slate-500 dark:text-slate-400" data-i18n="tool_protocol_desc">Oficjalny dokument dla anestezjologów i chirurgów.</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" data-i18n="card_form_name">Imię i Nazwisko</label>
+                        <input type="text" id="proto-name" class="h-12 w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-indigo-500 focus:border-indigo-500 px-4" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1" data-i18n="protocol_form_dob">Data Urodzenia</label>
+                        <input type="date" id="proto-dob" class="h-12 w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-indigo-500 focus:border-indigo-500 px-4">
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
+                        <input type="checkbox" id="proto-mcas" class="rounded text-indigo-600 focus:ring-indigo-500">
+                        <span class="font-medium text-sm" data-i18n="protocol_check_mcas">MCAS</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
+                        <input type="checkbox" id="proto-tcs" class="rounded text-indigo-600 focus:ring-indigo-500">
+                        <span class="font-medium text-sm" data-i18n="protocol_check_tcs">TCS</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
+                        <input type="checkbox" id="proto-cci" class="rounded text-indigo-600 focus:ring-indigo-500">
+                        <span class="font-medium text-sm" data-i18n="protocol_check_cci">CCI</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
+                        <input type="checkbox" id="proto-heds" class="rounded text-indigo-600 focus:ring-indigo-500">
+                        <span class="font-medium text-sm" data-i18n="protocol_check_heds">hEDS</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
+                        <input type="checkbox" id="proto-mecfs" class="rounded text-indigo-600 focus:ring-indigo-500">
+                        <span class="font-medium text-sm" data-i18n="protocol_check_mecfs">ME/CFS</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Protocol Preview (A4) -->
+            <div class="flex justify-center bg-slate-100 dark:bg-slate-950 p-8 rounded-xl overflow-auto">
+                <div id="print-area-protocol" class="bg-white text-black w-[210mm] min-h-[297mm] p-[20mm] shadow-lg mx-auto relative">
+                    <div class="border-b-2 border-black pb-4 mb-8 flex justify-between items-end">
+                        <div>
+                            <h1 class="text-2xl font-bold uppercase tracking-wider" data-i18n="protocol_header_title">Medical Alert Protocol</h1>
+                            <p class="text-sm text-gray-600 mt-1" data-i18n="protocol_header_subtitle">Perioperative & Emergency Management</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-bold" data-i18n="protocol_safety_center">Patient Safety Center</div>
+                            <div class="text-xs text-gray-500" data-i18n="protocol_hub_name">NeuroImmune Hub</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8 p-4 border border-gray-300 rounded bg-gray-50">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <span class="text-xs text-gray-500 uppercase block" data-i18n="protocol_label_name">Patient Name</span>
+                                <div class="font-bold text-lg border-b border-gray-300 min-h-[1.5rem]" id="preview-proto-name"></div>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-500 uppercase block" data-i18n="protocol_label_dob">Date of Birth</span>
+                                <div class="font-bold text-lg border-b border-gray-300 min-h-[1.5rem]" id="preview-proto-dob"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="protocol-content" class="space-y-6">
+                        <!-- Dynamic Content Injected Here -->
+                        <div class="text-center text-gray-400 italic py-10" data-i18n="protocol_select_msg">
+                            Select conditions above to generate protocol.
+                        </div>
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t border-black">
+                        <p class="text-xs text-gray-500 text-center" data-i18n="protocol_footer_disclaimer">
+                            This document is a summary of critical medical considerations based on the patient's diagnoses. 
+                            It is intended to assist medical professionals in risk management.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8 no-print">
+                <button onclick="printProtocol()" class="flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                    <span data-i18n="btn_print_protocol">Drukuj Protokół</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+            <p class="mb-2" data-i18n="footer_text">Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.</p>
+            <p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto" data-i18n="footer_disclaimer">
+                <strong>Zastrzeżenie:</strong> Treści na tej stronie prezentują <strong>teoretyczny model</strong> powiązań między schorzeniami. Nie jest to obowiązujący standard medyczny, lecz zbiór hipotez opartych na literaturze naukowej. Informacje te nie zastępują porady lekarskiej.
+            </p>
+            <p>&copy; 2025 NeuroImmune Hub</p>
+        </div>
+    </footer>
+    <!-- Accessibility Panel -->
+    <div id="accessibility-panel" aria-hidden="true">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <i data-lucide="accessibility" class="w-5 h-5"></i>
+            <span data-i18n="a11y_title">Dostępność</span>
+        </h3>
+        
+        <button id="btn-contrast" class="a11y-btn">
+            <i data-lucide="contrast" class="w-4 h-4"></i>
+            <span data-i18n="a11y_contrast">Wysoki Kontrast</span>
+        </button>
+        
+        <button id="btn-font" class="a11y-btn">
+            <i data-lucide="type" class="w-4 h-4"></i>
+            <span data-i18n="a11y_font">Powiększ Tekst</span>
+        </button>
+        
+        <button id="btn-dyslexia" class="a11y-btn">
+            <i data-lucide="align-left" class="w-4 h-4"></i>
+            <span data-i18n="a11y_dyslexia">Czcionka dla Dyslektyków</span>
+        </button>
+
+        <div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
+
+        <button id="btn-reset-a11y" class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+            <span data-i18n="a11y_reset">Resetuj ustawienia</span>
+        </button>
+    </div>
+    <script src="js/translations.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script>
+       
+
+
+
+        // --- Tool 2: Protocol Logic ---
+        const protocolChecks = ['proto-mcas', 'proto-tcs', 'proto-cci', 'proto-heds', 'proto-mecfs'];
+        
+        function updateProtocol() {
+            // Update Header Info
+            document.getElementById('preview-proto-name').textContent = document.getElementById('proto-name').value;
+            document.getElementById('preview-proto-dob').textContent = document.getElementById('proto-dob').value;
+
+            const container = document.getElementById('protocol-content');
+            container.innerHTML = '';
+            
+            let hasContent = false;
+            const lang = typeof window.currentLang !== 'undefined' ? window.currentLang : (localStorage.getItem('lang') || 'pl');
+            const t = translations[lang] || translations['pl'];
+
+            // Helper to create block
+            const createBlock = (title, content, isCritical = false) => {
+                const div = document.createElement('div');
+                div.className = `mb-6 ${isCritical ? 'border-l-4 border-red-600 pl-4' : ''}`;
+                div.innerHTML = `
+                    <h3 class="font-bold text-lg mb-1 ${isCritical ? 'text-red-700' : 'text-black'}">${title}</h3>
+                    <p class="text-sm text-gray-800 leading-relaxed">${content}</p>
+                `;
+                return div;
+            };
+
+            if (document.getElementById('proto-mcas').checked) {
+                container.appendChild(createBlock(t.protocol_mcas_title, t.protocol_mcas_content, true));
+                hasContent = true;
+            }
+            if (document.getElementById('proto-tcs').checked) {
+                container.appendChild(createBlock(t.protocol_tcs_title, t.protocol_tcs_content, true));
+                hasContent = true;
+            }
+            if (document.getElementById('proto-cci').checked) {
+                container.appendChild(createBlock(t.protocol_cci_title, t.protocol_cci_content, true));
+                hasContent = true;
+            }
+            if (document.getElementById('proto-heds').checked) {
+                container.appendChild(createBlock(t.protocol_heds_title, t.protocol_heds_content));
+                hasContent = true;
+            }
+            if (document.getElementById('proto-mecfs').checked) {
+                container.appendChild(createBlock(t.protocol_mecfs_title, t.protocol_mecfs_content));
+                hasContent = true;
+            }
+
+            if (!hasContent) {
+                const msg = t.protocol_select_msg || "Select conditions above to generate protocol.";
+                container.innerHTML = `<div class="text-center text-gray-400 italic py-10" data-i18n="protocol_select_msg">${msg}</div>`;
+            }
+        }
+
+        protocolChecks.forEach(id => {
+            document.getElementById(id).addEventListener('change', updateProtocol);
+        });
+        
+        document.getElementById('proto-name').addEventListener('input', updateProtocol);
+        document.getElementById('proto-dob').addEventListener('input', updateProtocol);
+
+        // Override toggleLang to ensure protocol updates immediately
+        const originalToggleLang = window.toggleLang;
+        window.toggleLang = function() {
+            // Manually toggle lang logic here to ensure sync
+            if (typeof window.currentLang !== 'undefined') {
+                window.currentLang = window.currentLang === "pl" ? "en" : "pl";
+            } else {
+                window.currentLang = (localStorage.getItem("lang") || 'pl') === "pl" ? "en" : "pl";
+            }
+            
+            localStorage.setItem("lang", window.currentLang);
+            document.documentElement.lang = window.currentLang;
+            
+            const langBtn = document.getElementById("langBtn");
+            if (langBtn) langBtn.innerText = window.currentLang.toUpperCase();
+            
+            const langBtnMobile = document.getElementById("langBtnMobile");
+            if (langBtnMobile) langBtnMobile.innerText = window.currentLang.toUpperCase();
+            
+            // Update UI
+            if (typeof updateLanguageUI === 'function') {
+                updateLanguageUI();
+            }
+            
+            // Update Tools
+            updateProtocol();
+            updateCard();
+        };
+
+        function printProtocol() {
+            const content = document.getElementById('print-area-protocol');
+            const portal = document.getElementById('print-portal');
+            
+            portal.innerHTML = content.innerHTML;
+            portal.className = content.className;
+            
+            window.print();
+            
+            portal.innerHTML = '';
+            portal.className = '';
+        }
+
+        function printCard() {
+            const content = document.getElementById('print-area-card');
+            const portal = document.getElementById('print-portal');
+            
+            portal.innerHTML = content.innerHTML;
+            portal.className = 'flex justify-center items-center h-screen w-full';
+            
+            window.print();
+            
+            portal.innerHTML = '';
+            portal.className = '';
+        }
+
+        // Initialize
+        lucide.createIcons();
+        updateCard();
+        updateProtocol();
+    </script>
+    <div id="print-portal" class="hidden"></div>
+</body>
+</html>

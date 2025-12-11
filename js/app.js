@@ -40,7 +40,7 @@ function toggleTheme() {
   lucide.createIcons();
 }
 
-let currentLang = localStorage.getItem("lang");
+var currentLang = localStorage.getItem("lang");
 
 if (!currentLang) {
     const userLang = navigator.language || navigator.userLanguage;
