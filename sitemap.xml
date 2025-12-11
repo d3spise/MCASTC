@@ -1,33 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Home -->
   <url>
     <loc>https://www.neuroimmunehub.com/</loc>
-    <lastmod>2025-12-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/" />
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
+    <loc>https://www.neuroimmunehub.com/?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Diagnostics -->
+  <url>
     <loc>https://www.neuroimmunehub.com/diagnostics.html</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.neuroimmunehub.com/treatment.html</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://www.neuroimmunehub.com/contact.html</loc>
-    <lastmod>2025-12-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://www.neuroimmunehub.com/tools.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/diagnostics.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/diagnostics.html?lang=en" />
     <lastmod>2025-12-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/diagnostics.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/diagnostics.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/diagnostics.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Treatment -->
+  <url>
+    <loc>https://www.neuroimmunehub.com/treatment.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/treatment.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/treatment.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/treatment.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/treatment.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/treatment.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Tools -->
+  <url>
+    <loc>https://www.neuroimmunehub.com/tools.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/tools.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/tools.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/tools.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/tools.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/tools.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://www.neuroimmunehub.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/contact.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/contact.html?lang=en</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/contact.html?lang=en" />
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
   </url>
 </urlset>

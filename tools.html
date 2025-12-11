@@ -681,6 +681,12 @@
             }
             
             localStorage.setItem("lang", window.currentLang);
+            
+            // Update URL
+            const url = new URL(window.location);
+            url.searchParams.set('lang', window.currentLang);
+            window.history.pushState({}, '', url);
+
             document.documentElement.lang = window.currentLang;
             
             const langBtn = document.getElementById("langBtn");

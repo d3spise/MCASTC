@@ -1,5 +1,24 @@
 const translations = {
     pl: {
+        // SEO - Global
+        seo_keywords: "MCAS, TCS, ME/CFS, Zespół Aktywacji Komórek Tucznych, Zakotwiczenie Rdzenia, Zespół Przewlekłego Zmęczenia, Ehlers-Danlos, EDS, Dysautonomia, POTS, Zdrowie, Medycyna, Neuroimmunologia",
+        
+        // SEO - Pages
+        seo_index_title: "NeuroImmune Hub: MCAS, TCS & ME/CFS",
+        seo_index_desc: "Kompleksowe źródło wiedzy o MCAS (Zespół Aktywacji Komórek Tucznych), TCS (Zespół Zakotwiczenia Rdzenia) i ME/CFS. Poznaj objawy, mechanizmy i powiązania między tymi chorobami.",
+        
+        seo_diagnostics_title: "Ścieżki Diagnostyczne: ME/CFS, POTS, MCAS, TCS",
+        seo_diagnostics_desc: "Jak zdiagnozować MCAS, TCS i ME/CFS? Przewodnik po badaniach, kryteriach diagnostycznych i testach (Beighton, Tilt Table).",
+        
+        seo_tools_title: "Narzędzia / Tools - NeuroImmune Hub",
+        seo_tools_desc: "Narzędzia medyczne dla pacjentów z MCAS, TCS i ME/CFS. Generator karty ratunkowej, protokołu szpitalnego i tapety ICE.",
+        
+        seo_contact_title: "Kontakt - NeuroImmune Hub",
+        seo_contact_desc: "Skontaktuj się z nami. Masz pytania o MCAS, TCS lub ME/CFS? Podziel się swoją historią.",
+        
+        seo_treatment_title: "Strategie Leczenia: ME/CFS, POTS, MCAS, TCS",
+        seo_treatment_desc: "Przegląd strategii leczenia i zarządzania objawami w chorobach neuroimmunologicznych. Leki, dieta, styl życia.",
+
         nav_home: "Strona Główna",
         nav_diagnostics: "Diagnostyka",
         nav_contact: "Kontakt",
@@ -513,6 +532,25 @@ const translations = {
         ice_placeholder_contact: "MAMA: +48 123 456 789",
     },
     en: {
+        // SEO - Global
+        seo_keywords: "MCAS, TCS, ME/CFS, Mast Cell Activation Syndrome, Tethered Cord Syndrome, Chronic Fatigue Syndrome, Ehlers-Danlos, EDS, Dysautonomia, POTS, Health, Medicine, Neuroimmunology",
+        
+        // SEO - Pages
+        seo_index_title: "NeuroImmune Hub: MCAS, TCS & ME/CFS",
+        seo_index_desc: "Comprehensive resource on MCAS (Mast Cell Activation Syndrome), TCS (Tethered Cord Syndrome), and ME/CFS. Learn about symptoms, mechanisms, and connections between these conditions.",
+        
+        seo_diagnostics_title: "Diagnostic Pathways: ME/CFS, POTS, MCAS, TCS",
+        seo_diagnostics_desc: "How to diagnose MCAS, TCS, and ME/CFS? Guide to tests, diagnostic criteria, and assessments (Beighton, Tilt Table).",
+        
+        seo_tools_title: "Tools - NeuroImmune Hub",
+        seo_tools_desc: "Medical tools for MCAS, TCS, and ME/CFS patients. Emergency card generator, hospital protocol generator, and ICE wallpaper creator.",
+        
+        seo_contact_title: "Contact - NeuroImmune Hub",
+        seo_contact_desc: "Contact us. Have questions about MCAS, TCS, or ME/CFS? Share your story.",
+        
+        seo_treatment_title: "Treatment Strategies: ME/CFS, POTS, MCAS, TCS",
+        seo_treatment_desc: "Overview of treatment strategies and symptom management in neuroimmune diseases. Medications, diet, lifestyle.",
+
         nav_home: "Home",
         nav_diagnostics: "Diagnostics",
         nav_contact: "Contact",

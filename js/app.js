@@ -40,11 +40,24 @@ function toggleTheme() {
   lucide.createIcons();
 }
 
-var currentLang = localStorage.getItem("lang");
+var currentLang;
 
-if (!currentLang) {
-    const userLang = navigator.language || navigator.userLanguage;
-    currentLang = userLang.startsWith('pl') ? 'pl' : 'en';
+// 1. Check URL param
+const urlParams = new URLSearchParams(window.location.search);
+const langParam = urlParams.get('lang');
+
+if (langParam && (langParam === 'pl' || langParam === 'en')) {
+    currentLang = langParam;
+    localStorage.setItem("lang", currentLang);
+} else {
+    // 2. Check LocalStorage
+    currentLang = localStorage.getItem("lang");
+    
+    // 3. Check Browser
+    if (!currentLang) {
+        const userLang = navigator.language || navigator.userLanguage;
+        currentLang = userLang.startsWith('pl') ? 'pl' : 'en';
+    }
 }
 
 let currentGuardMode = "healthy"; // Przechowuje stan ochroniarza
@@ -146,7 +159,29 @@ function updateLanguageUI() {
     }
   });
 
-  // 3. Update opisów w symulacji kręgosłupa
+  // 3. Update internal links to preserve language
+  document.querySelectorAll("a").forEach(a => {
+      try {
+          const rawHref = a.getAttribute('href');
+          if (!rawHref) return;
+          
+          // Skip anchors and special protocols immediately
+          if (rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:') || rawHref.startsWith('javascript:')) return;
+
+          // Construct URL object (handles both relative and absolute)
+          const url = new URL(a.href, window.location.origin);
+          
+          // Only update internal links
+          if (url.origin === window.location.origin) {
+              url.searchParams.set('lang', currentLang);
+              a.href = url.toString();
+          }
+      } catch (e) {
+          // Ignore invalid URLs
+      }
+  });
+
+  // 4. Update opisów w symulacji kręgosłupa
   if (typeof updatePoseDescriptions === 'function' && document.getElementById("poseDesc")) {
       updatePoseDescriptions();
   }
@@ -164,11 +199,107 @@ function updateLanguageUI() {
   if (typeof setSeverity === 'function' && typeof currentSeverity !== 'undefined' && document.getElementById("bat-mecfs")) {
       setSeverity(currentSeverity);
   }
+
+  // 6. Update SEO Meta Tags
+  updateSEO();
+}
+
+function updateSEO() {
+    if (!translations[currentLang]) return;
+    
+    const t = translations[currentLang];
+    const path = window.location.pathname;
+    let pagePrefix = 'seo_index'; // Default
+
+    if (path.includes('diagnostics.html')) pagePrefix = 'seo_diagnostics';
+    else if (path.includes('tools.html')) pagePrefix = 'seo_tools';
+    else if (path.includes('contact.html')) pagePrefix = 'seo_contact';
+    else if (path.includes('treatment.html')) pagePrefix = 'seo_treatment';
+    
+    // Update Title
+    if (t[pagePrefix + '_title']) {
+        document.title = t[pagePrefix + '_title'];
+        setMeta('og:title', t[pagePrefix + '_title']);
+        setMeta('twitter:title', t[pagePrefix + '_title']);
+    }
+
+    // Update Description
+    if (t[pagePrefix + '_desc']) {
+        setMeta('description', t[pagePrefix + '_desc'], 'name');
+        setMeta('og:description', t[pagePrefix + '_desc']);
+        setMeta('twitter:description', t[pagePrefix + '_desc']);
+    }
+
+    // Update Keywords
+    if (t.seo_keywords) {
+        setMeta('keywords', t.seo_keywords, 'name');
+    }
+
+    // Update Canonical & Hreflang
+    updateRelTags();
+}
+
+function updateRelTags() {
+    const baseUrl = window.location.origin + window.location.pathname;
+    
+    // 1. Canonical (Self-referencing)
+    // Wskazuje Google, że obecny URL (z parametrem języka) jest właściwym adresem dla tej treści
+    let currentUrl = baseUrl;
+    if (currentLang === 'en') currentUrl += '?lang=en';
+    // Dla PL domyślnie bez parametru lub z ?lang=pl - Google woli czysty URL dla domyślnego
+    // Ale dla spójności możemy użyć parametru, jeśli tak zdecydowaliśmy. 
+    // Przyjmijmy: PL = czysty URL (x-default), EN = ?lang=en
+    
+    let canonicalUrl = baseUrl;
+    if (currentLang === 'en') canonicalUrl = baseUrl + '?lang=en';
+    
+    let linkCanon = document.querySelector('link[rel="canonical"]');
+    if (!linkCanon) {
+        linkCanon = document.createElement('link');
+        linkCanon.setAttribute('rel', 'canonical');
+        document.head.appendChild(linkCanon);
+    }
+    linkCanon.setAttribute('href', canonicalUrl);
+
+    // 2. Hreflang Tags
+    // Mówi Google: "Tu jest wersja PL, a tu EN"
+    const langs = {
+        'pl': baseUrl, // Domyślny (polski)
+        'en': baseUrl + '?lang=en',
+        'x-default': baseUrl // Domyślny dla reszty świata (też polski lub angielski, zależy od strategii)
+    };
+
+    Object.keys(langs).forEach(langCode => {
+        let linkHref = document.querySelector(`link[rel="alternate"][hreflang="${langCode}"]`);
+        if (!linkHref) {
+            linkHref = document.createElement('link');
+            linkHref.setAttribute('rel', 'alternate');
+            linkHref.setAttribute('hreflang', langCode);
+            document.head.appendChild(linkHref);
+        }
+        linkHref.setAttribute('href', langs[langCode]);
+    });
+}
+
+function setMeta(nameOrProperty, content, attr = 'property') {
+    let element = document.querySelector(`meta[${attr}="${nameOrProperty}"]`);
+    if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attr, nameOrProperty);
+        document.head.appendChild(element);
+    }
+    element.setAttribute('content', content);
 }
 
 function toggleLang() {
   currentLang = currentLang === "pl" ? "en" : "pl";
   localStorage.setItem("lang", currentLang);
+  
+  // Update URL
+  const url = new URL(window.location);
+  url.searchParams.set('lang', currentLang);
+  window.history.pushState({}, '', url);
+
   document.documentElement.lang = currentLang;
   
   const langBtn = document.getElementById("langBtn");
