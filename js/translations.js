@@ -92,7 +92,7 @@ const translations = {
         mech_cci_title: "Wtórne CCI (Niestabilność Czaszkowo-Szyjna)",
         mech_cci_desc: "Gdy mięśnie karku puszczają, kręgi szyjne zaczynają się przesuwać ('ślizgać') względem siebie. Zakotwiczenie rdzenia od dołu uniemożliwia adaptację, sztywno trzymając układ nerwowy, podczas gdy kości ruszają się zbyt mocno. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[8]</a></sup>",
         mech_brainstem_title: "Kompresja Pnia Mózgu i ME/CFS",
-        mech_brainstem_desc: "Niestabilne kręgi (szczególnie C1-C2) fizycznie uciskają pień mózgu i tętnice kręgowe. To powoduje przewlekłe niedokrwienie ośrodków autonomicznych i 'burzę' neurologiczną. Organizm wchodzi w stan hibernacji metabolicznej, co diagnozujemy jako ME/CFS.",
+        mech_brainstem_desc: "Niestabilne kręgi (szczególnie C1-C2) fizycznie uciskają pień mózgu i tętnice kręgowe. To powoduje przewlekłe niedokrwienie ośrodków autonomicznych i 'burzę' neurologiczną. Organizm wchodzi w stan hibernacji metabolicznej, co diagnozujemy jako ME/CFS. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[9]</a></sup>",
         
         // Nowa sekcja: Ewolucja Problemu
         mech_evolution_title: "Teoria Ewolucji Problemu: Od Objawu do Osobnej Choroby",
@@ -212,7 +212,7 @@ const translations = {
         conn_step3_title: "Kompresja Pnia (CCI)",
         conn_step3_desc: "Bez ochrony mięśniowej, kręgi szyjne (C1-C2) stają się niestabilne. Zaczynają uciskać pień mózgu, wywołując dysautonomię.",
         conn_step4_title: "ME/CFS & Shutdown",
-        conn_step4_desc: "Ucisk na pień mózgu to sygnał 'zagrożenia życia'. Mózg wymusza drastyczne oszczędzanie energii (shutdown), co objawia się jako ME/CFS. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[7]</a></sup>",
+        conn_step4_desc: "Ucisk na pień mózgu to sygnał 'zagrożenia życia'. Mózg wymusza drastyczne oszczędzanie energii (shutdown), co objawia się jako ME/CFS. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[7]</a></sup><sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[9]</a></sup>",
         symptoms_title: "6. Objawy: Kiedy wszystko się łączy",
         symptoms_desc: "Kombinacja MCAS i Zakotwiczenia Rdzenia tworzy specyficzny profil objawów, często błędnie diagnozowany jako \"tylko stres\" lub psychosomatyka.",
         sym_neuro_title: "Neurologiczne",
@@ -492,6 +492,7 @@ const translations = {
         bib_ref7_desc: "Opisuje mechanizm \"Sickness Behavior\". Uszkodzony lub drażniony nerw błędny wysyła do mózgu fałszywy sygnał o zagrożeniu, zmuszając organizm do \"shutdownu\" metabolicznego (objawy ME/CFS).",
         bib_ref8_desc: "Przełomowe badanie (2024) wykazujące współwystępowanie TCS i CCI.",
         bib_ref8_fig: "Zobacz Ryc. 2: Diagram Nakładania się Objawów (TCS/CCI)",
+        bib_ref9_desc: "Artykuł stawiający hipotezę (2025), że mechaniczna deformacja pnia mózgu może być główną przyczyną objawów ME/CFS i Long COVID.",
         bib_warning_title: "Uwaga do źródeł",
         bib_warning_desc: "Poniższa bibliografia zawiera artykuły naukowe, które badają poszczególne elementy tego modelu. Należy pamiętać, że bezpośredni związek przyczynowo-skutkowy między tymi trzema chorobami jest wciąż przedmiotem badań i dyskusji naukowych.",
         footer_disclaimer: "<strong>Zastrzeżenie:</strong> Treści na tej stronie prezentują <strong>teoretyczny model</strong> powiązań między schorzeniami. Nie jest to obowiązujący standard medyczny, lecz zbiór hipotez opartych na literaturze naukowej. Informacje te nie zastępują porady lekarskiej.",
@@ -648,7 +649,7 @@ const translations = {
         mech_cci_title: "Secondary CCI (Craniocervical Instability)",
         mech_cci_desc: "When neck muscles give way, cervical vertebrae begin to shift ('slide') relative to each other. Tethering of the cord from below prevents adaptation, rigidly holding the nervous system while bones move too much. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[8]</a></sup>",
         mech_brainstem_title: "Brainstem Compression & ME/CFS",
-        mech_brainstem_desc: "Unstable vertebrae (especially C1-C2) physically compress the brainstem and vertebral arteries. This causes chronic ischemia of autonomic centers and a neurological 'storm'. The body enters a state of metabolic hibernation, diagnosed as ME/CFS.",
+        mech_brainstem_desc: "Unstable vertebrae (especially C1-C2) physically compress the brainstem and vertebral arteries. This causes chronic ischemia of autonomic centers and a neurological 'storm'. The body enters a state of metabolic hibernation, diagnosed as ME/CFS. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[9]</a></sup>",
         
         // New section: Problem Evolution
         mech_evolution_title: "Problem Evolution Theory: From Symptom to Separate Disease",
@@ -768,7 +769,7 @@ const translations = {
         conn_step3_title: "Brainstem Compression (CCI)",
         conn_step3_desc: "Without muscle protection, cervical vertebrae (C1-C2) become unstable. They begin to compress the brainstem, causing dysautonomia.",
         conn_step4_title: "ME/CFS & Shutdown",
-        conn_step4_desc: "Compression of the brainstem is a 'life threat' signal. The brain forces drastic energy saving (shutdown), which manifests as ME/CFS. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[7]</a></sup>",
+        conn_step4_desc: "Compression of the brainstem is a 'life threat' signal. The brain forces drastic energy saving (shutdown), which manifests as ME/CFS. <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[7]</a></sup><sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[9]</a></sup>",
         symptoms_title: "6. Symptoms: When Everything Connects",
         symptoms_desc: "The combination of MCAS and Tethered Cord creates a specific symptom profile, often misdiagnosed as \"just stress\" or psychosomatic.",
         sym_neuro_title: "Neurological",
@@ -1047,6 +1048,7 @@ const translations = {
         bib_ref7_desc: "Describes the 'Sickness Behavior' mechanism. A damaged or irritated vagus nerve sends a false threat signal to the brain, forcing the body into metabolic 'shutdown' (ME/CFS symptoms).",
         bib_ref8_desc: "Groundbreaking study (2024) demonstrating the co-occurrence of TCS and CCI.",
         bib_ref8_fig: "See Fig. 2: Symptom Overlap Diagram (TCS/CCI)",
+        bib_ref9_desc: "Hypothesis paper (2025) proposing that mechanical brainstem deformation acts as a central driver of ME/CFS and Long COVID symptoms.",
         bib_warning_title: "Note on Sources",
         bib_warning_desc: "The bibliography below contains scientific articles investigating individual elements of this model. Please note that the direct causal link between these three diseases is still a subject of scientific research and debate.",
         footer_disclaimer: "<strong>Disclaimer:</strong> The content on this page presents a <strong>theoretical model</strong> of connections between conditions. This is not a prevailing medical standard but a collection of hypotheses based on scientific literature. This information does not replace medical advice.",
