@@ -53,10 +53,9 @@ if (langParam && (langParam === 'pl' || langParam === 'en')) {
     // 2. Check LocalStorage
     currentLang = localStorage.getItem("lang");
     
-    // 3. Check Browser
+    // 3. Default to Polish if no param provided (BEST FOR SEO)
     if (!currentLang) {
-        const userLang = navigator.language || navigator.userLanguage;
-        currentLang = userLang.startsWith('pl') ? 'pl' : 'en';
+        currentLang = 'pl';
     }
 }
 
