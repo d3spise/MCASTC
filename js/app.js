@@ -1,8 +1,14 @@
 // Initialize theme
+/**
+ * Initializes the theme based on local storage or system preference.
+ * Sets the correct icon for the theme button.
+ */
 function initTheme() {
     const isDark = localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
     const icon = isDark ? '<i data-lucide="sun" class="w-4 h-4"></i>' : '<i data-lucide="moon" class="w-4 h-4"></i>';
     
+    // Note: document classList is also toggled inline in HTML to prevent FOUC.
+    // This function ensures the button icon is correct.
     if (isDark) {
         document.documentElement.classList.add("dark");
     } else {
@@ -18,6 +24,10 @@ function initTheme() {
 initTheme();
 lucide.createIcons();
 
+/**
+ * Toggles the theme between dark and light mode.
+ * Updates local storage and refreshes icons.
+ */
 function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   const newTheme = isDark ? "light" : "dark";
@@ -179,11 +189,17 @@ function updateLanguageUI() {
   updateSEO();
 }
 
+/**
+ * Updates SEO meta tags dynamically.
+ * Note: Since we have static HTML files for languages, this might be redundant for static serving,
+ * but useful if switching content dynamically or ensuring consistency.
+ */
 function updateSEO() {
     if (!translations[currentLang]) return;
     
     const t = translations[currentLang];
     const path = window.location.pathname;
+    // Determine page prefix for translation keys
     let pagePrefix = 'seo_index'; // Default
 
     if (path.includes('diagnostics.html')) pagePrefix = 'seo_diagnostics';
@@ -214,19 +230,32 @@ function updateSEO() {
     updateRelTags();
 }
 
+/**
+ * Updates canonical and hreflang tags based on current language and path.
+ * Correctly handles directory-based structure (/ vs /en/).
+ */
 function updateRelTags() {
-    const baseUrl = window.location.origin + window.location.pathname;
+    const origin = window.location.origin;
+    const path = window.location.pathname;
     
-    // 1. Canonical (Self-referencing)
-    // Wskazuje Google, że obecny URL (z parametrem języka) jest właściwym adresem dla tej treści
-    let currentUrl = baseUrl;
-    if (currentLang === 'en') currentUrl += '?lang=en';
-    // Dla PL domyślnie bez parametru lub z ?lang=pl - Google woli czysty URL dla domyślnego
-    // Ale dla spójności możemy użyć parametru, jeśli tak zdecydowaliśmy. 
-    // Przyjmijmy: PL = czysty URL (x-default), EN = ?lang=en
+    // Determine the "base" path name (relative path without language prefix)
+    let basePathName = path;
+    if (path.includes('/en/')) {
+        basePathName = path.replace('/en/', '/');
+    }
+    // Ensure it starts with / if it's not empty, otherwise default to /index.html logic handled nicely? 
+    // Actually, browsers return pathname with leading slash.
     
-    let canonicalUrl = baseUrl;
-    if (currentLang === 'en') canonicalUrl = baseUrl + '?lang=en';
+    // Handle root case if needed, though usually browser gives / or /index.html
+    
+    // Construct URLs
+    // Note: If basePathName is just "/", urlPL matches root.
+    const urlPL = origin + (basePathName.startsWith('/') ? '' : '/') + basePathName;
+    const urlEN = origin + '/en' + (basePathName.startsWith('/') ? '' : '/') + basePathName;
+    
+    // 1. Canonical
+    // Should point to current page
+    const currentCanonical = currentLang === 'en' ? urlEN : urlPL;
     
     let linkCanon = document.querySelector('link[rel="canonical"]');
     if (!linkCanon) {
@@ -234,14 +263,13 @@ function updateRelTags() {
         linkCanon.setAttribute('rel', 'canonical');
         document.head.appendChild(linkCanon);
     }
-    linkCanon.setAttribute('href', canonicalUrl);
+    linkCanon.setAttribute('href', currentCanonical);
 
     // 2. Hreflang Tags
-    // Mówi Google: "Tu jest wersja PL, a tu EN"
     const langs = {
-        'pl': baseUrl, // Domyślny (polski)
-        'en': baseUrl + '?lang=en',
-        'x-default': baseUrl // Domyślny dla reszty świata (też polski lub angielski, zależy od strategii)
+        'pl': urlPL,
+        'en': urlEN,
+        'x-default': urlPL // Polish is default
     };
 
     Object.keys(langs).forEach(langCode => {
@@ -256,6 +284,12 @@ function updateRelTags() {
     });
 }
 
+/**
+ * Helper to update or create a meta tag.
+ * @param {string} nameOrProperty - The name or property attribute value.
+ * @param {string} content - The content attribute value.
+ * @param {string} [attr='property'] - The attribute name to use for lookup (e.g., 'name' or 'property').
+ */
 function setMeta(nameOrProperty, content, attr = 'property') {
     let element = document.querySelector(`meta[${attr}="${nameOrProperty}"]`);
     if (!element) {
@@ -266,32 +300,34 @@ function setMeta(nameOrProperty, content, attr = 'property') {
     element.setAttribute('content', content);
 }
 
+/**
+ * Toggles language between PL and EN and redirects to the appropriate directory.
+ */
 function toggleLang() {
   const newLang = currentLang === "pl" ? "en" : "pl";
   localStorage.setItem("lang", newLang);
   
   // Redirect to appropriate directory structure
   const currentPath = window.location.pathname;
-  const fileName = currentPath.split('/').pop() || 'index.html';
+  let fileName = currentPath.split('/').pop() || 'index.html';
   
+  // Clean filename if getting messy query params
+  if (fileName.includes('?')) fileName = fileName.split('?')[0];
+
   let newPath;
   if (newLang === "en") {
-    // Switch to English subdirectory
+    // Switch to English: Must be in /en/ folder
     if (currentPath.includes('/en/')) {
-      // Already in en/, no change needed
-      newPath = currentPath;
+      newPath = currentPath; // Already correct
     } else {
-      // Add /en/ prefix
       newPath = '/en/' + fileName;
     }
   } else {
-    // Switch to Polish (root)
+    // Switch to Polish: Must be in root folder
     if (currentPath.includes('/en/')) {
-      // Remove /en/ prefix
       newPath = '/' + fileName;
     } else {
-      // Already in root, no change needed
-      newPath = currentPath;
+      newPath = currentPath; // Already correct
     }
   }
   
