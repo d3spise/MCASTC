@@ -1,0 +1,14 @@
+{
+  "fiveServer.useLocalIp": false,
+  "fiveServer.port": 5500,
+  "fiveServer.browser": "default",
+  "fiveServer.highlight": true,
+  "fiveServer.injectCss": true,
+  "fiveServer.navigate": true,
+  "fiveServer.indexes": ["index.html", "index.htm"],
+  "fiveServer.ignoreFiles": [
+    "node_modules/**",
+    ".git/**",
+    ".vscode/**"
+  ]
+}

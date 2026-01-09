@@ -1,0 +1,14 @@
+DirectoryIndex index.html
+
+# Enable directory browsing fallback to index.html
+<IfModule mod_dir.c>
+    DirectoryIndex index.html index.htm
+</IfModule>
+
+# Ensure UTF-8 encoding
+AddDefaultCharset UTF-8
+
+# Force HTTPS (optional, for production)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

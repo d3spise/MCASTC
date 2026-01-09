@@ -42,21 +42,16 @@ function toggleTheme() {
 
 var currentLang;
 
-// 1. Check URL param
-const urlParams = new URLSearchParams(window.location.search);
-const langParam = urlParams.get('lang');
-
-if (langParam && (langParam === 'pl' || langParam === 'en')) {
-    currentLang = langParam;
-    localStorage.setItem("lang", currentLang);
+// Detect language from URL path structure
+const currentPath = window.location.pathname;
+if (currentPath.includes('/en/')) {
+    // English subdirectory
+    currentLang = 'en';
+    localStorage.setItem("lang", 'en');
 } else {
-    // 2. Check LocalStorage
-    currentLang = localStorage.getItem("lang");
-    
-    // 3. Default to Polish if no param provided (BEST FOR SEO)
-    if (!currentLang) {
-        currentLang = 'pl';
-    }
+    // Polish root directory (default)
+    currentLang = 'pl';
+    localStorage.setItem("lang", 'pl');
 }
 
 let currentGuardMode = "healthy"; // Przechowuje stan ochroniarza
@@ -158,27 +153,8 @@ function updateLanguageUI() {
     }
   });
 
-  // 3. Update internal links to preserve language
-  document.querySelectorAll("a").forEach(a => {
-      try {
-          const rawHref = a.getAttribute('href');
-          if (!rawHref) return;
-          
-          // Skip anchors and special protocols immediately
-          if (rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:') || rawHref.startsWith('javascript:')) return;
-
-          // Construct URL object (handles both relative and absolute)
-          const url = new URL(a.href, window.location.origin);
-          
-          // Only update internal links
-          if (url.origin === window.location.origin) {
-              url.searchParams.set('lang', currentLang);
-              a.href = url.toString();
-          }
-      } catch (e) {
-          // Ignore invalid URLs
-      }
-  });
+  // 3. Internal links already use relative paths within each language directory
+  // No modification needed since we use subdirectory structure
 
   // 4. Update opisów w symulacji kręgosłupa
   if (typeof updatePoseDescriptions === 'function' && document.getElementById("poseDesc")) {
@@ -291,23 +267,36 @@ function setMeta(nameOrProperty, content, attr = 'property') {
 }
 
 function toggleLang() {
-  currentLang = currentLang === "pl" ? "en" : "pl";
-  localStorage.setItem("lang", currentLang);
+  const newLang = currentLang === "pl" ? "en" : "pl";
+  localStorage.setItem("lang", newLang);
   
-  // Update URL
-  const url = new URL(window.location);
-  url.searchParams.set('lang', currentLang);
-  window.history.pushState({}, '', url);
-
-  document.documentElement.lang = currentLang;
+  // Redirect to appropriate directory structure
+  const currentPath = window.location.pathname;
+  const fileName = currentPath.split('/').pop() || 'index.html';
   
-  const langBtn = document.getElementById("langBtn");
-  if (langBtn) langBtn.innerText = currentLang.toUpperCase();
+  let newPath;
+  if (newLang === "en") {
+    // Switch to English subdirectory
+    if (currentPath.includes('/en/')) {
+      // Already in en/, no change needed
+      newPath = currentPath;
+    } else {
+      // Add /en/ prefix
+      newPath = '/en/' + fileName;
+    }
+  } else {
+    // Switch to Polish (root)
+    if (currentPath.includes('/en/')) {
+      // Remove /en/ prefix
+      newPath = '/' + fileName;
+    } else {
+      // Already in root, no change needed
+      newPath = currentPath;
+    }
+  }
   
-  const langBtnMobile = document.getElementById("langBtnMobile");
-  if (langBtnMobile) langBtnMobile.innerText = currentLang.toUpperCase();
-  
-  updateLanguageUI();
+  // Navigate to new path
+  window.location.href = newPath;
 }
 
 // --- ANIMACJA MCAS (GÓRA) ---
