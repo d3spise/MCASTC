@@ -161,10 +161,7 @@
 <i class="w-4 h-4 text-pink-500" data-lucide="thermometer"></i>
 <span data-i18n="toc_symptoms">6. Objawy</span>
 </a>
-<a class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" href="#diet-assistant">
-<i class="w-4 h-4 text-green-500" data-lucide="chef-hat"></i>
-<span data-i18n="toc_diet">Asystent Diety</span>
-</a>
+
 <a class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" href="#bibliografia">
 <i class="w-4 h-4 text-slate-500" data-lucide="book-open"></i>
 <span data-i18n="toc_bib">Bibliografia</span>
@@ -393,15 +390,17 @@
 </div>
 </div>
 <!-- Simulation Trigger Button -->
+
+</div>
+</div>
+</div>
+
 <div class="mt-6 flex justify-center">
 <button class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white transition-all duration-200 bg-indigo-600 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 hover:bg-indigo-700" onclick="openSimModal()">
 <i class="w-5 h-5" data-lucide="play-circle"></i>
 <span data-i18n="btn_open_sim">Zobacz symulację napięcia rdzenia</span>
 <div class="absolute -inset-3 rounded-xl bg-indigo-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 blur-lg"></div>
 </button>
-</div>
-</div>
-</div>
 </div>
 </section>
 <!-- TIPPING POINT SECTION -->
@@ -1088,39 +1087,7 @@
 </div>
 </div>
 </section>
-<!-- MCAS Diet Assistant -->
-<section class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300" id="diet-assistant">
-<div class="max-w-4xl mx-auto px-4">
-<div class="text-center mb-10">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-3">
-<i class="text-green-600" data-lucide="chef-hat"></i>
-<span data-i18n="diet_title">Asystent Diety MCAS</span>
-</h2>
-<p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto" data-i18n="diet_desc">Pacjenci z MCAS często muszą stosować restrykcyjną dietę niskohistaminową. Wpisz nazwę potrawy lub składnika, aby sprawdzić bezpieczeństwo przy użyciu AI.</p>
-</div>
-<div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-lg max-w-2xl mx-auto">
-<!-- API Key Input -->
-<div class="mb-6">
-<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase mb-2" data-i18n="diet_food_label">Co chcesz zjeść?</label>
-<div class="flex flex-col sm:flex-row gap-4">
-<input class="w-full flex-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500 outline-none transition-all text-lg" data-i18n-placeholder="diet_placeholder" id="food-input" placeholder="np. Rosół z kury" type="text"/>
-<button class="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 rounded-lg font-bold shadow-md transition-all active:scale-95 flex items-center justify-center gap-2" onclick="checkDiet()">
-<i data-lucide="search"></i> <span data-i18n="diet_check_btn">Sprawdź</span>
-</button>
-</div>
-</div>
-<div class="mb-6 hidden" id="score-display"></div>
-<div class="hidden text-center py-8" id="dietLoading">
-<i class="w-8 h-8 animate-spin text-purple-600 mx-auto mb-2" data-lucide="loader-2"></i>
-<span class="text-slate-500 text-sm" data-i18n="diet_loading">Analizuję składniki...</span>
-</div>
-<!-- Result Area -->
-<div class="min-h-[100px] text-slate-700 dark:text-slate-300" id="diet-result"></div>
-<p class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg text-sm text-amber-800 dark:text-amber-200 text-center font-medium" data-i18n="diet_disclaimer">Uwaga: Wyniki generowane przez AI mogą nie być w 100% dokładne. Zawsze konsultuj się z lekarzem i obserwuj reakcje własnego organizmu.</p>
-</div>
-</div>
 
-</section>
 <section class="fade-in-section py-12 bg-slate-100 dark:bg-slate-950 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300" id="bibliografia">
 <div class="max-w-4xl mx-auto px-4">
 <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-4 rounded-lg mb-8">
@@ -1281,10 +1248,7 @@
 <i class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" data-lucide="thermometer"></i>
 <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_sym">Objawy</span>
 </a>
-<a class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="diet-assistant" href="#diet-assistant">
-<i class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" data-lucide="chef-hat"></i>
-<span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_diet">Dieta</span>
-</a>
+
 <a class="nav-item flex flex-col items-center justify-center p-2 rounded-lg text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors group" data-target="bibliografia" href="#bibliografia">
 <i class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" data-lucide="book-open"></i>
 <span class="text-[10px] font-bold uppercase tracking-wider" data-i18n="bot_nav_bib">Biblio</span>

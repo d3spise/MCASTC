@@ -55,7 +55,7 @@ const translations = {
         toc_mecfs: "4. ME/CFS",
         toc_connection: "5. Ciąg Przyczynowo-Skutkowy",
         toc_symptoms: "6. Objawy",
-        toc_diet: "Asystent Diety",
+
         toc_bib: "Bibliografia",
         bot_nav_mcas: "MCAS",
         bot_nav_tcs: "TCS",
@@ -64,7 +64,7 @@ const translations = {
         bot_nav_mecfs: "ME/CFS",
         bot_nav_conn: "Triada",
         bot_nav_sym: "Objawy",
-        bot_nav_diet: "Dieta",
+
         bot_nav_bib: "Biblio",
         btn_tiptoes: "Na palcach",
         tiptoes_title: "Test Palców vs Pięt",
@@ -244,14 +244,8 @@ const translations = {
         trig_phys_desc: "Upał lub silne zimno, gwałtowne zmiany ciśnienia, <strong>wibracje</strong> (jazda samochodem drażniąca rdzeń). <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[6]</a></sup>",
         trig_stress_title: "Stres i Mechanika:",
         trig_stress_desc: "Silne emocje, brak snu, dźwiganie, gwałtowne skłony (Zakotwiczenie Rdzenia).",
-        diet_title: "Asystent Diety MCAS",
-        diet_desc: "Pacjenci z MCAS często muszą stosować restrykcyjną dietę niskohistaminową. Wpisz nazwę potrawy lub składnika, aby sprawdzić bezpieczeństwo przy użyciu AI.",
-        diet_api_label: "Twój klucz API Gemini:",
-        diet_food_label: "Co chcesz zjeść?",
-        diet_check_btn: "Sprawdź",
-        diet_placeholder: "np. Rosół z kury",
-        diet_loading: "Analizuję składniki...",
-        diet_disclaimer: "Uwaga: Wyniki generowane przez AI mogą nie być w 100% dokładne. Zawsze konsultuj się z lekarzem i obserwuj reakcje własnego organizmu.",
+
+
         footer_text: "Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.",
         mech_prostaglandins: "<strong>Prostaglandyny (PGD2):</strong> Nagłe zaczerwienienie (flushing), bóle brzucha.",
         mech_leukotrienes: "<strong>Leukotrieny:</strong> Skurcz oskrzeli, duszności, astma.",
@@ -615,7 +609,7 @@ const translations = {
         toc_mecfs: "4. ME/CFS",
         toc_connection: "5. Causal Chain (The Triad)",
         toc_symptoms: "6. Symptoms",
-        toc_diet: "Diet Assistant",
+
         toc_bib: "Bibliography",
         bot_nav_mcas: "MCAS",
         bot_nav_tcs: "TCS",
@@ -624,7 +618,7 @@ const translations = {
         bot_nav_mecfs: "ME/CFS",
         bot_nav_conn: "Triad",
         bot_nav_sym: "Symptoms",
-        bot_nav_diet: "Diet",
+
         bot_nav_bib: "Biblio",
         paradox_title: "Paradox: Standing vs Lying Flat",
         paradox_desc: "Why is standing often better than lying flat? <strong>When standing</strong>, you maintain the natural spinal curve (lordosis), creating slack for the cord. <strong>When lying flat</strong>, the weight of your legs 'irons out' your back against the floor, straightening the spine. This physically lengthens the spinal canal, stretching the tethered cord.",
@@ -801,14 +795,7 @@ const translations = {
         trig_phys_desc: "Heat or severe cold, rapid pressure changes, <strong>vibrations</strong> (car rides irritating the cord). <sup class=\"text-indigo-600 dark:text-indigo-400 font-bold ml-0.5 hover:underline cursor-pointer\"><a href=\"#bibliografia\">[6]</a></sup>",
         trig_stress_title: "Stress & Mechanics:",
         trig_stress_desc: "Strong emotions, lack of sleep, lifting heavy objects, sudden bending (Tethered Cord).",
-        diet_title: "Diet Assistant (Gemini AI)",
-        diet_desc: "MCAS patients often need to follow a strict low-histamine diet. Enter a dish or ingredient name to check its safety using AI.",
-        diet_api_label: "Your Gemini API Key:",
-        diet_food_label: "What do you want to eat?",
-        diet_check_btn: "Check Food",
-        diet_placeholder: "e.g. Chicken soup",
-        diet_loading: "Analyzing ingredients...",
-        diet_disclaimer: "Note: AI-generated results may not be 100% accurate. Always consult a doctor and monitor your own body's reactions.",
+
         
         // Beighton Score
         beighton_title: "Beighton Score (Hypermobility)",
