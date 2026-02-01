@@ -1079,7 +1079,7 @@ const translations = {
         protocol_footer_disclaimer: "This document is a summary of critical medical considerations based on the patient's diagnoses. It is intended to assist medical professionals in risk management.",
         
         // ICE Generator
-        tool_ice_title: "ICE Wallpaper Generator",
+        tool_ice_title: "ICE (In case of emergency) Wallpaper Generator",
         tool_ice_desc: "Create a lock screen wallpaper with emergency info.",
         ice_name_label: "Full Name",
         ice_contact_label: "ICE Contact (e.g. MOM)",
