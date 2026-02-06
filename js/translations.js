@@ -10,7 +10,7 @@ const translations = {
         seo_diagnostics_title: "Ścieżki Diagnostyczne: ME/CFS, POTS, MCAS, TCS",
         seo_diagnostics_desc: "Jak zdiagnozować MCAS, TCS i ME/CFS? Przewodnik po badaniach, kryteriach diagnostycznych i testach (Beighton, Tilt Table).",
         
-        seo_tools_title: "Narzędzia / Tools - NeuroImmune Hub",
+        seo_tools_title: "Narzędzia - NeuroImmune Hub",
         seo_tools_desc: "Narzędzia medyczne dla pacjentów z MCAS, TCS i ME/CFS. Generator karty ratunkowej, protokołu szpitalnego i tapety ICE.",
         
         seo_contact_title: "Kontakt - NeuroImmune Hub",

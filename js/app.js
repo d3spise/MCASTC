@@ -1487,6 +1487,17 @@ async function loadBlogPost() {
         // Construct Header HTML from Metadata
         let headerHtml = '';
         if (metadata) {
+            // Update document title for SEO / Browser Tab
+            document.title = `${metadata.title} – NeuroImmune Hub`;
+            
+            // Update meta description if possible
+            if (metadata.desc) {
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = metadata.desc;
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                if (ogDesc) ogDesc.content = metadata.desc;
+            }
+
             // Remove title/date from markdown text if they exist heavily at the top to avoid duplication
             // Simple heuristic: if markdown starts with # Title, remove it.
             // This is optional but nice for backward compatibility if user used new_post.py before.
