@@ -5,6 +5,8 @@ import re
 # Konfiguracja - te same ścieżki co w new_post.py
 POSTS_DIR_PL = "posts/pl"
 POSTS_DIR_EN = "posts/en"
+AUDIO_DIR_PL = "audio/pl"
+AUDIO_DIR_EN = "audio/en"
 JSON_PATH_PL = "posts/pl/index.json"
 JSON_PATH_EN = "posts/en/index.json"
 SITEMAP_PATH = "sitemap.xml"
@@ -95,6 +97,7 @@ def main():
     print(f"- Wpis w {JSON_PATH_EN}")
     print(f"- Plik {POSTS_DIR_PL}/{post_id}.md")
     print(f"- Plik {POSTS_DIR_EN}/{post_id}.md")
+    print(f"- Pliki audio MP3 ({AUDIO_DIR_PL}/..., {AUDIO_DIR_EN}/...)")
     print("- Wpisy w sitemap.xml")
     
     confirm = input("\nCzy na pewno chcesz kontynuować? (tak/nie): ").lower()
@@ -112,7 +115,11 @@ def main():
     remove_file(os.path.join(POSTS_DIR_PL, f"{post_id}.md"))
     remove_file(os.path.join(POSTS_DIR_EN, f"{post_id}.md"))
 
-    # 3. Usuń z Sitemap
+    # 3. Usuń pliki Audio
+    remove_file(os.path.join(AUDIO_DIR_PL, f"{post_id}.mp3"))
+    remove_file(os.path.join(AUDIO_DIR_EN, f"{post_id}.mp3"))
+
+    # 4. Usuń z Sitemap
     remove_from_sitemap(post_id)
 
     print("\n🗑️  Zakończono operację.")

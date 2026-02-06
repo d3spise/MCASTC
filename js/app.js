@@ -1520,6 +1520,8 @@ async function loadBlogPost() {
                 `<span class="inline-block px-3 py-1 mb-4 mr-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-slate-900 rounded-full text-xs font-bold uppercase tracking-wide">${tag}</span>`
             ).join('');
 
+            // Generate fake waveform bars (SVG for ragged line look) REMOVED in favor of interactive seeker
+            
             headerHtml = `
                 <header class="mb-10 text-center border-b border-slate-200 dark:border-slate-800 pb-10">
                     <div class="mb-6 flex flex-wrap justify-center gap-2">
@@ -1528,9 +1530,26 @@ async function loadBlogPost() {
                     <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
                         ${metadata.title}
                     </h1>
-                    <div class="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    <div class="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400 font-medium mb-8">
                         <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> ${formatDate(metadata.date)}</span>
                     </div>
+
+                    <!-- Voice Message UI -->
+                    <div class="max-w-2xl mx-auto backdrop-blur-sm rounded-2xl p-3 pr-4 mb-4 flex items-center gap-4 shadow-sm border select-none voice-player-container">
+                        <button id="ttsBtn" onclick="toggleReader()" aria-label="${isEn ? 'Listen to article' : 'Odsłuchaj artykuł'}" class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-white transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 active:scale-95 group voice-play-btn">
+                            <i id="ttsIcon" data-lucide="play" class="w-5 h-5 ml-1 fill-current group-hover:scale-110 transition-transform"></i>
+                        </button>
+                        
+                        <div class="flex-1 flex flex-col justify-center gap-1.5 mr-2">
+                             <input type="range" id="audioSeeker" value="0" min="0" max="100" step="0.1" disabled
+                                class="w-full h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full appearance-none cursor-pointer focus:outline-none transition-all accent-indigo-600 player-range">
+                             <div class="flex justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400 px-1 font-mono tracking-wide">
+                                <span id="audioTimeCurrent">0:00</span>
+                                <span id="audioTimeTotal">--:--</span>
+                             </div>
+                        </div>
+                    </div>
+
                 </header>
                 ${imgPath ? `
                 <div class="mb-12 rounded-2xl overflow-hidden shadow-lg aspect-video w-full">
@@ -1553,5 +1572,156 @@ async function loadBlogPost() {
         console.error("Error loading post:", error);
         postContainer.innerHTML = `<div class="p-4 text-red-500">Error loading post: ${error.message}</div>`;
     }
+}
+
+// Audio Playback Functionality (Pre-generated files)
+let currentAudio = null;
+
+function formatTime(seconds) {
+    if (isNaN(seconds)) return "0:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+function initAudioListeners(isEn) {
+    const seeker = document.getElementById("audioSeeker");
+    const currentTimeEl = document.getElementById("audioTimeCurrent");
+    const totalTimeEl = document.getElementById("audioTimeTotal");
+    
+    if(!currentAudio || !seeker) return;
+
+    const updateSeekerBackground = (val) => {
+        seeker.style.background = `linear-gradient(to right, #4f46e5 ${val}%, var(--track-color, #cbd5e1) ${val}%)`;
+    };
+    
+    // Update Slider & Time
+    currentAudio.addEventListener('timeupdate', () => {
+        if(!currentAudio) return;
+        const val = (currentAudio.currentTime / currentAudio.duration) * 100;
+        const safeVal = val || 0;
+        seeker.value = safeVal;
+        updateSeekerBackground(safeVal);
+        
+        if(currentTimeEl) currentTimeEl.innerText = formatTime(currentAudio.currentTime);
+    });
+    
+    // Set Duration
+    currentAudio.addEventListener('loadedmetadata', () => {
+        if(!currentAudio) return;
+        if(totalTimeEl) totalTimeEl.innerText = formatTime(currentAudio.duration);
+        seeker.disabled = false;
+    });
+    
+    // Seek
+    seeker.addEventListener('input', (e) => {
+        if(!currentAudio) return;
+        const val = e.target.value;
+        const time = (val / 100) * currentAudio.duration;
+        currentAudio.currentTime = time;
+        updateSeekerBackground(val);
+    });
+
+    // Initial color set
+    updateSeekerBackground(0);
+}
+
+function toggleReader() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+    if (!postId) return;
+
+    const isEn = window.location.pathname.includes('/en/');
+    const lang = isEn ? 'en' : 'pl';
+    const basePath = isEn ? '../' : ''; 
+    const audioPath = `${basePath}audio/${lang}/${postId}.mp3`;
+
+    // 1. If currently playing, pause it.
+    if (currentAudio && !currentAudio.paused) {
+        currentAudio.pause();
+        return; 
+    }
+
+    // 2. If paused but exists (and ID matches), resume.
+    // Use dataset ID to be sure it's the right track regardless of path resolution
+    if (currentAudio && currentAudio.dataset.postId === postId  && !currentAudio.ended) {
+        currentAudio.play();
+        return;
+    }
+
+    // 3. New Load
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+    }
+
+    currentAudio = new Audio(audioPath);
+    currentAudio.dataset.postId = postId; // Store ID for reliable resume check
+    
+    // UI Setup
+    initAudioListeners(isEn);
+    // Determine track color for dark mode support in inline style
+    const isDark = document.documentElement.classList.contains('dark');
+    const trackColor = isDark ? '#475569' : '#cbd5e1'; 
+    document.getElementById("audioSeeker").style.setProperty('--track-color', trackColor);
+
+    currentAudio.addEventListener('play', () => updateTTSButton(true));
+    currentAudio.addEventListener('pause', () => updateTTSButton(false));
+    currentAudio.addEventListener('ended', () => {
+        updateTTSButton(false);
+        const seeker = document.getElementById("audioSeeker");
+        if(seeker) {
+            seeker.value = 0;
+            seeker.style.background = `linear-gradient(to right, #4f46e5 0%, var(--track-color, ${trackColor}) 0%)`;
+        }
+    });
+    
+    currentAudio.addEventListener('error', (e) => {
+        console.error("Audio playback error:", e);
+        updateTTSButton(false);
+        const msg = isEn 
+            ? "Audio version is not available for this article yet." 
+            : "Wersja audio dla tego artykułu nie jest jeszcze dostępna.";
+        alert(msg);
+    });
+
+    currentAudio.play().catch(e => {
+        console.error("Playback failed", e);
+    });
+}
+
+function updateTTSButton(speaking) {
+    const ttsBtn = document.getElementById('ttsBtn');
+    const ttsIcon = document.getElementById('ttsIcon');
+
+    if (speaking) {
+        if(ttsBtn) {
+            ttsBtn.innerHTML = '<i data-lucide="pause" class="w-5 h-5 fill-current"></i>';
+            ttsBtn.classList.add('playing'); 
+        }
+    } else {
+        if(ttsBtn) {
+             ttsBtn.innerHTML = '<i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>';
+             ttsBtn.classList.remove('playing');
+        }
+    }
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function updateTTSButton(speaking) {
+    const ttsBtn = document.getElementById('ttsBtn');
+    
+    if (speaking) {
+        if(ttsBtn) {
+            ttsBtn.innerHTML = '<i data-lucide="pause" class="w-5 h-5 fill-current"></i>';
+            ttsBtn.classList.add('playing'); 
+        }
+    } else {
+        if(ttsBtn) {
+             ttsBtn.innerHTML = '<i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>';
+             ttsBtn.classList.remove('playing');
+        }
+    }
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 

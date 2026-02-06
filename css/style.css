@@ -16,6 +16,95 @@ body {
   display: block;
 }
 
+/* TTS Voice Message Player UI */
+.voice-player-container {
+    background-color: #f1f5f9; /* slate-100 */
+    border-color: #e2e8f0; /* slate-200 */
+}
+.dark .voice-player-container {
+    background-color: rgba(30, 41, 59, 0.8); /* slate-800/80 */
+    border-color: #334155; /* slate-700 */
+}
+
+.voice-label {
+    color: #64748b; /* slate-500 */
+}
+.dark .voice-label {
+    color: #94a3b8; /* slate-400 */
+}
+
+.voice-play-btn {
+    background-color: #4f46e5; /* indigo-600 */
+}
+.voice-play-btn:hover {
+    background-color: #4338ca; /* indigo-700 */
+}
+.voice-play-btn.playing {
+    background-color: #4338ca; /* indigo-700 */
+    transform: scale(0.95);
+}
+
+/* Custom Audio Range Slider */
+/* Reset default appearance */
+input[type=range].player-range {
+  -webkit-appearance: none; 
+  background: transparent; 
+}
+
+input[type=range].player-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #4f46e5; /* indigo-600 */
+  cursor: pointer;
+  margin-top: -5px; /* Adjust to center on track */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.1s;
+}
+
+input[type=range].player-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type=range].player-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px; /* Thin track */
+  cursor: pointer;
+  border-radius: 9999px;
+  /* background is handled via inline style for progress fill */
+}
+
+/* Firefox Styles */
+input[type=range].player-range::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border: none;
+  border-radius: 50%;
+  background: #4f46e5;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.1s;
+}
+
+input[type=range].player-range::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  border-radius: 9999px;
+  background: #cbd5e1; /* Base track color (light mode) */
+}
+.dark input[type=range].player-range::-moz-range-track {
+  background: #475569; /* Base track color (dark mode) */
+}
+
+/* Progress fill for Firefox */
+input[type=range].player-range::-moz-range-progress {
+  background-color: #4f46e5; 
+  height: 4px;
+  border-radius: 9999px;
+}
+
 /* --- GŁÓWNA ANIMACJA MCAS (ZMIANA NA FIOLET + DARK MODE) --- */
 .vis-container {
   position: relative;

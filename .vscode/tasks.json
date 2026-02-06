@@ -19,6 +19,20 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "Generuj Audio (Blog)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath}",
+      "args": [
+        "generate_audio.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build",
+      "problemMatcher": []
     }
   ]
 }
