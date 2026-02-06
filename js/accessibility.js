@@ -5,7 +5,8 @@ class AccessibilityManager {
         this.toggleBtnMobile = document.getElementById('a11yBtnMobile');
         this.root = document.documentElement;
         
-        this.state = {
+        const savedState = localStorage.getItem('accessibilityState');
+        this.state = savedState ? JSON.parse(savedState) : {
             highContrast: false,
             largeFont: false,
             dyslexiaFont: false
@@ -45,6 +46,8 @@ class AccessibilityManager {
         document.getElementById('btn-font').addEventListener('click', () => this.toggleFeature('largeFont', 'large-font'));
         document.getElementById('btn-dyslexia').addEventListener('click', () => this.toggleFeature('dyslexiaFont', 'dyslexia-font'));
         document.getElementById('btn-reset-a11y').addEventListener('click', () => this.resetAll());
+
+        this.applySavedState();
     }
 
     togglePanel() {
@@ -60,6 +63,7 @@ class AccessibilityManager {
 
     toggleFeature(stateKey, className) {
         this.state[stateKey] = !this.state[stateKey];
+        this.saveState();
         
         if (this.state[stateKey]) {
             this.root.classList.add(className);
@@ -93,6 +97,38 @@ class AccessibilityManager {
         this.root.classList.remove('high-contrast', 'large-font', 'dyslexia-font');
         
         document.querySelectorAll('.a11y-btn').forEach(btn => btn.classList.remove('active'));
+        this.saveState();
+    }
+
+    saveState() {
+        localStorage.setItem('accessibilityState', JSON.stringify(this.state));
+    }
+
+    applySavedState() {
+        if (this.state.highContrast) {
+            this.root.classList.add('high-contrast');
+            document.getElementById('btn-contrast').classList.add('active');
+            
+            if (!this.root.classList.contains('dark')) {
+                this.root.classList.add('dark');
+                localStorage.theme = "dark";
+                const themeBtn = document.getElementById("themeBtn");
+                if (themeBtn) {
+                    themeBtn.innerHTML = '<i data-lucide="sun" class="w-4 h-4"></i>';
+                    if (window.lucide) window.lucide.createIcons();
+                }
+            }
+        }
+        
+        if (this.state.largeFont) {
+            this.root.classList.add('large-font');
+            document.getElementById('btn-font').classList.add('active');
+        }
+        
+        if (this.state.dyslexiaFont) {
+            this.root.classList.add('dyslexia-font');
+            document.getElementById('btn-dyslexia').classList.add('active');
+        }
     }
 }
 
