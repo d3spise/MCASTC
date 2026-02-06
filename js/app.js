@@ -1717,6 +1717,21 @@ async function loadBlogPost() {
              // Combine Header + Markdown Content
              // Enable breaks: true to interpret single newlines as <br>
              postContainer.innerHTML = headerHtml + marked.parse(text, { breaks: true });
+             
+             // Auto-wrap iframes for responsiveness (16:9 aspect ratio)
+             postContainer.querySelectorAll('iframe').forEach(iframe => {
+                // Skip if already wrapped manually
+                if (iframe.parentElement.style.paddingBottom === '56.25%') return;
+                
+                const wrapper = document.createElement('div');
+                wrapper.style.cssText = "position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1.5rem;";
+                
+                iframe.parentNode.insertBefore(wrapper, iframe);
+                wrapper.appendChild(iframe);
+                
+                iframe.style.cssText = "position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;";
+             });
+
              if (typeof lucide !== 'undefined') lucide.createIcons();
         } else {
              postContainer.innerHTML = "<div class='text-red-500'>Error: marked.js not loaded</div>";
