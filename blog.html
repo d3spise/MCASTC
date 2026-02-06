@@ -126,9 +126,42 @@
 
     <!-- Blog Grid -->
     <main class="max-w-7xl mx-auto px-4 py-16 bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors duration-300">
-        <!-- Tag Filter (optional future feature placeholder) -->
-        <div class="flex flex-wrap gap-2 mb-12 justify-center" id="blog-tags">
-            <!-- Tags will be injected here -->
+        
+        <!-- Filter & Sort Controls -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+            <!-- Tags Filter -->
+            <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="blog-tags">
+                <!-- Tags will be injected here via JS -->
+            </div>
+            
+            <!-- Sort Dropdown (Custom) -->
+             <div class="relative z-20">
+                <button id="sortBtn" class="flex items-center gap-2 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:border-indigo-300 dark:hover:border-indigo-700 group">
+                    <span class="text-sm font-semibold text-slate-500 dark:text-slate-400" data-i18n="sort_label">Sortuj:</span>
+                    <span id="sortLabel" class="text-sm font-medium text-slate-800 dark:text-slate-200 min-w-[4rem] text-left">Najnowsze</span>
+                    <i data-lucide="chevron-down" id="sortIcon" class="w-4 h-4 text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-transform duration-300"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="sortMenu" class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 py-2 animate-in fade-in zoom-in-95 duration-200 origin-top-right">
+                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="date-desc">
+                        <span data-i18n="sort_newest">Najnowsze</span>
+                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+                    </button>
+                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="date-asc">
+                        <span data-i18n="sort_oldest">Najstarsze</span>
+                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+                    </button>
+                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="time-asc">
+                        <span data-i18n="sort_shortest">Najkrótsze</span>
+                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+                    </button>
+                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="time-desc">
+                        <span data-i18n="sort_longest">Najdłuższe</span>
+                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Posts Grid -->

@@ -416,19 +416,16 @@ function explodeCell() {
 // --- BLOG LOGIC ---
 async function loadBlogIndex() {
     const grid = document.getElementById('blog-grid');
+    const tagsContainer = document.getElementById('blog-tags');
+    // Custom Sort UI
+    const sortBtn = document.getElementById('sortBtn');
+    const sortMenu = document.getElementById('sortMenu');
+    const sortLabel = document.getElementById('sortLabel');
+    const sortIcon = document.getElementById('sortIcon');
+    
     if (!grid) return;
 
     // Determine language source path
-    const jsonPath = window.location.pathname.includes('/en/') ? 'posts/en/index.json' : 'posts/pl/index.json';
-    const basePath = window.location.pathname.includes('/en/') ? '' : ''; // Relative paths are tricky if root vs subdir
-    // Actually, if we are in /blog.html, pl json is posts/pl/index.json.
-    // If we are in /en/blog.html, en json is posts/en/index.json (since we are in /en/ folder? No, js is shared?)
-    // Wait, js is shared in /js/app.js.
-    // So if URL is /blog.html (root), fetch 'posts/pl/index.json'.
-    // If URL is /en/blog.html, fetch '../posts/en/index.json' relative to js? No, relative to page.
-    // Relative to page /en/blog.html: 'posts/en/index.json' would be /en/posts/en/index.json (WRONG).
-    // Correct relative path from /en/blog.html to /posts/en/index.json is: '../posts/en/index.json'
-    
     let fetchPath;
     if (window.location.pathname.includes('/en/')) {
         fetchPath = '../posts/en/index.json';
@@ -441,55 +438,200 @@ async function loadBlogIndex() {
         if (!response.ok) throw new Error('Failed to load posts index');
         const posts = await response.json();
 
-        grid.innerHTML = ''; // Clear loading spinner
+        // --- State ---
+        let currentFilter = 'all';
+        let currentSort = 'date-desc';
 
-        posts.forEach(post => {
-            const articleCard = document.createElement('article');
-            articleCard.className = "bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800 flex flex-col h-full";
+        // --- 1. Generowanie tagów ---
+        if (tagsContainer) {
+            const allTags = new Set();
+            posts.forEach(post => {
+                if (post.tags) post.tags.forEach(tag => allTags.add(tag));
+            });
+
+            tagsContainer.innerHTML = '';
             
-            // Image handling (add prefix if in /en/)
-            let imgPath = post.image;
-            if (window.location.pathname.includes('/en/') && !imgPath.startsWith('http')) {
-                imgPath = '../' + imgPath;
+            // Text for "All" button
+            const allLabel = (translations[currentLang] && translations[currentLang].filter_all) || "All";
+
+            // Helper for button styles
+            const getBtnClasses = (isActive) => {
+                const base = "px-4 py-2 rounded-full text-sm font-semibold transition-all border cursor-pointer select-none";
+                const active = "bg-indigo-600 text-white border-indigo-600 shadow-md";
+                const inactive = "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400";
+                return `${base} ${isActive ? active : inactive}`;
+            };
+
+            // Create "All" button
+            const createBtn = (label, filterValue) => {
+                const btn = document.createElement('button');
+                btn.textContent = label;
+                btn.className = getBtnClasses(filterValue === currentFilter);
+                btn.onclick = () => {
+                    currentFilter = filterValue;
+                    renderPosts();
+                    // Update visual state
+                    Array.from(tagsContainer.children).forEach(child => {
+                        const isThisBtn = child === btn;
+                        child.className = getBtnClasses(isThisBtn);
+                    });
+                };
+                return btn;
+            };
+
+            tagsContainer.appendChild(createBtn(allLabel, 'all'));
+
+            // Create buttons for each tag
+            Array.from(allTags).sort().forEach(tag => {
+                tagsContainer.appendChild(createBtn(tag, tag));
+            });
+        }
+
+        // --- 2. Obsługa sortowania (Custom Dropdown) ---
+        if (sortBtn && sortMenu) {
+            // Toggle Menu
+            sortBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = sortMenu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    sortMenu.classList.remove('hidden');
+                    if (sortIcon) sortIcon.classList.add('rotate-180');
+                } else {
+                    sortMenu.classList.add('hidden');
+                    if (sortIcon) sortIcon.classList.remove('rotate-180');
+                }
+            });
+
+            // Close on click outside
+            document.addEventListener('click', (e) => {
+                if (!sortBtn.contains(e.target) && !sortMenu.contains(e.target)) {
+                    sortMenu.classList.add('hidden');
+                    if (sortIcon) sortIcon.classList.remove('rotate-180');
+                }
+            });
+
+            // Handle Option Click
+            sortMenu.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const value = btn.getAttribute('data-value');
+                    if (value) currentSort = value;
+                    
+                    renderPosts();
+
+                    // Update UI Label
+                    const textSpan = btn.querySelector('span[data-i18n]');
+                    const rawText = btn.textContent.trim(); // Fallback
+                    // Update main label with translated text
+                    if (textSpan && sortLabel) {
+                         // We use the current InnerHTML of the span which is already translated by updateLanguageUI possibly?
+                         // Actually, the button content has an icon 'check' inside. textContent gets all text.
+                         // Let's grab the text from the span.
+                         sortLabel.textContent = textSpan.textContent;
+                    }
+
+                    // Update Active Checkmark
+                    sortMenu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Close Menu
+                    sortMenu.classList.add('hidden');
+                    if (sortIcon) sortIcon.classList.remove('rotate-180');
+                });
+            });
+
+            // Set Initial Active State
+            const initialBtn = sortMenu.querySelector(`button[data-value="${currentSort}"]`);
+            if (initialBtn) initialBtn.classList.add('active');
+        }
+
+        // --- 3. Funkcja renderująca ---
+        function renderPosts() {
+            grid.innerHTML = ''; // Wyczyść grid
+
+            // Filtrowanie
+            let filtered = posts.filter(post => {
+                if (currentFilter === 'all') return true;
+                return post.tags && post.tags.includes(currentFilter);
+            });
+
+            // Sortowanie
+            filtered.sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                const timeA = a.readTime || 0;
+                const timeB = b.readTime || 0;
+
+                switch (currentSort) {
+                    case 'date-desc': return dateB - dateA; // Najnowsze
+                    case 'date-asc': return dateA - dateB;  // Najstarsze
+                    case 'time-desc': return timeB - timeA; // Najdłuższe
+                    case 'time-asc': return timeA - timeB;  // Najkrótsze
+                    default: return 0;
+                }
+            });
+
+            // Pusty stan
+            if (filtered.length === 0) {
+                const emptyMsg = currentLang === 'en' ? "No articles found." : "Nie znaleziono artykułów.";
+                grid.innerHTML = `<div class="col-span-full text-center py-20 text-slate-500">
+                    <p class="text-lg">${emptyMsg}</p>
+                </div>`;
+                return;
             }
 
-            // Tags HTML
-            const tagsHtml = post.tags.map(tag => 
-                `<span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-md uppercase tracking-wide">${tag}</span>`
-            ).join('');
+            // Generowanie kart
+            filtered.forEach(post => {
+                const articleCard = document.createElement('article');
+                articleCard.className = "bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800 flex flex-col h-full animate-fade-in";
+                
+                // Image handling (add prefix if in /en/)
+                let imgPath = post.image;
+                if (window.location.pathname.includes('/en/') && !imgPath.startsWith('http')) {
+                    imgPath = '../' + imgPath;
+                }
 
-            articleCard.innerHTML = `
-                <a href="article.html?id=${post.id}" class="block aspect-video overflow-hidden">
-                    <img src="${imgPath}" alt="${post.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
-                </a>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex gap-2 mb-4">
-                        ${tagsHtml}
-                    </div>
-                    <a href="article.html?id=${post.id}" class="group">
-                        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
-                            ${post.title}
-                        </h2>
+                // Tags HTML
+                const tagsHtml = (post.tags || []).map(tag => 
+                    `<span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-md uppercase tracking-wide">${tag}</span>`
+                ).join('');
+
+                articleCard.innerHTML = `
+                    <a href="article.html?id=${post.id}" class="block aspect-video overflow-hidden">
+                        <img src="${imgPath}" alt="${post.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
                     </a>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3 flex-grow">
-                        ${post.desc}
-                    </p>
-                    <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                        <span class="text-xs text-slate-500 font-medium">${formatDateNumeric(post.date)}</span>
-                        ${post.readTime ? `<span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ${post.readTime} min</span>` : ''}
-                        <a href="article.html?id=${post.id}" class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
-                            ${currentLang === 'pl' ? 'Czytaj dalej' : 'Read more'} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            ${tagsHtml}
+                        </div>
+                        <a href="article.html?id=${post.id}" class="group">
+                            <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
+                                ${post.title}
+                            </h2>
                         </a>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3 flex-grow">
+                            ${post.desc}
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <span class="text-xs text-slate-500 font-medium">${formatDateNumeric(post.date)}</span>
+                            ${post.readTime ? `<span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ${post.readTime} min</span>` : ''}
+                            <a href="article.html?id=${post.id}" class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                                ${currentLang === 'pl' ? 'Czytaj dalej' : 'Read more'} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            `;
-            grid.appendChild(articleCard);
-        });
+                `;
+                grid.appendChild(articleCard);
+            });
 
-        // Initialize icons for new elements
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+            // Initialize icons for new elements
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         }
+
+        // Uruchom pierwsze renderowanie
+        renderPosts();
 
     } catch (error) {
         console.error(error);
