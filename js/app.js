@@ -216,6 +216,7 @@ function updateSEO() {
     else if (path.includes('tools.html')) pagePrefix = 'seo_tools';
     else if (path.includes('contact.html')) pagePrefix = 'seo_contact';
     else if (path.includes('treatment.html')) pagePrefix = 'seo_treatment';
+    else if (path.includes('blog.html')) pagePrefix = 'seo_blog';
     
     // Update Title
     if (t[pagePrefix + '_title']) {

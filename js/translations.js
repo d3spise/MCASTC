@@ -18,6 +18,9 @@ const translations = {
         
         seo_treatment_title: "Strategie Leczenia: ME/CFS, POTS, MCAS, TCS",
         seo_treatment_desc: "Przegląd strategii leczenia i zarządzania objawami w chorobach neuroimmunologicznych. Leki, dieta, styl życia.",
+        
+        seo_blog_title: "Blog i Aktualności - NeuroImmune Hub",
+        seo_blog_desc: "Najnowsze artykuły, badania i przemyślenia na temat MCAS, TCS i ME/CFS.",
 
         nav_home: "Strona Główna",
         nav_blog: "Blog",
@@ -571,6 +574,9 @@ const translations = {
         
         seo_treatment_title: "Treatment Strategies: ME/CFS, POTS, MCAS, TCS",
         seo_treatment_desc: "Overview of treatment strategies and symptom management in neuroimmune diseases. Medications, diet, lifestyle.",
+        
+        seo_blog_title: "Blog & News - NeuroImmune Hub",
+        seo_blog_desc: "Latest articles, research, and thoughts on MCAS, TCS, and ME/CFS.",
 
         nav_home: "Home",
         nav_blog: "Blog",
