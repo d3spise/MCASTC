@@ -20,6 +20,9 @@ const translations = {
         seo_treatment_desc: "Przegląd strategii leczenia i zarządzania objawami w chorobach neuroimmunologicznych. Leki, dieta, styl życia.",
 
         nav_home: "Strona Główna",
+        nav_blog: "Blog",
+        blog_title: "Blog & Aktualności",
+        blog_desc: "Najnowsze artykuły, badania i przemyślenia na temat MCAS, TCS i ME/CFS.",
         nav_diagnostics: "Diagnostyka",
         nav_contact: "Kontakt",
         contact_title: "Skontaktuj się ze mną",
@@ -570,6 +573,9 @@ const translations = {
         seo_treatment_desc: "Overview of treatment strategies and symptom management in neuroimmune diseases. Medications, diet, lifestyle.",
 
         nav_home: "Home",
+        nav_blog: "Blog",
+        blog_title: "Blog & News",
+        blog_desc: "Latest articles, research, and thoughts on MCAS, TCS, and ME/CFS.",
         nav_diagnostics: "Diagnostics",
         nav_contact: "Contact",
         nav_tools: "Tools",

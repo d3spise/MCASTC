@@ -187,6 +187,16 @@ function updateLanguageUI() {
 
   // 6. Update SEO Meta Tags
   updateSEO();
+
+  // 7. Load Blog Post if on article page
+  if (document.getElementById("post-content")) {
+      loadBlogPost();
+  }
+  
+  // 8. Load Blog Index if on blog page
+  if (document.getElementById("blog-grid")) {
+      loadBlogIndex();
+  }
 }
 
 /**
@@ -332,7 +342,7 @@ function toggleLang() {
   }
   
   // Navigate to new path
-  window.location.href = newPath;
+  window.location.href = newPath + window.location.search;
 }
 
 // --- ANIMACJA MCAS (GÓRA) ---
@@ -401,18 +411,93 @@ function explodeCell() {
     }, 100);
   }, 600);
 }
-function resetCell() {
-  isExploded = false;
-  scene.classList.remove("anim-explode");
-  scene.style.background = ""; // Clear inline style so CSS takes over
-  reactionLabel.style.opacity = "0";
-  reactionLabel.style.transform = "translateY(16px)";
-  mastCell.style.transform = "";
-  mastCell.style.filter = "";
-  mastCell.style.borderColor = "";
-  mastCell.style.boxShadow = "";
-  initGranules();
+
+// --- BLOG LOGIC ---
+async function loadBlogIndex() {
+    const grid = document.getElementById('blog-grid');
+    if (!grid) return;
+
+    // Determine language source path
+    const jsonPath = window.location.pathname.includes('/en/') ? 'posts/en/index.json' : 'posts/pl/index.json';
+    const basePath = window.location.pathname.includes('/en/') ? '' : ''; // Relative paths are tricky if root vs subdir
+    // Actually, if we are in /blog.html, pl json is posts/pl/index.json.
+    // If we are in /en/blog.html, en json is posts/en/index.json (since we are in /en/ folder? No, js is shared?)
+    // Wait, js is shared in /js/app.js.
+    // So if URL is /blog.html (root), fetch 'posts/pl/index.json'.
+    // If URL is /en/blog.html, fetch '../posts/en/index.json' relative to js? No, relative to page.
+    // Relative to page /en/blog.html: 'posts/en/index.json' would be /en/posts/en/index.json (WRONG).
+    // Correct relative path from /en/blog.html to /posts/en/index.json is: '../posts/en/index.json'
+    
+    let fetchPath;
+    if (window.location.pathname.includes('/en/')) {
+        fetchPath = '../posts/en/index.json';
+    } else {
+        fetchPath = 'posts/pl/index.json';
+    }
+
+    try {
+        const response = await fetch(fetchPath);
+        if (!response.ok) throw new Error('Failed to load posts index');
+        const posts = await response.json();
+
+        grid.innerHTML = ''; // Clear loading spinner
+
+        posts.forEach(post => {
+            const articleCard = document.createElement('article');
+            articleCard.className = "bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800 flex flex-col h-full";
+            
+            // Image handling (add prefix if in /en/)
+            let imgPath = post.image;
+            if (window.location.pathname.includes('/en/') && !imgPath.startsWith('http')) {
+                imgPath = '../' + imgPath;
+            }
+
+            // Tags HTML
+            const tagsHtml = post.tags.map(tag => 
+                `<span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-md uppercase tracking-wide">${tag}</span>`
+            ).join('');
+
+            articleCard.innerHTML = `
+                <a href="article.html?id=${post.id}" class="block aspect-video overflow-hidden">
+                    <img src="${imgPath}" alt="${post.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex gap-2 mb-4">
+                        ${tagsHtml}
+                    </div>
+                    <a href="article.html?id=${post.id}" class="group">
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors line-clamp-2">
+                            ${post.title}
+                        </h2>
+                    </a>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3 flex-grow">
+                        ${post.desc}
+                    </p>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="text-xs text-slate-500 font-medium">${formatDateNumeric(post.date)}</span>
+                        <a href="article.html?id=${post.id}" class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                            ${currentLang === 'pl' ? 'Czytaj dalej' : 'Read more'} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(articleCard);
+        });
+
+        // Initialize icons for new elements
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+    } catch (error) {
+        console.error(error);
+        grid.innerHTML = `<div class="col-span-full text-center text-red-500">
+            <p>Nie udało się załadować listy artykułów.</p>
+            <p class="text-xs mt-2 opacity-70">${error.message}</p>
+        </div>`;
+    }
 }
+
 
 // --- STICKMAN SYMULATOR (LINIOWY) ---
 const simCanvas = document.getElementById("simCanvas");
@@ -1295,4 +1380,166 @@ function initBeightonScore() {
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', initBeightonScore);
+
+/**
+ * Formats date string (YYYY-MM-DD) taking user's locale into account
+ * but respecting the site's current language context.
+ */
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const parts = dateString.split('-');
+    if (parts.length !== 3) return dateString;
+    
+    const year = parseInt(parts[0], 10);
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    const date = new Date(year, monthIndex, day);
+
+    // Determine locale to use
+    let locale = 'en-US'; // Default fallback
+    
+    if (typeof currentLang !== 'undefined' && currentLang === 'pl') {
+        locale = 'pl-PL';
+    } else {
+        // For English version, try to respect user's English preference (US vs UK)
+        // If user's browser is e.g. 'en-GB', use that.
+        // If user's browser is non-English (e.g. de-DE) but they view English site, default to en-US.
+        if (navigator.language && navigator.language.startsWith('en')) {
+            locale = navigator.language;
+        }
+    }
+
+    return date.toLocaleDateString(locale, { 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric' 
+    });
+}
+
+/**
+ * Formats date to numeric short format respecting locale.
+ */
+function formatDateNumeric(dateString) {
+    if (!dateString) return '';
+    const parts = dateString.split('-');
+    if (parts.length !== 3) return dateString;
+    
+    const year = parseInt(parts[0], 10);
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    const date = new Date(year, monthIndex, day);
+
+    // Determine locale to use
+    let locale = 'en-US'; // Default fallback (MM/DD/YYYY)
+    
+    if (typeof currentLang !== 'undefined' && currentLang === 'pl') {
+        locale = 'pl-PL'; // DD.MM.YYYY
+    } else {
+        if (navigator.language && navigator.language.startsWith('en')) {
+            locale = navigator.language;
+        }
+    }
+
+    return date.toLocaleDateString(locale); // Default is usually numeric
+}
+
+/**
+ * Loads a markdown blog post into the article page.
+ */
+async function loadBlogPost() {
+    const postContainer = document.getElementById('post-content');
+    if (!postContainer) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+
+    if (!postId) {
+        postContainer.innerHTML = `<div class="text-center py-10 text-slate-500">
+            <h3 class="text-xl font-bold mb-2">No article selected / Wybierz artykuł</h3>
+        </div>`;
+        return;
+    }
+
+    // Paths
+    const isEn = window.location.pathname.includes('/en/');
+    const basePath = isEn ? '../' : ''; 
+    const mdPath = `${basePath}posts/${currentLang}/${postId}.md`;
+    // JSON path logic same as loadBlogIndex but for single post lookup
+    // Assuming structure: posts/pl/index.json
+    const jsonPath = isEn ? '../posts/en/index.json' : 'posts/pl/index.json';
+
+    try {
+        // Fetch both MD and Metadata in parallel
+        const [mdRes, jsonRes] = await Promise.all([
+            fetch(mdPath),
+            fetch(jsonPath)
+        ]);
+
+        if (!mdRes.ok) throw new Error(mdRes.status === 404 ? "Article not found" : `Error ${mdRes.status}`);
+        let text = await mdRes.text();
+        
+        let metadata = null;
+        if (jsonRes.ok) {
+            const posts = await jsonRes.json();
+            metadata = posts.find(p => p.id === postId);
+        }
+
+        // Construct Header HTML from Metadata
+        let headerHtml = '';
+        if (metadata) {
+            // Remove title/date from markdown text if they exist heavily at the top to avoid duplication
+            // Simple heuristic: if markdown starts with # Title, remove it.
+            // This is optional but nice for backward compatibility if user used new_post.py before.
+            const titleLine = `# ${metadata.title}`;
+            if (text.startsWith(titleLine)) {
+                 text = text.substring(titleLine.length).trim();
+            }
+            // Try to remove date if it's on the next line? 
+            // It's risky to modify text content blindly.
+            // Let's just trust the user or the new render.
+            
+            // Image handling
+            let imgPath = metadata.image;
+            if (isEn && !imgPath.startsWith('http') && !imgPath.startsWith('../')) {
+                imgPath = '../' + imgPath;
+            }
+
+            const tagsHtml = (metadata.tags || []).map(tag => 
+                `<span class="inline-block px-3 py-1 mb-4 mr-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-slate-900 rounded-full text-xs font-bold uppercase tracking-wide">${tag}</span>`
+            ).join('');
+
+            headerHtml = `
+                <header class="mb-10 text-center border-b border-slate-200 dark:border-slate-800 pb-10">
+                    <div class="mb-6 flex flex-wrap justify-center gap-2">
+                        ${tagsHtml}
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+                        ${metadata.title}
+                    </h1>
+                    <div class="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                        <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> ${formatDate(metadata.date)}</span>
+                    </div>
+                </header>
+                ${imgPath ? `
+                <div class="mb-12 rounded-2xl overflow-hidden shadow-lg aspect-video w-full">
+                    <img src="${imgPath}" alt="${metadata.title}" class="w-full h-full object-cover">
+                </div>
+                ` : ''}
+            `;
+        }
+
+        if (typeof marked !== 'undefined') {
+             // Combine Header + Markdown Content
+             // Enable breaks: true to interpret single newlines as <br>
+             postContainer.innerHTML = headerHtml + marked.parse(text, { breaks: true });
+             if (typeof lucide !== 'undefined') lucide.createIcons();
+        } else {
+             postContainer.innerHTML = "<div class='text-red-500'>Error: marked.js not loaded</div>";
+        }
+
+    } catch (error) {
+        console.error("Error loading post:", error);
+        postContainer.innerHTML = `<div class="p-4 text-red-500">Error loading post: ${error.message}</div>`;
+    }
+}
 

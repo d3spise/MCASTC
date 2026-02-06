@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- SEO Meta Tags -->
+<link href="https://www.neuroimmunehub.com/en/" rel="canonical"/>
+<link href="https://www.neuroimmunehub.com/" hreflang="pl" rel="alternate"/>
+<link href="https://www.neuroimmunehub.com/en/" hreflang="en" rel="alternate"/>
+<link href="https://www.neuroimmunehub.com/en/" hreflang="x-default" rel="alternate"/>
+<meta content="Comprehensive knowledge source about MCAS (Mast Cell Activation Syndrome), TCS (Tethered Cord Syndrome), and ME/CFS. Learn about symptoms, mechanisms, and connections between these conditions." name="description"/>
+<meta content="MCAS, TCS, ME/CFS, Mast Cell Activation Syndrome, Tethered Cord Syndrome, Chronic Fatigue Syndrome, Ehlers-Danlos, EDS, Dysautonomia, POTS, Health, Medicine, Neuroimmunology" name="keywords"/>
+<meta content="NeuroImmune Hub" name="author"/>
+<meta content="index, follow" name="robots"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.neuroimmunehub.com/en/" property="og:url"/>
+<meta content="NeuroImmune Hub: MCAS, TCS &amp; ME/CFS" property="og:title"/>
+<meta content="Education and awareness about connections between MCAS, TCS, and ME/CFS. Learn about mechanisms, symptoms, and coping strategies." property="og:description"/>
+<meta content="https://www.neuroimmunehub.com/img/banner_image.webp" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.neuroimmunehub.com/en/" property="twitter:url"/>
+<meta content="NeuroImmune Hub: MCAS, TCS &amp; ME/CFS" property="twitter:title"/>
+<meta content="Education and awareness about connections between MCAS, TCS, and ME/CFS. Learn about mechanisms, symptoms, and coping strategies." property="twitter:description"/>
+<meta content="https://www.neuroimmunehub.com/img/banner_image.webp" property="twitter:image"/>
+<title>NeuroImmune Hub: MCAS, TCS &amp; ME/CFS</title>
+<link href="../img/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../css/output.css" rel="stylesheet"/>
+<!-- Inline dark mode init - prevents flash of unstyled content -->
+<script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/accessibility.css" rel="stylesheet"/>
+<script async="" data-goatcounter="https://despise.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+<!-- Nawigacja -->
+<nav class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
+<div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
+<a href="index.html" class="flex items-center space-x-3">
+<div class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+<i class="w-5 h-5" data-lucide="activity"></i>
+</div>
+<div>
+<span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">NeuroImmune Hub</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">MCAS • TCS • ME/CFS</span>
+</div>
+</a>
+<!-- Desktop Menu -->
+<div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_home" href="index.html">Home</a>
+            <a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium text-red-700 dark:text-red-500 font-semibold" data-i18n="nav_blog" href="blog.html">Blog</a>
+<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_diagnostics" href="diagnostics.html">Diagnostics</a>
+<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_treatment" href="treatment.html">Treatment</a>
+<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_tools" href="tools.html">Tools</a>
+<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_contact" href="contact.html">Contact</a>
+<div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+<button aria-label="Opcje dostępności" class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtn" title="Opcje dostępności">
+<i class="w-5 h-5" data-lucide="accessibility"></i>
+</button>
+<button class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtn" onclick="toggleTheme()" title="Przełącz tryb ciemny">
+<i class="w-4 h-4" data-lucide="moon"></i>
+</button>
+<button class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn" onclick="toggleLang()">PL</button>
+</div>
+</div>
+<!-- Mobile Menu Button -->
+<button class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" id="mobile-menu-btn">
+<i class="w-6 h-6" data-lucide="menu"></i>
+</button>
+<!-- Settings Hint (First Visit) -->
+<div class="hidden absolute top-20 right-4 z-50 w-64 bg-indigo-600 text-white p-4 rounded-xl shadow-xl transform transition-all duration-500 opacity-0 translate-y-2" id="settings-hint">
+<div class="absolute -top-2 right-3 w-4 h-4 bg-indigo-600 transform rotate-45"></div>
+<div class="relative">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-sm flex items-center gap-2">
+<i class="w-4 h-4" data-lucide="settings"></i>
+<span data-i18n="hint_settings_title">Customize View / Dostosuj</span>
+</h4>
+<button aria-label="Zamknij" class="text-white/70 hover:text-white" data-i18n-aria-label="btn_close" onclick="dismissSettingsHint()"><i class="w-4 h-4" data-lucide="x"></i></button>
+</div>
+<p class="text-xs text-indigo-100 mb-3 leading-relaxed" data-i18n="hint_settings_desc">You can change language, dark mode, and accessibility settings here.<br/><span class="block mt-2 pt-2 border-t border-white/20 text-indigo-200">Możesz zmienić język, tryb ciemny oraz ustawienia dostępności tutaj.</span></p>
+<button class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg transition-colors font-medium w-full" data-i18n="hint_settings_btn" onclick="dismissSettingsHint()">Got it / OK</button>
+</div>
+</div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden" id="mobile-backdrop"></div>
+<div class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col" id="mobile-menu">
+<div class="px-4 py-4 space-y-4">
+<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_home" href="index.html">Home</a>
+            <a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_blog" href="blog.html">Blog</a>
+<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_diagnostics" href="diagnostics.html">Diagnostics</a>
+<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_treatment" href="treatment.html">Treatment</a>
+<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_tools" href="tools.html">Tools</a>
+<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_contact" href="contact.html">Contact</a>
+<div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+<button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtnMobile" title="Opcje dostępności">
+<i class="w-5 h-5" data-lucide="accessibility"></i>
+</button>
+<button class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtnMobile" onclick="toggleTheme()" title="Przełącz tryb ciemny">
+<i class="w-4 h-4" data-lucide="moon"></i>
+</button>
+<button class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtnMobile" onclick="toggleLang()">PL</button>
+</div>
+</div>
+</div>
+</nav>
+
+<div class="max-w-4xl mx-auto px-4 mt-8">
+    <a href="blog.html" class="inline-flex items-center gap-2 text-slate-500 hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400 transition-colors group">
+        <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+        <span>Back</span>
+    </a>
+</div>
+
+<article class="max-w-4xl mx-auto px-4 py-12 prose dark:prose-invert" id="post-content">
+    <div class="flex flex-col items-center justify-center py-20">
+        <div class="w-12 h-12 border-4 border-slate-200 border-t-red-600 rounded-full animate-spin"></div>
+    </div>
+</article>
+
+<footer class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+<div class="max-w-6xl mx-auto px-4 text-center text-sm">
+<p class="mb-2" data-i18n="footer_text">Educational page created to raise awareness about MCAS and comorbid conditions.</p>
+<p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto" data-i18n="footer_disclaimer"><strong>Disclaimer:</strong> The content on this page presents a <strong>theoretical model</strong> of connections between conditions. This is not a prevailing medical standard but a collection of hypotheses based on scientific literature. This information does not replace medical advice.</p>
+<p>© 2026 NeuroImmune Hub. All rights reserved.</p>
+</div>
+</footer>
+<!-- Accessibility Panel -->
+<div aria-hidden="true" id="accessibility-panel">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<i class="w-5 h-5" data-lucide="accessibility"></i>
+<span data-i18n="a11y_title">Accessibility</span>
+</h3>
+<button class="a11y-btn" id="btn-contrast">
+<i class="w-4 h-4" data-lucide="contrast"></i>
+<span data-i18n="a11y_contrast">High Contrast</span>
+</button>
+<button class="a11y-btn" id="btn-font">
+<i class="w-4 h-4" data-lucide="type"></i>
+<span data-i18n="a11y_font">Increase Text Size</span>
+</button>
+<button class="a11y-btn" id="btn-dyslexia">
+<i class="w-4 h-4" data-lucide="align-left"></i>
+<span data-i18n="a11y_dyslexia">Dyslexia Friendly Font</span>
+</button>
+<div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
+<button class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors" id="btn-reset-a11y">
+<span data-i18n="a11y_reset">Reset Settings</span>
+</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../js/translations.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/accessibility.js"></script>
+</body>
+</html>

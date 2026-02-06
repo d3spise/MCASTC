@@ -13,7 +13,12 @@
         "reveal": "silent",
         "panel": "shared"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "detail": "tailwindcss -i ./css/input.css -o ./css/output.css --watch",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   ]
 }
