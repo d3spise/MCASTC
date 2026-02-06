@@ -476,6 +476,7 @@ async function loadBlogIndex() {
                     </p>
                     <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
                         <span class="text-xs text-slate-500 font-medium">${formatDateNumeric(post.date)}</span>
+                        ${post.readTime ? `<span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ${post.readTime} min</span>` : ''}
                         <a href="article.html?id=${post.id}" class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
                             ${currentLang === 'pl' ? 'Czytaj dalej' : 'Read more'} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
@@ -1516,11 +1517,16 @@ async function loadBlogPost() {
                 imgPath = '../' + imgPath;
             }
 
+            // Calculate Reading Time
+            const wpm = 200;
+            const words = text.trim().split(/\s+/).length;
+            const readTime = Math.ceil(words / wpm);
+            const readTimeText = isEn ? `${readTime} min read` : `Czas czytania: ${readTime} min`;
+
             const tagsHtml = (metadata.tags || []).map(tag => 
                 `<span class="inline-block px-3 py-1 mb-4 mr-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-slate-900 rounded-full text-xs font-bold uppercase tracking-wide">${tag}</span>`
             ).join('');
 
-            // Generate fake waveform bars (SVG for ragged line look) REMOVED in favor of interactive seeker
             
             headerHtml = `
                 <header class="mb-10 text-center border-b border-slate-200 dark:border-slate-800 pb-10">
@@ -1532,6 +1538,8 @@ async function loadBlogPost() {
                     </h1>
                     <div class="flex items-center justify-center gap-4 text-sm text-slate-500 dark:text-slate-400 font-medium mb-8">
                         <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> ${formatDate(metadata.date)}</span>
+                        <span class="text-slate-300 dark:text-slate-700 mx-2">|</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> ${readTimeText}</span>
                     </div>
 
                     <!-- Voice Message UI -->
