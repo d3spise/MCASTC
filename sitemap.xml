@@ -19,7 +19,6 @@
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
-
   <!-- Diagnostics -->
   <url>
     <loc>https://www.neuroimmunehub.com/diagnostics.html</loc>
@@ -39,7 +38,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
-
   <!-- Treatment -->
   <url>
     <loc>https://www.neuroimmunehub.com/treatment.html</loc>
@@ -59,7 +57,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
-
   <!-- Tools -->
   <url>
     <loc>https://www.neuroimmunehub.com/tools.html</loc>
@@ -79,7 +76,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
-
   <!-- Contact -->
   <url>
     <loc>https://www.neuroimmunehub.com/contact.html</loc>
@@ -99,7 +95,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
-
   <!-- Blog -->
   <url>
     <loc>https://www.neuroimmunehub.com/blog.html</loc>
@@ -119,7 +114,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
-
   <!-- Individual Posts -->
   <url>
     <loc>https://www.neuroimmunehub.com/article.html?id=nowosc-blog</loc>

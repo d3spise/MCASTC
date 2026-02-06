@@ -58,10 +58,10 @@ def remove_from_sitemap(post_id):
     with open(SITEMAP_PATH, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Szukamy bloków <url> zawierających ten konkretny ID
-    # Używamy re.escape dla post_id, aby znaki specjalne nie popsuły regexa
-    # Flaga re.DOTALL sprawia, że kropka dopasowuje też znaki nowej linii
-    pattern = r'\s*<url>.*?article\.html\?id=' + re.escape(post_id) + r'.*?</url>'
+    # Poprawiony regex, który nie "zjada" innych bloków URL
+    # <url>(?:(?!</url>).)*?id=....*?</url>
+    # (?:(?!</url>).)* upewnia się, że nie przeskoczymy zamknięcia tagu </url> w poszukiwaniu ID
+    pattern = r'<url>(?:(?!</url>).)*?article\.html\?id=' + re.escape(post_id) + r'.*?</url>'
     
     matches = re.findall(pattern, content, flags=re.DOTALL)
     
