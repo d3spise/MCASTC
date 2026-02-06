@@ -86,7 +86,7 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/contact.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/contact.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/contact.html" />
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
@@ -95,8 +95,48 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/contact.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/contact.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/contact.html" />
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://www.neuroimmunehub.com/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/blog.html" />
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/en/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/blog.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/blog.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/blog.html" />
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Individual Posts -->
+  <url>
+    <loc>https://www.neuroimmunehub.com/article.html?id=nowosc-blog</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/article.html?id=nowosc-blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/article.html?id=nowosc-blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/article.html?id=nowosc-blog" />
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/en/article.html?id=nowosc-blog</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/article.html?id=nowosc-blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/article.html?id=nowosc-blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/article.html?id=nowosc-blog" />
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
 </urlset>
