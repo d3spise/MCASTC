@@ -1,5 +1,18 @@
 [
     {
+        "id": "Petra-Klinge-Intro",
+        "title": "Dr Petra Klinge: Nadzieja dla pacjentów z „niewidzialnymi” schorzeniami kręgosłupa.",
+        "date": "2026-02-06",
+        "desc": "W tym artykule przedstawiam postać dr Petry Klinge oraz jej niesamowite osiągnięcia dla pacjentów.",
+        "image": "img/petraklinge.webp",
+        "tags": [
+            "research",
+            "zakotwiczenie rdzenia",
+            "tcs"
+        ],
+        "readTime": 3
+    },
+    {
         "id": "nowosc-blog",
         "title": "Nowość na stronie! Artykuły blogowe.",
         "date": "2026-02-05",

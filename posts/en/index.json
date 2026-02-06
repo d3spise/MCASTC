@@ -1,5 +1,18 @@
 [
     {
+        "id": "Petra-Klinge-Intro",
+        "title": "Dr. Petra Klinge: Hope for patients with \"invisible\" spine conditions.",
+        "date": "2026-02-06",
+        "desc": "In this article I will introduce Dr. Petra Klinge and her awesome achievements.",
+        "image": "img/petraklinge.webp",
+        "tags": [
+            "research",
+            "tethered cord syndrome",
+            "tcs"
+        ],
+        "readTime": 3
+    },
+    {
         "id": "nowosc-blog",
         "title": "New addition to the website! Blog articles.",
         "date": "2026-02-05",

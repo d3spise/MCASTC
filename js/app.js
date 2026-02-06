@@ -1518,9 +1518,13 @@ async function loadBlogPost() {
             }
 
             // Calculate Reading Time
-            const wpm = 200;
-            const words = text.trim().split(/\s+/).length;
-            const readTime = Math.ceil(words / wpm);
+            // Use metadata value if available (calculated by backend), otherwise fallback to simple estimation
+            let readTime = metadata.readTime;
+            if (!readTime) {
+                const wpm = 200;
+                const words = text.trim().split(/\s+/).length;
+                readTime = Math.ceil(words / wpm);
+            }
             const readTimeText = isEn ? `${readTime} min read` : `Czas czytania: ${readTime} min`;
 
             const tagsHtml = (metadata.tags || []).map(tag => 

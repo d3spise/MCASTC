@@ -133,4 +133,23 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
+
+  <url>
+    <loc>https://www.neuroimmunehub.com/article.html?id=Petra-Klinge-Intro</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/article.html?id=Petra-Klinge-Intro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/article.html?id=Petra-Klinge-Intro" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/article.html?id=Petra-Klinge-Intro" />
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/en/article.html?id=Petra-Klinge-Intro</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/article.html?id=Petra-Klinge-Intro" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/article.html?id=Petra-Klinge-Intro" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/article.html?id=Petra-Klinge-Intro" />
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>
