@@ -29,7 +29,8 @@ const translations = {
     seo_blog_desc:
       "Najnowsze artykuły, badania i przemyślenia na temat MCAS, TCS i ME/CFS.",
 
-    seo_caregivers_title: "Dla Opiekunów: Zrozumieć ME/CFS i MCAS - NeuroImmune Hub",
+    seo_caregivers_title:
+      "Dla Opiekunów: Zrozumieć ME/CFS i MCAS - NeuroImmune Hub",
     seo_caregivers_desc:
       "Przewodnik dla opiekunów. Dowiedz się, jak pomagać, czego unikać i jak zrozumieć niewidzialną walkę chorego.",
 
@@ -774,7 +775,8 @@ const translations = {
     seo_blog_desc:
       "Latest articles, research, and thoughts on MCAS, TCS, and ME/CFS.",
 
-    seo_caregivers_title: "For Loved Ones: Understanding ME/CFS and MCAS - NeuroImmune Hub",
+    seo_caregivers_title:
+      "For Loved Ones: Understanding ME/CFS and MCAS - NeuroImmune Hub",
     seo_caregivers_desc:
       "Guide for caregivers and loved ones. Learn how to help, what to avoid, and understand the invisible struggle.",
 
