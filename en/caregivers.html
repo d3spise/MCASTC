@@ -1,0 +1,620 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!-- SEO Meta Tags -->
+    <meta
+      content="Guide for caregivers and loved ones of people with ME/CFS, MCAS, and TCS. Learn how to help, what to avoid, and understand the invisible struggle."
+      name="description" />
+    <meta
+      content="ME/CFS Caregiver, PEM, MCAS, How to help, Guide for loved ones, Battery, Bodyguard, Fatigue, Disability"
+      name="keywords" />
+    <meta content="NeuroImmune Hub" name="author" />
+    <meta content="index, follow" name="robots" />
+    <!-- Open Graph / Facebook -->
+    <meta content="website" property="og:type" />
+    <meta content="https://www.neuroimmunehub.com/en/caregivers.html" property="og:url" />
+    <meta
+      content="For Loved Ones: Understanding ME/CFS and MCAS - NeuroImmune Hub"
+      property="og:title" />
+    <meta
+      content="Your loved one isn't lazy. Their body is fighting a battle you can't see. A guide for caregivers."
+      property="og:description" />
+    <meta
+      content="https://www.neuroimmunehub.com/img/banner_image.webp"
+      property="og:image" />
+    <!-- Twitter -->
+    <meta content="summary_large_image" property="twitter:card" />
+    <meta
+      content="For Loved Ones: Understanding ME/CFS and MCAS - NeuroImmune Hub"
+      property="twitter:title" />
+    <meta
+      content="Your loved one isn't lazy. Their body is fighting a battle you can't see. A guide for caregivers."
+      property="twitter:description" />
+    <meta
+      content="https://www.neuroimmunehub.com/img/banner_image.webp"
+      property="twitter:image" />
+    <title>
+      For Loved Ones: Understanding ME/CFS - NeuroImmune Hub
+    </title>
+    <link href="../img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="../css/output.css" rel="stylesheet" />
+    <!-- Inline dark mode init -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap"
+      rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/accessibility.css" rel="stylesheet" />
+    <script
+      async=""
+      data-goatcounter="https://despise.goatcounter.com/count"
+      src="//gc.zgo.at/count.js"></script>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    
+    <!-- Nawigacja -->
+    <nav
+      class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 bg-gradient-to-br from-teal-600 to-teal-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md group-hover:scale-105 transition-transform">
+                    <i class="w-5 h-5" data-lucide="heart-handshake"></i>
+                </div>
+                <div>
+                    <span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">NeuroImmune Hub</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Caregiver Zone</span>
+                </div>
+            </a>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors font-medium" href="index.html">Back to Home</a>
+          <a class="hover:text-teal-600 dark:hover:text-teal-400 transition-colors font-medium" href="tools.html">Tools</a>
+          
+          <div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+            <button
+              aria-label="Accessibility Options"
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="a11yBtn"
+              title="Accessibility Options">
+              <i class="w-5 h-5" data-lucide="accessibility"></i>
+            </button>
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="themeBtn"
+              onclick="toggleTheme()"
+              title="Toggle Dark Mode">
+              <i class="w-4 h-4" data-lucide="moon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+          id="mobile-menu-btn">
+          <i class="w-6 h-6" data-lucide="menu"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+          <div class="px-4 py-2 space-y-1">
+              <a href="index.html" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">Back to Home</a>
+              <a href="tools.html" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-teal-600 dark:hover:text-teal-400">Tools</a>
+          </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        
+        <!-- Hero Section -->
+        <header class="text-center mb-16 fade-in-section">
+            <div class="inline-block p-3 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 mb-6">
+                <i class="w-12 h-12" data-lucide="heart-handshake"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                For Loved Ones & Caregivers
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+                Your loved one isn't lazy. Their body is fighting a battle you can't see.
+            </p>
+        </header>
+
+        <!-- Sekcja 1: Zepsuta Bateria (PEM) -->
+        <section class="mb-16 bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-800 relative overflow-hidden fade-in-section">
+            
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-800 dark:text-slate-100">
+                    <i class="w-8 h-8 text-red-500" data-lucide="battery-warning"></i>
+                    The Battery That Doesn't Charge
+                </h2>
+                <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-400">
+                    <p class="text-lg mb-4">
+                        A healthy person rests after exertion and recovers strength. Your loved one — <strong>does not</strong>.
+                        This phenomenon is called <strong>PEM</strong> (Post-Exertional Malaise). It's not just "fatigue." It's a systemic failure of energy production at the cellular level.
+                    </p>
+
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl mb-8 border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-800 dark:text-blue-300 mt-0 mb-2">The Spoon Theory (Energy as Currency)</h3>
+                        <p class="text-sm text-slate-700 dark:text-slate-300">
+                            Imagine waking up with only <strong>5 spoons</strong> of energy for the entire day.
+                        </p>
+                        <ul class="grid sm:grid-cols-2 gap-2 mt-4 text-sm">
+                            <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-400"></div>Shower = 2 spoons</li>
+                            <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-400"></div>Getting dressed = 1 spoon</li>
+                            <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-400"></div>Making breakfast = 2 spoons</li>
+                            <li class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-red-500"></div><strong>A walk = DEBT</strong></li>
+                        </ul>
+                        <p class="text-sm mt-4 font-semibold text-blue-800 dark:text-blue-300">
+                            By 10:00 AM, your loved one is already in the negative. Any further action is borrowing energy with predatory interest rates.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-8">
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl">
+                            <h3 class="font-bold text-slate-900 dark:text-white mb-2">Healthy Battery</h3>
+                            <div class="flex items-center gap-2 mb-2 text-green-600 dark:text-green-400">
+                                <i data-lucide="battery-charging"></i>
+                                <span>Charges during sleep</span>
+                            </div>
+                            <p class="text-sm">Exertion = Fatigue -> Sleep = Recovery (100%)</p>
+                        </div>
+                        <div class="bg-red-50 dark:bg-red-900/30 p-6 rounded-2xl border border-red-100 dark:border-red-800/50">
+                            <h3 class="font-bold text-slate-900 dark:text-white mb-2">Your Loved One's Battery</h3>
+                            <div class="flex items-center gap-2 mb-2 text-red-600 dark:text-red-400">
+                                <i data-lucide="battery-warning"></i>
+                                <span>Broken charging</span>
+                            </div>
+                            <p class="text-sm">
+                                Exertion = <strong>Permanent damage</strong>
+                            </p>
+                            <p class="text-sm mt-2">
+                                Sleep doesn't regenerate. If they "overdo it," the body shuts down non-essential systems (digestion, thinking, temperature regulation) to survive.
+                            </p>
+                            <p class="text-xs mt-3 text-red-600 dark:text-red-400 font-bold bg-white dark:bg-black/20 p-2 rounded">
+                                ⚠️ Delayed Effect: A "good day" today might mean a devastating "Crash" two days from now.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-slate-500 border-l-4 border-teal-500 pl-4 py-2 bg-slate-50 dark:bg-slate-800/50 rounded-r-lg italic">
+                        "Forcing me on a walk to 'get active' is like push-starting a car with no fuel. It only damages the engine."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sekcja 2: Ochroniarz (MCAS) -->
+        <section class="mb-16 fade-in-section">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-800 dark:text-slate-100 px-4">
+                <i class="w-8 h-8 text-indigo-500" data-lucide="shield-alert"></i>
+                Overzealous Bodyguard (MCAS)
+            </h2>
+            <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <p class="text-lg mb-6 leading-relaxed opacity-90">
+                        Imagine your loved one has a Bodyguard in their body. His job is to protect against viruses. 
+                        But this Bodyguard has gone rogue.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="bg-white/20 p-2 rounded-lg mt-1">
+                                <i class="w-5 h-5 text-white" data-lucide="pizza"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold block text-indigo-100">Food (Histamine)</span>
+                                <span class="text-sm opacity-80">The Bodyguard thinks it's poison. Attacks the stomach, causes pain and brain fog.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-white/20 p-2 rounded-lg mt-1">
+                                <i class="w-5 h-5 text-white" data-lucide="spray-can"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold block text-indigo-100">Scents (Perfumes, Chemicals)</span>
+                                <span class="text-sm opacity-80">The Bodyguard treats your perfume like tear gas. It can cause shortness of breath or fainting.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="bg-white/20 p-2 rounded-lg mt-1">
+                                <i class="w-5 h-5 text-white" data-lucide="activity"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold block text-indigo-100">Stress & Emotions</span>
+                                <span class="text-sm opacity-80">Even joy or an argument triggers chemicals that "set off" the Bodyguard.</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="bg-white/10 p-4 rounded-xl border border-white/20">
+                        <p class="font-medium text-center">It's not "all in their head." It's a biochemical reaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sekcja 2A: Enemy No. 1: Gravity (POTS / Anchoring) -->
+        <section class="mb-16 fade-in-section">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-800 dark:text-slate-100 px-4">
+                <i class="w-8 h-8 text-orange-500" data-lucide="arrow-down"></i>
+                Enemy No. 1: Gravity (Why can't they stand?)
+            </h2>
+            <div class="bg-orange-50 dark:bg-orange-950/20 rounded-3xl p-8 border border-orange-100 dark:border-orange-900/30">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg text-slate-700 dark:text-slate-300 mb-4">
+                            You may notice your loved one sitting on the floor in a store, squatting, or needing to lie down immediately. It's not a whim.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3">
+                                <div class="shrink-0 mt-1"><i class="w-5 h-5 text-orange-600" data-lucide="alert-circle"></i></div>
+                                <div>
+                                    <strong class="block text-slate-900 dark:text-white">Circulation Issue (POTS):</strong>
+                                    <span class="text-sm text-slate-600 dark:text-slate-400">Blood pools in the legs and doesn't return to the brain. Standing still is like running a marathon for them.</span>
+                                </div>
+                            </li>
+                            <li class="flex gap-3">
+                                <div class="shrink-0 mt-1"><i class="w-5 h-5 text-orange-600" data-lucide="anchor"></i></div>
+                                <div>
+                                    <strong class="block text-slate-900 dark:text-white">Spine Issue (TCS):</strong>
+                                    <span class="text-sm text-slate-600 dark:text-slate-400">An upright position physically stretches the spinal cord. This causes back pain, leg pain, and bladder issues.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-900/50">
+                        <h3 class="font-bold text-orange-800 dark:text-orange-300 mb-3 flex items-center gap-2">
+                            <i class="w-5 h-5" data-lucide="info"></i> How to help?
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-center gap-2"><i class="w-4 h-4 text-green-500" data-lucide="check"></i> Let them sit/squat anywhere (even on the sidewalk).</li>
+                            <li class="flex items-center gap-2"><i class="w-4 h-4 text-green-500" data-lucide="check"></i> Don't force them to stand in lines.</li>
+                            <li class="flex items-center gap-2"><i class="w-4 h-4 text-green-500" data-lucide="check"></i> Sit down next to them during a conversation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Symptom Map -->
+        <section class="mb-16 fade-in-section">
+            <h2 class="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100 flex items-center justify-center gap-3">
+                <i class="w-8 h-8 text-teal-500" data-lucide="stethoscope"></i>
+                More than fatigue - Symptom Map
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Neurology -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                        <i data-lucide="brain"></i> Head & Nervous System
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-indigo-400 shrink-0"></div><span><strong>Brain Fog:</strong> Trouble finding words, memory issues, concentration.</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-indigo-400 shrink-0"></div><span><strong>Headaches:</strong> Chronic migraines, pressure in the back of the head.</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-indigo-400 shrink-0"></div><span><strong>Sensory Overload:</strong> Light hurts, sounds cause pain, touch irritates.</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-indigo-400 shrink-0"></div><span><strong>Dysautonomia:</strong> Dizziness upon standing, seeing spots/stars.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Pain -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-red-600 dark:text-red-400">
+                        <i data-lucide="activity"></i> Pain & Muscles
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-red-400 shrink-0"></div><span><strong>"Migrating" Pain:</strong> Joints one day, muscles the next, skin the next.</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-red-400 shrink-0"></div><span><strong>Coat Hanger Pain:</strong> Heavy head feeling, stiff neck (common in TCS/CCI).</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-red-400 shrink-0"></div><span><strong>Paresthesia:</strong> Numbness, tingling, "electric shocks".</span></li>
+                    </ul>
+                </div>
+
+                <!-- Heart & Gut -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-orange-600 dark:text-orange-400">
+                        <i data-lucide="heart-pulse"></i> Heart & Gut
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-orange-400 shrink-0"></div><span><strong>POTS:</strong> Heart racing like after a run, just from standing still.</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-orange-400 shrink-0"></div><span><strong>Gut Issues:</strong> Nausea, abdominal pain after eating (MCAS reactions).</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-orange-400 shrink-0"></div><span><strong>Thermoregulation:</strong> Ice-cold hands/feet or sudden hot flashes.</span></li>
+                    </ul>
+                </div>
+
+                <!-- General -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2 text-teal-600 dark:text-teal-400">
+                        <i data-lucide="thermometer"></i> General Wellbeing
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-teal-400 shrink-0"></div><span><strong>Severe Fatigue:</strong> Exhaustion that doesn't improve with rest, feeling "unplugged".</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-teal-400 shrink-0"></div><span><strong>Flu-like Feeling:</strong> Feeling feverish, chills, body aches (without infection).</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-teal-400 shrink-0"></div><span><strong>Unrefreshing Sleep:</strong> Waking up more tired than before bed.</span></li>
+                        <li class="flex gap-2"><div class="w-1.5 h-1.5 mt-2 rounded-full bg-teal-400 shrink-0"></div><span><strong>Night Sweats:</strong> Waking up soaking wet.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Unrest Video -->
+        <section class="mb-16 fade-in-section">
+            <h2 class="text-2xl font-bold mb-6 text-center text-slate-800 dark:text-slate-100">
+                See it with your own eyes
+            </h2>
+            <div class="bg-black/5 dark:bg-black/20 rounded-3xl p-4 md:p-8">
+                <!-- Movie Card (Link instead of embed) -->
+                <a href="https://www.youtube.com/watch?v=XOpyLTyVxco" target="_blank" rel="noopener noreferrer" class="block group relative h-[300px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl mb-6 bg-slate-900 border border-slate-700">
+                    <!-- Image Background -->
+                    <img src="../img/unrest.webp" alt="Unrest Movie Poster" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500">
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30"></div>
+                    
+                    <!-- Play Icon -->
+                    <div class="absolute inset-0 flex items-center justify-center z-10">
+                        <div class="w-20 h-20 rounded-full bg-red-600/90 group-hover:bg-red-600 text-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-xl backdrop-blur-sm">
+                            <i class="w-8 h-8 fill-current ml-1" data-lucide="play"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Thumbnail Text -->
+                    <div class="absolute bottom-0 left-0 right-0 p-8 text-white text-center z-10">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">"Unrest"</h3>
+                        <p class="text-slate-300 font-medium">Award-winning Documentary</p>
+                        <p class="text-sm text-slate-400 mt-2">Click to watch on YouTube</p>
+                    </div>
+                </a>
+
+                <div class="text-center">
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto leading-relaxed">
+                        <i class="inline-block mr-1 w-4 h-4 align-text-bottom" data-lucide="info"></i>
+                        This film shows the reality of living with this disease. Due to licensing restrictions, the content is available only directly on the YouTube platform.
+                        <strong>Remember to turn on subtitles in the player settings.</strong>
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=XOpyLTyVxco" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full text-base font-medium transition-colors shadow-lg hover:shadow-red-600/30">
+                        <i data-lucide="external-link" class="w-5 h-5"></i>
+                        Watch "Unrest" on YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sekcja 3: Traffic Light System -->
+        <section class="mb-16 fade-in-section">
+            <h2 class="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+                How to recognize their state?
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Green -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-lg border-t-8 border-green-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-4 h-4 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)]"></div>
+                        <h3 class="font-bold text-lg">Good Day</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex gap-2"><i class="w-4 h-4 text-green-500" data-lucide="check"></i> Can talk</li>
+                        <li class="flex gap-2"><i class="w-4 h-4 text-green-500" data-lucide="check"></i> Light walk (maybe)</li>
+                        <li class="flex gap-2"><i class="w-4 h-4 text-green-500" data-lucide="check"></i> Watch a movie together</li>
+                    </ul>
+                </div>
+                
+                <!-- Yellow -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-lg border-t-8 border-yellow-500 relative opacity-90">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-4 h-4 rounded-full bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.6)]"></div>
+                        <h3 class="font-bold text-lg">Warning</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                        <li class="flex gap-2"><i class="w-4 h-4 text-yellow-500" data-lucide="alert-triangle"></i> Difficulty finding words</li>
+                        <li class="flex gap-2"><i class="w-4 h-4 text-yellow-500" data-lucide="alert-triangle"></i> Light sensitivity</li>
+                        <li class="flex gap-2"><i class="w-4 h-4 text-yellow-500" data-lucide="alert-triangle"></i> Needs a break!</li>
+                    </ul>
+                </div>
+
+                <!-- Red -->
+                <div class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 rounded-2xl shadow-lg border-t-8 border-red-600 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-100 via-transparent to-transparent dark:from-red-900/40"></div>
+                    <div class="flex items-center gap-3 mb-4 relative z-10">
+                        <div class="w-4 h-4 rounded-full bg-red-600 shadow-[0_0_15px_rgba(220,38,38,1)] animate-pulse"></div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">CRASH</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 relative z-10">
+                        <li class="flex gap-2"><i class="w-4 h-4 text-red-500" data-lucide="x-circle"></i> ZERO stimuli</li>
+                        <li class="flex gap-2"><i class="w-4 h-4 text-red-500" data-lucide="x-circle"></i> Dark room</li>
+                        <li class="flex gap-2"><i class="w-4 h-4 text-red-500" data-lucide="x-circle"></i> Don't ask, bring water</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Do's and Don'ts -->
+        <section class="max-w-3xl mx-auto mb-16 fade-in-section">
+            <h2 class="text-2xl font-bold mb-8 text-center text-slate-800 dark:text-slate-100">
+                User Manual
+            </h2>
+            <div class="space-y-4">
+                <!-- NEW: Brain Fog Tip -->
+                <div class="flex flex-col md:flex-row gap-4 bg-blue-50 dark:bg-blue-900/10 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
+                    <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300">
+                        <i data-lucide="brain-circuit"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-800 dark:text-blue-300">IMPORTANT: Brain Fog</h3>
+                        <p class="text-sm text-blue-700 dark:text-blue-400 mt-1">
+                            If they forget words mid-sentence or can't make a decision, it's not "lack of attention." Their processor has overheated. Ask simple questions (YES/NO). Give them time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DO -->
+                <div class="flex flex-col md:flex-row gap-4 bg-green-50 dark:bg-green-900/10 p-4 rounded-xl border border-green-100 dark:border-green-900/30">
+                    <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300">
+                        <i data-lucide="thumbs-up"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-green-800 dark:text-green-300">DO: Believe them.</h3>
+                        <p class="text-sm text-green-700 dark:text-green-400 mt-1">
+                            When they say "I can't speak," it's not a metaphor. It's energy paralysis. Bring salty water (electrolytes). Text instead of calling (phone audio is draining).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DON'T -->
+                <div class="flex flex-col md:flex-row gap-4 bg-red-50 dark:bg-red-900/10 p-4 rounded-xl border border-red-100 dark:border-red-900/30">
+                    <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-red-100 dark:bg-red-800 text-red-600 dark:text-red-300">
+                        <i data-lucide="thumbs-down"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-red-800 dark:text-red-300">AVOID: "You look fine."</h3>
+                        <p class="text-sm text-red-700 dark:text-red-400 mt-1">
+                            This is one of the most hurtful phrases. Their illness is invisible. A compliment suggests the problem is in their head. Also avoid strong perfumes – they cause physical pain.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- NEW: Emotional Support -->
+                <div class="flex flex-col md:flex-row gap-4 bg-purple-50 dark:bg-purple-900/10 p-4 rounded-xl border border-purple-100 dark:border-purple-900/30">
+                    <div class="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-800 text-purple-600 dark:text-purple-300">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-purple-800 dark:text-purple-300">Emotional Support</h3>
+                        <p class="text-sm text-purple-700 dark:text-purple-400 mt-1">
+                            A sick person's biggest fear is being a burden. 
+                            Reassure them: "We are in this together", "You are not a problem for me."
+                            This heals the soul when the body refuses to cooperate.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA End -->
+        <section class="text-center py-12 px-6 bg-slate-100 dark:bg-slate-800/50 rounded-3xl fade-in-section">
+            <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Need specific tools?</h2>
+            <p class="mb-8 text-slate-600 dark:text-slate-400">
+                We have prepared free hospital documents and a safe medication list.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="tools.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-teal-600 hover:bg-teal-700 transition-colors shadow-lg shadow-teal-500/30">
+                    <i class="w-5 h-5 mr-2" data-lucide="file-text"></i>
+                    Generate Hospital Passport
+                </a>
+                <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 dark:border-slate-600 text-base font-medium rounded-lg text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                    <i class="w-5 h-5 mr-2" data-lucide="book-open"></i>
+                    Learn More (Science)
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 pb-12 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+        <p class="mb-2">
+          Dedicated to caregivers and loved ones.
+        </p>
+        <p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto">
+            Remember: Your support is a medicine you can't buy at a pharmacy. Thank you for being here.
+        </p>
+        <p>© 2026 NeuroImmune Hub. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Accessibility Panel -->
+    <div aria-hidden="true" id="accessibility-panel">
+      <!-- (Simplified version of standard panel) -->
+      <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i class="w-5 h-5" data-lucide="accessibility"></i>
+        <span>Accessibility</span>
+      </h3>
+      <button class="a11y-btn" id="btn-contrast">
+        <i class="w-4 h-4" data-lucide="contrast"></i>
+        <span>High Contrast</span>
+      </button>
+      <button class="a11y-btn" id="btn-font">
+        <i class="w-4 h-4" data-lucide="type"></i>
+        <span>Increase Text Size</span>
+      </button>
+      <button class="a11y-btn" id="btn-dyslexia">
+        <i class="w-4 h-4" data-lucide="align-left"></i>
+        <span>Dyslexia Font</span>
+      </button>
+      <div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
+      <button
+        class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
+        id="btn-reset-a11y">
+        <span>Reset Settings</span>
+      </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Simple Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        lucide.createIcons();
+
+        // Intersection Observer for fade-in animations
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add('js-loaded');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target); // Animate only once
+                }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".fade-in-section").forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
+    <script src="../js/accessibility.js"></script>
+    <script>
+      // Theme Toggle Logic (Simplified inline for this standalone page)
+      function toggleTheme() {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+        }
+      }
+    </script>
+  </body>
+</html>
