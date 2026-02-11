@@ -152,4 +152,23 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
+  <!-- Caregivers -->
+  <url>
+    <loc>https://www.neuroimmunehub.com/caregivers.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/caregivers.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/caregivers.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/caregivers.html" />
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/en/caregivers.html</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/caregivers.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/caregivers.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/caregivers.html" />
+    <lastmod>2026-02-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>
