@@ -4,22 +4,27 @@
  * Sets the correct icon for the theme button.
  */
 function initTheme() {
-    const isDark = localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    const icon = isDark ? '<i data-lucide="sun" class="w-4 h-4"></i>' : '<i data-lucide="moon" class="w-4 h-4"></i>';
-    
-    // Note: document classList is also toggled inline in HTML to prevent FOUC.
-    // This function ensures the button icon is correct.
-    if (isDark) {
-        document.documentElement.classList.add("dark");
-    } else {
-        document.documentElement.classList.remove("dark");
-    }
-    
-    const btn = document.getElementById("themeBtn");
-    if (btn) btn.innerHTML = icon;
-    
-    const btnMobile = document.getElementById("themeBtnMobile");
-    if (btnMobile) btnMobile.innerHTML = icon;
+  const isDark =
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const icon = isDark
+    ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+    : '<i data-lucide="moon" class="w-4 h-4"></i>';
+
+  // Note: document classList is also toggled inline in HTML to prevent FOUC.
+  // This function ensures the button icon is correct.
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+
+  const btn = document.getElementById("themeBtn");
+  if (btn) btn.innerHTML = icon;
+
+  const btnMobile = document.getElementById("themeBtnMobile");
+  if (btnMobile) btnMobile.innerHTML = icon;
 }
 initTheme();
 lucide.createIcons();
@@ -31,22 +36,25 @@ lucide.createIcons();
 function toggleTheme() {
   const isDark = document.documentElement.classList.contains("dark");
   const newTheme = isDark ? "light" : "dark";
-  
+
   if (isDark) {
     document.documentElement.classList.remove("dark");
   } else {
     document.documentElement.classList.add("dark");
   }
   localStorage.theme = newTheme;
-  
-  const icon = newTheme === "dark" ? '<i data-lucide="sun" class="w-4 h-4"></i>' : '<i data-lucide="moon" class="w-4 h-4"></i>';
-  
+
+  const icon =
+    newTheme === "dark"
+      ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+      : '<i data-lucide="moon" class="w-4 h-4"></i>';
+
   const btn = document.getElementById("themeBtn");
   if (btn) btn.innerHTML = icon;
-  
+
   const btnMobile = document.getElementById("themeBtnMobile");
   if (btnMobile) btnMobile.innerHTML = icon;
-  
+
   lucide.createIcons();
 }
 
@@ -54,14 +62,14 @@ var currentLang;
 
 // Detect language from URL path structure
 const currentPath = window.location.pathname;
-if (currentPath.includes('/en/')) {
-    // English subdirectory
-    currentLang = 'en';
-    localStorage.setItem("lang", 'en');
+if (currentPath.includes("/en/")) {
+  // English subdirectory
+  currentLang = "en";
+  localStorage.setItem("lang", "en");
 } else {
-    // Polish root directory (default)
-    currentLang = 'pl';
-    localStorage.setItem("lang", 'pl');
+  // Polish root directory (default)
+  currentLang = "pl";
+  localStorage.setItem("lang", "pl");
 }
 
 let currentGuardMode = "healthy"; // Przechowuje stan ochroniarza
@@ -70,72 +78,72 @@ let currentGuardMode = "healthy"; // Przechowuje stan ochroniarza
 document.documentElement.lang = currentLang;
 const langBtn = document.getElementById("langBtn");
 if (langBtn) {
-    langBtn.innerText = currentLang.toUpperCase();
+  langBtn.innerText = currentLang.toUpperCase();
 }
 const langBtnMobile = document.getElementById("langBtnMobile");
 if (langBtnMobile) {
-    langBtnMobile.innerText = currentLang.toUpperCase();
+  langBtnMobile.innerText = currentLang.toUpperCase();
 }
 
 // Apply translations when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-    updateLanguageUI();
-    
-    // Mobile Menu Logic
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileBackdrop = document.getElementById('mobile-backdrop');
-    
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileBackdrop) {
-                mobileBackdrop.classList.toggle('hidden');
-            }
-            // Dismiss settings hint when mobile menu is opened
-            if (window.dismissSettingsHint) {
-                window.dismissSettingsHint();
-            }
-        });
-    }
+  updateLanguageUI();
 
-    if (mobileBackdrop) {
-        mobileBackdrop.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            mobileBackdrop.classList.add('hidden');
-        });
-    }
+  // Mobile Menu Logic
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileBackdrop = document.getElementById("mobile-backdrop");
 
-    // Check for settings hint
-    checkSettingsHint();
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      if (mobileBackdrop) {
+        mobileBackdrop.classList.toggle("hidden");
+      }
+      // Dismiss settings hint when mobile menu is opened
+      if (window.dismissSettingsHint) {
+        window.dismissSettingsHint();
+      }
+    });
+  }
+
+  if (mobileBackdrop) {
+    mobileBackdrop.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      mobileBackdrop.classList.add("hidden");
+    });
+  }
+
+  // Check for settings hint
+  checkSettingsHint();
 });
 
 function checkSettingsHint() {
-    const hint = document.getElementById('settings-hint');
-    if (!hint) return;
+  const hint = document.getElementById("settings-hint");
+  if (!hint) return;
 
-    const hasSeenHint = localStorage.getItem('settings_hint_seen');
-    if (!hasSeenHint) {
-        // Show hint after a short delay
-        setTimeout(() => {
-            hint.classList.remove('hidden');
-            // Trigger reflow
-            void hint.offsetWidth;
-            hint.classList.remove('opacity-0', 'translate-y-2');
-            lucide.createIcons();
-        }, 1500);
-    }
+  const hasSeenHint = localStorage.getItem("settings_hint_seen");
+  if (!hasSeenHint) {
+    // Show hint after a short delay
+    setTimeout(() => {
+      hint.classList.remove("hidden");
+      // Trigger reflow
+      void hint.offsetWidth;
+      hint.classList.remove("opacity-0", "translate-y-2");
+      lucide.createIcons();
+    }, 1500);
+  }
 }
 
-window.dismissSettingsHint = function() {
-    const hint = document.getElementById('settings-hint');
-    if (hint) {
-        hint.classList.add('opacity-0', 'translate-y-2');
-        setTimeout(() => {
-            hint.classList.add('hidden');
-        }, 500);
-    }
-    localStorage.setItem('settings_hint_seen', 'true');
+window.dismissSettingsHint = function () {
+  const hint = document.getElementById("settings-hint");
+  if (hint) {
+    hint.classList.add("opacity-0", "translate-y-2");
+    setTimeout(() => {
+      hint.classList.add("hidden");
+    }, 500);
+  }
+  localStorage.setItem("settings_hint_seen", "true");
 };
 
 function updateLanguageUI() {
@@ -167,22 +175,36 @@ function updateLanguageUI() {
   // No modification needed since we use subdirectory structure
 
   // 4. Update opisów w symulacji kręgosłupa
-  if (typeof updatePoseDescriptions === 'function' && document.getElementById("poseDesc")) {
-      updatePoseDescriptions();
+  if (
+    typeof updatePoseDescriptions === "function" &&
+    document.getElementById("poseDesc")
+  ) {
+    updatePoseDescriptions();
   }
 
   // 4. Update pasków w monitorze
-  if (typeof updateUI === 'function' && typeof currentTension !== 'undefined' && document.getElementById("tensionBar")) {
-      updateUI(currentTension >= 60);
+  if (
+    typeof updateUI === "function" &&
+    typeof currentTension !== "undefined" &&
+    document.getElementById("tensionBar")
+  ) {
+    updateUI(currentTension >= 60);
   }
 
   // 5. NAPRAWA: Wymuś odświeżenie tekstów w sekcji Ochroniarza
-  if (typeof setGuardMode === 'function' && document.getElementById("guard-icon-container")) {
-      setGuardMode(currentGuardMode);
+  if (
+    typeof setGuardMode === "function" &&
+    document.getElementById("guard-icon-container")
+  ) {
+    setGuardMode(currentGuardMode);
   }
 
-  if (typeof setSeverity === 'function' && typeof currentSeverity !== 'undefined' && document.getElementById("bat-mecfs")) {
-      setSeverity(currentSeverity);
+  if (
+    typeof setSeverity === "function" &&
+    typeof currentSeverity !== "undefined" &&
+    document.getElementById("bat-mecfs")
+  ) {
+    setSeverity(currentSeverity);
   }
 
   // 6. Update SEO Meta Tags
@@ -190,12 +212,12 @@ function updateLanguageUI() {
 
   // 7. Load Blog Post if on article page
   if (document.getElementById("post-content")) {
-      loadBlogPost();
+    loadBlogPost();
   }
-  
+
   // 8. Load Blog Index if on blog page
   if (document.getElementById("blog-grid")) {
-      loadBlogIndex();
+    loadBlogIndex();
   }
 }
 
@@ -205,40 +227,40 @@ function updateLanguageUI() {
  * but useful if switching content dynamically or ensuring consistency.
  */
 function updateSEO() {
-    if (!translations[currentLang]) return;
-    
-    const t = translations[currentLang];
-    const path = window.location.pathname;
-    // Determine page prefix for translation keys
-    let pagePrefix = 'seo_index'; // Default
+  if (!translations[currentLang]) return;
 
-    if (path.includes('diagnostics.html')) pagePrefix = 'seo_diagnostics';
-    else if (path.includes('tools.html')) pagePrefix = 'seo_tools';
-    else if (path.includes('contact.html')) pagePrefix = 'seo_contact';
-    else if (path.includes('treatment.html')) pagePrefix = 'seo_treatment';
-    else if (path.includes('blog.html')) pagePrefix = 'seo_blog';
-    
-    // Update Title
-    if (t[pagePrefix + '_title']) {
-        document.title = t[pagePrefix + '_title'];
-        setMeta('og:title', t[pagePrefix + '_title']);
-        setMeta('twitter:title', t[pagePrefix + '_title']);
-    }
+  const t = translations[currentLang];
+  const path = window.location.pathname;
+  // Determine page prefix for translation keys
+  let pagePrefix = "seo_index"; // Default
 
-    // Update Description
-    if (t[pagePrefix + '_desc']) {
-        setMeta('description', t[pagePrefix + '_desc'], 'name');
-        setMeta('og:description', t[pagePrefix + '_desc']);
-        setMeta('twitter:description', t[pagePrefix + '_desc']);
-    }
+  if (path.includes("diagnostics.html")) pagePrefix = "seo_diagnostics";
+  else if (path.includes("tools.html")) pagePrefix = "seo_tools";
+  else if (path.includes("contact.html")) pagePrefix = "seo_contact";
+  else if (path.includes("treatment.html")) pagePrefix = "seo_treatment";
+  else if (path.includes("blog.html")) pagePrefix = "seo_blog";
 
-    // Update Keywords
-    if (t.seo_keywords) {
-        setMeta('keywords', t.seo_keywords, 'name');
-    }
+  // Update Title
+  if (t[pagePrefix + "_title"]) {
+    document.title = t[pagePrefix + "_title"];
+    setMeta("og:title", t[pagePrefix + "_title"]);
+    setMeta("twitter:title", t[pagePrefix + "_title"]);
+  }
 
-    // Update Canonical & Hreflang
-    updateRelTags();
+  // Update Description
+  if (t[pagePrefix + "_desc"]) {
+    setMeta("description", t[pagePrefix + "_desc"], "name");
+    setMeta("og:description", t[pagePrefix + "_desc"]);
+    setMeta("twitter:description", t[pagePrefix + "_desc"]);
+  }
+
+  // Update Keywords
+  if (t.seo_keywords) {
+    setMeta("keywords", t.seo_keywords, "name");
+  }
+
+  // Update Canonical & Hreflang
+  updateRelTags();
 }
 
 /**
@@ -246,53 +268,57 @@ function updateSEO() {
  * Correctly handles directory-based structure (/ vs /en/).
  */
 function updateRelTags() {
-    const origin = window.location.origin;
-    const path = window.location.pathname;
-    
-    // Determine the "base" path name (relative path without language prefix)
-    let basePathName = path;
-    if (path.includes('/en/')) {
-        basePathName = path.replace('/en/', '/');
-    }
-    // Ensure it starts with / if it's not empty, otherwise default to /index.html logic handled nicely? 
-    // Actually, browsers return pathname with leading slash.
-    
-    // Handle root case if needed, though usually browser gives / or /index.html
-    
-    // Construct URLs
-    // Note: If basePathName is just "/", urlPL matches root.
-    const urlPL = origin + (basePathName.startsWith('/') ? '' : '/') + basePathName;
-    const urlEN = origin + '/en' + (basePathName.startsWith('/') ? '' : '/') + basePathName;
-    
-    // 1. Canonical
-    // Should point to current page
-    const currentCanonical = currentLang === 'en' ? urlEN : urlPL;
-    
-    let linkCanon = document.querySelector('link[rel="canonical"]');
-    if (!linkCanon) {
-        linkCanon = document.createElement('link');
-        linkCanon.setAttribute('rel', 'canonical');
-        document.head.appendChild(linkCanon);
-    }
-    linkCanon.setAttribute('href', currentCanonical);
+  const origin = window.location.origin;
+  const path = window.location.pathname;
 
-    // 2. Hreflang Tags
-    const langs = {
-        'pl': urlPL,
-        'en': urlEN,
-        'x-default': urlPL // Polish is default
-    };
+  // Determine the "base" path name (relative path without language prefix)
+  let basePathName = path;
+  if (path.includes("/en/")) {
+    basePathName = path.replace("/en/", "/");
+  }
+  // Ensure it starts with / if it's not empty, otherwise default to /index.html logic handled nicely?
+  // Actually, browsers return pathname with leading slash.
 
-    Object.keys(langs).forEach(langCode => {
-        let linkHref = document.querySelector(`link[rel="alternate"][hreflang="${langCode}"]`);
-        if (!linkHref) {
-            linkHref = document.createElement('link');
-            linkHref.setAttribute('rel', 'alternate');
-            linkHref.setAttribute('hreflang', langCode);
-            document.head.appendChild(linkHref);
-        }
-        linkHref.setAttribute('href', langs[langCode]);
-    });
+  // Handle root case if needed, though usually browser gives / or /index.html
+
+  // Construct URLs
+  // Note: If basePathName is just "/", urlPL matches root.
+  const urlPL =
+    origin + (basePathName.startsWith("/") ? "" : "/") + basePathName;
+  const urlEN =
+    origin + "/en" + (basePathName.startsWith("/") ? "" : "/") + basePathName;
+
+  // 1. Canonical
+  // Should point to current page
+  const currentCanonical = currentLang === "en" ? urlEN : urlPL;
+
+  let linkCanon = document.querySelector('link[rel="canonical"]');
+  if (!linkCanon) {
+    linkCanon = document.createElement("link");
+    linkCanon.setAttribute("rel", "canonical");
+    document.head.appendChild(linkCanon);
+  }
+  linkCanon.setAttribute("href", currentCanonical);
+
+  // 2. Hreflang Tags
+  const langs = {
+    pl: urlPL,
+    en: urlEN,
+    "x-default": urlPL, // Polish is default
+  };
+
+  Object.keys(langs).forEach((langCode) => {
+    let linkHref = document.querySelector(
+      `link[rel="alternate"][hreflang="${langCode}"]`,
+    );
+    if (!linkHref) {
+      linkHref = document.createElement("link");
+      linkHref.setAttribute("rel", "alternate");
+      linkHref.setAttribute("hreflang", langCode);
+      document.head.appendChild(linkHref);
+    }
+    linkHref.setAttribute("href", langs[langCode]);
+  });
 }
 
 /**
@@ -301,14 +327,14 @@ function updateRelTags() {
  * @param {string} content - The content attribute value.
  * @param {string} [attr='property'] - The attribute name to use for lookup (e.g., 'name' or 'property').
  */
-function setMeta(nameOrProperty, content, attr = 'property') {
-    let element = document.querySelector(`meta[${attr}="${nameOrProperty}"]`);
-    if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attr, nameOrProperty);
-        document.head.appendChild(element);
-    }
-    element.setAttribute('content', content);
+function setMeta(nameOrProperty, content, attr = "property") {
+  let element = document.querySelector(`meta[${attr}="${nameOrProperty}"]`);
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute(attr, nameOrProperty);
+    document.head.appendChild(element);
+  }
+  element.setAttribute("content", content);
 }
 
 /**
@@ -317,31 +343,31 @@ function setMeta(nameOrProperty, content, attr = 'property') {
 function toggleLang() {
   const newLang = currentLang === "pl" ? "en" : "pl";
   localStorage.setItem("lang", newLang);
-  
+
   // Redirect to appropriate directory structure
   const currentPath = window.location.pathname;
-  let fileName = currentPath.split('/').pop() || 'index.html';
-  
+  let fileName = currentPath.split("/").pop() || "index.html";
+
   // Clean filename if getting messy query params
-  if (fileName.includes('?')) fileName = fileName.split('?')[0];
+  if (fileName.includes("?")) fileName = fileName.split("?")[0];
 
   let newPath;
   if (newLang === "en") {
     // Switch to English: Must be in /en/ folder
-    if (currentPath.includes('/en/')) {
+    if (currentPath.includes("/en/")) {
       newPath = currentPath; // Already correct
     } else {
-      newPath = '/en/' + fileName;
+      newPath = "/en/" + fileName;
     }
   } else {
     // Switch to Polish: Must be in root folder
-    if (currentPath.includes('/en/')) {
-      newPath = '/' + fileName;
+    if (currentPath.includes("/en/")) {
+      newPath = "/" + fileName;
     } else {
       newPath = currentPath; // Already correct
     }
   }
-  
+
   // Navigate to new path
   window.location.href = newPath + window.location.search;
 }
@@ -415,188 +441,213 @@ function explodeCell() {
 
 // --- BLOG LOGIC ---
 async function loadBlogIndex() {
-    const grid = document.getElementById('blog-grid');
-    const tagsContainer = document.getElementById('blog-tags');
-    // Custom Sort UI
-    const sortBtn = document.getElementById('sortBtn');
-    const sortMenu = document.getElementById('sortMenu');
-    const sortLabel = document.getElementById('sortLabel');
-    const sortIcon = document.getElementById('sortIcon');
-    
-    if (!grid) return;
+  const grid = document.getElementById("blog-grid");
+  const tagsContainer = document.getElementById("blog-tags");
+  // Custom Sort UI
+  const sortBtn = document.getElementById("sortBtn");
+  const sortMenu = document.getElementById("sortMenu");
+  const sortLabel = document.getElementById("sortLabel");
+  const sortIcon = document.getElementById("sortIcon");
 
-    // Determine language source path
-    let fetchPath;
-    if (window.location.pathname.includes('/en/')) {
-        fetchPath = '../posts/en/index.json';
-    } else {
-        fetchPath = 'posts/pl/index.json';
+  if (!grid) return;
+
+  // Determine language source path
+  let fetchPath;
+  if (window.location.pathname.includes("/en/")) {
+    fetchPath = "../posts/en/index.json";
+  } else {
+    fetchPath = "posts/pl/index.json";
+  }
+
+  try {
+    const response = await fetch(fetchPath);
+    if (!response.ok) throw new Error("Failed to load posts index");
+    const posts = await response.json();
+
+    // --- State ---
+    let currentFilter = "all";
+    let currentSort = "date-desc";
+
+    // --- 1. Generowanie tagów ---
+    if (tagsContainer) {
+      const allTags = new Set();
+      posts.forEach((post) => {
+        if (post.tags) post.tags.forEach((tag) => allTags.add(tag));
+      });
+
+      tagsContainer.innerHTML = "";
+
+      // Text for "All" button
+      const allLabel =
+        (translations[currentLang] && translations[currentLang].filter_all) ||
+        "All";
+
+      // Helper for button styles
+      const getBtnClasses = (isActive) => {
+        const base =
+          "px-4 py-2 rounded-full text-sm font-semibold transition-all border cursor-pointer select-none";
+        const active = "bg-indigo-600 text-white border-indigo-600 shadow-md";
+        const inactive =
+          "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400";
+        return `${base} ${isActive ? active : inactive}`;
+      };
+
+      // Create "All" button
+      const createBtn = (label, filterValue) => {
+        const btn = document.createElement("button");
+        btn.textContent = label;
+        btn.className = getBtnClasses(filterValue === currentFilter);
+        btn.onclick = () => {
+          currentFilter = filterValue;
+          renderPosts();
+          // Update visual state
+          Array.from(tagsContainer.children).forEach((child) => {
+            const isThisBtn = child === btn;
+            child.className = getBtnClasses(isThisBtn);
+          });
+        };
+        return btn;
+      };
+
+      tagsContainer.appendChild(createBtn(allLabel, "all"));
+
+      // Create buttons for each tag
+      Array.from(allTags)
+        .sort()
+        .forEach((tag) => {
+          tagsContainer.appendChild(createBtn(tag, tag));
+        });
     }
 
-    try {
-        const response = await fetch(fetchPath);
-        if (!response.ok) throw new Error('Failed to load posts index');
-        const posts = await response.json();
+    // --- 2. Obsługa sortowania (Custom Dropdown) ---
+    if (sortBtn && sortMenu) {
+      // Toggle Menu
+      sortBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isHidden = sortMenu.classList.contains("hidden");
 
-        // --- State ---
-        let currentFilter = 'all';
-        let currentSort = 'date-desc';
-
-        // --- 1. Generowanie tagów ---
-        if (tagsContainer) {
-            const allTags = new Set();
-            posts.forEach(post => {
-                if (post.tags) post.tags.forEach(tag => allTags.add(tag));
-            });
-
-            tagsContainer.innerHTML = '';
-            
-            // Text for "All" button
-            const allLabel = (translations[currentLang] && translations[currentLang].filter_all) || "All";
-
-            // Helper for button styles
-            const getBtnClasses = (isActive) => {
-                const base = "px-4 py-2 rounded-full text-sm font-semibold transition-all border cursor-pointer select-none";
-                const active = "bg-indigo-600 text-white border-indigo-600 shadow-md";
-                const inactive = "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400";
-                return `${base} ${isActive ? active : inactive}`;
-            };
-
-            // Create "All" button
-            const createBtn = (label, filterValue) => {
-                const btn = document.createElement('button');
-                btn.textContent = label;
-                btn.className = getBtnClasses(filterValue === currentFilter);
-                btn.onclick = () => {
-                    currentFilter = filterValue;
-                    renderPosts();
-                    // Update visual state
-                    Array.from(tagsContainer.children).forEach(child => {
-                        const isThisBtn = child === btn;
-                        child.className = getBtnClasses(isThisBtn);
-                    });
-                };
-                return btn;
-            };
-
-            tagsContainer.appendChild(createBtn(allLabel, 'all'));
-
-            // Create buttons for each tag
-            Array.from(allTags).sort().forEach(tag => {
-                tagsContainer.appendChild(createBtn(tag, tag));
-            });
+        if (isHidden) {
+          sortMenu.classList.remove("hidden");
+          if (sortIcon) sortIcon.classList.add("rotate-180");
+        } else {
+          sortMenu.classList.add("hidden");
+          if (sortIcon) sortIcon.classList.remove("rotate-180");
         }
+      });
 
-        // --- 2. Obsługa sortowania (Custom Dropdown) ---
-        if (sortBtn && sortMenu) {
-            // Toggle Menu
-            sortBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isHidden = sortMenu.classList.contains('hidden');
-                
-                if (isHidden) {
-                    sortMenu.classList.remove('hidden');
-                    if (sortIcon) sortIcon.classList.add('rotate-180');
-                } else {
-                    sortMenu.classList.add('hidden');
-                    if (sortIcon) sortIcon.classList.remove('rotate-180');
-                }
-            });
-
-            // Close on click outside
-            document.addEventListener('click', (e) => {
-                if (!sortBtn.contains(e.target) && !sortMenu.contains(e.target)) {
-                    sortMenu.classList.add('hidden');
-                    if (sortIcon) sortIcon.classList.remove('rotate-180');
-                }
-            });
-
-            // Handle Option Click
-            sortMenu.querySelectorAll('button').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const value = btn.getAttribute('data-value');
-                    if (value) currentSort = value;
-                    
-                    renderPosts();
-
-                    // Update UI Label
-                    const textSpan = btn.querySelector('span[data-i18n]');
-                    const rawText = btn.textContent.trim(); // Fallback
-                    // Update main label with translated text
-                    if (textSpan && sortLabel) {
-                         // We use the current InnerHTML of the span which is already translated by updateLanguageUI possibly?
-                         // Actually, the button content has an icon 'check' inside. textContent gets all text.
-                         // Let's grab the text from the span.
-                         sortLabel.textContent = textSpan.textContent;
-                    }
-
-                    // Update Active Checkmark
-                    sortMenu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-
-                    // Close Menu
-                    sortMenu.classList.add('hidden');
-                    if (sortIcon) sortIcon.classList.remove('rotate-180');
-                });
-            });
-
-            // Set Initial Active State
-            const initialBtn = sortMenu.querySelector(`button[data-value="${currentSort}"]`);
-            if (initialBtn) initialBtn.classList.add('active');
+      // Close on click outside
+      document.addEventListener("click", (e) => {
+        if (!sortBtn.contains(e.target) && !sortMenu.contains(e.target)) {
+          sortMenu.classList.add("hidden");
+          if (sortIcon) sortIcon.classList.remove("rotate-180");
         }
+      });
 
-        // --- 3. Funkcja renderująca ---
-        function renderPosts() {
-            grid.innerHTML = ''; // Wyczyść grid
+      // Handle Option Click
+      sortMenu.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const value = btn.getAttribute("data-value");
+          if (value) currentSort = value;
 
-            // Filtrowanie
-            let filtered = posts.filter(post => {
-                if (currentFilter === 'all') return true;
-                return post.tags && post.tags.includes(currentFilter);
-            });
+          renderPosts();
 
-            // Sortowanie
-            filtered.sort((a, b) => {
-                const dateA = new Date(a.date);
-                const dateB = new Date(b.date);
-                const timeA = a.readTime || 0;
-                const timeB = b.readTime || 0;
+          // Update UI Label
+          const textSpan = btn.querySelector("span[data-i18n]");
+          const rawText = btn.textContent.trim(); // Fallback
+          // Update main label with translated text
+          if (textSpan && sortLabel) {
+            // We use the current InnerHTML of the span which is already translated by updateLanguageUI possibly?
+            // Actually, the button content has an icon 'check' inside. textContent gets all text.
+            // Let's grab the text from the span.
+            sortLabel.textContent = textSpan.textContent;
+          }
 
-                switch (currentSort) {
-                    case 'date-desc': return dateB - dateA; // Najnowsze
-                    case 'date-asc': return dateA - dateB;  // Najstarsze
-                    case 'time-desc': return timeB - timeA; // Najdłuższe
-                    case 'time-asc': return timeA - timeB;  // Najkrótsze
-                    default: return 0;
-                }
-            });
+          // Update Active Checkmark
+          sortMenu
+            .querySelectorAll("button")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
 
-            // Pusty stan
-            if (filtered.length === 0) {
-                const emptyMsg = currentLang === 'en' ? "No articles found." : "Nie znaleziono artykułów.";
-                grid.innerHTML = `<div class="col-span-full text-center py-20 text-slate-500">
+          // Close Menu
+          sortMenu.classList.add("hidden");
+          if (sortIcon) sortIcon.classList.remove("rotate-180");
+        });
+      });
+
+      // Set Initial Active State
+      const initialBtn = sortMenu.querySelector(
+        `button[data-value="${currentSort}"]`,
+      );
+      if (initialBtn) initialBtn.classList.add("active");
+    }
+
+    // --- 3. Funkcja renderująca ---
+    function renderPosts() {
+      grid.innerHTML = ""; // Wyczyść grid
+
+      // Filtrowanie
+      let filtered = posts.filter((post) => {
+        if (currentFilter === "all") return true;
+        return post.tags && post.tags.includes(currentFilter);
+      });
+
+      // Sortowanie
+      filtered.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        const timeA = a.readTime || 0;
+        const timeB = b.readTime || 0;
+
+        switch (currentSort) {
+          case "date-desc":
+            return dateB - dateA; // Najnowsze
+          case "date-asc":
+            return dateA - dateB; // Najstarsze
+          case "time-desc":
+            return timeB - timeA; // Najdłuższe
+          case "time-asc":
+            return timeA - timeB; // Najkrótsze
+          default:
+            return 0;
+        }
+      });
+
+      // Pusty stan
+      if (filtered.length === 0) {
+        const emptyMsg =
+          currentLang === "en"
+            ? "No articles found."
+            : "Nie znaleziono artykułów.";
+        grid.innerHTML = `<div class="col-span-full text-center py-20 text-slate-500">
                     <p class="text-lg">${emptyMsg}</p>
                 </div>`;
-                return;
-            }
+        return;
+      }
 
-            // Generowanie kart
-            filtered.forEach(post => {
-                const articleCard = document.createElement('article');
-                articleCard.className = "bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800 flex flex-col h-full animate-fade-in";
-                
-                // Image handling (add prefix if in /en/)
-                let imgPath = post.image;
-                if (window.location.pathname.includes('/en/') && !imgPath.startsWith('http')) {
-                    imgPath = '../' + imgPath;
-                }
+      // Generowanie kart
+      filtered.forEach((post) => {
+        const articleCard = document.createElement("article");
+        articleCard.className =
+          "bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-slate-200 dark:border-slate-800 flex flex-col h-full animate-fade-in";
 
-                // Tags HTML
-                const tagsHtml = (post.tags || []).map(tag => 
-                    `<span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-md uppercase tracking-wide">${tag}</span>`
-                ).join('');
+        // Image handling (add prefix if in /en/)
+        let imgPath = post.image;
+        if (
+          window.location.pathname.includes("/en/") &&
+          !imgPath.startsWith("http")
+        ) {
+          imgPath = "../" + imgPath;
+        }
 
-                articleCard.innerHTML = `
+        // Tags HTML
+        const tagsHtml = (post.tags || [])
+          .map(
+            (tag) =>
+              `<span class="px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-md uppercase tracking-wide">${tag}</span>`,
+          )
+          .join("");
+
+        articleCard.innerHTML = `
                     <a href="article.html?id=${post.id}" class="block aspect-video overflow-hidden">
                         <img src="${imgPath}" alt="${post.title}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
                     </a>
@@ -614,34 +665,32 @@ async function loadBlogIndex() {
                         </p>
                         <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
                             <span class="text-xs text-slate-500 font-medium">${formatDateNumeric(post.date)}</span>
-                            ${post.readTime ? `<span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ${post.readTime} min</span>` : ''}
+                            ${post.readTime ? `<span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> ${post.readTime} min</span>` : ""}
                             <a href="article.html?id=${post.id}" class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
-                                ${currentLang === 'pl' ? 'Czytaj dalej' : 'Read more'} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                ${currentLang === "pl" ? "Czytaj dalej" : "Read more"} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
                 `;
-                grid.appendChild(articleCard);
-            });
+        grid.appendChild(articleCard);
+      });
 
-            // Initialize icons for new elements
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        }
+      // Initialize icons for new elements
+      if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+      }
+    }
 
-        // Uruchom pierwsze renderowanie
-        renderPosts();
-
-    } catch (error) {
-        console.error(error);
-        grid.innerHTML = `<div class="col-span-full text-center text-red-500">
+    // Uruchom pierwsze renderowanie
+    renderPosts();
+  } catch (error) {
+    console.error(error);
+    grid.innerHTML = `<div class="col-span-full text-center text-red-500">
             <p>Nie udało się załadować listy artykułów.</p>
             <p class="text-xs mt-2 opacity-70">${error.message}</p>
         </div>`;
-    }
+  }
 }
-
 
 // --- STICKMAN SYMULATOR (LINIOWY) ---
 const simCanvas = document.getElementById("simCanvas");
@@ -773,7 +822,7 @@ function updatePoseDescriptions() {
 
 window.setPose = function (poseName) {
   if (!poseDesc) return;
-  
+
   currentPoseKey = poseName;
   const p = stickPoses[poseName];
   targetPose = JSON.parse(JSON.stringify(p));
@@ -813,11 +862,6 @@ function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
-
-
-
-
-
 function animateStick() {
   if (!ctx) return;
   const speed = 0.1;
@@ -830,7 +874,7 @@ function animateStick() {
 
       currentPose[key].x = lerp(currentPose[key].x, targetPose[key].x, speed);
       currentPose[key].y = lerp(currentPose[key].y, targetPose[key].y, speed);
-    }
+    },
   );
 
   currentTension = lerp(currentTension, targetTension, speed);
@@ -982,7 +1026,7 @@ window.drawStickman = function () {
       midX - 15,
       midY + 15,
       p.knee.x + offX * 0.5,
-      p.knee.y + offY * 0.5
+      p.knee.y + offY * 0.5,
     );
 
     // Rysuj luźną linię do stopy
@@ -1077,7 +1121,7 @@ function updateUI(isDanger) {
     "bg-blue-500",
     "bg-yellow-500",
     "bg-red-600",
-    "bg-green-500"
+    "bg-green-500",
   );
 
   if (isDanger) {
@@ -1109,7 +1153,16 @@ function setGuardMode(mode) {
   const guardTitle = document.getElementById("guard-status-title");
   const guardDesc = document.getElementById("guard-status-desc");
 
-  if (!btnHealthy || !btnMcas || !guardContainer || !guardIcon || !guardSpeech || !guardTitle || !guardDesc) return;
+  if (
+    !btnHealthy ||
+    !btnMcas ||
+    !guardContainer ||
+    !guardIcon ||
+    !guardSpeech ||
+    !guardTitle ||
+    !guardDesc
+  )
+    return;
 
   const rows = document.querySelectorAll(".visitor-row");
   const trans = translations[currentLang];
@@ -1240,7 +1293,7 @@ function setSeverity(level) {
 
   // Aktualizuj style przycisków (aktywny/nieaktywny)
   ["mild", "moderate", "severe", "very_severe"].forEach((sev) => {
-    const btn = document.getElementById(`btn-sev-${sev.replace('_', '-')}`);
+    const btn = document.getElementById(`btn-sev-${sev.replace("_", "-")}`);
     if (btn) {
       if (sev === level) {
         btn.className =
@@ -1263,7 +1316,7 @@ function drainBattery(actionType) {
   const elHealthy = document.getElementById("bat-healthy");
   const elMecfs = document.getElementById("bat-mecfs");
   const msg = document.getElementById("battery-msg");
-  
+
   if (!elHealthy || !elMecfs || !msg) return;
 
   const trans = translations[currentLang];
@@ -1324,9 +1377,9 @@ if (document.getElementById("bat-mecfs")) {
   setSeverity("moderate");
 }
 
-if (typeof animateStick === 'function') animateStick();
-if (typeof initGranules === 'function') initGranules();
-if (typeof setPose === 'function') setPose("chair");
+if (typeof animateStick === "function") animateStick();
+if (typeof initGranules === "function") initGranules();
+if (typeof setPose === "function") setPose("chair");
 
 // Back to Top Button Logic
 const btnBackToTop = document.getElementById("btn-back-to-top");
@@ -1334,9 +1387,17 @@ const btnBackToTop = document.getElementById("btn-back-to-top");
 if (btnBackToTop) {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
-      btnBackToTop.classList.remove("opacity-0", "translate-y-10", "pointer-events-none");
+      btnBackToTop.classList.remove(
+        "opacity-0",
+        "translate-y-10",
+        "pointer-events-none",
+      );
     } else {
-      btnBackToTop.classList.add("opacity-0", "translate-y-10", "pointer-events-none");
+      btnBackToTop.classList.add(
+        "opacity-0",
+        "translate-y-10",
+        "pointer-events-none",
+      );
     }
   });
 
@@ -1382,7 +1443,7 @@ function updateActiveNav() {
   navItems.forEach((item) => {
     item.classList.remove("text-indigo-600", "dark:text-indigo-400");
     item.classList.add("text-slate-500");
-    
+
     if (item.getAttribute("data-target") === currentSection) {
       item.classList.remove("text-slate-500");
       item.classList.add("text-indigo-600", "dark:text-indigo-400");
@@ -1398,7 +1459,7 @@ function updateActiveNav() {
         const navRect = navEl.getBoundingClientRect();
         const itemRect = activeItem.getBoundingClientRect();
         // Calculate width to reach the center of the active item
-        const width = (itemRect.left - navRect.left) + (itemRect.width / 2);
+        const width = itemRect.left - navRect.left + itemRect.width / 2;
         progressBar.style.width = `${width}px`;
       }
     } else {
@@ -1418,263 +1479,290 @@ updateActiveNav();
 
 // --- FADE IN ON SCROLL ---
 // Add class to body to indicate JS is ready for animations
-document.body.classList.add('js-loaded');
+document.body.classList.add("js-loaded");
 
 const observerOptions = {
   root: null,
-  rootMargin: '0px 0px -100px 0px', // Element musi wejść 100px w głąb ekranu
-  threshold: 0.05
+  rootMargin: "0px 0px -100px 0px", // Element musi wejść 100px w głąb ekranu
+  threshold: 0.05,
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
+      entry.target.classList.add("is-visible");
       observer.unobserve(entry.target); // Stop observing once visible
     }
   });
 }, observerOptions);
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.fade-in-section').forEach(section => {
-        observer.observe(section);
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".fade-in-section").forEach((section) => {
+    observer.observe(section);
+  });
 });
 
 // Simulation Modal Logic
-window.openSimModal = function() {
-    const modal = document.getElementById('sim-modal');
-    const backdrop = document.getElementById('sim-modal-backdrop');
-    const panel = document.getElementById('sim-modal-panel');
-    
-    if (!modal) return;
-    
-    modal.classList.remove('hidden');
-    
-    // Small delay to allow display:block to apply before transition
-    setTimeout(() => {
-        backdrop.classList.remove('opacity-0');
-        panel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
-    }, 10);
-    
-    // Ensure canvas is sized correctly
-    if (window.drawStickman) {
-        window.drawStickman();
-    }
+window.openSimModal = function () {
+  const modal = document.getElementById("sim-modal");
+  const backdrop = document.getElementById("sim-modal-backdrop");
+  const panel = document.getElementById("sim-modal-panel");
+
+  if (!modal) return;
+
+  modal.classList.remove("hidden");
+
+  // Small delay to allow display:block to apply before transition
+  setTimeout(() => {
+    backdrop.classList.remove("opacity-0");
+    panel.classList.remove(
+      "opacity-0",
+      "translate-y-4",
+      "sm:translate-y-0",
+      "sm:scale-95",
+    );
+  }, 10);
+
+  // Ensure canvas is sized correctly
+  if (window.drawStickman) {
+    window.drawStickman();
+  }
 };
 
-window.closeSimModal = function() {
-    const modal = document.getElementById('sim-modal');
-    const backdrop = document.getElementById('sim-modal-backdrop');
-    const panel = document.getElementById('sim-modal-panel');
-    
-    if (!modal) return;
-    
-    backdrop.classList.add('opacity-0');
-    panel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
-    
-    setTimeout(() => {
-        modal.classList.add('hidden');
-    }, 300); // Match transition duration
+window.closeSimModal = function () {
+  const modal = document.getElementById("sim-modal");
+  const backdrop = document.getElementById("sim-modal-backdrop");
+  const panel = document.getElementById("sim-modal-panel");
+
+  if (!modal) return;
+
+  backdrop.classList.add("opacity-0");
+  panel.classList.add(
+    "opacity-0",
+    "translate-y-4",
+    "sm:translate-y-0",
+    "sm:scale-95",
+  );
+
+  setTimeout(() => {
+    modal.classList.add("hidden");
+  }, 300); // Match transition duration
 };
 
 // Close modal on backdrop click
-document.getElementById('sim-modal-backdrop')?.addEventListener('click', window.closeSimModal);
+document
+  .getElementById("sim-modal-backdrop")
+  ?.addEventListener("click", window.closeSimModal);
 
 // Close on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        const modal = document.getElementById('sim-modal');
-        if (modal && !modal.classList.contains('hidden')) {
-            window.closeSimModal();
-        }
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const modal = document.getElementById("sim-modal");
+    if (modal && !modal.classList.contains("hidden")) {
+      window.closeSimModal();
     }
+  }
 });
 
 // --- Beighton Score Logic ---
 function initBeightonScore() {
-    const checkboxes = document.querySelectorAll('.beighton-check');
-    const scoreDisplay = document.getElementById('beighton-score-display');
-    const resultText = document.getElementById('beighton-result-text');
+  const checkboxes = document.querySelectorAll(".beighton-check");
+  const scoreDisplay = document.getElementById("beighton-score-display");
+  const resultText = document.getElementById("beighton-result-text");
 
-    if (!checkboxes.length || !scoreDisplay) return;
+  if (!checkboxes.length || !scoreDisplay) return;
 
-    function updateScore() {
-        let score = 0;
-        checkboxes.forEach(cb => {
-            if (cb.checked) score += parseInt(cb.value);
-        });
-
-        scoreDisplay.textContent = `${score} / 9`;
-
-        // Interpretation
-        if (score >= 5) {
-            resultText.textContent = translations[currentLang]?.beighton_result_high || "Wynik wysoki (Sugeruje hipermobilność / hEDS)";
-            resultText.className = "text-lg font-bold text-red-600 dark:text-red-400 mb-2";
-        } else {
-            resultText.textContent = translations[currentLang]?.beighton_result_low || "Wynik niski (Prawdopodobnie brak uogólnionej hipermobilności)";
-            resultText.className = "text-lg font-medium text-slate-700 dark:text-slate-300 mb-2";
-        }
-    }
-
-    checkboxes.forEach(cb => {
-        cb.addEventListener('change', updateScore);
+  function updateScore() {
+    let score = 0;
+    checkboxes.forEach((cb) => {
+      if (cb.checked) score += parseInt(cb.value);
     });
+
+    scoreDisplay.textContent = `${score} / 9`;
+
+    // Interpretation
+    if (score >= 5) {
+      resultText.textContent =
+        translations[currentLang]?.beighton_result_high ||
+        "Wynik wysoki (Sugeruje hipermobilność / hEDS)";
+      resultText.className =
+        "text-lg font-bold text-red-600 dark:text-red-400 mb-2";
+    } else {
+      resultText.textContent =
+        translations[currentLang]?.beighton_result_low ||
+        "Wynik niski (Prawdopodobnie brak uogólnionej hipermobilności)";
+      resultText.className =
+        "text-lg font-medium text-slate-700 dark:text-slate-300 mb-2";
+    }
+  }
+
+  checkboxes.forEach((cb) => {
+    cb.addEventListener("change", updateScore);
+  });
 }
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', initBeightonScore);
+document.addEventListener("DOMContentLoaded", initBeightonScore);
 
 /**
  * Formats date string (YYYY-MM-DD) taking user's locale into account
  * but respecting the site's current language context.
  */
 function formatDate(dateString) {
-    if (!dateString) return '';
-    const parts = dateString.split('-');
-    if (parts.length !== 3) return dateString;
-    
-    const year = parseInt(parts[0], 10);
-    const monthIndex = parseInt(parts[1], 10) - 1;
-    const day = parseInt(parts[2], 10);
-    const date = new Date(year, monthIndex, day);
+  if (!dateString) return "";
+  const parts = dateString.split("-");
+  if (parts.length !== 3) return dateString;
 
-    // Determine locale to use
-    let locale = 'en-US'; // Default fallback
-    
-    if (typeof currentLang !== 'undefined' && currentLang === 'pl') {
-        locale = 'pl-PL';
-    } else {
-        // For English version, try to respect user's English preference (US vs UK)
-        // If user's browser is e.g. 'en-GB', use that.
-        // If user's browser is non-English (e.g. de-DE) but they view English site, default to en-US.
-        if (navigator.language && navigator.language.startsWith('en')) {
-            locale = navigator.language;
-        }
+  const year = parseInt(parts[0], 10);
+  const monthIndex = parseInt(parts[1], 10) - 1;
+  const day = parseInt(parts[2], 10);
+  const date = new Date(year, monthIndex, day);
+
+  // Determine locale to use
+  let locale = "en-US"; // Default fallback
+
+  if (typeof currentLang !== "undefined" && currentLang === "pl") {
+    locale = "pl-PL";
+  } else {
+    // For English version, try to respect user's English preference (US vs UK)
+    // If user's browser is e.g. 'en-GB', use that.
+    // If user's browser is non-English (e.g. de-DE) but they view English site, default to en-US.
+    if (navigator.language && navigator.language.startsWith("en")) {
+      locale = navigator.language;
     }
+  }
 
-    return date.toLocaleDateString(locale, { 
-        day: 'numeric', 
-        month: 'long', 
-        year: 'numeric' 
-    });
+  return date.toLocaleDateString(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 /**
  * Formats date to numeric short format respecting locale.
  */
 function formatDateNumeric(dateString) {
-    if (!dateString) return '';
-    const parts = dateString.split('-');
-    if (parts.length !== 3) return dateString;
-    
-    const year = parseInt(parts[0], 10);
-    const monthIndex = parseInt(parts[1], 10) - 1;
-    const day = parseInt(parts[2], 10);
-    const date = new Date(year, monthIndex, day);
+  if (!dateString) return "";
+  const parts = dateString.split("-");
+  if (parts.length !== 3) return dateString;
 
-    // Determine locale to use
-    let locale = 'en-US'; // Default fallback (MM/DD/YYYY)
-    
-    if (typeof currentLang !== 'undefined' && currentLang === 'pl') {
-        locale = 'pl-PL'; // DD.MM.YYYY
-    } else {
-        if (navigator.language && navigator.language.startsWith('en')) {
-            locale = navigator.language;
-        }
+  const year = parseInt(parts[0], 10);
+  const monthIndex = parseInt(parts[1], 10) - 1;
+  const day = parseInt(parts[2], 10);
+  const date = new Date(year, monthIndex, day);
+
+  // Determine locale to use
+  let locale = "en-US"; // Default fallback (MM/DD/YYYY)
+
+  if (typeof currentLang !== "undefined" && currentLang === "pl") {
+    locale = "pl-PL"; // DD.MM.YYYY
+  } else {
+    if (navigator.language && navigator.language.startsWith("en")) {
+      locale = navigator.language;
     }
+  }
 
-    return date.toLocaleDateString(locale); // Default is usually numeric
+  return date.toLocaleDateString(locale); // Default is usually numeric
 }
 
 /**
  * Loads a markdown blog post into the article page.
  */
 async function loadBlogPost() {
-    const postContainer = document.getElementById('post-content');
-    if (!postContainer) return;
+  const postContainer = document.getElementById("post-content");
+  if (!postContainer) return;
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get("id");
 
-    if (!postId) {
-        postContainer.innerHTML = `<div class="text-center py-10 text-slate-500">
+  if (!postId) {
+    postContainer.innerHTML = `<div class="text-center py-10 text-slate-500">
             <h3 class="text-xl font-bold mb-2">No article selected / Wybierz artykuł</h3>
         </div>`;
-        return;
+    return;
+  }
+
+  // Paths
+  const isEn = window.location.pathname.includes("/en/");
+  const basePath = isEn ? "../" : "";
+  const mdPath = `${basePath}posts/${currentLang}/${postId}.md`;
+  // JSON path logic same as loadBlogIndex but for single post lookup
+  // Assuming structure: posts/pl/index.json
+  const jsonPath = isEn ? "../posts/en/index.json" : "posts/pl/index.json";
+
+  try {
+    // Fetch both MD and Metadata in parallel
+    const [mdRes, jsonRes] = await Promise.all([
+      fetch(mdPath),
+      fetch(jsonPath),
+    ]);
+
+    if (!mdRes.ok)
+      throw new Error(
+        mdRes.status === 404 ? "Article not found" : `Error ${mdRes.status}`,
+      );
+    let text = await mdRes.text();
+
+    let metadata = null;
+    if (jsonRes.ok) {
+      const posts = await jsonRes.json();
+      metadata = posts.find((p) => p.id === postId);
     }
 
-    // Paths
-    const isEn = window.location.pathname.includes('/en/');
-    const basePath = isEn ? '../' : ''; 
-    const mdPath = `${basePath}posts/${currentLang}/${postId}.md`;
-    // JSON path logic same as loadBlogIndex but for single post lookup
-    // Assuming structure: posts/pl/index.json
-    const jsonPath = isEn ? '../posts/en/index.json' : 'posts/pl/index.json';
+    // Construct Header HTML from Metadata
+    let headerHtml = "";
+    if (metadata) {
+      // Update document title for SEO / Browser Tab
+      document.title = `${metadata.title} – NeuroImmune Hub`;
 
-    try {
-        // Fetch both MD and Metadata in parallel
-        const [mdRes, jsonRes] = await Promise.all([
-            fetch(mdPath),
-            fetch(jsonPath)
-        ]);
+      // Update meta description if possible
+      if (metadata.desc) {
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.content = metadata.desc;
+        const ogDesc = document.querySelector(
+          'meta[property="og:description"]',
+        );
+        if (ogDesc) ogDesc.content = metadata.desc;
+      }
 
-        if (!mdRes.ok) throw new Error(mdRes.status === 404 ? "Article not found" : `Error ${mdRes.status}`);
-        let text = await mdRes.text();
-        
-        let metadata = null;
-        if (jsonRes.ok) {
-            const posts = await jsonRes.json();
-            metadata = posts.find(p => p.id === postId);
-        }
+      // Remove title/date from markdown text if they exist heavily at the top to avoid duplication
+      // Simple heuristic: if markdown starts with # Title, remove it.
+      // This is optional but nice for backward compatibility if user used new_post.py before.
+      const titleLine = `# ${metadata.title}`;
+      if (text.startsWith(titleLine)) {
+        text = text.substring(titleLine.length).trim();
+      }
+      // Try to remove date if it's on the next line?
+      // It's risky to modify text content blindly.
+      // Let's just trust the user or the new render.
 
-        // Construct Header HTML from Metadata
-        let headerHtml = '';
-        if (metadata) {
-            // Update document title for SEO / Browser Tab
-            document.title = `${metadata.title} – NeuroImmune Hub`;
-            
-            // Update meta description if possible
-            if (metadata.desc) {
-                const metaDesc = document.querySelector('meta[name="description"]');
-                if (metaDesc) metaDesc.content = metadata.desc;
-                const ogDesc = document.querySelector('meta[property="og:description"]');
-                if (ogDesc) ogDesc.content = metadata.desc;
-            }
+      // Image handling
+      let imgPath = metadata.image;
+      if (isEn && !imgPath.startsWith("http") && !imgPath.startsWith("../")) {
+        imgPath = "../" + imgPath;
+      }
 
-            // Remove title/date from markdown text if they exist heavily at the top to avoid duplication
-            // Simple heuristic: if markdown starts with # Title, remove it.
-            // This is optional but nice for backward compatibility if user used new_post.py before.
-            const titleLine = `# ${metadata.title}`;
-            if (text.startsWith(titleLine)) {
-                 text = text.substring(titleLine.length).trim();
-            }
-            // Try to remove date if it's on the next line? 
-            // It's risky to modify text content blindly.
-            // Let's just trust the user or the new render.
-            
-            // Image handling
-            let imgPath = metadata.image;
-            if (isEn && !imgPath.startsWith('http') && !imgPath.startsWith('../')) {
-                imgPath = '../' + imgPath;
-            }
+      // Calculate Reading Time
+      // Use metadata value if available (calculated by backend), otherwise fallback to simple estimation
+      let readTime = metadata.readTime;
+      if (!readTime) {
+        const wpm = 200;
+        const words = text.trim().split(/\s+/).length;
+        readTime = Math.ceil(words / wpm);
+      }
+      const readTimeText = isEn
+        ? `${readTime} min read`
+        : `Czas czytania: ${readTime} min`;
 
-            // Calculate Reading Time
-            // Use metadata value if available (calculated by backend), otherwise fallback to simple estimation
-            let readTime = metadata.readTime;
-            if (!readTime) {
-                const wpm = 200;
-                const words = text.trim().split(/\s+/).length;
-                readTime = Math.ceil(words / wpm);
-            }
-            const readTimeText = isEn ? `${readTime} min read` : `Czas czytania: ${readTime} min`;
+      const tagsHtml = (metadata.tags || [])
+        .map(
+          (tag) =>
+            `<span class="inline-block px-3 py-1 mb-4 mr-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-200 rounded-full text-xs font-bold uppercase tracking-wide">${tag}</span>`,
+        )
+        .join("");
 
-            const tagsHtml = (metadata.tags || []).map(tag => 
-                `<span class="inline-block px-3 py-1 mb-4 mr-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-slate-900 rounded-full text-xs font-bold uppercase tracking-wide">${tag}</span>`
-            ).join('');
-
-            
-            headerHtml = `
+      headerHtml = `
                 <header class="mb-10 text-center border-b border-slate-200 dark:border-slate-800 pb-10">
                     <div class="mb-6 flex flex-wrap justify-center gap-2">
                         ${tagsHtml}
@@ -1690,7 +1778,7 @@ async function loadBlogPost() {
 
                     <!-- Voice Message UI -->
                     <div class="max-w-2xl mx-auto backdrop-blur-sm rounded-2xl p-3 pr-4 mb-4 flex items-center gap-4 shadow-sm border select-none voice-player-container">
-                        <button id="ttsBtn" onclick="toggleReader()" aria-label="${isEn ? 'Listen to article' : 'Odsłuchaj artykuł'}" class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-white transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 active:scale-95 group voice-play-btn">
+                        <button id="ttsBtn" onclick="toggleReader()" aria-label="${isEn ? "Listen to article" : "Odsłuchaj artykuł"}" class="w-12 h-12 shrink-0 rounded-full flex items-center justify-center text-white transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 active:scale-95 group voice-play-btn">
                             <i id="ttsIcon" data-lucide="play" class="w-5 h-5 ml-1 fill-current group-hover:scale-110 transition-transform"></i>
                         </button>
                         
@@ -1705,192 +1793,209 @@ async function loadBlogPost() {
                     </div>
 
                 </header>
-                ${imgPath ? `
+                ${
+                  imgPath
+                    ? `
                 <div class="mb-12 rounded-2xl overflow-hidden shadow-lg aspect-video w-full">
                     <img src="${imgPath}" alt="${metadata.title}" class="w-full h-full object-cover">
                 </div>
-                ` : ''}
+                `
+                    : ""
+                }
             `;
-        }
-
-        if (typeof marked !== 'undefined') {
-             // Combine Header + Markdown Content
-             // Enable breaks: true to interpret single newlines as <br>
-             postContainer.innerHTML = headerHtml + marked.parse(text, { breaks: true });
-             
-             // Auto-wrap iframes for responsiveness (16:9 aspect ratio)
-             postContainer.querySelectorAll('iframe').forEach(iframe => {
-                // Skip if already wrapped manually
-                if (iframe.parentElement.style.paddingBottom === '56.25%') return;
-                
-                const wrapper = document.createElement('div');
-                wrapper.style.cssText = "position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1.5rem;";
-                
-                iframe.parentNode.insertBefore(wrapper, iframe);
-                wrapper.appendChild(iframe);
-                
-                iframe.style.cssText = "position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;";
-             });
-
-             if (typeof lucide !== 'undefined') lucide.createIcons();
-        } else {
-             postContainer.innerHTML = "<div class='text-red-500'>Error: marked.js not loaded</div>";
-        }
-
-    } catch (error) {
-        console.error("Error loading post:", error);
-        postContainer.innerHTML = `<div class="p-4 text-red-500">Error loading post: ${error.message}</div>`;
     }
+
+    if (typeof marked !== "undefined") {
+      // Combine Header + Markdown Content
+      // Enable breaks: true to interpret single newlines as <br>
+      postContainer.innerHTML =
+        headerHtml + marked.parse(text, { breaks: true });
+
+      // Auto-wrap iframes for responsiveness (16:9 aspect ratio)
+      postContainer.querySelectorAll("iframe").forEach((iframe) => {
+        // Skip if already wrapped manually
+        if (iframe.parentElement.style.paddingBottom === "56.25%") return;
+
+        const wrapper = document.createElement("div");
+        wrapper.style.cssText =
+          "position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 1.5rem;";
+
+        iframe.parentNode.insertBefore(wrapper, iframe);
+        wrapper.appendChild(iframe);
+
+        iframe.style.cssText =
+          "position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;";
+      });
+
+      if (typeof lucide !== "undefined") lucide.createIcons();
+    } else {
+      postContainer.innerHTML =
+        "<div class='text-red-500'>Error: marked.js not loaded</div>";
+    }
+  } catch (error) {
+    console.error("Error loading post:", error);
+    postContainer.innerHTML = `<div class="p-4 text-red-500">Error loading post: ${error.message}</div>`;
+  }
 }
 
 // Audio Playback Functionality (Pre-generated files)
 let currentAudio = null;
 
 function formatTime(seconds) {
-    if (isNaN(seconds)) return "0:00";
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+  if (isNaN(seconds)) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
 }
 
 function initAudioListeners(isEn) {
-    const seeker = document.getElementById("audioSeeker");
-    const currentTimeEl = document.getElementById("audioTimeCurrent");
-    const totalTimeEl = document.getElementById("audioTimeTotal");
-    
-    if(!currentAudio || !seeker) return;
+  const seeker = document.getElementById("audioSeeker");
+  const currentTimeEl = document.getElementById("audioTimeCurrent");
+  const totalTimeEl = document.getElementById("audioTimeTotal");
 
-    const updateSeekerBackground = (val) => {
-        seeker.style.background = `linear-gradient(to right, #4f46e5 ${val}%, var(--track-color, #cbd5e1) ${val}%)`;
-    };
-    
-    // Update Slider & Time
-    currentAudio.addEventListener('timeupdate', () => {
-        if(!currentAudio) return;
-        const val = (currentAudio.currentTime / currentAudio.duration) * 100;
-        const safeVal = val || 0;
-        seeker.value = safeVal;
-        updateSeekerBackground(safeVal);
-        
-        if(currentTimeEl) currentTimeEl.innerText = formatTime(currentAudio.currentTime);
-    });
-    
-    // Set Duration
-    currentAudio.addEventListener('loadedmetadata', () => {
-        if(!currentAudio) return;
-        if(totalTimeEl) totalTimeEl.innerText = formatTime(currentAudio.duration);
-        seeker.disabled = false;
-    });
-    
-    // Seek
-    seeker.addEventListener('input', (e) => {
-        if(!currentAudio) return;
-        const val = e.target.value;
-        const time = (val / 100) * currentAudio.duration;
-        currentAudio.currentTime = time;
-        updateSeekerBackground(val);
-    });
+  if (!currentAudio || !seeker) return;
 
-    // Initial color set
-    updateSeekerBackground(0);
+  const updateSeekerBackground = (val) => {
+    seeker.style.background = `linear-gradient(to right, #4f46e5 ${val}%, var(--track-color, #cbd5e1) ${val}%)`;
+  };
+
+  // Update Slider & Time
+  currentAudio.addEventListener("timeupdate", () => {
+    if (!currentAudio) return;
+    const val = (currentAudio.currentTime / currentAudio.duration) * 100;
+    const safeVal = val || 0;
+    seeker.value = safeVal;
+    updateSeekerBackground(safeVal);
+
+    if (currentTimeEl)
+      currentTimeEl.innerText = formatTime(currentAudio.currentTime);
+  });
+
+  // Set Duration
+  currentAudio.addEventListener("loadedmetadata", () => {
+    if (!currentAudio) return;
+    if (totalTimeEl) totalTimeEl.innerText = formatTime(currentAudio.duration);
+    seeker.disabled = false;
+  });
+
+  // Seek
+  seeker.addEventListener("input", (e) => {
+    if (!currentAudio) return;
+    const val = e.target.value;
+    const time = (val / 100) * currentAudio.duration;
+    currentAudio.currentTime = time;
+    updateSeekerBackground(val);
+  });
+
+  // Initial color set
+  updateSeekerBackground(0);
 }
 
 function toggleReader() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
-    if (!postId) return;
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get("id");
+  if (!postId) return;
 
-    const isEn = window.location.pathname.includes('/en/');
-    const lang = isEn ? 'en' : 'pl';
-    const basePath = isEn ? '../' : ''; 
-    const audioPath = `${basePath}audio/${lang}/${postId}.mp3`;
+  const isEn = window.location.pathname.includes("/en/");
+  const lang = isEn ? "en" : "pl";
+  const basePath = isEn ? "../" : "";
+  const audioPath = `${basePath}audio/${lang}/${postId}.mp3`;
 
-    // 1. If currently playing, pause it.
-    if (currentAudio && !currentAudio.paused) {
-        currentAudio.pause();
-        return; 
+  // 1. If currently playing, pause it.
+  if (currentAudio && !currentAudio.paused) {
+    currentAudio.pause();
+    return;
+  }
+
+  // 2. If paused but exists (and ID matches), resume.
+  // Use dataset ID to be sure it's the right track regardless of path resolution
+  if (
+    currentAudio &&
+    currentAudio.dataset.postId === postId &&
+    !currentAudio.ended
+  ) {
+    currentAudio.play();
+    return;
+  }
+
+  // 3. New Load
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+
+  currentAudio = new Audio(audioPath);
+  currentAudio.dataset.postId = postId; // Store ID for reliable resume check
+
+  // UI Setup
+  initAudioListeners(isEn);
+  // Determine track color for dark mode support in inline style
+  const isDark = document.documentElement.classList.contains("dark");
+  const trackColor = isDark ? "#475569" : "#cbd5e1";
+  document
+    .getElementById("audioSeeker")
+    .style.setProperty("--track-color", trackColor);
+
+  currentAudio.addEventListener("play", () => updateTTSButton(true));
+  currentAudio.addEventListener("pause", () => updateTTSButton(false));
+  currentAudio.addEventListener("ended", () => {
+    updateTTSButton(false);
+    const seeker = document.getElementById("audioSeeker");
+    if (seeker) {
+      seeker.value = 0;
+      seeker.style.background = `linear-gradient(to right, #4f46e5 0%, var(--track-color, ${trackColor}) 0%)`;
     }
+  });
 
-    // 2. If paused but exists (and ID matches), resume.
-    // Use dataset ID to be sure it's the right track regardless of path resolution
-    if (currentAudio && currentAudio.dataset.postId === postId  && !currentAudio.ended) {
-        currentAudio.play();
-        return;
-    }
+  currentAudio.addEventListener("error", (e) => {
+    console.error("Audio playback error:", e);
+    updateTTSButton(false);
+    const msg = isEn
+      ? "Audio version is not available for this article yet."
+      : "Wersja audio dla tego artykułu nie jest jeszcze dostępna.";
+    alert(msg);
+  });
 
-    // 3. New Load
-    if (currentAudio) {
-        currentAudio.pause();
-        currentAudio = null;
-    }
-
-    currentAudio = new Audio(audioPath);
-    currentAudio.dataset.postId = postId; // Store ID for reliable resume check
-    
-    // UI Setup
-    initAudioListeners(isEn);
-    // Determine track color for dark mode support in inline style
-    const isDark = document.documentElement.classList.contains('dark');
-    const trackColor = isDark ? '#475569' : '#cbd5e1'; 
-    document.getElementById("audioSeeker").style.setProperty('--track-color', trackColor);
-
-    currentAudio.addEventListener('play', () => updateTTSButton(true));
-    currentAudio.addEventListener('pause', () => updateTTSButton(false));
-    currentAudio.addEventListener('ended', () => {
-        updateTTSButton(false);
-        const seeker = document.getElementById("audioSeeker");
-        if(seeker) {
-            seeker.value = 0;
-            seeker.style.background = `linear-gradient(to right, #4f46e5 0%, var(--track-color, ${trackColor}) 0%)`;
-        }
-    });
-    
-    currentAudio.addEventListener('error', (e) => {
-        console.error("Audio playback error:", e);
-        updateTTSButton(false);
-        const msg = isEn 
-            ? "Audio version is not available for this article yet." 
-            : "Wersja audio dla tego artykułu nie jest jeszcze dostępna.";
-        alert(msg);
-    });
-
-    currentAudio.play().catch(e => {
-        console.error("Playback failed", e);
-    });
+  currentAudio.play().catch((e) => {
+    console.error("Playback failed", e);
+  });
 }
 
 function updateTTSButton(speaking) {
-    const ttsBtn = document.getElementById('ttsBtn');
-    const ttsIcon = document.getElementById('ttsIcon');
+  const ttsBtn = document.getElementById("ttsBtn");
+  const ttsIcon = document.getElementById("ttsIcon");
 
-    if (speaking) {
-        if(ttsBtn) {
-            ttsBtn.innerHTML = '<i data-lucide="pause" class="w-5 h-5 fill-current"></i>';
-            ttsBtn.classList.add('playing'); 
-        }
-    } else {
-        if(ttsBtn) {
-             ttsBtn.innerHTML = '<i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>';
-             ttsBtn.classList.remove('playing');
-        }
+  if (speaking) {
+    if (ttsBtn) {
+      ttsBtn.innerHTML =
+        '<i data-lucide="pause" class="w-5 h-5 fill-current"></i>';
+      ttsBtn.classList.add("playing");
     }
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+  } else {
+    if (ttsBtn) {
+      ttsBtn.innerHTML =
+        '<i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>';
+      ttsBtn.classList.remove("playing");
+    }
+  }
+  if (typeof lucide !== "undefined") lucide.createIcons();
 }
 
 function updateTTSButton(speaking) {
-    const ttsBtn = document.getElementById('ttsBtn');
-    
-    if (speaking) {
-        if(ttsBtn) {
-            ttsBtn.innerHTML = '<i data-lucide="pause" class="w-5 h-5 fill-current"></i>';
-            ttsBtn.classList.add('playing'); 
-        }
-    } else {
-        if(ttsBtn) {
-             ttsBtn.innerHTML = '<i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>';
-             ttsBtn.classList.remove('playing');
-        }
-    }
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-}
+  const ttsBtn = document.getElementById("ttsBtn");
 
+  if (speaking) {
+    if (ttsBtn) {
+      ttsBtn.innerHTML =
+        '<i data-lucide="pause" class="w-5 h-5 fill-current"></i>';
+      ttsBtn.classList.add("playing");
+    }
+  } else {
+    if (ttsBtn) {
+      ttsBtn.innerHTML =
+        '<i data-lucide="play" class="w-5 h-5 ml-1 fill-current"></i>';
+      ttsBtn.classList.remove("playing");
+    }
+  }
+  if (typeof lucide !== "undefined") lucide.createIcons();
+}
