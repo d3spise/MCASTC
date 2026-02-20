@@ -1,483 +1,1064 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html class="scroll-smooth" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://www.neuroimmunehub.com/en/diagnostics.html" rel="canonical"/>
-<link href="https://www.neuroimmunehub.com/diagnostics.html" hreflang="pl" rel="alternate"/>
-<link href="https://www.neuroimmunehub.com/en/diagnostics.html" hreflang="en" rel="alternate"/>
-<link href="https://www.neuroimmunehub.com/en/diagnostics.html" hreflang="x-default" rel="alternate"/>
-<meta content="Diagnostic pathways for ME/CFS, POTS, MCAS, and TCS. Medical tests, criteria, and evaluation procedures." name="description"/>
-<meta content="MCAS Diagnostics, TCS Tests, ME/CFS Evaluation, POTS Diagnosis, Diagnostic Criteria, Blood Tests, MRI, Tilt Table Test, Histamine Intolerance, HIT, SIBO, Long Covid, Brain Fog, Post-COVID Syndrome, Mastocytosis, Craniocervical Instability, CCI" name="keywords"/>
-<meta content="NeuroImmune Hub" name="author"/>
-<meta content="index, follow" name="robots"/>
-<!-- Open Graph / Facebook -->
-<meta content="website" property="og:type"/>
-<meta content="https://www.neuroimmunehub.com/en/diagnostics.html" property="og:url"/>
-<meta content="Diagnostics: ME/CFS, POTS, MCAS, TCS - Knowledge Hub" property="og:title"/>
-<meta content="Diagnostic pathways for ME/CFS, POTS, MCAS, and TCS. Medical tests, criteria, and evaluation procedures." property="og:description"/>
-<meta content="https://www.neuroimmunehub.com/img/banner_image.webp" property="og:image"/>
-<!-- Twitter -->
-<meta content="summary_large_image" property="twitter:card"/>
-<meta content="https://www.neuroimmunehub.com/en/diagnostics.html" property="twitter:url"/>
-<meta content="Diagnostics: ME/CFS, POTS, MCAS, TCS - Knowledge Hub" property="twitter:title"/>
-<meta content="Diagnostic pathways for ME/CFS, POTS, MCAS, and TCS. Medical tests, criteria, and evaluation procedures." property="twitter:description"/>
-<meta content="https://www.neuroimmunehub.com/img/banner_image.webp" property="twitter:image"/>
-<title>Diagnostic Pathways: ME/CFS, POTS, MCAS, TCS</title>
-<link href="../img/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="../css/output.css" rel="stylesheet"/>
-<!-- Inline dark mode init - prevents flash of unstyled content -->
-<script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://www.neuroimmunehub.com/en/diagnostics.html"
+      rel="canonical" />
+    <link
+      href="https://www.neuroimmunehub.com/diagnostics.html"
+      hreflang="pl"
+      rel="alternate" />
+    <link
+      href="https://www.neuroimmunehub.com/en/diagnostics.html"
+      hreflang="en"
+      rel="alternate" />
+    <link
+      href="https://www.neuroimmunehub.com/en/diagnostics.html"
+      hreflang="x-default"
+      rel="alternate" />
+    <meta
+      content="Diagnostic pathways for ME/CFS, POTS, MCAS, and TCS. Medical tests, criteria, and evaluation procedures."
+      name="description" />
+    <meta
+      content="MCAS Diagnostics, TCS Tests, ME/CFS Evaluation, POTS Diagnosis, Diagnostic Criteria, Blood Tests, MRI, Tilt Table Test, Histamine Intolerance, HIT, SIBO, Long Covid, Brain Fog, Post-COVID Syndrome, Mastocytosis, Craniocervical Instability, CCI"
+      name="keywords" />
+    <meta content="NeuroImmune Hub" name="author" />
+    <meta content="index, follow" name="robots" />
+    <!-- Open Graph / Facebook -->
+    <meta content="website" property="og:type" />
+    <meta
+      content="https://www.neuroimmunehub.com/en/diagnostics.html"
+      property="og:url" />
+    <meta
+      content="Diagnostics: ME/CFS, POTS, MCAS, TCS - Knowledge Hub"
+      property="og:title" />
+    <meta
+      content="Diagnostic pathways for ME/CFS, POTS, MCAS, and TCS. Medical tests, criteria, and evaluation procedures."
+      property="og:description" />
+    <meta
+      content="https://www.neuroimmunehub.com/img/banner_image.webp"
+      property="og:image" />
+    <!-- Twitter -->
+    <meta content="summary_large_image" property="twitter:card" />
+    <meta
+      content="https://www.neuroimmunehub.com/en/diagnostics.html"
+      property="twitter:url" />
+    <meta
+      content="Diagnostics: ME/CFS, POTS, MCAS, TCS - Knowledge Hub"
+      property="twitter:title" />
+    <meta
+      content="Diagnostic pathways for ME/CFS, POTS, MCAS, and TCS. Medical tests, criteria, and evaluation procedures."
+      property="twitter:description" />
+    <meta
+      content="https://www.neuroimmunehub.com/img/banner_image.webp"
+      property="twitter:image" />
+    <title>Diagnostic Pathways: ME/CFS, POTS, MCAS, TCS</title>
+    <link href="../img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="../css/output.css" rel="stylesheet" />
+    <!-- Inline dark mode init - prevents flash of unstyled content -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     </script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="../css/style.css" rel="stylesheet"/>
-<link href="../css/accessibility.css" rel="stylesheet"/>
-</head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
-<!-- Nawigacja -->
-<nav class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
-<div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-<a class="flex items-center space-x-3" href="index.html">
-<div class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
-<i class="w-5 h-5" data-lucide="activity"></i>
-</div>
-<div>
-<span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">NeuroImmune Hub</span>
-<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">MCAS • TCS • ME/CFS</span>
-</div>
-</a>
-<!-- Desktop Menu -->
-<div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_home" href="index.html">Home</a>
-            <a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_blog" href="blog.html">Blog</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500" data-i18n="nav_diagnostics" href="diagnostics.html">Diagnostics</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_treatment" href="treatment.html">Treatment</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_tools" href="tools.html">Tools</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_contact" href="contact.html">Contact</a>
-<div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
-<button aria-label="Opcje dostępności" class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtn" title="Opcje dostępności">
-<i class="w-5 h-5" data-lucide="accessibility"></i>
-</button>
-<button class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtn" onclick="toggleTheme()" title="Przełącz tryb ciemny">
-<i class="w-4 h-4" data-lucide="moon"></i>
-</button>
-<button class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn" onclick="toggleLang()">PL</button>
-</div>
-</div>
-<!-- Mobile Menu Button -->
-<button class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" id="mobile-menu-btn">
-<i class="w-6 h-6" data-lucide="menu"></i>
-</button>
-</div>
-<!-- Mobile Menu Overlay -->
-<div class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden" id="mobile-backdrop"></div>
-<!-- Mobile Menu -->
-<div class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col" id="mobile-menu">
-<div class="px-4 py-4 space-y-4">
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_home" href="index.html">Home</a>
-            <a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_blog" href="blog.html">Blog</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 font-bold text-red-700 dark:text-red-500" data-i18n="nav_diagnostics" href="diagnostics.html">Diagnostics</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_treatment" href="treatment.html">Treatment</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_tools" href="tools.html">Tools</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_contact" href="contact.html">Contact</a>
-<div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-<button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtnMobile" title="Opcje dostępności">
-<i class="w-5 h-5" data-lucide="accessibility"></i>
-</button>
-<button class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtnMobile" onclick="toggleTheme()" title="Przełącz tryb ciemny">
-<i class="w-4 h-4" data-lucide="moon"></i>
-</button>
-<button class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtnMobile" onclick="toggleLang()">PL</button>
-</div>
-</div>
-</div>
-</nav>
-<!-- Hero / Disclaimer -->
-<header class="bg-white dark:bg-slate-900 pt-16 pb-12 px-4 transition-colors duration-300">
-<div class="max-w-4xl mx-auto text-center">
-<h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-8 leading-tight tracking-tight" data-i18n="diag_page_title">Diagnostic Pathways</h1>
-<div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-6 rounded-r-lg text-left shadow-sm">
-<div class="flex items-start gap-4">
-<i class="w-6 h-6 text-amber-600 dark:text-amber-400 shrink-0 mt-1" data-lucide="alert-triangle"></i>
-<div>
-<h3 class="font-bold text-amber-800 dark:text-amber-200 mb-2" data-i18n="diag_page_warning_title">Important Warning</h3>
-<p class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed" data-i18n="diag_page_warning_desc">Educational content only. Diagnosis of these conditions is complex and requires specialist consultation. Many standard tests (e.g., basic blood count) appear normal in these diseases, despite the patient's severe condition.</p>
-</div>
-</div>
-</div>
-</div>
-</header>
-<!-- ME/CFS Section -->
-<section class="py-16 bg-purple-50/50 dark:bg-slate-950 border-y border-purple-100 dark:border-purple-900/30">
-<div class="max-w-5xl mx-auto px-4">
-<div class="flex items-center gap-3 mb-8">
-<div class="p-3 bg-purple-100 dark:bg-purple-900/40 rounded-xl text-purple-600 dark:text-purple-300">
-<i class="w-8 h-8" data-lucide="battery-warning"></i>
-</div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white">ME/CFS</h2>
-</div>
-<div class="grid md:grid-cols-2 gap-8">
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-purple-100 dark:border-purple-800/50 shadow-sm">
-<h3 class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4" data-i18n="diag_mecfs_criteria_title">Clinical Criteria</h3>
-<p class="text-slate-600 dark:text-slate-300 mb-4" data-i18n="diag_mecfs_criteria_desc">This is a diagnosis of exclusion. IOM (2015) or Canadian Consensus Criteria (CCC) are used.</p>
-<ul class="space-y-2">
-<li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-<i class="w-4 h-4 text-purple-500 mt-1" data-lucide="check"></i>
-<span data-i18n="diag_mecfs_point1">Key symptom: PEM (Post-Exertional Malaise)</span>
-</li>
-<li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-<i class="w-4 h-4 text-purple-500 mt-1" data-lucide="check"></i>
-<span data-i18n="diag_mecfs_point2">Unrefreshing sleep</span>
-</li>
-<li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-<i class="w-4 h-4 text-purple-500 mt-1" data-lucide="check"></i>
-<span data-i18n="diag_mecfs_point3">Orthostatic intolerance or cognitive impairment</span>
-</li>
-</ul>
-</div>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-purple-100 dark:border-purple-800/50 shadow-sm">
-<h3 class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4" data-i18n="diag_mecfs_test_title">Gold Standard: CPET</h3>
-<p class="text-slate-600 dark:text-slate-300 mb-4" data-i18n="diag_mecfs_test_desc">2-day Cardiopulmonary Exercise Test (2-day CPET) objectively confirms PEM.</p>
-<div class="p-3 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-lg text-xs text-red-700 dark:text-red-300 flex gap-2">
-<i class="w-4 h-4 shrink-0" data-lucide="alert-octagon"></i>
-<span data-i18n="diag_mecfs_warning">Warning: This test is very demanding and can trigger severe PEM (worsening of condition).</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- POTS Section -->
-<section class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-<div class="max-w-5xl mx-auto px-4">
-<div class="flex items-center gap-3 mb-8">
-<div class="p-3 bg-red-100 dark:bg-red-900/40 rounded-xl text-red-600 dark:text-red-300">
-<i class="w-8 h-8" data-lucide="activity"></i>
-</div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white">POTS</h2>
-</div>
-<div class="grid md:grid-cols-2 gap-8">
-<div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-red-100 dark:border-red-900/30 shadow-sm">
-<h3 class="text-xl font-bold text-red-700 dark:text-red-400 mb-4" data-i18n="diag_pots_test_title">Autonomic Tests</h3>
-<ul class="space-y-3">
-<li class="flex items-start gap-3">
-<div class="p-1.5 bg-white dark:bg-slate-700 rounded shadow-sm text-red-500"><i class="w-4 h-4" data-lucide="arrow-up-circle"></i></div>
-<div>
-<strong class="block text-slate-900 dark:text-white text-sm" data-i18n="diag_pots_ttt">Tilt Table Test</strong>
-<span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_pots_ttt_desc">Hospital test on a special table.</span>
-</div>
-</li>
-<li class="flex items-start gap-3">
-<div class="p-1.5 bg-white dark:bg-slate-700 rounded shadow-sm text-red-500"><i class="w-4 h-4" data-lucide="home"></i></div>
-<div>
-<strong class="block text-slate-900 dark:text-white text-sm" data-i18n="diag_pots_nasa">NASA Lean Test (Active Stand Test)</strong>
-<span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_pots_nasa_desc">Can be performed in a doctor's office (10 minutes standing against a wall).</span>
-</div>
-</li>
-</ul>
-</div>
-<div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-red-100 dark:border-red-900/30 shadow-sm flex flex-col justify-center">
-<h3 class="text-xl font-bold text-red-700 dark:text-red-400 mb-4" data-i18n="diag_pots_criteria_title">Diagnostic Criterion</h3>
-<div class="text-center p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700">
-<span class="block text-4xl font-bold text-slate-900 dark:text-white mb-1">&gt;30 bpm</span>
-<span class="text-sm text-slate-500 dark:text-slate-400" data-i18n="diag_pots_criteria_desc">Heart rate increase within 10 minutes of standing (or &gt;40 bpm in adolescents), without significant blood pressure drop.</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- MCAS Section -->
-<section class="py-16 bg-pink-50/50 dark:bg-slate-950 border-b border-pink-100 dark:border-pink-900/30">
-<div class="max-w-5xl mx-auto px-4">
-<div class="flex items-center gap-3 mb-8">
-<div class="p-3 bg-pink-100 dark:bg-pink-900/40 rounded-xl text-pink-600 dark:text-pink-300">
-<i class="w-8 h-8" data-lucide="shield-alert"></i>
-</div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white">MCAS</h2>
-</div>
-<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-pink-100 dark:border-pink-800/50 shadow-sm mb-8">
-<h3 class="text-xl font-bold text-pink-700 dark:text-pink-400 mb-2" data-i18n="diag_mcas_challenge_title">Hunting for Mediators</h3>
-<p class="text-slate-600 dark:text-slate-300 mb-6" data-i18n="diag_mcas_challenge_desc">MCAS is a "Diagnostic Chameleon" – it affects multiple systems at once. Testing is difficult because mediators disappear from the blood very quickly.</p>
-<div class="grid md:grid-cols-3 gap-4">
-<div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
-<strong class="block text-slate-900 dark:text-white mb-1" data-i18n="diag_mcas_tryptase">Tryptase</strong>
-<p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_mcas_tryptase_desc">Often normal! Elevated mainly in mastocytosis or during anaphylaxis.</p>
-</div>
-<div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
-<strong class="block text-slate-900 dark:text-white mb-1" data-i18n="diag_mcas_histamine">Histamine (Plasma)</strong>
-<p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_mcas_histamine_desc">Very unstable. Blood must be chilled immediately.</p>
-</div>
-<div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700 ring-2 ring-pink-100 dark:ring-pink-900/30">
-<strong class="block text-slate-900 dark:text-white mb-1" data-i18n="diag_mcas_urine">Methylhistamine (Urine)</strong>
-<p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_mcas_urine_desc">24-hour urine collection. Often the best indicator of a flare.</p>
-</div>
-</div>
-</div>
-<div class="bg-pink-100/50 dark:bg-pink-900/20 p-6 rounded-xl border border-pink-200 dark:border-pink-800/50">
-<h4 class="font-bold text-pink-800 dark:text-pink-300 mb-2 flex items-center gap-2">
-<i class="w-4 h-4" data-lucide="pill"></i> <span data-i18n="diag_mcas_treatment_title">Criterion "Ex juvantibus"</span>
-</h4>
-<p class="text-sm text-pink-900 dark:text-pink-200" data-i18n="diag_mcas_treatment_desc">Positive response to treatment (H1/H2 blockers) is often an official part of diagnosis when lab tests are inconclusive.</p>
-</div>
-</div>
-</section>
-<!-- TCS Section -->
-<section class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-<div class="max-w-5xl mx-auto px-4">
-<div class="flex items-center gap-3 mb-8">
-<div class="p-3 bg-amber-100 dark:bg-amber-900/40 rounded-xl text-amber-600 dark:text-amber-300">
-<i class="w-8 h-8" data-lucide="anchor"></i>
-</div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white">TCS (Tethered Cord Syndrome)</h2>
-</div>
-<div class="grid md:grid-cols-2 gap-12">
-<div class="space-y-6">
-<div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-amber-100 dark:border-amber-900/30 shadow-sm">
-<h3 class="text-xl font-bold text-amber-700 dark:text-amber-400 mb-4" data-i18n="diag_tcs_types_title">Distinction</h3>
-<ul class="space-y-4">
-<li>
-<strong class="block text-slate-900 dark:text-white text-sm mb-1" data-i18n="diag_tcs_overt">Overt TCS</strong>
-<p class="text-xs text-slate-600 dark:text-slate-400" data-i18n="diag_tcs_overt_desc">Visible on standard lumbar MRI (low-lying conus medullaris).</p>
-</li>
-<li>
-<strong class="block text-slate-900 dark:text-white text-sm mb-1" data-i18n="diag_tcs_occult">Occult TCS</strong>
-<p class="text-xs text-slate-600 dark:text-slate-400" data-i18n="diag_tcs_occult_desc">Common in EDS. MRI often described as "normal", even though the filum terminale is fibrotic and tight.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="space-y-6">
-<div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-amber-100 dark:border-amber-900/30 shadow-sm">
-<h3 class="text-xl font-bold text-amber-700 dark:text-amber-400 mb-4" data-i18n="diag_tcs_tips_title">Diagnostic Tips</h3>
-<ul class="space-y-3">
-<li class="flex items-start gap-3">
-<i class="w-5 h-5 text-amber-500 mt-0.5" data-lucide="scan"></i>
-<div>
-<strong class="block text-slate-900 dark:text-white text-sm" data-i18n="diag_tcs_prone">Prone MRI (On stomach)</strong>
-<span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_tcs_prone_desc">Standard MRI is done on the back. Lying on the stomach may reveal lack of cord movement.</span>
-</div>
-</li>
-<li class="flex items-start gap-3">
-<i class="w-5 h-5 text-amber-500 mt-0.5" data-lucide="droplet"></i>
-<div>
-<strong class="block text-slate-900 dark:text-white text-sm" data-i18n="diag_tcs_uro">Urodynamic Testing</strong>
-<span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="diag_tcs_uro_desc">Neurogenic bladder often shows the first signs that the cord is stretched.</span>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- CCI/AAI Section -->
-<section class="py-16 bg-orange-50/50 dark:bg-slate-950 border-b border-orange-100 dark:border-orange-900/30">
-<div class="max-w-5xl mx-auto px-4">
-<div class="flex items-center gap-3 mb-8">
-<div class="p-3 bg-orange-100 dark:bg-orange-900/40 rounded-xl text-orange-600 dark:text-orange-300">
-<i class="w-8 h-8" data-lucide="move-diagonal-2"></i>
-</div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white" data-i18n="diag_cci_title">Craniocervical Instability (CCI/AAI)</h2>
-</div>
-<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-orange-100 dark:border-orange-800/50 shadow-sm mb-8">
-<h3 class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-2" data-i18n="diag_cci_trap_title">The Gravity Trap</h3>
-<p class="text-slate-600 dark:text-slate-300 mb-6" data-i18n="diag_cci_trap_desc">Standard supine MRI is often inconclusive. In this position, muscles are relaxed, and gravity does not press the skull against the spine, so the instability "hides" (vertebrae return to place).</p>
-<div class="grid md:grid-cols-2 gap-6">
-<div class="p-5 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
-<div class="flex items-center gap-2 mb-3">
-<i class="text-orange-500" data-lucide="arrow-up-down"></i>
-<strong class="text-slate-900 dark:text-white" data-i18n="diag_cci_upright">Upright MRI</strong>
-</div>
-<p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="diag_cci_upright_desc">Examination in sitting or standing position, preferably in flexion/extension. This is the only way to see how vertebrae compress the spinal cord under movement.</p>
-</div>
-<div class="p-5 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
-<div class="flex items-center gap-2 mb-3">
-<i class="text-orange-500" data-lucide="video"></i>
-<strong class="text-slate-900 dark:text-white" data-i18n="diag_cci_dmx">DMX (Digital Motion X-ray)</strong>
-</div>
-<p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="diag_cci_dmx_desc">X-ray in motion (video), showing vertebrae "sliding" in real-time.</p>
-</div>
-</div>
-</div>
-<div class="grid md:grid-cols-2 gap-8">
-<div class="bg-orange-100/50 dark:bg-orange-900/20 p-6 rounded-xl border border-orange-200 dark:border-orange-800/50">
-<h4 class="font-bold text-orange-800 dark:text-orange-300 mb-4 flex items-center gap-2">
-<i class="w-4 h-4" data-lucide="ruler"></i> <span data-i18n="diag_cci_measure_title">Key Measurements (Radiology)</span>
-</h4>
-<ul class="space-y-2 text-sm text-orange-900 dark:text-orange-200">
-<li class="flex items-start gap-2">
-<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
-<span data-i18n="diag_cci_cxa"><strong>CXA Angle (Clivo-Axial Angle):</strong> Angle between the skull base and the odontoid process (risk of brainstem compression).</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
-<span data-i18n="diag_cci_grabb"><strong>Grabb-Oakes Method:</strong> Measurement of compression on the medulla oblongata.</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
-<span data-i18n="diag_cci_bdi"><strong>BDI (Basion-Dens Interval).</strong></span>
-</li>
-</ul>
-</div>
-<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-<h4 class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-<i class="w-4 h-4 text-orange-500" data-lucide="activity"></i> <span data-i18n="diag_cci_test_title">Clinical Test (Traction)</span>
-</h4>
-<p class="text-sm text-slate-600 dark:text-slate-300 mb-4" data-i18n="diag_cci_test_desc"><strong>Manual Traction Test:</strong> Does pulling the head up (by a physiotherapist) bring sudden relief? If so, it suggests a mechanical component.</p>
-<div class="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-100 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 italic">
-<i class="w-3 h-3 inline mr-1" data-lucide="info"></i> <span data-i18n="diag_cci_test_note">The test should be performed by an experienced specialist.</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Beighton Score Section -->
-<section class="fade-in-section py-16 bg-indigo-50/50 dark:bg-slate-950 scroll-mt-20 border-t border-indigo-100 dark:border-indigo-900/30 transition-colors duration-300" id="beighton-score">
-<div class="max-w-5xl mx-auto px-4">
-<div class="flex items-center gap-3 mb-8">
-<div class="p-3 bg-indigo-100 dark:bg-indigo-900/40 rounded-xl text-indigo-600 dark:text-indigo-300">
-<i class="w-8 h-8" data-lucide="activity"></i>
-</div>
-<div>
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white" data-i18n="beighton_title">Beighton Score (Hypermobility)</h2>
-<p class="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl" data-i18n="beighton_desc">A simple screening tool to assess generalized joint hypermobility (a hallmark of EDS). The maximum score is 9 points.</p>
-</div>
-</div>
-<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-indigo-100 dark:border-indigo-800/50 shadow-sm max-w-4xl mx-auto">
-<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4" data-i18n="beighton_criteria_title">Assessment Criteria</h3>
-<div class="space-y-6">
-<!-- 1. Little Fingers -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
-<div class="flex-1">
-<h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_pinky">Little Fingers &gt; 90°</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_pinky_desc">Passive dorsiflexion of the little finger beyond 90 degrees.</p>
-</div>
-<div class="flex gap-4">
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Left</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Right</span>
-</label>
-</div>
-</div>
-<!-- 2. Thumbs -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
-<div class="flex-1">
-<h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_thumb">Thumb to Forearm</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_thumb_desc">Passive apposition of the thumb to the flexor aspect of the forearm.</p>
-</div>
-<div class="flex gap-4">
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Left</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Right</span>
-</label>
-</div>
-</div>
-<!-- 3. Elbows -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
-<div class="flex-1">
-<h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_elbow">Elbows &gt; 10°</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_elbow_desc">Hyperextension of the elbow beyond 10 degrees.</p>
-</div>
-<div class="flex gap-4">
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Left</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Right</span>
-</label>
-</div>
-</div>
-<!-- 4. Knees -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
-<div class="flex-1">
-<h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_knee">Knees &gt; 10°</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_knee_desc">Hyperextension of the knee beyond 10 degrees.</p>
-</div>
-<div class="flex gap-4">
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_left">Left</span>
-</label>
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_right">Right</span>
-</label>
-</div>
-</div>
-<!-- 5. Spine -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-<div class="flex-1">
-<h4 class="font-bold text-slate-800 dark:text-slate-200" data-i18n="beighton_spine">Palms to Floor</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="beighton_spine_desc">Placing hands flat on the floor with knees fully extended.</p>
-</div>
-<div class="flex gap-4 justify-center min-w-[150px]">
-<label class="flex items-center gap-2 cursor-pointer">
-<input class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800" type="checkbox" value="1"/>
-<span class="text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="beighton_yes">Yes</span>
-</label>
-</div>
-</div>
-</div>
-<!-- Result -->
-<div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 text-center">
-<div class="inline-block bg-slate-100 dark:bg-slate-800 rounded-full px-6 py-3 mb-4">
-<span class="text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="beighton-score-display">0 / 9</span>
-</div>
-<p class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2" id="beighton-result-text">-</p>
-<p class="text-xs text-slate-500 dark:text-slate-400 italic" data-i18n="beighton_result_note">Remember: This is just a screening test. Diagnosis is made by a doctor (geneticist/rheumatologist) based on full hEDS criteria.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Footer -->
-<footer class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
-<div class="max-w-6xl mx-auto px-4 text-center text-sm">
-<p class="mb-2" data-i18n="footer_text">Educational page created to raise awareness about MCAS and comorbid conditions.</p>
-<p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto" data-i18n="footer_disclaimer"><strong>Disclaimer:</strong> The content on this page presents a <strong>theoretical model</strong> of connections between conditions. This is not a prevailing medical standard but a collection of hypotheses based on scientific literature. This information does not replace medical advice.</p>
-<p>© 2025 NeuroImmune Hub. All rights reserved.</p>
-</div>
-</footer>
-<!-- Accessibility Panel -->
-<div aria-hidden="true" id="accessibility-panel">
-<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-<i class="w-5 h-5" data-lucide="accessibility"></i>
-<span data-i18n="a11y_title">Accessibility</span>
-</h3>
-<button class="a11y-btn" id="btn-contrast">
-<i class="w-4 h-4" data-lucide="contrast"></i>
-<span data-i18n="a11y_contrast">High Contrast</span>
-</button>
-<button class="a11y-btn" id="btn-font">
-<i class="w-4 h-4" data-lucide="type"></i>
-<span data-i18n="a11y_font">Increase Text Size</span>
-</button>
-<button class="a11y-btn" id="btn-dyslexia">
-<i class="w-4 h-4" data-lucide="align-left"></i>
-<span data-i18n="a11y_dyslexia">Dyslexia Friendly Font</span>
-</button>
-<div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
-<button class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors" id="btn-reset-a11y">
-<span data-i18n="a11y_reset">Reset Settings</span>
-</button>
-</div>
-<script src="../js/translations.js"></script>
-<script src="../js/app.js"></script>
-<script src="../js/accessibility.js"></script>
-</body>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap"
+      rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/accessibility.css" rel="stylesheet" />
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <!-- Nawigacja -->
+    <nav
+      class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <a class="flex items-center space-x-3" href="index.html">
+          <div
+            class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+            <i class="w-5 h-5" data-lucide="activity"></i>
+          </div>
+          <div>
+            <span
+              class="block text-lg font-bold text-slate-900 dark:text-white leading-none"
+              >NeuroImmune Hub</span
+            >
+            <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"
+              >MCAS • TCS • ME/CFS</span
+            >
+          </div>
+        </a>
+        <!-- Desktop Menu -->
+        <div
+          class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_home"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_blog"
+            href="blog.html"
+            >Blog</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500"
+            data-i18n="nav_diagnostics"
+            href="diagnostics.html"
+            >Diagnostics</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_treatment"
+            href="treatment.html"
+            >Treatment</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_tools"
+            href="tools.html"
+            >Tools</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_contact"
+            href="contact.html"
+            >Contact</a
+          >
+          <div
+            class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+            <button
+              aria-label="Opcje dostępności"
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="a11yBtn"
+              title="Opcje dostępności">
+              <i class="w-5 h-5" data-lucide="accessibility"></i>
+            </button>
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="themeBtn"
+              onclick="toggleTheme()"
+              title="Przełącz tryb ciemny">
+              <i class="w-4 h-4" data-lucide="moon"></i>
+            </button>
+            <button
+              class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300"
+              id="langBtn"
+              onclick="toggleLang()">
+              PL
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+          id="mobile-menu-btn">
+          <i class="w-6 h-6" data-lucide="menu"></i>
+        </button>
+      </div>
+      <!-- Mobile Menu Overlay -->
+      <div
+        class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden"
+        id="mobile-backdrop"></div>
+      <!-- Mobile Menu -->
+      <div
+        class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col"
+        id="mobile-menu">
+        <div class="px-4 py-4 space-y-4">
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_home"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_blog"
+            href="blog.html"
+            >Blog</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 font-bold text-red-700 dark:text-red-500"
+            data-i18n="nav_diagnostics"
+            href="diagnostics.html"
+            >Diagnostics</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_treatment"
+            href="treatment.html"
+            >Treatment</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_tools"
+            href="tools.html"
+            >Tools</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_contact"
+            href="contact.html"
+            >Contact</a
+          >
+          <div
+            class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="a11yBtnMobile"
+              title="Opcje dostępności">
+              <i class="w-5 h-5" data-lucide="accessibility"></i>
+            </button>
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="themeBtnMobile"
+              onclick="toggleTheme()"
+              title="Przełącz tryb ciemny">
+              <i class="w-4 h-4" data-lucide="moon"></i>
+            </button>
+            <button
+              class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300"
+              id="langBtnMobile"
+              onclick="toggleLang()">
+              PL
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero / Disclaimer -->
+    <header
+      class="bg-white dark:bg-slate-900 pt-16 pb-12 px-4 transition-colors duration-300 relative overflow-hidden">
+      <!-- Glow Blobs -->
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none z-0">
+        <div
+          class="absolute top-[-20%] left-[0%] w-72 h-72 bg-amber-400/10 dark:bg-amber-600/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob"></div>
+        <div
+          class="absolute top-[10%] right-[10%] w-72 h-72 bg-blue-400/10 dark:bg-blue-600/10 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+      </div>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <h1
+          class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 mb-8 leading-tight tracking-tight drop-shadow-sm"
+          data-i18n="diag_page_title">
+          Diagnostic Pathways
+        </h1>
+        <div
+          class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-6 rounded-r-lg text-left shadow-sm">
+          <div class="flex items-start gap-4">
+            <i
+              class="w-6 h-6 text-amber-600 dark:text-amber-400 shrink-0 mt-1"
+              data-lucide="alert-triangle"></i>
+            <div>
+              <h3
+                class="font-bold text-amber-800 dark:text-amber-200 mb-2"
+                data-i18n="diag_page_warning_title">
+                Important Warning
+              </h3>
+              <p
+                class="text-sm text-amber-700 dark:text-amber-300 leading-relaxed"
+                data-i18n="diag_page_warning_desc">
+                Educational content only. Diagnosis of these conditions is
+                complex and requires specialist consultation. Many standard
+                tests (e.g., basic blood count) appear normal in these diseases,
+                despite the patient's severe condition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ME/CFS Section -->
+    <section
+      class="py-16 bg-purple-50/50 dark:bg-slate-950 border-y border-purple-100 dark:border-purple-900/30">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="p-3 bg-purple-100 dark:bg-purple-900/40 rounded-xl text-purple-600 dark:text-purple-300">
+            <i class="w-8 h-8" data-lucide="battery-warning"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            ME/CFS
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-purple-100 dark:border-purple-800/50 shadow-sm">
+            <h3
+              class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4"
+              data-i18n="diag_mecfs_criteria_title">
+              Clinical Criteria
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="diag_mecfs_criteria_desc">
+              This is a diagnosis of exclusion. IOM (2015) or Canadian Consensus
+              Criteria (CCC) are used.
+            </p>
+            <ul class="space-y-2">
+              <li
+                class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                <i class="w-4 h-4 text-purple-500 mt-1" data-lucide="check"></i>
+                <span data-i18n="diag_mecfs_point1"
+                  >Key symptom: PEM (Post-Exertional Malaise)</span
+                >
+              </li>
+              <li
+                class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                <i class="w-4 h-4 text-purple-500 mt-1" data-lucide="check"></i>
+                <span data-i18n="diag_mecfs_point2">Unrefreshing sleep</span>
+              </li>
+              <li
+                class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                <i class="w-4 h-4 text-purple-500 mt-1" data-lucide="check"></i>
+                <span data-i18n="diag_mecfs_point3"
+                  >Orthostatic intolerance or cognitive impairment</span
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-purple-100 dark:border-purple-800/50 shadow-sm">
+            <h3
+              class="text-xl font-bold text-purple-700 dark:text-purple-400 mb-4"
+              data-i18n="diag_mecfs_test_title">
+              Gold Standard: CPET
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="diag_mecfs_test_desc">
+              2-day Cardiopulmonary Exercise Test (2-day CPET) objectively
+              confirms PEM.
+            </p>
+            <div
+              class="p-3 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-lg text-xs text-red-700 dark:text-red-300 flex gap-2">
+              <i class="w-4 h-4 shrink-0" data-lucide="alert-octagon"></i>
+              <span data-i18n="diag_mecfs_warning"
+                >Warning: This test is very demanding and can trigger severe PEM
+                (worsening of condition).</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- POTS Section -->
+    <section
+      class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="p-3 bg-red-100 dark:bg-red-900/40 rounded-xl text-red-600 dark:text-red-300">
+            <i class="w-8 h-8" data-lucide="activity"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            POTS
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-red-100 dark:border-red-900/30 shadow-sm">
+            <h3
+              class="text-xl font-bold text-red-700 dark:text-red-400 mb-4"
+              data-i18n="diag_pots_test_title">
+              Autonomic Tests
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <div
+                  class="p-1.5 bg-white dark:bg-slate-700 rounded shadow-sm text-red-500">
+                  <i class="w-4 h-4" data-lucide="arrow-up-circle"></i>
+                </div>
+                <div>
+                  <strong
+                    class="block text-slate-900 dark:text-white text-sm"
+                    data-i18n="diag_pots_ttt"
+                    >Tilt Table Test</strong
+                  >
+                  <span
+                    class="text-xs text-slate-500 dark:text-slate-400"
+                    data-i18n="diag_pots_ttt_desc"
+                    >Hospital test on a special table.</span
+                  >
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="p-1.5 bg-white dark:bg-slate-700 rounded shadow-sm text-red-500">
+                  <i class="w-4 h-4" data-lucide="home"></i>
+                </div>
+                <div>
+                  <strong
+                    class="block text-slate-900 dark:text-white text-sm"
+                    data-i18n="diag_pots_nasa"
+                    >NASA Lean Test (Active Stand Test)</strong
+                  >
+                  <span
+                    class="text-xs text-slate-500 dark:text-slate-400"
+                    data-i18n="diag_pots_nasa_desc"
+                    >Can be performed in a doctor's office (10 minutes standing
+                    against a wall).</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-red-100 dark:border-red-900/30 shadow-sm flex flex-col justify-center">
+            <h3
+              class="text-xl font-bold text-red-700 dark:text-red-400 mb-4"
+              data-i18n="diag_pots_criteria_title">
+              Diagnostic Criterion
+            </h3>
+            <div
+              class="text-center p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-700">
+              <span
+                class="block text-4xl font-bold text-slate-900 dark:text-white mb-1"
+                >&gt;30 bpm</span
+              >
+              <span
+                class="text-sm text-slate-500 dark:text-slate-400"
+                data-i18n="diag_pots_criteria_desc"
+                >Heart rate increase within 10 minutes of standing (or &gt;40
+                bpm in adolescents), without significant blood pressure
+                drop.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- MCAS Section -->
+    <section
+      class="py-16 bg-pink-50/50 dark:bg-slate-950 border-b border-pink-100 dark:border-pink-900/30">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="p-3 bg-pink-100 dark:bg-pink-900/40 rounded-xl text-pink-600 dark:text-pink-300">
+            <i class="w-8 h-8" data-lucide="shield-alert"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            MCAS
+          </h2>
+        </div>
+        <div
+          class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-pink-100 dark:border-pink-800/50 shadow-sm mb-8">
+          <h3
+            class="text-xl font-bold text-pink-700 dark:text-pink-400 mb-2"
+            data-i18n="diag_mcas_challenge_title">
+            Hunting for Mediators
+          </h3>
+          <p
+            class="text-slate-600 dark:text-slate-300 mb-6"
+            data-i18n="diag_mcas_challenge_desc">
+            MCAS is a "Diagnostic Chameleon" – it affects multiple systems at
+            once. Testing is difficult because mediators disappear from the
+            blood very quickly.
+          </p>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div
+              class="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+              <strong
+                class="block text-slate-900 dark:text-white mb-1"
+                data-i18n="diag_mcas_tryptase"
+                >Tryptase</strong
+              >
+              <p
+                class="text-xs text-slate-500 dark:text-slate-400"
+                data-i18n="diag_mcas_tryptase_desc">
+                Often normal! Elevated mainly in mastocytosis or during
+                anaphylaxis.
+              </p>
+            </div>
+            <div
+              class="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+              <strong
+                class="block text-slate-900 dark:text-white mb-1"
+                data-i18n="diag_mcas_histamine"
+                >Histamine (Plasma)</strong
+              >
+              <p
+                class="text-xs text-slate-500 dark:text-slate-400"
+                data-i18n="diag_mcas_histamine_desc">
+                Very unstable. Blood must be chilled immediately.
+              </p>
+            </div>
+            <div
+              class="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700 ring-2 ring-pink-100 dark:ring-pink-900/30">
+              <strong
+                class="block text-slate-900 dark:text-white mb-1"
+                data-i18n="diag_mcas_urine"
+                >Methylhistamine (Urine)</strong
+              >
+              <p
+                class="text-xs text-slate-500 dark:text-slate-400"
+                data-i18n="diag_mcas_urine_desc">
+                24-hour urine collection. Often the best indicator of a flare.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-pink-100/50 dark:bg-pink-900/20 p-6 rounded-xl border border-pink-200 dark:border-pink-800/50">
+          <h4
+            class="font-bold text-pink-800 dark:text-pink-300 mb-2 flex items-center gap-2">
+            <i class="w-4 h-4" data-lucide="pill"></i>
+            <span data-i18n="diag_mcas_treatment_title"
+              >Criterion "Ex juvantibus"</span
+            >
+          </h4>
+          <p
+            class="text-sm text-pink-900 dark:text-pink-200"
+            data-i18n="diag_mcas_treatment_desc">
+            Positive response to treatment (H1/H2 blockers) is often an official
+            part of diagnosis when lab tests are inconclusive.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- TCS Section -->
+    <section
+      class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="p-3 bg-amber-100 dark:bg-amber-900/40 rounded-xl text-amber-600 dark:text-amber-300">
+            <i class="w-8 h-8" data-lucide="anchor"></i>
+          </div>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            TCS (Tethered Cord Syndrome)
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-6">
+            <div
+              class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-amber-100 dark:border-amber-900/30 shadow-sm">
+              <h3
+                class="text-xl font-bold text-amber-700 dark:text-amber-400 mb-4"
+                data-i18n="diag_tcs_types_title">
+                Distinction
+              </h3>
+              <ul class="space-y-4">
+                <li>
+                  <strong
+                    class="block text-slate-900 dark:text-white text-sm mb-1"
+                    data-i18n="diag_tcs_overt"
+                    >Overt TCS</strong
+                  >
+                  <p
+                    class="text-xs text-slate-600 dark:text-slate-400"
+                    data-i18n="diag_tcs_overt_desc">
+                    Visible on standard lumbar MRI (low-lying conus medullaris).
+                  </p>
+                </li>
+                <li>
+                  <strong
+                    class="block text-slate-900 dark:text-white text-sm mb-1"
+                    data-i18n="diag_tcs_occult"
+                    >Occult TCS</strong
+                  >
+                  <p
+                    class="text-xs text-slate-600 dark:text-slate-400"
+                    data-i18n="diag_tcs_occult_desc">
+                    Common in EDS. MRI often described as "normal", even though
+                    the filum terminale is fibrotic and tight.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div
+              class="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-amber-100 dark:border-amber-900/30 shadow-sm">
+              <h3
+                class="text-xl font-bold text-amber-700 dark:text-amber-400 mb-4"
+                data-i18n="diag_tcs_tips_title">
+                Diagnostic Tips
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                  <i
+                    class="w-5 h-5 text-amber-500 mt-0.5"
+                    data-lucide="scan"></i>
+                  <div>
+                    <strong
+                      class="block text-slate-900 dark:text-white text-sm"
+                      data-i18n="diag_tcs_prone"
+                      >Prone MRI (On stomach)</strong
+                    >
+                    <span
+                      class="text-xs text-slate-500 dark:text-slate-400"
+                      data-i18n="diag_tcs_prone_desc"
+                      >Standard MRI is done on the back. Lying on the stomach
+                      may reveal lack of cord movement.</span
+                    >
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i
+                    class="w-5 h-5 text-amber-500 mt-0.5"
+                    data-lucide="droplet"></i>
+                  <div>
+                    <strong
+                      class="block text-slate-900 dark:text-white text-sm"
+                      data-i18n="diag_tcs_uro"
+                      >Urodynamic Testing</strong
+                    >
+                    <span
+                      class="text-xs text-slate-500 dark:text-slate-400"
+                      data-i18n="diag_tcs_uro_desc"
+                      >Neurogenic bladder often shows the first signs that the
+                      cord is stretched.</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CCI/AAI Section -->
+    <section
+      class="py-16 bg-orange-50/50 dark:bg-slate-950 border-b border-orange-100 dark:border-orange-900/30">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="p-3 bg-orange-100 dark:bg-orange-900/40 rounded-xl text-orange-600 dark:text-orange-300">
+            <i class="w-8 h-8" data-lucide="move-diagonal-2"></i>
+          </div>
+          <h2
+            class="text-3xl font-bold text-slate-900 dark:text-white"
+            data-i18n="diag_cci_title">
+            Craniocervical Instability (CCI/AAI)
+          </h2>
+        </div>
+        <div
+          class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-orange-100 dark:border-orange-800/50 shadow-sm mb-8">
+          <h3
+            class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-2"
+            data-i18n="diag_cci_trap_title">
+            The Gravity Trap
+          </h3>
+          <p
+            class="text-slate-600 dark:text-slate-300 mb-6"
+            data-i18n="diag_cci_trap_desc">
+            Standard supine MRI is often inconclusive. In this position, muscles
+            are relaxed, and gravity does not press the skull against the spine,
+            so the instability "hides" (vertebrae return to place).
+          </p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div
+              class="p-5 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+              <div class="flex items-center gap-2 mb-3">
+                <i class="text-orange-500" data-lucide="arrow-up-down"></i>
+                <strong
+                  class="text-slate-900 dark:text-white"
+                  data-i18n="diag_cci_upright"
+                  >Upright MRI</strong
+                >
+              </div>
+              <p
+                class="text-sm text-slate-600 dark:text-slate-400"
+                data-i18n="diag_cci_upright_desc">
+                Examination in sitting or standing position, preferably in
+                flexion/extension. This is the only way to see how vertebrae
+                compress the spinal cord under movement.
+              </p>
+            </div>
+            <div
+              class="p-5 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-100 dark:border-slate-700">
+              <div class="flex items-center gap-2 mb-3">
+                <i class="text-orange-500" data-lucide="video"></i>
+                <strong
+                  class="text-slate-900 dark:text-white"
+                  data-i18n="diag_cci_dmx"
+                  >DMX (Digital Motion X-ray)</strong
+                >
+              </div>
+              <p
+                class="text-sm text-slate-600 dark:text-slate-400"
+                data-i18n="diag_cci_dmx_desc">
+                X-ray in motion (video), showing vertebrae "sliding" in
+                real-time.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="bg-orange-100/50 dark:bg-orange-900/20 p-6 rounded-xl border border-orange-200 dark:border-orange-800/50">
+            <h4
+              class="font-bold text-orange-800 dark:text-orange-300 mb-4 flex items-center gap-2">
+              <i class="w-4 h-4" data-lucide="ruler"></i>
+              <span data-i18n="diag_cci_measure_title"
+                >Key Measurements (Radiology)</span
+              >
+            </h4>
+            <ul class="space-y-2 text-sm text-orange-900 dark:text-orange-200">
+              <li class="flex items-start gap-2">
+                <span
+                  class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
+                <span data-i18n="diag_cci_cxa"
+                  ><strong>CXA Angle (Clivo-Axial Angle):</strong> Angle between
+                  the skull base and the odontoid process (risk of brainstem
+                  compression).</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span
+                  class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
+                <span data-i18n="diag_cci_grabb"
+                  ><strong>Grabb-Oakes Method:</strong> Measurement of
+                  compression on the medulla oblongata.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span
+                  class="mt-1.5 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
+                <span data-i18n="diag_cci_bdi"
+                  ><strong>BDI (Basion-Dens Interval).</strong></span
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h4
+              class="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <i class="w-4 h-4 text-orange-500" data-lucide="activity"></i>
+              <span data-i18n="diag_cci_test_title"
+                >Clinical Test (Traction)</span
+              >
+            </h4>
+            <p
+              class="text-sm text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="diag_cci_test_desc">
+              <strong>Manual Traction Test:</strong> Does pulling the head up
+              (by a physiotherapist) bring sudden relief? If so, it suggests a
+              mechanical component.
+            </p>
+            <div
+              class="p-3 bg-slate-50 dark:bg-slate-800 rounded border border-slate-100 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 italic">
+              <i class="w-3 h-3 inline mr-1" data-lucide="info"></i>
+              <span data-i18n="diag_cci_test_note"
+                >The test should be performed by an experienced
+                specialist.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Beighton Score Section -->
+    <section
+      class="fade-in-section py-16 bg-indigo-50/50 dark:bg-slate-950 scroll-mt-20 border-t border-indigo-100 dark:border-indigo-900/30 transition-colors duration-300"
+      id="beighton-score">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="flex items-center gap-3 mb-8">
+          <div
+            class="p-3 bg-indigo-100 dark:bg-indigo-900/40 rounded-xl text-indigo-600 dark:text-indigo-300">
+            <i class="w-8 h-8" data-lucide="activity"></i>
+          </div>
+          <div>
+            <h2
+              class="text-3xl font-bold text-slate-900 dark:text-white"
+              data-i18n="beighton_title">
+              Beighton Score (Hypermobility)
+            </h2>
+            <p
+              class="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl"
+              data-i18n="beighton_desc">
+              A simple screening tool to assess generalized joint hypermobility
+              (a hallmark of EDS). The maximum score is 9 points.
+            </p>
+          </div>
+        </div>
+        <div
+          class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-indigo-100 dark:border-indigo-800/50 shadow-sm max-w-4xl mx-auto">
+          <h3
+            class="text-xl font-bold text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4"
+            data-i18n="beighton_criteria_title">
+            Assessment Criteria
+          </h3>
+          <div class="space-y-6">
+            <!-- 1. Little Fingers -->
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+              <div class="flex-1">
+                <h4
+                  class="font-bold text-slate-800 dark:text-slate-200"
+                  data-i18n="beighton_pinky">
+                  Little Fingers &gt; 90°
+                </h4>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                  data-i18n="beighton_pinky_desc">
+                  Passive dorsiflexion of the little finger beyond 90 degrees.
+                </p>
+              </div>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_left"
+                    >Left</span
+                  >
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_right"
+                    >Right</span
+                  >
+                </label>
+              </div>
+            </div>
+            <!-- 2. Thumbs -->
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+              <div class="flex-1">
+                <h4
+                  class="font-bold text-slate-800 dark:text-slate-200"
+                  data-i18n="beighton_thumb">
+                  Thumb to Forearm
+                </h4>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                  data-i18n="beighton_thumb_desc">
+                  Passive apposition of the thumb to the flexor aspect of the
+                  forearm.
+                </p>
+              </div>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_left"
+                    >Left</span
+                  >
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_right"
+                    >Right</span
+                  >
+                </label>
+              </div>
+            </div>
+            <!-- 3. Elbows -->
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+              <div class="flex-1">
+                <h4
+                  class="font-bold text-slate-800 dark:text-slate-200"
+                  data-i18n="beighton_elbow">
+                  Elbows &gt; 10°
+                </h4>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                  data-i18n="beighton_elbow_desc">
+                  Hyperextension of the elbow beyond 10 degrees.
+                </p>
+              </div>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_left"
+                    >Left</span
+                  >
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_right"
+                    >Right</span
+                  >
+                </label>
+              </div>
+            </div>
+            <!-- 4. Knees -->
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-50 dark:border-slate-800">
+              <div class="flex-1">
+                <h4
+                  class="font-bold text-slate-800 dark:text-slate-200"
+                  data-i18n="beighton_knee">
+                  Knees &gt; 10°
+                </h4>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                  data-i18n="beighton_knee_desc">
+                  Hyperextension of the knee beyond 10 degrees.
+                </p>
+              </div>
+              <div class="flex gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_left"
+                    >Left</span
+                  >
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_right"
+                    >Right</span
+                  >
+                </label>
+              </div>
+            </div>
+            <!-- 5. Spine -->
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="flex-1">
+                <h4
+                  class="font-bold text-slate-800 dark:text-slate-200"
+                  data-i18n="beighton_spine">
+                  Palms to Floor
+                </h4>
+                <p
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                  data-i18n="beighton_spine_desc">
+                  Placing hands flat on the floor with knees fully extended.
+                </p>
+              </div>
+              <div class="flex gap-4 justify-center min-w-[150px]">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input
+                    class="beighton-check w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 border-gray-300 dark:border-slate-600 dark:bg-slate-800"
+                    type="checkbox"
+                    value="1" />
+                  <span
+                    class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    data-i18n="beighton_yes"
+                    >Yes</span
+                  >
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- Result -->
+          <div
+            class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 text-center">
+            <div
+              class="inline-block bg-slate-100 dark:bg-slate-800 rounded-full px-6 py-3 mb-4">
+              <span
+                class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
+                id="beighton-score-display"
+                >0 / 9</span
+              >
+            </div>
+            <p
+              class="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2"
+              id="beighton-result-text">
+              -
+            </p>
+            <p
+              class="text-xs text-slate-500 dark:text-slate-400 italic"
+              data-i18n="beighton_result_note">
+              Remember: This is just a screening test. Diagnosis is made by a
+              doctor (geneticist/rheumatologist) based on full hEDS criteria.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer
+      class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+        <p class="mb-2" data-i18n="footer_text">
+          Educational page created to raise awareness about MCAS and comorbid
+          conditions.
+        </p>
+        <p
+          class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto"
+          data-i18n="footer_disclaimer">
+          <strong>Disclaimer:</strong> The content on this page presents a
+          <strong>theoretical model</strong> of connections between conditions.
+          This is not a prevailing medical standard but a collection of
+          hypotheses based on scientific literature. This information does not
+          replace medical advice.
+        </p>
+        <p>© 2025 NeuroImmune Hub. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- Accessibility Panel -->
+    <div aria-hidden="true" id="accessibility-panel">
+      <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i class="w-5 h-5" data-lucide="accessibility"></i>
+        <span data-i18n="a11y_title">Accessibility</span>
+      </h3>
+      <button class="a11y-btn" id="btn-contrast">
+        <i class="w-4 h-4" data-lucide="contrast"></i>
+        <span data-i18n="a11y_contrast">High Contrast</span>
+      </button>
+      <button class="a11y-btn" id="btn-font">
+        <i class="w-4 h-4" data-lucide="type"></i>
+        <span data-i18n="a11y_font">Increase Text Size</span>
+      </button>
+      <button class="a11y-btn" id="btn-dyslexia">
+        <i class="w-4 h-4" data-lucide="align-left"></i>
+        <span data-i18n="a11y_dyslexia">Dyslexia Friendly Font</span>
+      </button>
+      <div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
+      <button
+        class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
+        id="btn-reset-a11y">
+        <span data-i18n="a11y_reset">Reset Settings</span>
+      </button>
+    </div>
+    <script src="../js/translations.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/accessibility.js"></script>
+  </body>
 </html>

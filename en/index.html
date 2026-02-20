@@ -302,17 +302,29 @@
     </nav>
     <!-- Hero Section -->
     <header
-      class="bg-white dark:bg-slate-900 pt-16 pb-20 px-4 transition-colors duration-300">
-      <div class="max-w-4xl mx-auto text-center">
+      class="bg-white dark:bg-slate-900 pt-16 pb-20 px-4 transition-colors duration-300 relative overflow-hidden">
+      <!-- Glow Blobs -->
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none z-0">
         <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6 border border-red-100 dark:border-red-800">
+          class="absolute top-[-10%] left-[-10%] w-72 h-72 md:w-96 md:h-96 bg-purple-400/20 dark:bg-purple-600/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob"></div>
+        <div
+          class="absolute top-[20%] right-[-10%] w-72 h-72 md:w-96 md:h-96 bg-blue-400/20 dark:bg-blue-600/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div
+          class="absolute bottom-[-20%] left-[20%] w-72 h-72 md:w-96 md:h-96 bg-red-400/20 dark:bg-red-600/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6 border border-red-100 dark:border-red-800 shadow-sm backdrop-blur-sm">
           <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
           <span data-i18n="hero_tag">Theoretical Model / Hypothesis</span>
         </div>
         <h1
-          class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">
+          class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight drop-shadow-sm">
           <span data-i18n="hero_title1">When the body fights itself</span><br />
-          <span class="text-red-600 dark:text-red-500" data-i18n="hero_title2"
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-purple-600 dark:from-red-400 dark:to-purple-400"
+            data-i18n="hero_title2"
             >MCAS, TCS &amp; ME/CFS</span
           >
         </h1>

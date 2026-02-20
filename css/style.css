@@ -18,40 +18,40 @@ body {
 
 /* TTS Voice Message Player UI */
 .voice-player-container {
-    background-color: #f1f5f9; /* slate-100 */
-    border-color: #e2e8f0; /* slate-200 */
+  background-color: #f1f5f9; /* slate-100 */
+  border-color: #e2e8f0; /* slate-200 */
 }
 .dark .voice-player-container {
-    background-color: rgba(30, 41, 59, 0.8); /* slate-800/80 */
-    border-color: #334155; /* slate-700 */
+  background-color: rgba(30, 41, 59, 0.8); /* slate-800/80 */
+  border-color: #334155; /* slate-700 */
 }
 
 .voice-label {
-    color: #64748b; /* slate-500 */
+  color: #64748b; /* slate-500 */
 }
 .dark .voice-label {
-    color: #94a3b8; /* slate-400 */
+  color: #94a3b8; /* slate-400 */
 }
 
 .voice-play-btn {
-    background-color: #4f46e5; /* indigo-600 */
+  background-color: #4f46e5; /* indigo-600 */
 }
 .voice-play-btn:hover {
-    background-color: #4338ca; /* indigo-700 */
+  background-color: #4338ca; /* indigo-700 */
 }
 .voice-play-btn.playing {
-    background-color: #4338ca; /* indigo-700 */
-    transform: scale(0.95);
+  background-color: #4338ca; /* indigo-700 */
+  transform: scale(0.95);
 }
 
 /* Custom Audio Range Slider */
 /* Reset default appearance */
-input[type=range].player-range {
-  -webkit-appearance: none; 
-  background: transparent; 
+input[type="range"].player-range {
+  -webkit-appearance: none;
+  background: transparent;
 }
 
-input[type=range].player-range::-webkit-slider-thumb {
+input[type="range"].player-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 14px;
   width: 14px;
@@ -59,15 +59,15 @@ input[type=range].player-range::-webkit-slider-thumb {
   background: #4f46e5; /* indigo-600 */
   cursor: pointer;
   margin-top: -5px; /* Adjust to center on track */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: transform 0.1s;
 }
 
-input[type=range].player-range::-webkit-slider-thumb:hover {
+input[type="range"].player-range::-webkit-slider-thumb:hover {
   transform: scale(1.2);
 }
 
-input[type=range].player-range::-webkit-slider-runnable-track {
+input[type="range"].player-range::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px; /* Thin track */
   cursor: pointer;
@@ -76,31 +76,31 @@ input[type=range].player-range::-webkit-slider-runnable-track {
 }
 
 /* Firefox Styles */
-input[type=range].player-range::-moz-range-thumb {
+input[type="range"].player-range::-moz-range-thumb {
   height: 14px;
   width: 14px;
   border: none;
   border-radius: 50%;
   background: #4f46e5;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: transform 0.1s;
 }
 
-input[type=range].player-range::-moz-range-track {
+input[type="range"].player-range::-moz-range-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
   border-radius: 9999px;
   background: #cbd5e1; /* Base track color (light mode) */
 }
-.dark input[type=range].player-range::-moz-range-track {
+.dark input[type="range"].player-range::-moz-range-track {
   background: #475569; /* Base track color (dark mode) */
 }
 
 /* Progress fill for Firefox */
-input[type=range].player-range::-moz-range-progress {
-  background-color: #4f46e5; 
+input[type="range"].player-range::-moz-range-progress {
+  background-color: #4f46e5;
   height: 4px;
   border-radius: 9999px;
 }
@@ -116,7 +116,9 @@ input[type=range].player-range::-moz-range-progress {
   background: radial-gradient(circle at center, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 1.5rem;
   border: 1px solid #e2e8f0;
-  transition: background 0.3s, border-color 0.3s;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
 }
 
 /* Dark Mode dla kontenera wizualizacji */
@@ -189,7 +191,10 @@ input[type=range].player-range::-moz-range-progress {
   pointer-events: none;
   z-index: 30;
   white-space: nowrap;
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s;
 }
 
 .dark .diagram-label {
@@ -323,7 +328,9 @@ canvas#simCanvas {
   padding: 16px;
   border-top: 1px solid #e2e8f0;
   z-index: 20;
-  transition: background 0.3s, border-color 0.3s;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
 }
 
 .dark .tension-panel {
@@ -432,7 +439,9 @@ canvas#simCanvas {
   font-weight: 700;
   padding: 6px 10px;
   border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 .nav-btn:hover {
   background: #f1f5f9;
@@ -486,7 +495,9 @@ canvas#simCanvas {
 .js-loaded .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
   will-change: opacity, transform;
 }
 
@@ -573,3 +584,27 @@ canvas#simCanvas {
   color: #f87171; /* red-400 */
 }
 
+/* --- HERO BLOB ANIMATIONS --- */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+.animate-blob {
+  animation: blob 7s infinite;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
