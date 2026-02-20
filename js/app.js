@@ -146,34 +146,112 @@ window.dismissSettingsHint = function () {
   localStorage.setItem("settings_hint_seen", "true");
 };
 
+const translations = {
+  pl: {
+    filter_all: "Wszystkie",
+    lbl_select_act: "Wybierz aktywność...",
+    beighton_result_high: "Wynik wysoki (Sugeruje hipermobilność / hEDS)",
+    beighton_result_low:
+      "Wynik niski (Prawdopodobnie brak uogólnionej hipermobilności)",
+    status_danger: "STAN ZAPALNY",
+    status_baseline: "BAZA (Objawy stabilne)",
+    status_moderate: "Napięcie umiarkowane",
+    guard_speech_healthy: "Zzz... Pełen spokój.",
+    guard_title_healthy: "Ochroniarz Śpi",
+    guard_desc_healthy: "Reaguje tylko na prawdziwych bandytów (wirusy).",
+    status_pass: "WCHODZI",
+    guard_speech_mcas: "ALARM! ON MA POMIDORA! STRZELAĆ!",
+    guard_title_mcas: "Ochroniarz Panikuje",
+    guard_desc_mcas: "Jest przemęczony i uzbrojony. Atakuje niewinnych gości.",
+    status_attack: "ATAKOWANY!",
+    msg_crash: "PEM! System odcięty. Wymagana regeneracja.",
+    msg_ok: "Dla zdrowego to pestka. Bateria pełna.",
+    // Contact Form
+    contact_sending: "Wysyłanie...",
+    contact_success:
+      "Dziękuję za wiadomość! Odpowiem najszybciej jak to możliwe.",
+    contact_error_generic:
+      "Wystąpił błąd przy wysyłaniu wiadomości. Spróbuj ponownie później.",
+    // Tools - Protocol
+    protocol_mcas_title: "Protokół Anestezjologiczny (MCAS)",
+    protocol_mcas_content:
+      "Wysokie ryzyko anafilaksji. UNIKAĆ: Morfiny, Atrakurium, NLPZ, Kontrastu jodowego. PREFEROWANE: Fentanyl, Cisatrakurium, Paracetamol. Wymagana premedykacja (blokery H1+H2 i/lub Sterydy).",
+    protocol_tcs_title:
+      "Pozycjonowanie i Ochrona Kręgosłupa (Zakotwiczenie Rdzenia)",
+    protocol_tcs_content:
+      "KRYTYCZNE: BRAK TRAKCJI KRĘGOSŁUPA. Nie prostować nóg całkowicie. Umieścić wałek pod kolanami, aby zmniejszyć napięcie opony twardej. Unikać nagłego zgięcia.",
+    protocol_cci_title:
+      "Zarządzanie Drogami Oddechowymi i Głową (Niestabilność Czaszkowo-Szyjna)",
+    protocol_cci_content:
+      "KRYTYCZNE: BRAK HIPEREKSTENSJI SZYI podczas intubacji. Ryzyko uszkodzenia pnia mózgu. Używać wideo-laryngoskopu lub intubacji fiberoskopowej. Używać kołnierza ortopedycznego podczas transferu.",
+    protocol_heds_title: "Zaburzenie tkanki łącznej (Kruchość Tkanek)",
+    protocol_heds_content:
+      "Ryzyko rozerwania skóry i zwichnięcia stawów. Używać szwów bez napięcia. Obserwować przebieg leczenia, w razie potrzeby zostawić szwy dłużej. Ostrożnie ze znieczuleniem miejscowym (możliwa oporność).",
+    protocol_mecfs_title: "Ochrona Metaboliczna (ME/CFS)",
+    protocol_mecfs_content:
+      "Minimalizować bodźce w sali wybudzeń (światło/dźwięk). Agresywne nawadnianie dożylne (Sól fizjologiczna), aby zapobiec zaostrzeniu POTS/PEM. Nie wymuszać pozycji pionowej.",
+    protocol_select_msg:
+      "Wybierz schorzenia powyżej, aby wygenerować protokół.",
+    protocol_custom_label_title: "Tytuł Sekcji (np. Leki, Alergie)",
+    protocol_custom_label_content: "Treść (np. Lista leków, dawkowanie)",
+    // Tools - ICE
+    ice_header_title: "INFORMACJE RATUNKOWE",
+  },
+  en: {
+    filter_all: "All",
+    lbl_select_act: "Select activity...",
+    beighton_result_high: "High Score (Suggests hypermobility / hEDS)",
+    beighton_result_low: "Low Score (Likely no generalized hypermobility)",
+    status_danger: "INFLAMMATION",
+    status_baseline: "BASELINE (Symptoms stable)",
+    status_moderate: "Moderate Tension",
+    guard_speech_healthy: "Zzz... All quiet.",
+    guard_title_healthy: "Guard is Sleeping",
+    guard_desc_healthy: "Only reacts to real bad guys (viruses).",
+    status_pass: "ALLOWED",
+    guard_speech_mcas: "ALARM! HE HAS A TOMATO! FIRE!",
+    guard_title_mcas: "Guard is Panicking",
+    guard_desc_mcas: "He is exhausted and armed. He attacks innocent guests.",
+    status_attack: "ATTACKED!",
+    msg_crash: "PEM! System crash. Recovery needed.",
+    msg_ok: "Easy for a healthy person. Battery full.",
+    // Contact Form
+    contact_sending: "Sending...",
+    contact_success:
+      "Thank you for your message! I will reply as soon as possible.",
+    contact_error_generic:
+      "An error occurred while sending the message. Please try again later.",
+    // Tools - Protocol
+    protocol_mcas_title: "Anesthetic Protocol (MCAS)",
+    protocol_mcas_content:
+      "High risk of anaphylaxis. AVOID: Morphine, Atracurium, NSAIDs, Iodine contrast. PREFERRED: Fentanyl, Cisatracurium, Paracetamol. Premedication required (H1+H2 blockers and/or Steroids).",
+    protocol_tcs_title:
+      "Positioning & Spine Protection (Tethered Cord Syndrome)",
+    protocol_tcs_content:
+      "CRITICAL: NO SPINAL TRACTION. Do not straighten legs fully. Place a bolster under knees to reduce dural tension. Avoid sudden flexion.",
+    protocol_cci_title:
+      "Airway & Head Management (Cranio-Cervical Spine Instability)",
+    protocol_cci_content:
+      "CRITICAL: NO NECK HYPEREXTENSION during intubation. Risk of brainstem injury. Use Video-laryngoscope or Fiberoptic intubation. Use cervical collar during transfer.",
+    protocol_heds_title: "Connective Tissue Disorder (Tissue Fragility)",
+    protocol_heds_content:
+      "Risk of skin tearing and joint dislocation. Use non-tension sutures. Observe healing process, leave sutures longer if needed. Caution with local anesthesia (possible resistance).",
+    protocol_mecfs_title: "Metabolic Protection (ME/CFS)",
+    protocol_mecfs_content:
+      "Minimize stimuli in recovery room (light/sound). Aggressive IV hydration (Saline) to prevent POTS/PEM crash. Do not force upright posture.",
+    protocol_select_msg: "Select conditions above to generate protocol.",
+    protocol_custom_label_title: "Section Title (e.g. Meds, Allergies)",
+    protocol_custom_label_content: "Content (e.g. List of meds, dosage)",
+    // Tools - ICE
+    ice_header_title: "EMERGENCY INFO",
+  },
+};
+
+// Update static text (data-i18n) - REMOVED as HTML is static
+// Update placeholders - REMOVED
+// Update aria-labels - REMOVED
+
 function updateLanguageUI() {
-  // 1. Update statycznych tekstów (data-i18n)
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[currentLang] && translations[currentLang][key]) {
-      el.innerHTML = translations[currentLang][key];
-    }
-  });
-
-  // 2. Update placeholderów
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    if (translations[currentLang] && translations[currentLang][key]) {
-      el.placeholder = translations[currentLang][key];
-    }
-  });
-
-  // 2a. Update aria-label
-  document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-aria-label");
-    if (translations[currentLang] && translations[currentLang][key]) {
-      el.setAttribute("aria-label", translations[currentLang][key]);
-    }
-  });
-
-  // 3. Internal links already use relative paths within each language directory
-  // No modification needed since we use subdirectory structure
-
   // 4. Update opisów w symulacji kręgosłupa
   if (
     typeof updatePoseDescriptions === "function" &&
@@ -207,9 +285,6 @@ function updateLanguageUI() {
     setSeverity(currentSeverity);
   }
 
-  // 6. Update SEO Meta Tags
-  updateSEO();
-
   // 7. Load Blog Post if on article page
   if (document.getElementById("post-content")) {
     loadBlogPost();
@@ -221,47 +296,7 @@ function updateLanguageUI() {
   }
 }
 
-/**
- * Updates SEO meta tags dynamically.
- * Note: Since we have static HTML files for languages, this might be redundant for static serving,
- * but useful if switching content dynamically or ensuring consistency.
- */
-function updateSEO() {
-  if (!translations[currentLang]) return;
-
-  const t = translations[currentLang];
-  const path = window.location.pathname;
-  // Determine page prefix for translation keys
-  let pagePrefix = "seo_index"; // Default
-
-  if (path.includes("diagnostics.html")) pagePrefix = "seo_diagnostics";
-  else if (path.includes("tools.html")) pagePrefix = "seo_tools";
-  else if (path.includes("contact.html")) pagePrefix = "seo_contact";
-  else if (path.includes("treatment.html")) pagePrefix = "seo_treatment";
-  else if (path.includes("blog.html")) pagePrefix = "seo_blog";
-
-  // Update Title
-  if (t[pagePrefix + "_title"]) {
-    document.title = t[pagePrefix + "_title"];
-    setMeta("og:title", t[pagePrefix + "_title"]);
-    setMeta("twitter:title", t[pagePrefix + "_title"]);
-  }
-
-  // Update Description
-  if (t[pagePrefix + "_desc"]) {
-    setMeta("description", t[pagePrefix + "_desc"], "name");
-    setMeta("og:description", t[pagePrefix + "_desc"]);
-    setMeta("twitter:description", t[pagePrefix + "_desc"]);
-  }
-
-  // Update Keywords
-  if (t.seo_keywords) {
-    setMeta("keywords", t.seo_keywords, "name");
-  }
-
-  // Update Canonical & Hreflang
-  updateRelTags();
-}
+// updateSEO removed as it is redundant with static HTML files
 
 /**
  * Updates canonical and hreflang tags based on current language and path.

@@ -1,230 +1,468 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 
 <html class="scroll-smooth" lang="pl">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<!-- SEO Meta Tags -->
-<link href="https://www.neuroimmunehub.com/blog.html" rel="canonical"/>
-<link href="https://www.neuroimmunehub.com/blog.html" hreflang="pl" rel="alternate"/>
-<link href="https://www.neuroimmunehub.com/en/blog.html" hreflang="en" rel="alternate"/>
-<link href="https://www.neuroimmunehub.com/en/blog.html" hreflang="x-default" rel="alternate"/>
-<meta content="Blog NeuroImmune Hub – najnowsze artykuły, badania i analizy dotyczące MCAS i chorób współistniejących. Bądź na bieżąco z wiedzą medyczną." name="description"/>
-<meta content="Blog MCAS, Artykuły medyczne, Badania TCS, Wiedza ME/CFS, Neuroimmunologia blog, Porady zdrowotne, Nietolerancja Histaminy, HIT, SIBO, Long Covid, Mgła mózgowa, Brain Fog, Zespół Post-COVID, Mastocytoza, Niestabilność Kręgosłupa Szyjnego, CCI" name="keywords"/>
-<meta content="NeuroImmune Hub" name="author"/>
-<meta content="index, follow" name="robots"/>
-<!-- Open Graph / Facebook -->
-<meta content="website" property="og:type"/>
-<meta content="https://www.neuroimmunehub.com/blog.html" property="og:url"/>
-<meta content="Blog NeuroImmune Hub – MCAS, TCS &amp; ME/CFS" property="og:title"/>
-<meta content="Odkryj najnowsze wpisy i analizy na temat Zespołu Aktywacji Komórek Tucznych, Zakotwiczenia Rdzenia i innych powiązanych schorzeń." property="og:description"/>
-<meta content="https://www.neuroimmunehub.com/img/banner_image.webp" property="og:image"/>
-<!-- Twitter -->
-<meta content="summary_large_image" property="twitter:card"/>
-<meta content="https://www.neuroimmunehub.com/blog.html" property="twitter:url"/>
-<meta content="Blog NeuroImmune Hub – MCAS, TCS &amp; ME/CFS" property="twitter:title"/>
-<meta content="Odkryj najnowsze wpisy i analizy na temat Zespołu Aktywacji Komórek Tucznych, Zakotwiczenia Rdzenia i innych powiązanych schorzeń." property="twitter:description"/>
-<meta content="https://www.neuroimmunehub.com/img/banner_image.webp" property="twitter:image"/>
-<title>Blog – NeuroImmune Hub</title>
-<link href="img/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="css/output.css" rel="stylesheet"/>
-<!-- Inline dark mode init - prevents flash of unstyled content -->
-<script>
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <!-- SEO Meta Tags -->
+    <link href="https://www.neuroimmunehub.com/blog.html" rel="canonical" />
+    <link
+      href="https://www.neuroimmunehub.com/blog.html"
+      hreflang="pl"
+      rel="alternate" />
+    <link
+      href="https://www.neuroimmunehub.com/en/blog.html"
+      hreflang="en"
+      rel="alternate" />
+    <link
+      href="https://www.neuroimmunehub.com/en/blog.html"
+      hreflang="x-default"
+      rel="alternate" />
+    <meta
+      content="Blog NeuroImmune Hub – najnowsze artykuły, badania i analizy dotyczące MCAS i chorób współistniejących. Bądź na bieżąco z wiedzą medyczną."
+      name="description" />
+    <meta
+      content="Blog MCAS, Artykuły medyczne, Badania TCS, Wiedza ME/CFS, Neuroimmunologia blog, Porady zdrowotne, Nietolerancja Histaminy, HIT, SIBO, Long Covid, Mgła mózgowa, Brain Fog, Zespół Post-COVID, Mastocytoza, Niestabilność Kręgosłupa Szyjnego, CCI"
+      name="keywords" />
+    <meta content="NeuroImmune Hub" name="author" />
+    <meta content="index, follow" name="robots" />
+    <!-- Open Graph / Facebook -->
+    <meta content="website" property="og:type" />
+    <meta
+      content="https://www.neuroimmunehub.com/blog.html"
+      property="og:url" />
+    <meta
+      content="Blog NeuroImmune Hub – MCAS, TCS &amp; ME/CFS"
+      property="og:title" />
+    <meta
+      content="Odkryj najnowsze wpisy i analizy na temat Zespołu Aktywacji Komórek Tucznych, Zakotwiczenia Rdzenia i innych powiązanych schorzeń."
+      property="og:description" />
+    <meta
+      content="https://www.neuroimmunehub.com/img/banner_image.webp"
+      property="og:image" />
+    <!-- Twitter -->
+    <meta content="summary_large_image" property="twitter:card" />
+    <meta
+      content="https://www.neuroimmunehub.com/blog.html"
+      property="twitter:url" />
+    <meta
+      content="Blog NeuroImmune Hub – MCAS, TCS &amp; ME/CFS"
+      property="twitter:title" />
+    <meta
+      content="Odkryj najnowsze wpisy i analizy na temat Zespołu Aktywacji Komórek Tucznych, Zakotwiczenia Rdzenia i innych powiązanych schorzeń."
+      property="twitter:description" />
+    <meta
+      content="https://www.neuroimmunehub.com/img/banner_image.webp"
+      property="twitter:image" />
+    <title>Blog – NeuroImmune Hub</title>
+    <link href="img/favicon.svg" rel="icon" type="image/svg+xml" />
+    <link href="css/output.css" rel="stylesheet" />
+    <!-- Inline dark mode init - prevents flash of unstyled content -->
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     </script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="css/accessibility.css" rel="stylesheet"/>
-<script async="" data-goatcounter="https://despise.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
-<script>
-  (function (s, e, n, d, er) {
-    s['Sender'] = er;
-    s[er] = s[er] || function () {
-      (s[er].q = s[er].q || []).push(arguments)
-    }, s[er].l = 1 * new Date();
-    var a = e.createElement(n),
-        m = e.getElementsByTagName(n)[0];
-    a.async = 1;
-    a.src = d;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
-  sender('05107064323928')
-</script>
-</head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
-<!-- Nawigacja -->
-<nav class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
-<div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
-<a href="index.html" class="flex items-center space-x-3">
-<div class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
-<i class="w-5 h-5" data-lucide="activity"></i>
-</div>
-<div>
-<span class="block text-lg font-bold text-slate-900 dark:text-white leading-none">NeuroImmune Hub</span>
-<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">MCAS • TCS • ME/CFS</span>
-</div>
-</a>
-<!-- Desktop Menu -->
-<div class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_home" href="index.html">Strona Główna</a>
-            <a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500" data-i18n="nav_blog" href="blog.html">Blog</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_diagnostics" href="diagnostics.html">Diagnostyka</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_treatment" href="treatment.html">Leczenie</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_tools" href="tools.html">Narzędzia</a>
-<a class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium" data-i18n="nav_contact" href="contact.html">Kontakt</a>
-<div class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
-<button aria-label="Opcje dostępności" class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtn" title="Opcje dostępności">
-<i class="w-5 h-5" data-lucide="accessibility"></i>
-</button>
-<button class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtn" onclick="toggleTheme()" title="Przełącz tryb ciemny">
-<i class="w-4 h-4" data-lucide="moon"></i>
-</button>
-<button class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtn" onclick="toggleLang()">PL</button>
-</div>
-</div>
-<!-- Mobile Menu Button -->
-<button class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" id="mobile-menu-btn">
-<i class="w-6 h-6" data-lucide="menu"></i>
-</button>
-<!-- Settings Hint (First Visit) -->
-<div class="hidden absolute top-20 right-4 z-50 w-64 bg-indigo-600 text-white p-4 rounded-xl shadow-xl transform transition-all duration-500 opacity-0 translate-y-2" id="settings-hint">
-<div class="absolute -top-2 right-3 w-4 h-4 bg-indigo-600 transform rotate-45"></div>
-<div class="relative">
-<div class="flex justify-between items-start mb-2">
-<h4 class="font-bold text-sm flex items-center gap-2">
-<i class="w-4 h-4" data-lucide="settings"></i>
-<span data-i18n="hint_settings_title">Dostosuj stronę / Customize</span>
-</h4>
-<button aria-label="Zamknij" class="text-white/70 hover:text-white" data-i18n-aria-label="btn_close" onclick="dismissSettingsHint()"><i class="w-4 h-4" data-lucide="x"></i></button>
-</div>
-<p class="text-xs text-indigo-100 mb-3 leading-relaxed" data-i18n="hint_settings_desc">Możesz zmienić język, tryb ciemny oraz ustawienia dostępności tutaj.<br/><span class="block mt-2 pt-2 border-t border-white/20 text-indigo-200">You can change language, dark mode, and accessibility settings here.</span></p>
-<button class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg transition-colors font-medium w-full" data-i18n="hint_settings_btn" onclick="dismissSettingsHint()">OK / Got it</button>
-</div>
-</div>
-</div>
-<!-- Mobile Menu Overlay -->
-<div class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden" id="mobile-backdrop"></div>
-<div class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col" id="mobile-menu">
-<div class="px-4 py-4 space-y-4">
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_home" href="index.html">Strona Główna</a>
-            <a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 font-bold text-red-700 dark:text-red-500" data-i18n="nav_blog" href="blog.html">Blog</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_diagnostics" href="diagnostics.html">Diagnostyka</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_treatment" href="treatment.html">Leczenie</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_tools" href="tools.html">Narzędzia</a>
-<a class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400" data-i18n="nav_contact" href="contact.html">Kontakt</a>
-<div class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-<button class="nav-btn text-slate-500 dark:text-slate-400" id="a11yBtnMobile" title="Opcje dostępności">
-<i class="w-5 h-5" data-lucide="accessibility"></i>
-</button>
-<button class="nav-btn text-slate-500 dark:text-slate-400" id="themeBtnMobile" onclick="toggleTheme()" title="Przełącz tryb ciemny">
-<i class="w-4 h-4" data-lucide="moon"></i>
-</button>
-<button class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300" id="langBtnMobile" onclick="toggleLang()">PL</button>
-</div>
-</div>
-</div>
-</nav>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap"
+      rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/accessibility.css" rel="stylesheet" />
+    <script
+      async=""
+      data-goatcounter="https://despise.goatcounter.com/count"
+      src="//gc.zgo.at/count.js"></script>
+    <script>
+      (function (s, e, n, d, er) {
+        s["Sender"] = er;
+        ((s[er] =
+          s[er] ||
+          function () {
+            (s[er].q = s[er].q || []).push(arguments);
+          }),
+          (s[er].l = 1 * new Date()));
+        var a = e.createElement(n),
+          m = e.getElementsByTagName(n)[0];
+        a.async = 1;
+        a.src = d;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://cdn.sender.net/accounts_resources/universal.js",
+        "sender",
+      );
+      sender("05107064323928");
+    </script>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <!-- Nawigacja -->
+    <nav
+      class="bg-white/90 border-b border-slate-200 sticky top-0 z-[100] shadow-sm backdrop-blur-sm dark:bg-slate-900/90 dark:border-slate-800 transition-colors duration-300">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
+        <a href="index.html" class="flex items-center space-x-3">
+          <div
+            class="w-9 h-9 bg-gradient-to-br from-red-600 to-red-800 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+            <i class="w-5 h-5" data-lucide="activity"></i>
+          </div>
+          <div>
+            <span
+              class="block text-lg font-bold text-slate-900 dark:text-white leading-none"
+              >NeuroImmune Hub</span
+            >
+            <span class="text-xs text-slate-500 dark:text-slate-400 font-medium"
+              >MCAS • TCS • ME/CFS</span
+            >
+          </div>
+        </a>
+        <!-- Desktop Menu -->
+        <div
+          class="hidden md:flex gap-4 items-center text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_home"
+            href="index.html"
+            >Strona Główna</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-semibold text-red-700 dark:text-red-500"
+            data-i18n="nav_blog"
+            href="blog.html"
+            >Blog</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_diagnostics"
+            href="diagnostics.html"
+            >Diagnostyka</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_treatment"
+            href="treatment.html"
+            >Leczenie</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_tools"
+            href="tools.html"
+            >Narzędzia</a
+          >
+          <a
+            class="hover:text-red-600 dark:hover:text-red-400 transition-colors font-medium"
+            data-i18n="nav_contact"
+            href="contact.html"
+            >Kontakt</a
+          >
+          <div
+            class="flex items-center gap-2 border-l pl-4 border-slate-300 dark:border-slate-700">
+            <button
+              aria-label="Opcje dostępności"
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="a11yBtn"
+              title="Opcje dostępności">
+              <i class="w-5 h-5" data-lucide="accessibility"></i>
+            </button>
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="themeBtn"
+              onclick="toggleTheme()"
+              title="Przełącz tryb ciemny">
+              <i class="w-4 h-4" data-lucide="moon"></i>
+            </button>
+            <button
+              class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300"
+              id="langBtn"
+              onclick="toggleLang()">
+              PL
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+          id="mobile-menu-btn">
+          <i class="w-6 h-6" data-lucide="menu"></i>
+        </button>
+        <!-- Settings Hint (First Visit) -->
+        <div
+          class="hidden absolute top-20 right-4 z-50 w-64 bg-indigo-600 text-white p-4 rounded-xl shadow-xl transform transition-all duration-500 opacity-0 translate-y-2"
+          id="settings-hint">
+          <div
+            class="absolute -top-2 right-3 w-4 h-4 bg-indigo-600 transform rotate-45"></div>
+          <div class="relative">
+            <div class="flex justify-between items-start mb-2">
+              <h4 class="font-bold text-sm flex items-center gap-2">
+                <i class="w-4 h-4" data-lucide="settings"></i>
+                <span data-i18n="hint_settings_title"
+                  >Dostosuj stronę / Customize</span
+                >
+              </h4>
+              <button
+                aria-label="Zamknij"
+                class="text-white/70 hover:text-white"
+                data-i18n-aria-label="btn_close"
+                onclick="dismissSettingsHint()">
+                <i class="w-4 h-4" data-lucide="x"></i>
+              </button>
+            </div>
+            <p
+              class="text-xs text-indigo-100 mb-3 leading-relaxed"
+              data-i18n="hint_settings_desc">
+              Możesz zmienić język, tryb ciemny oraz ustawienia dostępności
+              tutaj.<br /><span
+                class="block mt-2 pt-2 border-t border-white/20 text-indigo-200"
+                >You can change language, dark mode, and accessibility settings
+                here.</span
+              >
+            </p>
+            <button
+              class="text-xs bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg transition-colors font-medium w-full"
+              data-i18n="hint_settings_btn"
+              onclick="dismissSettingsHint()">
+              OK / Got it
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu Overlay -->
+      <div
+        class="hidden absolute top-full left-0 w-full h-screen bg-black/50 backdrop-blur-sm z-40 md:hidden"
+        id="mobile-backdrop"></div>
+      <div
+        class="hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl z-50 md:hidden flex flex-col"
+        id="mobile-menu">
+        <div class="px-4 py-4 space-y-4">
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_home"
+            href="index.html"
+            >Strona Główna</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 font-bold text-red-700 dark:text-red-500"
+            data-i18n="nav_blog"
+            href="blog.html"
+            >Blog</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_diagnostics"
+            href="diagnostics.html"
+            >Diagnostyka</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_treatment"
+            href="treatment.html"
+            >Leczenie</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_tools"
+            href="tools.html"
+            >Narzędzia</a
+          >
+          <a
+            class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400"
+            data-i18n="nav_contact"
+            href="contact.html"
+            >Kontakt</a
+          >
+          <div
+            class="flex items-center gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="a11yBtnMobile"
+              title="Opcje dostępności">
+              <i class="w-5 h-5" data-lucide="accessibility"></i>
+            </button>
+            <button
+              class="nav-btn text-slate-500 dark:text-slate-400"
+              id="themeBtnMobile"
+              onclick="toggleTheme()"
+              title="Przełącz tryb ciemny">
+              <i class="w-4 h-4" data-lucide="moon"></i>
+            </button>
+            <button
+              class="nav-btn border border-slate-300 dark:border-slate-600 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-300"
+              id="langBtnMobile"
+              onclick="toggleLang()">
+              PL
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
 
     <!-- Blog Header -->
-    <header class="bg-indigo-600 dark:bg-indigo-900 py-16 px-4 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-3xl md:text-5xl font-bold text-white mb-4" data-i18n="blog_title">Blog & Aktualności</h1>
-            <p class="text-indigo-100 text-lg max-w-2xl mx-auto" data-i18n="blog_desc">Najnowsze artykuły, badania i przemyślenia na temat MCAS, TCS i ME/CFS.</p>
-        </div>
+    <header
+      class="bg-indigo-600 dark:bg-indigo-900 py-16 px-4 transition-colors duration-300">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1
+          class="text-3xl md:text-5xl font-bold text-white mb-4"
+          data-i18n="blog_title">
+          Blog & Aktualności
+        </h1>
+        <p
+          class="text-indigo-100 text-lg max-w-2xl mx-auto"
+          data-i18n="blog_desc">
+          Najnowsze artykuły, badania i przemyślenia na temat MCAS, TCS i
+          ME/CFS.
+        </p>
+      </div>
     </header>
 
     <!-- Blog Grid -->
-    <main class="max-w-7xl mx-auto px-4 py-16 bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors duration-300">
-        
-        <!-- Filter & Sort Controls -->
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
-            <!-- Tags Filter -->
-            <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="blog-tags">
-                <!-- Tags will be injected here via JS -->
-            </div>
-            
-            <!-- Sort Dropdown (Custom) -->
-             <div class="relative z-20">
-                <button id="sortBtn" class="flex items-center gap-2 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:border-indigo-300 dark:hover:border-indigo-700 group">
-                    <span class="text-sm font-semibold text-slate-500 dark:text-slate-400" data-i18n="sort_label">Sortuj:</span>
-                    <span id="sortLabel" class="text-sm font-medium text-slate-800 dark:text-slate-200 min-w-[4rem] text-left">Najnowsze</span>
-                    <i data-lucide="chevron-down" id="sortIcon" class="w-4 h-4 text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-transform duration-300"></i>
-                </button>
-                
-                <!-- Dropdown Menu -->
-                <div id="sortMenu" class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 py-2 animate-in fade-in zoom-in-95 duration-200 origin-top-right">
-                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="date-desc">
-                        <span data-i18n="sort_newest">Najnowsze</span>
-                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
-                    </button>
-                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="date-asc">
-                        <span data-i18n="sort_oldest">Najstarsze</span>
-                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
-                    </button>
-                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="time-asc">
-                        <span data-i18n="sort_shortest">Najkrótsze</span>
-                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
-                    </button>
-                    <button class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item" data-value="time-desc">
-                        <span data-i18n="sort_longest">Najdłuższe</span>
-                        <i data-lucide="check" class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
-                    </button>
-                </div>
-            </div>
+    <main
+      class="max-w-7xl mx-auto px-4 py-16 bg-slate-50 dark:bg-slate-950 min-h-screen transition-colors duration-300">
+      <!-- Filter & Sort Controls -->
+      <div
+        class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <!-- Tags Filter -->
+        <div
+          class="flex flex-wrap gap-2 justify-center md:justify-start"
+          id="blog-tags">
+          <!-- Tags will be injected here via JS -->
         </div>
 
-        <!-- Posts Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
-            <!-- Loading State -->
-            <div class="col-span-full flex justify-center py-20">
-                <div class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-            </div>
+        <!-- Sort Dropdown (Custom) -->
+        <div class="relative z-20">
+          <button
+            id="sortBtn"
+            class="flex items-center gap-2 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:border-indigo-300 dark:hover:border-indigo-700 group">
+            <span
+              class="text-sm font-semibold text-slate-500 dark:text-slate-400"
+              data-i18n="sort_label"
+              >Sortuj:</span
+            >
+            <span
+              id="sortLabel"
+              class="text-sm font-medium text-slate-800 dark:text-slate-200 min-w-[4rem] text-left"
+              >Najnowsze</span
+            >
+            <i
+              data-lucide="chevron-down"
+              id="sortIcon"
+              class="w-4 h-4 text-slate-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-transform duration-300"></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div
+            id="sortMenu"
+            class="hidden absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 py-2 animate-in fade-in zoom-in-95 duration-200 origin-top-right">
+            <button
+              class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item"
+              data-value="date-desc">
+              <span data-i18n="sort_newest">Najnowsze</span>
+              <i
+                data-lucide="check"
+                class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item"
+              data-value="date-asc">
+              <span data-i18n="sort_oldest">Najstarsze</span>
+              <i
+                data-lucide="check"
+                class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item"
+              data-value="time-asc">
+              <span data-i18n="sort_shortest">Najkrótsze</span>
+              <i
+                data-lucide="check"
+                class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+            </button>
+            <button
+              class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between group/item"
+              data-value="time-desc">
+              <span data-i18n="sort_longest">Najdłuższe</span>
+              <i
+                data-lucide="check"
+                class="w-4 h-4 text-indigo-600 opacity-0 group-[.active]/item:opacity-100 transition-opacity"></i>
+            </button>
+          </div>
         </div>
+      </div>
+
+      <!-- Posts Grid -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        id="blog-grid">
+        <!-- Loading State -->
+        <div class="col-span-full flex justify-center py-20">
+          <div
+            class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
+        </div>
+      </div>
     </main>
-    
-<footer class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
-<div class="max-w-6xl mx-auto px-4 text-center text-sm">
-<p class="mb-2" data-i18n="footer_text">Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i chorobach współistniejących.</p>
-<p class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto" data-i18n="footer_disclaimer"><strong>Zastrzeżenie:</strong> Treści na tej stronie prezentują <strong>teoretyczny model</strong> powiązań między schorzeniami. Nie jest to obowiązujący standard medyczny, lecz zbiór hipotez opartych na literaturze naukowej. Informacje te nie zastępują porady lekarskiej.</p>
-<p>© 2026 NeuroImmune Hub. All rights reserved.</p>
-</div>
-</footer>
-<!-- Accessibility Panel -->
-<div aria-hidden="true" id="accessibility-panel">
-<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-<i class="w-5 h-5" data-lucide="accessibility"></i>
-<span data-i18n="a11y_title">Dostępność</span>
-</h3>
-<button class="a11y-btn" id="btn-contrast">
-<i class="w-4 h-4" data-lucide="contrast"></i>
-<span data-i18n="a11y_contrast">Wysoki Kontrast</span>
-</button>
-<button class="a11y-btn" id="btn-font">
-<i class="w-4 h-4" data-lucide="type"></i>
-<span data-i18n="a11y_font">Powiększ Tekst</span>
-</button>
-<button class="a11y-btn" id="btn-dyslexia">
-<i class="w-4 h-4" data-lucide="align-left"></i>
-<span data-i18n="a11y_dyslexia">Czcionka dla Dyslektyków</span>
-</button>
-<div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
-<button class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors" id="btn-reset-a11y">
-<span data-i18n="a11y_reset">Resetuj ustawienia</span>
-</button>
-</div>
 
-<!-- Back to Top Button -->
-<button aria-label="Back to top" class="fixed bottom-20 right-6 z-40 p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 translate-y-10 pointer-events-none" id="btn-back-to-top">
-<i class="w-6 h-6" data-lucide="arrow-up"></i>
-</button>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="js/translations.js"></script>
-<script src="js/app.js"></script>
-<script src="js/accessibility.js"></script>
-</body>
+    <footer
+      class="bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-500 py-8 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm">
+        <p class="mb-2" data-i18n="footer_text">
+          Strona edukacyjna stworzona w celu szerzenia świadomości o MCAS i
+          chorobach współistniejących.
+        </p>
+        <p
+          class="mb-4 text-xs text-slate-600 dark:text-slate-400 italic max-w-3xl mx-auto"
+          data-i18n="footer_disclaimer">
+          <strong>Zastrzeżenie:</strong> Treści na tej stronie prezentują
+          <strong>teoretyczny model</strong> powiązań między schorzeniami. Nie
+          jest to obowiązujący standard medyczny, lecz zbiór hipotez opartych na
+          literaturze naukowej. Informacje te nie zastępują porady lekarskiej.
+        </p>
+        <p>© 2026 NeuroImmune Hub. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- Accessibility Panel -->
+    <div aria-hidden="true" id="accessibility-panel">
+      <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+        <i class="w-5 h-5" data-lucide="accessibility"></i>
+        <span data-i18n="a11y_title">Dostępność</span>
+      </h3>
+      <button class="a11y-btn" id="btn-contrast">
+        <i class="w-4 h-4" data-lucide="contrast"></i>
+        <span data-i18n="a11y_contrast">Wysoki Kontrast</span>
+      </button>
+      <button class="a11y-btn" id="btn-font">
+        <i class="w-4 h-4" data-lucide="type"></i>
+        <span data-i18n="a11y_font">Powiększ Tekst</span>
+      </button>
+      <button class="a11y-btn" id="btn-dyslexia">
+        <i class="w-4 h-4" data-lucide="align-left"></i>
+        <span data-i18n="a11y_dyslexia">Czcionka dla Dyslektyków</span>
+      </button>
+      <div class="border-t border-slate-200 dark:border-slate-700 my-3"></div>
+      <button
+        class="w-full py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors"
+        id="btn-reset-a11y">
+        <span data-i18n="a11y_reset">Resetuj ustawienia</span>
+      </button>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button
+      aria-label="Back to top"
+      class="fixed bottom-20 right-6 z-40 p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 translate-y-10 pointer-events-none"
+      id="btn-back-to-top">
+      <i class="w-6 h-6" data-lucide="arrow-up"></i>
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/accessibility.js"></script>
+  </body>
 </html>
