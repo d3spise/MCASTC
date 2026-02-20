@@ -1,27 +1,29 @@
 [
-    {
-        "id": "Petra-Klinge-Intro",
-        "title": "Dr. Petra Klinge: Hope for patients with \"invisible\" spine conditions.",
-        "date": "2026-02-06",
-        "desc": "In this article I will introduce Dr. Petra Klinge and her awesome achievements.",
-        "image": "img/petraklinge.webp",
-        "tags": [
-            "research",
-            "tethered cord syndrome",
-            "tcs"
-        ],
-        "readTime": 3
-    },
-    {
-        "id": "nowosc-blog",
-        "title": "New addition to the website! Blog articles.",
-        "date": "2026-02-05",
-        "desc": "Starting now, new articles expanding the website's topic will appear from time to time.",
-        "image": "img/banner_image.webp",
-        "tags": [
-            "new",
-            "general"
-        ],
-        "readTime": 1
-    }
+  {
+    "id": "low-histamine-diet",
+    "title": "Low histamine diet guide: How to regain control of your comfort",
+    "date": "2026-02-20",
+    "desc": "In this guide you'll learn the basics of a low histamine diet and how to start it yourself",
+    "image": "img/low-histamine-blog.webp",
+    "tags": ["mcas"],
+    "readTime": 5
+  },
+  {
+    "id": "Petra-Klinge-Intro",
+    "title": "Dr. Petra Klinge: Hope for patients with \"invisible\" spine conditions.",
+    "date": "2026-02-06",
+    "desc": "In this article I will introduce Dr. Petra Klinge and her awesome achievements.",
+    "image": "img/petraklinge.webp",
+    "tags": ["research", "tethered cord syndrome", "tcs"],
+    "readTime": 3
+  },
+  {
+    "id": "nowosc-blog",
+    "title": "New addition to the website! Blog articles.",
+    "date": "2026-02-05",
+    "desc": "Starting now, new articles expanding the website's topic will appear from time to time.",
+    "image": "img/banner_image.webp",
+    "tags": ["new", "general"],
+    "readTime": 1
+  }
 ]

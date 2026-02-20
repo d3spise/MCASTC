@@ -1,27 +1,29 @@
 [
-    {
-        "id": "Petra-Klinge-Intro",
-        "title": "Dr Petra Klinge: Nadzieja dla pacjentów z „niewidzialnymi” schorzeniami kręgosłupa.",
-        "date": "2026-02-06",
-        "desc": "W tym artykule przedstawiam postać dr Petry Klinge oraz jej niesamowite osiągnięcia dla pacjentów.",
-        "image": "img/petraklinge.webp",
-        "tags": [
-            "research",
-            "zakotwiczenie rdzenia",
-            "tcs"
-        ],
-        "readTime": 3
-    },
-    {
-        "id": "nowosc-blog",
-        "title": "Nowość na stronie! Artykuły blogowe.",
-        "date": "2026-02-05",
-        "desc": "Od teraz pojawiać się będa co jakiś czas artykuły poświecone rozwinięciu tematyki strony.",
-        "image": "img/banner_image.webp",
-        "tags": [
-            "nowości",
-            "ogólne"
-        ],
-        "readTime": 1
-    }
+  {
+    "id": "low-histamine-diet",
+    "title": "Przewodnik po diecie niskohistaminowej: Jak odzyskać kontrolę nad samopoczuciem",
+    "date": "2026-02-20",
+    "desc": "W tym poradniku poznasz podstawy diety niskohistaminowej oraz dowiesz się jak ją rozpocząć",
+    "image": "img/low-histamine-blog.webp",
+    "tags": ["mcas"],
+    "readTime": 5
+  },
+  {
+    "id": "Petra-Klinge-Intro",
+    "title": "Dr Petra Klinge: Nadzieja dla pacjentów z „niewidzialnymi” schorzeniami kręgosłupa.",
+    "date": "2026-02-06",
+    "desc": "W tym artykule przedstawiam postać dr Petry Klinge oraz jej niesamowite osiągnięcia dla pacjentów.",
+    "image": "img/petraklinge.webp",
+    "tags": ["research", "zakotwiczenie rdzenia", "tcs"],
+    "readTime": 3
+  },
+  {
+    "id": "nowosc-blog",
+    "title": "Nowość na stronie! Artykuły blogowe.",
+    "date": "2026-02-05",
+    "desc": "Od teraz pojawiać się będa co jakiś czas artykuły poświecone rozwinięciu tematyki strony.",
+    "image": "img/banner_image.webp",
+    "tags": ["nowości", "ogólne"],
+    "readTime": 1
+  }
 ]
