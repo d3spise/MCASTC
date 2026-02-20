@@ -1,5 +1,3 @@
-# A Guide to the Low-Histamine Diet: How to Regain Control of Your Well-being
-
 Histamine is a naturally occurring chemical in the body that performs crucial functions – from regulating stomach acid to participating in immune responses. The problem arises when the body cannot keep up with breaking it down (often due to a DAO enzyme deficiency) or when its release is inadequately high, which can be a component of histamine intolerance or Mast Cell Activation Syndrome (MCAS). In such situations, a proper diet becomes the primary tool for soothing symptoms.
 
 ## Main Principles of the Diet
