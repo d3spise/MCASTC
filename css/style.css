@@ -608,3 +608,215 @@ canvas#simCanvas {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* --- TOOLTIPS FOR MEDICAL TERMS --- */
+.tooltip-term {
+  position: relative;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #6366f1;
+  cursor: help;
+}
+
+.tooltip-term:hover {
+  color: #4f46e5;
+}
+
+.dark .tooltip-term:hover {
+  color: #818cf8;
+}
+
+.tooltip-content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1e293b;
+  color: #f1f5f9;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
+  pointer-events: none;
+}
+
+.tooltip-term:hover .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1e293b transparent transparent transparent;
+}
+
+/* --- COLLAPSIBLE SECTIONS --- */
+.collapsible-section {
+  transition:
+    max-height 0.3s ease-out,
+    opacity 0.3s ease-out;
+  overflow: hidden;
+}
+
+.collapsible-section.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.collapsible-toggle {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.collapsible-toggle:hover {
+  opacity: 0.8;
+}
+
+.collapsible-toggle .icon-expand,
+.collapsible-toggle .icon-collapse {
+  transition: transform 0.3s;
+}
+
+.collapsible-toggle.collapsed .icon-expand {
+  transform: rotate(0deg);
+}
+
+.collapsible-toggle:not(.collapsed) .icon-expand {
+  transform: rotate(180deg);
+}
+
+/* --- KEY TAKEAWAYS BOX --- */
+.key-takeaways {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+  border-left: 4px solid #6366f1;
+}
+
+.dark .key-takeaways {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  border-left-color: #818cf8;
+}
+
+/* --- IMPROVED LINK STYLING --- */
+.content-section a:not(.btn):not(.nav-btn) {
+  color: #4f46e5;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: all 0.2s;
+}
+
+.content-section a:not(.btn):not(.nav-btn):hover {
+  color: #6366f1;
+  text-decoration-thickness: 2px;
+}
+
+.dark .content-section a:not(.btn):not(.nav-btn) {
+  color: #818cf8;
+}
+
+.dark .content-section a:not(.btn):not(.nav-btn):hover {
+  color: #a5b4fc;
+}
+
+/* --- READING PROGRESS BOOKMARK --- */
+.bookmark-notification {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: #4f46e5;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.bookmark-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* --- PRINT STYLES --- */
+@media print {
+  /* Hide navigation and UI elements */
+  nav,
+  header,
+  .fixed,
+  .sticky,
+  #btn-back-to-top,
+  #bottom-nav,
+  .voice-player-container,
+  button,
+  .bookmark-notification {
+    display: none !important;
+  }
+
+  /* Optimize typography for print */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  h1 {
+    font-size: 24pt;
+  }
+  h2 {
+    font-size: 18pt;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 14pt;
+    page-break-after: avoid;
+  }
+
+  /* Avoid breaking content */
+  img,
+  table,
+  figure,
+  .key-takeaways {
+    page-break-inside: avoid;
+  }
+
+  /* Show URLs for links */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+
+  /* Remove shadows and backgrounds */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Keep borders for tables and boxes */
+  .key-takeaways,
+  table,
+  .border {
+    border: 1px solid #000 !important;
+  }
+}

@@ -314,10 +314,17 @@
           class="absolute bottom-[-20%] left-[20%] w-72 h-72 md:w-96 md:h-96 bg-red-400/20 dark:bg-red-600/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
       <div class="max-w-4xl mx-auto text-center relative z-10">
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6 border border-red-100 dark:border-red-800 shadow-sm backdrop-blur-sm">
-          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span data-i18n="hero_tag">Theoretical Model / Hypothesis</span>
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold border border-red-100 dark:border-red-800 shadow-sm backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            <span data-i18n="hero_tag">Theoretical Model / Hypothesis</span>
+          </div>
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium border border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+            <i class="w-4 h-4" data-lucide="clock"></i>
+            <span id="reading-time-badge">Reading time: ~12 min</span>
+          </div>
         </div>
         <h1
           class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight drop-shadow-sm">
@@ -430,7 +437,7 @@
       </div>
     </div>
     <section
-      class="fade-in-section py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300"
+      class="fade-in-section py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300 content-section"
       id="mechanizm">
       <div class="max-w-6xl mx-auto px-4">
         <!-- Analogy: Your Bodyguard Went Crazy -->
@@ -583,12 +590,17 @@
               </div>
               <span data-i18n="mech_title">1. What is MCAS?</span>
             </h2>
-            <div class="space-y-6 text-slate-700 dark:text-slate-300">
+            <div
+              class="space-y-8 text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
               <p data-i18n="mech_p1">
-                In Mast Cell Activation Syndrome (MCAS), immune cells (mast
-                cells) are "hyperreactive". Instead of reacting only to real
-                threats (e.g., viruses), they explode upon contact with trivial
-                factors.
+                In Mast Cell Activation Syndrome (MCAS),
+                <span
+                  class="tooltip-term"
+                  data-tooltip="Immune cells that store inflammatory mediators"
+                  >immune cells (mast cells)</span
+                >
+                are "hyperreactive". Instead of reacting only to real threats
+                (e.g., viruses), they explode upon contact with trivial factors.
               </p>
               <div
                 class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
@@ -899,11 +911,48 @@
             </div>
           </div>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Key Takeaways</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Mast cells can be triggered by hundreds of trivial
+                environmental factors</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Inflammatory mediators cause a wide range of symptoms: from
+                brain fog to digestive problems</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Normal tryptase levels don't rule out MCAS - other mediators
+                exist</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- SEKCJA DEFINICJI TETHERED CORD -->
     <section
-      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 content-section"
       id="tethered-cord-def">
       <div class="max-w-4xl mx-auto px-4">
         <h2
@@ -916,14 +965,30 @@
         </h2>
         <div class="space-y-8">
           <div
-            class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+            class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
             <p class="text-lg leading-relaxed" data-i18n="tcs_def_desc">
               <strong>Tethered Cord Syndrome (TCS)</strong> is a mechanical
-              pathology where the spinal cord is "trapped" at the bottom of the
-              spine. In a healthy body, the cord floats freely in the spinal
-              canal, moving up and down during movement. In TCS, it is attached
-              (tethered) by an overly tight filum terminale or
-              <strong>scar tissue</strong> (e.g., after surgery, trauma).
+              pathology where the
+              <span
+                class="tooltip-term"
+                data-tooltip="Main structure of the nervous system running inside the spine"
+                >spinal cord</span
+              >
+              is "trapped" at the bottom of the spine. In a healthy body, the
+              cord floats freely in the spinal canal, moving up and down during
+              movement. In TCS, it is attached (tethered) by an overly tight
+              <span
+                class="tooltip-term"
+                data-tooltip="Thin connective tissue thread linking the end of the spinal cord to the tailbone"
+                >filum terminale</span
+              >
+              or
+              <span
+                class="tooltip-term"
+                data-tooltip="Tissue formed after surgeries, injuries, or inflammation"
+                >scar tissue</span
+              >
+              (e.g., after surgery, trauma).
             </p>
           </div>
           <div
@@ -999,7 +1064,7 @@
       </div>
       <div class="mt-6 flex justify-center">
         <button
-          class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white transition-all duration-200 bg-indigo-600 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 hover:bg-indigo-700"
+          class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white transition-all duration-200 bg-indigo-600 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-900 hover:bg-indigo-700 shadow-lg shadow-indigo-500/30 ring-2 ring-indigo-300 dark:ring-indigo-500 hover:shadow-xl hover:scale-[1.02]"
           onclick="openSimModal()">
           <i class="w-5 h-5" data-lucide="play-circle"></i>
           <span data-i18n="btn_open_sim"
@@ -1149,11 +1214,57 @@
             Visualization of Ascensus Medullae / Tipping Point
           </p>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Key Takeaways</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >The spinal cord can be tethered by a tight filum terminale or
+                scar tissue</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Mechanical stretching of the cord leads to ischemia and
+                neurological dysfunction</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Occult TCS often looks "normal" on standard MRI, despite severe
+                symptoms</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Many people with EDS/MCAS develop TCS symptoms in adulthood
+                (Tipping Point)</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- CCI DEFINITION SECTION -->
     <section
-      class="fade-in-section py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      class="fade-in-section py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 content-section"
       id="cci-def">
       <div class="max-w-6xl mx-auto px-4">
         <h2
@@ -1169,14 +1280,23 @@
         <div class="space-y-8">
           <!-- Definicja -->
           <div
-            class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+            class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
             <p class="text-lg leading-relaxed" data-i18n="cci_def_desc">
               <strong>Craniocervical Instability (CCI)</strong> is a
-              pathological condition where the ligaments connecting the skull to
-              the cervical spine (mainly C0-C1-C2) are too loose or damaged. As
-              a result, the head is not stably seated on the spine but "slides"
-              with every movement, leading to compression of the medulla
-              oblongata and brainstem.
+              pathological condition where the
+              <span
+                class="tooltip-term"
+                data-tooltip="Connective tissue structures stabilizing the skull-spine connection"
+                >ligaments connecting the skull to the cervical spine</span
+              >
+              (mainly C0-C1-C2) are too loose or damaged. As a result, the head
+              is not stably seated on the spine but "slides" with every
+              movement, leading to compression of the
+              <span
+                class="tooltip-term"
+                data-tooltip="Brain region controlling vital functions: breathing, circulation, consciousness"
+                >medulla oblongata and brainstem</span
+              >.
             </p>
           </div>
           <!-- Analogia Bobblehead -->
@@ -1401,11 +1521,57 @@
             </div>
           </div>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Key Takeaways</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Loose ligaments cause craniocervical instability (bobblehead
+                effect)</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Compression of the medulla and brainstem affects vital life
+                functions</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Vagus nerve dysfunction disrupts heart, lung, and digestive
+                system function</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >CCI often co-occurs with EDS and requires specialized imaging
+                studies</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- SEKCJA TETHERED CORD (REALISTYCZNY SYMULATOR Z POZYCJAMI) - USUNIĘTA (PRZENIESIONA DO MODALA) -->
     <section
-      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300 content-section"
       id="mecfs-def">
       <div class="max-w-6xl mx-auto px-4">
         <!-- Top Section: Definition & Domains (Full Width) -->
@@ -1419,13 +1585,22 @@
             <span data-i18n="mecfs_title">4. What is ME/CFS?</span>
           </h2>
           <p
-            class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-4xl"
+            class="text-lg text-slate-800 dark:text-slate-200 leading-relaxed mb-8 max-w-4xl"
             data-i18n="mecfs_desc_1">
             ME/CFS (Myalgic Encephalomyelitis) is a severe, chronic multisystem
             disease. It is not just fatigue. It is a state where the cell's
-            energy production system (mitochondria) fails, and the nervous and
-            immune systems lose balance. The hallmark feature is PEM – drastic
-            worsening of symptoms after even minor exertion.
+            energy production system (<span
+              class="tooltip-term"
+              data-tooltip="Cellular organelles that produce energy (ATP) essential for life"
+              >mitochondria</span
+            >) fails, and the nervous and immune systems lose balance. The
+            hallmark feature is
+            <span
+              class="tooltip-term"
+              data-tooltip="Post-Exertional Malaise: drastic worsening of symptoms after physical or mental effort"
+              >PEM</span
+            >
+            – drastic worsening of symptoms after even minor exertion.
           </p>
           <!-- Domains Grid -->
           <div
@@ -2038,6 +2213,52 @@
             </div>
           </div>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Key Takeaways</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >ME/CFS is mitochondrial failure - cells run out of energy
+                (ATP)</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >PEM (Post-Exertional Malaise) - exertion causes drastic
+                worsening for days or weeks</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Dysfunction affects multiple systems: metabolic, autonomic,
+                immune, neurological</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >TCS/CCI can be underlying causes or contributing factors in
+                ME/CFS</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- Separator: Theoretical Model -->
@@ -2058,7 +2279,7 @@
     </div>
     <!-- NOWA SEKCJA: Błędne Koło (Connecting the dots) -->
     <section
-      class="fade-in-section py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300"
+      class="fade-in-section py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300 content-section"
       id="connection">
       <div class="max-w-7xl mx-auto px-4 relative">
         <!-- Dekoracyjne tło -->
@@ -2076,13 +2297,25 @@
             Hypothetical Model: TCS → CCI → ME/CFS
           </h2>
           <p
-            class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed"
+            class="text-slate-700 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed"
             data-i18n="conn_desc">
             The diagram below presents a
             <strong>theoretical proposal</strong> of pathomechanical links. It
-            suggests that mechanical tension (TC) may lead to instability (CCI)
-            and consequently to ME/CFS symptoms. This is one of the research
-            hypotheses.
+            suggests that
+            <span
+              class="tooltip-term"
+              data-tooltip="Mechanical tension of the spinal cord"
+              >mechanical tension (TC)</span
+            >
+            may lead to
+            <span class="tooltip-term" data-tooltip="Craniocervical instability"
+              >instability (CCI)</span
+            >
+            and consequently to
+            <span class="tooltip-term" data-tooltip="Chronic Fatigue Syndrome"
+              >ME/CFS</span
+            >
+            symptoms. This is one of the research hypotheses.
           </p>
         </div>
         <div
@@ -3347,6 +3580,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="../js/translations.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/readability.js"></script>
     <script src="../js/accessibility.js"></script>
   </body>
 </html>

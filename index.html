@@ -316,10 +316,17 @@
           class="absolute bottom-[-20%] left-[20%] w-72 h-72 md:w-96 md:h-96 bg-red-400/20 dark:bg-red-600/20 rounded-full mix-blend-multiply dark:mix-blend-lighten filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
       <div class="max-w-4xl mx-auto text-center relative z-10">
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold mb-6 border border-red-100 dark:border-red-800 shadow-sm backdrop-blur-sm">
-          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span data-i18n="hero_tag">Model teoretyczny / Hipoteza</span>
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-sm font-semibold border border-red-100 dark:border-red-800 shadow-sm backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            <span data-i18n="hero_tag">Model teoretyczny / Hipoteza</span>
+          </div>
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium border border-slate-200 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+            <i class="w-4 h-4" data-lucide="clock"></i>
+            <span id="reading-time-badge">Czas czytania: ~12 min</span>
+          </div>
         </div>
         <h1
           class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight drop-shadow-sm">
@@ -435,7 +442,7 @@
       </div>
     </div>
     <section
-      class="fade-in-section py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300"
+      class="fade-in-section py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300 content-section"
       id="mechanizm">
       <div class="max-w-6xl mx-auto px-4">
         <!-- Analogia: Twój Ochroniarz Zwariował -->
@@ -588,12 +595,17 @@
               </div>
               <span data-i18n="mech_title">1. Co to jest MCAS?</span>
             </h2>
-            <div class="space-y-6 text-slate-700 dark:text-slate-300">
+            <div
+              class="space-y-8 text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
               <p data-i18n="mech_p1">
-                W Zespole Aktywacji Komórek Tucznych (MCAS) komórki
-                odpornościowe (mastocyty) są "nadwrażliwe". Zamiast reagować
-                tylko na prawdziwe zagrożenie (np. wirus), wybuchają
-                przykontakcie z błahymi czynnikami.
+                W Zespole Aktywacji Komórek Tucznych (MCAS)
+                <span
+                  class="tooltip-term"
+                  data-tooltip="Komórki odpornościowe przechowujące mediatory zapalne"
+                  >komórki odpornościowe (mastocyty)</span
+                >
+                są "nadwrażliwe". Zamiast reagować tylko na prawdziwe zagrożenie
+                (np. wirus), wybuchają przykontakcie z błahymi czynnikami.
               </p>
               <div
                 class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
@@ -907,11 +919,48 @@
             </div>
           </div>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Najważniejsze punkty</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Komórki tuczne mogą być wyzwalane przez setki błahych czynników
+                środowiskowych</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Mediatory zapalne powodują szeroki zakres objawów: od mgły
+                mózgowej po problemy trawienne</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Tryptaza w normie nie wyklucza MCAS - istnieją inne
+                mediatory</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- SEKCJA DEFINICJI TETHERED CORD -->
     <section
-      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 content-section"
       id="tethered-cord-def">
       <div class="max-w-4xl mx-auto px-4">
         <h2
@@ -926,15 +975,31 @@
         </h2>
         <div class="space-y-8">
           <div
-            class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+            class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
             <p class="text-lg leading-relaxed" data-i18n="tcs_def_desc">
               <strong>Zespół Zakotwiczenia Rdzenia Kręgowego (TCS)</strong> to
-              mechaniczna patologia, w której rdzeń kręgowy jest "uwięziony" u
-              dołu kręgosłupa. W zdrowym ciele rdzeń swobodnie unosi się w
-              kanale kręgowym, przesuwając się w górę i w dół podczas ruchu. W
-              TCS jest on przytwierdzony (zakotwiczony) przez zbyt napiętą nić
-              końcową (<em>filum terminale</em>) lub
-              <strong>tkankę bliznowatą</strong> (np. po operacjach, urazach).
+              mechaniczna patologia, w której
+              <span
+                class="tooltip-term"
+                data-tooltip="Główna struktura układu nerwowego biegnąca wewnątrz kręgosłupa"
+                >rdzeń kręgowy</span
+              >
+              jest "uwięziony" u dołu kręgosłupa. W zdrowym ciele rdzeń
+              swobodnie unosi się w kanale kręgowym, przesuwając się w górę i w
+              dół podczas ruchu. W TCS jest on przytwierdzony (zakotwiczony)
+              przez zbyt napiętą
+              <span
+                class="tooltip-term"
+                data-tooltip="Cienka nić łącznotkankowa łącząca koniec rdzenia z kością ogonową"
+                >nić końcową</span
+              >
+              (<em>filum terminale</em>) lub
+              <span
+                class="tooltip-term"
+                data-tooltip="Tkanka powstała po operacjach, urazach lub stanach zapalnych"
+                >tkankę bliznowatą</span
+              >
+              (np. po operacjach, urazach).
             </p>
           </div>
           <div
@@ -1012,7 +1077,7 @@
 
       <div class="mt-6 flex justify-center">
         <button
-          class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white transition-all duration-200 bg-indigo-600 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 hover:bg-indigo-700"
+          class="group relative inline-flex items-center justify-center gap-2 px-6 py-3 font-bold text-white transition-all duration-200 bg-indigo-600 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 focus:ring-offset-slate-50 dark:focus:ring-offset-slate-900 hover:bg-indigo-700 shadow-lg shadow-indigo-500/30 ring-2 ring-indigo-300 dark:ring-indigo-500 hover:shadow-xl hover:scale-[1.02]"
           onclick="openSimModal()">
           <i class="w-5 h-5" data-lucide="play-circle"></i>
           <span data-i18n="btn_open_sim"
@@ -1159,11 +1224,57 @@
             Wizualizacja Ascensus Medullae / Tipping Point
           </p>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Najważniejsze punkty</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Rdzeń może być zakotwiczony przez napiętą nić końcową lub
+                tkankę bliznowatą</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Mechaniczne naciągnięcie rdzenia prowadzi do niedokrwienia i
+                dysfunkcji nerwowej</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Occult TCS często wygląda "normalnie" na standardowym MRI, mimo
+                silnych objawów</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Wiele osób z EDS/MCAS rozwija objawy TCS w dorosłości (Tipping
+                Point)</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- CCI DEFINITION SECTION -->
     <section
-      class="fade-in-section py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      class="fade-in-section py-16 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300 content-section"
       id="cci-def">
       <div class="max-w-6xl mx-auto px-4">
         <h2
@@ -1179,14 +1290,23 @@
         <div class="space-y-8">
           <!-- Definicja -->
           <div
-            class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300">
+            class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-lg leading-relaxed">
             <p class="text-lg leading-relaxed" data-i18n="cci_def_desc">
               <strong>Niestabilność Czaszkowo-Szyjna (CCI)</strong> to stan
-              patologiczny, w którym więzadła łączące czaszkę z kręgosłupem
-              szyjnym (głównie C0-C1-C2) są zbyt luźne lub uszkodzone. W
-              rezultacie głowa nie jest stabilnie osadzona na kręgosłupie, lecz
-              "ślizga się" przy każdym ruchu, co prowadzi do ucisku na rdzeń
-              przedłużony i pień mózgu.
+              patologiczny, w którym
+              <span
+                class="tooltip-term"
+                data-tooltip="Struktury łącznotkankowe stabilizujące połączenie czaszki z kręgosłupem"
+                >więzadła łączące czaszkę z kręgosłupem szyjnym</span
+              >
+              (głównie C0-C1-C2) są zbyt luźne lub uszkodzone. W rezultacie
+              głowa nie jest stabilnie osadzona na kręgosłupie, lecz "ślizga
+              się" przy każdym ruchu, co prowadzi do ucisku na
+              <span
+                class="tooltip-term"
+                data-tooltip="Fragment mózgu kontrolujący podstawowe funkcje życiowe: oddychanie, krążenie, świadomość"
+                >rdzeń przedłużony i pień mózgu</span
+              >.
             </p>
           </div>
           <!-- Analogia Bobblehead -->
@@ -1417,11 +1537,57 @@
             </div>
           </div>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Najważniejsze punkty</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Luźne więzadła powodują niestabilność czaszkowo-szyjną (efekt
+                "bobblehead")</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Ucisk na rdzeń przedłużony i pień mózgu wpływa na podstawowe
+                funkcje życiowe</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Dysfunkcja nerwu błędnego zaburza pracę serca, płuc i przewodu
+                pokarmowego</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >CCI często współwystępuje z EDS i wymaga specjalistycznych
+                badań obrazowych</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- SEKCJA TETHERED CORD (REALISTYCZNY SYMULATOR Z POZYCJAMI) - USUNIĘTA (PRZENIESIONA DO MODALA) -->
     <section
-      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      class="fade-in-section py-16 bg-white dark:bg-slate-900 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 transition-colors duration-300 content-section"
       id="mecfs-def">
       <div class="max-w-6xl mx-auto px-4">
         <!-- Top Section: Definition & Domains (Full Width) -->
@@ -1435,12 +1601,21 @@
             <span data-i18n="mecfs_title">4. Co to jest ME/CFS?</span>
           </h2>
           <p
-            class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-8 max-w-4xl"
+            class="text-lg text-slate-800 dark:text-slate-200 leading-relaxed mb-8 max-w-4xl"
             data-i18n="mecfs_desc_1">
             ME/CFS (Myalgic Encephalomyelitis) to ciężka, przewlekła choroba
             wieloukładowa. To nie jest zwykłe zmęczenie. To stan, w którym
-            system produkcji energii w komórkach (mitochondria) ulega awarii, a
-            układ nerwowy i odpornościowy tracą równowagę. Główną cechą jest PEM
+            system produkcji energii w komórkach (<span
+              class="tooltip-term"
+              data-tooltip="Organelle komórkowe produkujące energię (ATP) niezbędną do życia"
+              >mitochondria</span
+            >) ulega awarii, a układ nerwowy i odpornościowy tracą równowagę.
+            Główną cechą jest
+            <span
+              class="tooltip-term"
+              data-tooltip="Post-Exertional Malaise: drastyczne pogorszenie objawów po wysiłku fizycznym lub umysłowym"
+              >PEM</span
+            >
             – drastyczne pogorszenie objawów po nawet niewielkim wysiłku.
           </p>
           <!-- Domains Grid -->
@@ -2060,6 +2235,52 @@
             </div>
           </div>
         </div>
+        <!-- KEY TAKEAWAYS BOX -->
+        <div class="mt-12 p-6 rounded-xl key-takeaways">
+          <h3
+            class="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4 flex items-center gap-2">
+            <i class="w-6 h-6" data-lucide="lightbulb"></i>
+            <span>Najważniejsze punkty</span>
+          </h3>
+          <ul class="space-y-3 text-slate-800 dark:text-slate-200">
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >ME/CFS to awaria mitochondriów - komórek przestaje wystarczać
+                energia (ATP)</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >PEM (Post-Exertional Malaise) - wysiłek powoduje drastyczne
+                pogorszenie na dni lub tygodnie</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >Zaburzenia dotyczą wielu układów: metabolizmu, autonomicznego,
+                immunologicznego, neurologicznego</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <i
+                class="w-5 h-5 text-indigo-600 dark:text-indigo-400 mt-0.5"
+                data-lucide="check-circle"></i>
+              <span
+                >TCS/CCI mogą być przyczynami lub czynnikami obciążającymi w
+                ME/CFS</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <!-- Separator: Model Teoretyczny -->
@@ -2080,7 +2301,7 @@
     </div>
     <!-- NOWA SEKCJA: Błędne Koło (Connecting the dots) -->
     <section
-      class="fade-in-section py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300"
+      class="fade-in-section py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-20 border-y border-slate-200 dark:border-slate-800 overflow-hidden transition-colors duration-300 content-section"
       id="connection">
       <div class="max-w-7xl mx-auto px-4 relative">
         <!-- Dekoracyjne tło -->
@@ -2098,13 +2319,28 @@
             Hipotetyczny Model: TCS → CCI → ME/CFS
           </h2>
           <p
-            class="text-slate-600 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed"
+            class="text-slate-700 dark:text-slate-300 max-w-3xl mx-auto text-lg leading-relaxed"
             data-i18n="conn_desc">
             Poniższy schemat prezentuje
             <strong>teoretyczną propozycję</strong> powiązań patomechanicznych.
-            Sugeruje ona, że napięcie mechaniczne (TC) może prowadzić do
-            niestabilności (CCI) i w konsekwencji do objawów ME/CFS. Jest to
-            jedna z hipotez badawczych.
+            Sugeruje ona, że
+            <span
+              class="tooltip-term"
+              data-tooltip="Napięcie mechaniczne rdzenia kręgowego"
+              >napięcie mechaniczne (TC)</span
+            >
+            może prowadzić do
+            <span
+              class="tooltip-term"
+              data-tooltip="Niestabilność czaszkowo-szyjna"
+              >niestabilności (CCI)</span
+            >
+            i w konsekwencji do objawów
+            <span
+              class="tooltip-term"
+              data-tooltip="Zespół Przewlekłego Zmęczenia"
+              >ME/CFS</span
+            >. Jest to jedna z hipotez badawczych.
           </p>
         </div>
         <div
@@ -3369,6 +3605,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/readability.js"></script>
     <script src="js/accessibility.js"></script>
   </body>
 </html>
