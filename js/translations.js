@@ -744,6 +744,52 @@ const translations = {
     ice_header_title: "INFORMACJE RATUNKOWE",
     ice_placeholder_name: "Jan Kowalski",
     ice_placeholder_contact: "MAMA: +48 123 456 789",
+
+    // FAQ Sections
+    // MCAS
+    faq_mcas_title: "Częste Pytania: MCAS",
+    faq_mcas_q1: "Jakie są zasady Diety Nisko-Histaminowej?",
+    faq_mcas_a1:
+      "Eliminacja na 4-6 tygodni, potem reintrodukcja. Tylko świeże produkty (histamina odkłada się w resztkach). Unikać fermentowanych (ser, wino, kapusta), wędzonych i ryb w puszce.",
+    faq_mcas_q2: "Jakie badania potwierdzają MCAS?",
+    faq_mcas_a2:
+      "Tryptaza jest podstępna - często w normie. Kluczowy jest wzrost w rzucie (bazowa + 20% + 2 ng/ml). Jeśli tryptaza w normie, bada się mediatory (histamina, prostaglandyny, leukotrieny) w zbiórce dobowej moczu (chłodzonej!).",
+
+    // TCS
+    faq_tcs_title: "Częste Pytania: Tethered Cord",
+    faq_tcs_q1: 'Czy "Normalny" Rerzonans wyklucza TCS?',
+    faq_tcs_a1:
+      'Nie. Koniuszek na L1/L2 jest radiologicznie "w normie", ale nie wyklucza "Niejawnego TCS" (zbyt napięte filum terminale). Objawy kliniczne (pęcherz, ból nóg) często przeważają nad "idealnym" obrazem.',
+    faq_tcs_q2: "Czy mogę się rozciągać (joga)?",
+    faq_tcs_a2:
+      'NIE. Unikać "dotykania palców" i silnego zginania kręgosłupa. Rozciąganie kręgosłupa naciąga zakotwiczony rdzeń jak strunę, powodując niedokrwienie i rzut objawów.',
+
+    // CCI
+    faq_cci_title: "Częste Pytania: CCI",
+    faq_cci_q1: "Jakie badanie wykrywa CCI?",
+    faq_cci_a1:
+      'Upright MRI (rezonans w pozycji siedzącej) z czynnościami dynamicznymi (zgięcie, wyprost, rotacja). Standardowy rezonans "leżący" często nie pokazuje "ślizgania" kręgów pod wpływem grawitacji. Alternatywą jest DMX (Digital Motion X-ray).',
+    faq_cci_q2: "Czy kołnierz ortopedyczny pomaga?",
+    faq_cci_a2:
+      'To "miecz obosieczny". Przynosi doraźną ulgę, ale noszony ciągle osłabia mięśnie, pogłębiając niestabilność. Może być używany w najgorszych momentach (tzw. "flare"), ale nie jako terapia długoterminowa bez jednoczesnej rehabilitacji.',
+
+    // Vagus
+    faq_vagus_title: "Częste Pytania: Vagus Nerve",
+    faq_vagus_q1: "Kiedy stosować TENS uszny?",
+    faq_vagus_a1:
+      "Zazwyczaj rekomenduje się krótkie sesje (15-20 min) 1-2 razy dziennie. Klips zakłada się na lewe ucho (skrawek/tragus). Zbyt długa stymulacja może wywołać efekt paradoksalny (zamiast uspokojenia, pobudzenie).",
+    faq_vagus_q2: "Jak zmierzyć HRV w domu?",
+    faq_vagus_a2:
+      "Można wykonać pomiar za pomocą paska na klatkę piersiową (np. Polar) i aplikacji na telefon (np. Elite HRV). Kluczowy jest pomiar poranny (RMSSD) w spoczynku, zaraz po przebudzeniu.",
+
+    // ME/CFS
+    faq_mecfs_title: "Częste Pytania: ME/CFS",
+    faq_mecfs_q1: "Czy ćwiczenia (GET) pomagają?",
+    faq_mecfs_a1:
+      'Absolutnie nie. Graded Exercise Therapy (stopniowanie wysiłku) jest szkodliwe w ME/CFS i prowadzi do PEM (zapaści). Zalecaną strategią jest "Pacing" (zarządzanie energią) i działanie w ramach swojej "koperty energetycznej".',
+    faq_mecfs_q2: "Ile trwa PEM?",
+    faq_mecfs_a2:
+      "Od kilku godzin do kilku tygodni, a nawet miesięcy. Czasami epizod PEM nie mija, prowadząc do obniżenia linii bazowej (trwałego pogorszenia stanu zdrowia).",
   },
   en: {
     // SEO - Global
@@ -1483,5 +1529,51 @@ const translations = {
     ice_header_title: "EMERGENCY INFO",
     ice_placeholder_name: "John Doe",
     ice_placeholder_contact: "MOM: +1 234 567 890",
+
+    // FAQ Sections
+    // MCAS
+    faq_mcas_title: "Frequent Questions: MCAS",
+    faq_mcas_q1: "What are the rules for a Low Histamine Diet?",
+    faq_mcas_a1:
+      "Elimination for 4-6 weeks then reintroduction. Only fresh products (histamine builds up in leftovers). Avoid fermented foods (cheese, wine, sauerkraut), smoked meats, and canned fish.",
+    faq_mcas_q2: "What tests confirm MCAS?",
+    faq_mcas_a2:
+      'Tryptase is tricky - it\'s often normal. Key is the rise during a "flare" (baseline + 20% + 2 ng/ml). If tryptase is normal, check mediators (histamine, prostaglandins, leukotrienes) in blood/urine (chilled samples!).',
+
+    // TCS
+    faq_tcs_title: "Frequent Questions: Tethered Cord",
+    faq_tcs_q1: 'Does a "Normal" MRI rule out TCS?',
+    faq_tcs_a1:
+      'No. A conus at L1/L2 is radiologically "normal," but does not rule out "Occult TCS" (tight filum terminale). Clinical symptoms (bladder issues, leg pain) often outweigh "perfect" images.',
+    faq_tcs_q2: "Is stretching / yoga safe?",
+    faq_tcs_a2:
+      'NO. Avoid "touching your toes" and intense spinal flexion. Stretching the spine pulls on the tethered cord like a rubber band, causing ischemia (lack of blood flow) and worsening symptoms.',
+
+    // CCI
+    faq_cci_title: "Frequent Questions: CCI",
+    faq_cci_q1: "Which exam detects CCI?",
+    faq_cci_a1:
+      'Upright MRI with dynamic maneuvers (flexion, extension, rotation). Standard "supine" MRI often misses the "sliding" of vertebrae under gravity. DMX (Digital Motion X-ray) is an alternative.',
+    faq_cci_q2: "Does a neck collar help?",
+    faq_cci_a2:
+      'It\'s a "double-edged sword." Brings temporary relief, but constant use weakens muscles, worsening instability. Use it during "flares," but not as long-term therapy without physical therapy.',
+
+    // Vagus
+    faq_vagus_title: "Frequent Questions: Vagus Nerve",
+    faq_vagus_q1: "When to use auricular TENS?",
+    faq_vagus_a1:
+      "Short sessions (15-20 min) 1-2 times daily are typically recommended. Clip on the left ear (tragus). Overstimulation can cause a paradoxical effect (agitation instead of calm).",
+    faq_vagus_q2: "How to measure HRV at home?",
+    faq_vagus_a2:
+      "You can use a chest strap (e.g., Polar H10) and an app (e.g., Elite HRV). The key is consistent morning measurement (RMSSD) at rest, immediately after waking up.",
+
+    // ME/CFS
+    faq_mecfs_title: "Frequent Questions: ME/CFS",
+    faq_mecfs_q1: "Does exercise (GET) help?",
+    faq_mecfs_a1:
+      'Absolutely not. Graded Exercise Therapy is harmful in ME/CFS and leads to PEM (post-exertional malaise). The recommended strategy is "Pacing" (energy management) and staying within your "energy envelope."',
+    faq_mecfs_q2: "How long does PEM last?",
+    faq_mecfs_a2:
+      "From a few hours to several weeks, or even months. Sometimes a PEM episode does not recover, leading to a lowered baseline (permanent health deterioration).",
   },
 };
