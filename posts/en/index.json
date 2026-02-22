@@ -1,5 +1,14 @@
 [
   {
+    "id": "mechanical-test",
+    "title": "The Body Knows First: A DIY Biomechanical “Test” for Tethered Cord (TCS) and Instability (CCI)",
+    "date": "2026-02-22",
+    "desc": "Learn how to perform a home test to check if Tethered Cord and CCI might be the cause of your symptoms",
+    "image": "img/mechanical-test.webp",
+    "tags": ["tcs", "tethered cord syndrome", "cci"],
+    "readTime": 3
+  },
+  {
     "id": "low-histamine-diet",
     "title": "Low histamine diet guide: How to regain control of your comfort",
     "date": "2026-02-20",

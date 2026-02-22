@@ -1,5 +1,14 @@
 [
   {
+    "id": "mechanical-test",
+    "title": "Ciało wie pierwsze: Domowy \"test\" biomechaniczny na zakotwiczenie rdzenia (TCS) i niestabilność (CCI)",
+    "date": "2026-02-22",
+    "desc": "Dowiedz się jak domowo sprawdzić czy problem zakotwiczenia i niestabilności szyjnej może cię dotyczyć",
+    "image": "img/mechanical-test.webp",
+    "tags": ["tcs", "zakotwiczenie rdzenia", "cci"],
+    "readTime": 3
+  },
+  {
     "id": "low-histamine-diet",
     "title": "Przewodnik po diecie niskohistaminowej: Jak odzyskać kontrolę nad samopoczuciem",
     "date": "2026-02-20",

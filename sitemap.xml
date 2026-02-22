@@ -190,4 +190,23 @@
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
+
+  <url>
+    <loc>https://www.neuroimmunehub.com/article.html?id=mechanical-test</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/article.html?id=mechanical-test" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/article.html?id=mechanical-test" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/article.html?id=mechanical-test" />
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.neuroimmunehub.com/en/article.html?id=mechanical-test</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://www.neuroimmunehub.com/article.html?id=mechanical-test" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.neuroimmunehub.com/en/article.html?id=mechanical-test" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.neuroimmunehub.com/en/article.html?id=mechanical-test" />
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>
