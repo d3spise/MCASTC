@@ -6,8 +6,8 @@ Oto jak za pomocą prostych, domowych modyfikacji postawy można sprawdzić, czy
 
 Zakotwiczony rdzeń pociąga cały układ nerwowy w dół, co często prowadzi do wtórnej niestabilności w szyi (CCI) i ucisku na pień mózgu. Aby sprawdzić, czy ten mechanizm dotyczy Ciebie, możesz przeprowadzić prosty test stabilizacji.
 
-- **Jak to zrobić:** Noszenie miękkiego kołnierza ortopedycznego przez kilka dni (np. 3 dni ciągiem, w tym do snu, jeśli to możliwe i bezpieczne).
-- **Jak interpretować wynik:** Miękki kołnierz nie usztywnia szyi całkowicie, ale przejmuje część ciężaru głowy (około 5 kg) i zapobiega mikroruchom, które drażnią pień mózgu. Jeśli po 2-3 dniach noszenia kołnierza odczuwasz drastyczną ulgę – np. zmniejsza się "mgła mózgowa", masz więcej energii, a tachykardia słabnie – jest to potężna wskazówka, że Twoje problemy wynikają z niestabilności i mechanicznego ucisku u góry kręgosłupa.
+- **Jak to zrobić:** Noszenie półsztywnego kołnierza ortopedycznego przez kilka dni (np. 3 dni ciągiem, w tym do snu, jeśli to możliwe i bezpieczne).
+- **Jak interpretować wynik:** Półsztywny kołnierz nie usztywnia szyi całkowicie, ale przejmuje część ciężaru głowy (około 5 kg) i zapobiega mikroruchom, które drażnią pień mózgu. Jeśli po 2-3 dniach noszenia kołnierza odczuwasz drastyczną ulgę – np. zmniejsza się "mgła mózgowa", masz więcej energii, a tachykardia słabnie – jest to potężna wskazówka, że Twoje problemy wynikają z niestabilności i mechanicznego ucisku u góry kręgosłupa.
 
 ### Krok 2: Testy "Luzu Mechanicznego" (Dolne piętro napięcia)
 

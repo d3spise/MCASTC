@@ -6,8 +6,8 @@ Here is how you can use simple, at-home postural modifications to check if your 
 
 A tethered cord pulls the entire nervous system downward, which often leads to secondary instability in the neck (CCI) and brainstem compression. To check if this mechanism applies to you, you can perform a simple stabilization test.
 
-- **How to do it:** Wear a soft cervical collar for a few days (e.g., 3 days straight, including during sleep if possible and safe).
-- **How to interpret the result:** A soft collar doesn't immobilize the neck completely, but it takes on some of the weight of the head (about 5 kg) and prevents micro-movements that irritate the brainstem. If after 2-3 days of wearing the collar you feel drastic relief – e.g., your "brain fog" lifts, you have more energy, and your tachycardia subsides – it is a massive clue that your issues stem from instability and mechanical compression at the top of your spine.
+- **How to do it:** Wear a semi-rigid cervical collar for a few days (e.g., 3 days straight, including during sleep if possible and safe).
+- **How to interpret the result:** A semi-rigid collar doesn't immobilize the neck completely, but it takes on some of the weight of the head (about 5 kg) and prevents micro-movements that irritate the brainstem. If after 2-3 days of wearing the collar you feel drastic relief – e.g., your "brain fog" lifts, you have more energy, and your tachycardia subsides – it is a massive clue that your issues stem from instability and mechanical compression at the top of your spine.
 
 ### Step 2: The "Mechanical Slack" Tests (Lower-Level Tension)
 
