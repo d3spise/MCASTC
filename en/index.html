@@ -3133,14 +3133,33 @@
       id="bibliografia">
       <div class="max-w-4xl mx-auto px-4">
         <div
+          class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 rounded-lg mb-8">
+          <h4
+            class="font-bold text-amber-800 dark:text-amber-300 mb-2 flex items-center gap-2 text-sm">
+            <i class="w-4 h-4" data-lucide="info"></i>
+            <span>Quality of Scientific Evidence</span>
+          </h4>
+          <p class="text-xs text-amber-700 dark:text-amber-200 leading-relaxed">
+            <strong
+              >The bibliography below contains research with varying levels of
+              evidence:</strong
+            >
+            Systematic reviews and meta-analyses (Level 1-2) are labeled where
+            available. Many claims are based on Level 3-4 evidence (case series,
+            pilot studies) or Level 5 (hypothetical articles). We prioritize
+            higher quality research, but also include lower levels when they
+            represent the best available knowledge.
+          </p>
+        </div>
+        <div
           class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-4 rounded-lg mb-8">
           <p class="text-sm text-yellow-800 dark:text-yellow-200">
-            <strong data-i18n="bib_warning_title">Note on Sources</strong>:
+            <strong data-i18n="bib_warning_title">Sources Warning</strong>:
             <span data-i18n="bib_warning_desc"
-              >The bibliography below contains scientific articles investigating
-              individual elements of this model. Please note that the direct
-              causal link between these three diseases is still a subject of
-              scientific research and debate.</span
+              >The bibliography below contains scientific articles that examine
+              individual elements of this model. It should be remembered that
+              the direct causal relationship between these three diseases is
+              still the subject of research and scientific discussion.</span
             >
           </p>
         </div>
@@ -3150,6 +3169,7 @@
           <span data-i18n="bib_title">Scientific Bibliography</span>
         </h3>
         <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
+          <!-- Reference [1] - Klinge 2024 -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
             href="https://doi.org/10.3171/2024.1.SPINE231191"
@@ -3166,17 +3186,24 @@
                 resection in occult tethered cord syndrome." (J Neurosurg Spine,
                 2024)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref1_desc">
-                Groundbreaking work defining clinical criteria for 'Occult TCS'.
-                Confirms that in patients with hypermobility (EDS) and
-                bladder/pain symptoms, surgery brings improvement despite
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 4 Evidence
+                </span>
+                Prospective case series (n=149). 89% of patients showed
+                improvement at 3 months, 68% at 12 months. Defines clinical
+                criteria for 'Occult TCS' – patients with hypermobility (EDS)
+                and bladder/pain symptoms show improvement after surgery despite
                 'normal' MRI.
               </p>
             </div>
           </a>
+
+          <!-- Reference [2] - CCI Systematic Review 2022 (NEW - HIGHER QUALITY) -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
-            href="https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2020.00828/full"
+            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9609512/"
             rel="noopener noreferrer"
             target="_blank">
             <span
@@ -3186,20 +3213,28 @@
             <div>
               <p
                 class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                Bragée B, et al. "Signs of Intracranial Hypertension,
-                Hypermobility, and Craniocervical Obstructions in Patients With
-                ME/CFS." (Frontiers in Neurology, 2020)
+                Frangos E, et al. "Craniocervical Instability in Ehlers-Danlos
+                Syndrome—A Systematic Review." (Global Spine Journal, 2022)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref2_desc">
-                Key study showing that most ME/CFS patients have signs of
-                intracranial hypertension and mechanical obstructions in
-                cerebrospinal fluid flow.
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 2 - Systematic Review
+                </span>
+                <br />
+                Analysis of 16 studies (695 EDS patients, 78 with CCI).
+                Establishes diagnostic criteria: CXA &lt;135°, Grabb-Oakes line
+                &gt;9mm, Harris measurement &gt;12mm.
+                <strong>Note:</strong> No Level I or II studies exist for
+                surgical treatment of CCI.
               </p>
             </div>
           </a>
+
+          <!-- Reference [3] - Bragée 2020 (kept but noted as pilot) -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
-            href="https://www.nature.com/articles/nature01321"
+            href="https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2020.00828/full"
             rel="noopener noreferrer"
             target="_blank">
             <span
@@ -3209,19 +3244,29 @@
             <div>
               <p
                 class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                Tracey KJ. "The inflammatory reflex." (Nature, 2002)
+                Bragée B, et al. "Signs of Intracranial Hypertension,
+                Hypermobility, and Craniocervical Obstructions in Patients With
+                ME/CFS." (Frontiers in Neurology, 2020)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref3_desc">
-                Article from 'Nature' describing the physiological mechanism
-                where the vagus nerve acts as a 'brake' for the immune system.
-                Its damage (e.g., by compression) leads to uncontrolled
-                inflammation.
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 4 - Pilot Study (n=30)
+                </span>
+                <br />
+                Key study showing that most ME/CFS patients have signs of
+                intracranial hypertension and mechanical obstructions in
+                cerebrospinal fluid flow.
+                <strong>Limitation:</strong> Small sample size, requires
+                replication.
               </p>
             </div>
           </a>
+
+          <!-- Reference [4] - Tracey 2002 -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
-            href="https://www.frontiersin.org/journals/cellular-neuroscience/articles/10.3389/fncel.2019.00353/full"
+            href="https://www.nature.com/articles/nature01321"
             rel="noopener noreferrer"
             target="_blank">
             <span
@@ -3231,20 +3276,26 @@
             <div>
               <p
                 class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                Theoharides TC, et al. "Mast Cells, Neuroinflammation and Pain
-                in Fibromyalgia Syndrome." (Frontiers in Cellular Neuroscience,
-                2019)
+                Tracey KJ. "The inflammatory reflex." (Nature, 2002)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref4_desc">
-                Describes how mast cells in the brain (hypothalamus) react to
-                stressors by releasing inflammatory mediators. Directly links
-                MCAS to chronic pain and fatigue (ME/CFS).
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 5 - Landmark Paper
+                </span>
+                <br />
+                Article from 'Nature' describing the physiological mechanism
+                where the vagus nerve acts as a 'brake' for the immune system.
+                Its damage (e.g., by compression) leads to uncontrolled
+                inflammation.
               </p>
             </div>
           </a>
+
+          <!-- Reference [5] - Mechanobiology EDS-MCAS 2022 (NEW - BETTER THAN KOHN 2020) -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
-            href="https://link.springer.com/article/10.1007/s12016-019-08755-8"
+            href="https://www.frontiersin.org/journals/cell-and-developmental-biology/articles/10.3389/fcell.2022.874840/full"
             rel="noopener noreferrer"
             target="_blank">
             <span
@@ -3254,20 +3305,28 @@
             <div>
               <p
                 class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                Kohn A, Chang C. "The Relationship Between Hypermobile
-                Ehlers-Danlos Syndrome (hEDS), POTS, and MCAS." (2020)
+                Sosa Guggenheim LM, et al. "Mechanobiology in the Comorbidities
+                of Ehlers Danlos Syndrome." (Frontiers in Cell and Developmental
+                Biology, 2022)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref5_desc">
-                Fundamental work confirming the existence of a clinical cluster
-                of these three diseases. Shows that patients with connective
-                tissue laxity have genetic and physiological predispositions to
-                immune hyperreactivity.
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 5 - Review
+                </span>
+                <br />
+                Explains WHY hEDS leads to MCAS: soft extracellular matrix →
+                increased tissue deformation → disrupted mechanotransduction in
+                mast cells → excessive degranulation. ~25% of hEDS patients
+                develop MCAS.
               </p>
             </div>
           </a>
+
+          <!-- Reference [6] - Theoharides 2019 -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
-            href="https://pubmed.ncbi.nlm.nih.gov/21574765/"
+            href="https://www.frontiersin.org/journals/cellular-neuroscience/articles/10.3389/fncel.2019.00353/full"
             rel="noopener noreferrer"
             target="_blank">
             <span
@@ -3277,20 +3336,27 @@
             <div>
               <p
                 class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                Zhang D, et al. "Mast-cell degranulation induced by physical
-                stimuli involves activation of TRP channels." (Physiol Res,
-                2012)
+                Theoharides TC, et al. "Mast Cells, Neuroinflammation and Pain
+                in Fibromyalgia Syndrome." (Frontiers in Cellular Neuroscience,
+                2019)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref6_desc">
-                Proof that physical factors – such as vibrations or mechanical
-                stretching – can cause histamine release from mast cells without
-                allergens (non-IgE dependent mechanism).
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 5 - Review
+                </span>
+                <br />
+                Describes how mast cells in the brain (hypothalamus) react to
+                stressors by releasing inflammatory mediators. Directly links
+                MCAS to chronic pain and fatigue (ME/CFS).
               </p>
             </div>
           </a>
+
+          <!-- Reference [7] - Zhang 2012 -->
           <a
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
-            href="https://pubmed.ncbi.nlm.nih.gov/23790471/"
+            href="https://pubmed.ncbi.nlm.nih.gov/21574765/"
             rel="noopener noreferrer"
             target="_blank">
             <span
@@ -3300,22 +3366,64 @@
             <div>
               <p
                 class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                VanElzakker MB. "Chronic fatigue syndrome from vagus nerve
-                infection: a psychoneuroimmunological hypothesis." (Medical
-                Hypotheses, 2013)
+                Zhang D, et al. "Mast-cell degranulation induced by physical
+                stimuli involves activation of TRP channels." (Physiol Res,
+                2012)
               </p>
-              <p class="text-xs mt-1" data-i18n="bib_ref7_desc">
-                Describes the 'Sickness Behavior' mechanism. A damaged or
-                irritated vagus nerve sends a false threat signal to the brain,
-                forcing the body into metabolic 'shutdown' (ME/CFS symptoms).
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 5 - Basic Research
+                </span>
+                <br />
+                Proof that physical factors – such as vibrations or mechanical
+                stretching – can cause histamine release from mast cells without
+                allergens (non-IgE dependent mechanism).
+                <strong>Note:</strong> In vitro/animal studies.
               </p>
             </div>
           </a>
+
+          <!-- Reference [8] - 2-day CPET Meta-Analysis Lim 2020 (NEW - HIGH QUALITY) -->
+          <a
+            class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
+            href="https://www.mdpi.com/2077-0383/9/12/4040/htm"
+            rel="noopener noreferrer"
+            target="_blank">
+            <span
+              class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-110 transition-transform"
+              >[8]</span
+            >
+            <div>
+              <p
+                class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                Lim E-J, et al. "The Prospects of the Two-Day Cardiopulmonary
+                Exercise Test (CPET) in ME/CFS Patients: A Meta-Analysis."
+                (Journal of Clinical Medicine, 2020)
+              </p>
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Meta-Analysis (Level 1)
+                </span>
+                <br />
+                Analysis of 5 studies: ME/CFS patients show DECLINE in
+                performance Day 2 vs Day 1, while controls show IMPROVEMENT.
+                Work rate at VT1: −33.0 vs +improvement in controls (p&lt;0.05).
+                <strong
+                  >2-day CPET objectively distinguishes ME/CFS from healthy
+                  individuals.</strong
+                >
+              </p>
+            </div>
+          </a>
+
+          <!-- Reference [9] - Gensemer 2024 -->
           <div
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group">
             <span
               class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-110 transition-transform"
-              >[8]</span
+              >[9]</span
             >
             <div class="flex flex-col gap-2">
               <a
@@ -3326,11 +3434,14 @@
                 Gensemer C, et al. "Co-occurrence of tethered cord syndrome and
                 cervical spine instability in hEDS." (Front Neurol, 2024)
               </a>
-              <p
-                class="text-xs text-slate-600 dark:text-slate-400"
-                data-i18n="bib_ref8_desc">
-                Groundbreaking study (2024) demonstrating the co-occurrence of
-                TCS and CCI.
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 4 Evidence
+                </span>
+                <br />
+                Landmark study (2024) showing co-occurrence of TCS and CCI in
+                hEDS patients.
               </p>
               <a
                 class="inline-flex items-center gap-2 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline w-fit"
@@ -3344,30 +3455,109 @@
               </a>
             </div>
           </div>
+
+          <!-- Reference [10] - VanElzakker 2013 + Ongoing RCT (UPDATED) -->
           <div
             class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group">
             <span
               class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-110 transition-transform"
-              >[9]</span
+              >[10]</span
             >
             <div class="flex flex-col gap-2">
-              <a
-                class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
-                href="https://www.sciencedirect.com/science/article/pii/S0306987725002518?via%3Dihub"
-                rel="noopener noreferrer"
-                target="_blank">
-                "Brainstem dysfunction as a potential etiology of ME/CFS and
-                long COVID: A mechanical basis" (Medical Hypotheses, 2025)
-              </a>
-              <p
-                class="text-xs text-slate-600 dark:text-slate-400"
-                data-i18n="bib_ref9_desc">
-                Hypothesis paper (2025) proposing that mechanical brainstem
-                deformation acts as a central driver of ME/CFS and Long COVID
-                symptoms.
+              <p class="font-semibold text-slate-900 dark:text-white">
+                VanElzakker MB. "Chronic fatigue syndrome from vagus nerve
+                infection: a psychoneuroimmunological hypothesis." (Medical
+                Hypotheses, 2013)
               </p>
+              <p class="text-xs text-slate-600 dark:text-slate-400">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Hypothesis (Level 5)
+                </span>
+                <br />
+                Describes the 'Sickness Behavior' mechanism. A damaged or
+                irritated vagus nerve sends a false threat signal to the brain,
+                forcing the body into metabolic 'shutdown' (ME/CFS symptoms).
+              </p>
+              <div
+                class="mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800">
+                <p class="text-xs text-blue-800 dark:text-blue-300">
+                  <strong class="flex items-center gap-1 mb-1">
+                    <i class="w-3 h-3" data-lucide="flask-conical"></i>
+                    Ongoing Clinical Trial:
+                  </strong>
+                  ISRCTN15931869 – Pilot RCT of vagus nerve stimulation (taVNS)
+                  in ME/CFS.
+                  <a
+                    href="https://www.isrctn.com/ISRCTN15931869"
+                    target="_blank"
+                    class="underline hover:text-blue-600 dark:hover:text-blue-400">
+                    See protocol
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
+
+          <!-- Reference [11] - 2026 Long COVID CPET Study (NEW) -->
+          <a
+            class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
+            href="https://www.researchsquare.com/article/rs-8606329/v1"
+            rel="noopener noreferrer"
+            target="_blank">
+            <span
+              class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-110 transition-transform"
+              >[11]</span
+            >
+            <div>
+              <p
+                class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                Davenport TE, et al. "ME/CFS and Long COVID Demonstrate Similar
+                Bioenergetic Impairment and Recovery Failure on Two-Day
+                Cardiopulmonary Exercise Testing." (Research Square, 2026)
+              </p>
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 4 - Cohort Study (Preprint)
+                </span>
+                <br />
+                Latest study (n=84 ME/CFS, n=52 Long COVID) confirming identical
+                bioenergetic failure patterns in 2-day CPET. ME/CFS and Long
+                COVID show the same PEM mechanism.
+              </p>
+            </div>
+          </a>
+
+          <!-- Reference [12] - OTCS Review 2025 (NEW - BALANCE) -->
+          <a
+            class="flex gap-4 p-4 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-500 dark:hover:border-indigo-500 hover:shadow-md transition-all group"
+            href="https://www.cureus.com/articles/439982-occult-tethered-cord-syndrome-clinical-characteristics-diagnostic-challenges-and-management-considerations"
+            rel="noopener noreferrer"
+            target="_blank">
+            <span
+              class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0 group-hover:scale-110 transition-transform"
+              >[12]</span
+            >
+            <div>
+              <p
+                class="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                "Occult Tethered Cord Syndrome: Clinical Characteristics,
+                Diagnostic Challenges, and Management Considerations." (Cureus,
+                2025)
+              </p>
+              <p class="text-xs mt-1">
+                <span
+                  class="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-[10px] font-bold uppercase mb-1">
+                  Level 5 - Review
+                </span>
+                <br />
+                Comprehensive review of OTCS diagnostic challenges. Emphasizes
+                lack of consensus on surgical indications and need for
+                standardized diagnostic criteria before surgery.
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
