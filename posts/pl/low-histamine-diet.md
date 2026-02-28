@@ -20,6 +20,20 @@ Oznacza to, że często występują bardzo **indywidualne wyzwalacze żywieniowe
 
 ---
 
+## Czym jest "wiadro histaminowe"?
+
+Model "wiadra histaminowego" to praktyczny sposób zrozumienia, dlaczego czasem reagujesz silnie nawet po pozornie bezpiecznym posiłku. Wyobraź sobie, że Twój organizm ma wiadro o określonej pojemności.
+
+- **Co napełnia wiadro:** histamina z jedzenia, histamina uwalniana przez komórki tuczne, infekcje, przewlekły stres, brak snu, intensywny wysiłek, niektóre leki i dodatki do żywności.
+- **Co opróżnia wiadro:** sprawny rozkład histaminy (m.in. enzym DAO), regeneracja, sen, redukcja stresu, unikanie własnych triggerów i odpowiednie leczenie.
+- **Kiedy pojawiają się objawy:** gdy suma obciążeń przekroczy Twój indywidualny próg i wiadro "się przeleje", zaczynają występować objawy.
+
+Najważniejszy wniosek: nie zawsze pojedynczy produkt jest "winny". Często reakcja to efekt nakładania się kilku czynników w tym samym czasie. Dlatego jedna i ta sama potrawa jednego dnia może być dobrze tolerowana, a innego – wywołać silne objawy.
+
+W praktyce celem diety niskohistaminowej nie jest idealne wyeliminowanie histaminy (to niemożliwe), ale **utrzymywanie poziomu obciążenia poniżej progu objawowego** przez większość dni.
+
+---
+
 ## Lista SIGHI: Złoty standard
 
 Najbardziej wiarygodnym i rygorystycznym źródłem informacji o zawartości histaminy w żywności jest lista **SIGHI** (Szwajcarska Grupa Interesów ds. Nietolerancji Histaminy).

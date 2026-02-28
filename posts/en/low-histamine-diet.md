@@ -18,6 +18,20 @@ This means there are often very **individual dietary triggers**. Minor ingredien
 
 ---
 
+## What Is the "Histamine Bucket"?
+
+The "histamine bucket" model is a practical way to understand why you may sometimes react strongly even after a seemingly safe meal. Imagine your body has a bucket with a limited capacity.
+
+- **What fills the bucket:** histamine from food, histamine released by mast cells, infections, chronic stress, poor sleep, intense exercise, and certain medications or food additives.
+- **What empties the bucket:** effective histamine breakdown (including DAO enzyme activity), recovery, sleep, stress reduction, avoiding your personal triggers, and appropriate treatment.
+- **When symptoms appear:** when the total burden exceeds your personal threshold and the bucket "overflows.", symptoms start to appear.
+
+The key takeaway: a single food is not always the only "culprit." Reactions are often the result of several factors stacking up at the same time. That is why the very same meal may be tolerated one day and cause strong symptoms on another.
+
+In practice, the goal of a low-histamine diet is not to eliminate histamine completely (which is impossible), but to **keep your total histamine load below your symptom threshold** most days.
+
+---
+
 ## The SIGHI List: The Gold Standard
 
 The most reliable and rigorous source of information regarding histamine content in food is the **SIGHI** (Swiss Interest Group Histamine Intolerance) list.
